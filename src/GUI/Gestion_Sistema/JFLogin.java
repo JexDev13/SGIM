@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 /*
  * @authors G2 SoftwareSolutions
  */
+
 public class JFLogin extends javax.swing.JFrame {
 
     Imagenes img = new Imagenes();
