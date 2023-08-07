@@ -1,5 +1,8 @@
 package GUI.Gestion_Sistema;
 
+import Negocio.Conexion;
+import Negocio.Imagenes;
+import Negocio.Diseño;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -10,11 +13,12 @@ import javax.swing.JOptionPane;
 /*
  * @authors G2 SoftwareSolutions
  */
-
 public class JFLogin extends javax.swing.JFrame {
 
     Imagenes img = new Imagenes();
     ImageIcon ICONERROR = img.getICONERROR();
+    Diseño gui = new Diseño();
+    Conexion conectar = new Conexion();
 
     public JFLogin() {
         initComponents();
@@ -22,6 +26,7 @@ public class JFLogin extends javax.swing.JFrame {
         this.JPFPass.setEchoChar((char) 0);
         this.JBIngreso.requestFocus();
         setIconImage(getIconImage());
+        gui.jComboUsers(this.jCBUsuario);
     }
 
     @SuppressWarnings("unchecked")
@@ -37,6 +42,8 @@ public class JFLogin extends javax.swing.JFrame {
         jLUser = new javax.swing.JLabel();
         JTFUser = new javax.swing.JTextField();
         jLRecupearContra = new javax.swing.JLabel();
+        jCBUsuario = new javax.swing.JComboBox<>();
+        jLUser1 = new javax.swing.JLabel();
         jPEncabezado = new javax.swing.JPanel();
         jLImagen = new javax.swing.JLabel();
         jLEncabezado = new javax.swing.JLabel();
@@ -109,6 +116,7 @@ public class JFLogin extends javax.swing.JFrame {
 
         jLPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contraseña 32.png"))); // NOI18N
 
+        JPFPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 183, 22)));
         JPFPass.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 JPFPassFocusGained(evt);
@@ -126,6 +134,7 @@ public class JFLogin extends javax.swing.JFrame {
         jLUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario 32.png"))); // NOI18N
 
         JTFUser.setText("Usuario");
+        JTFUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 183, 22)));
         JTFUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 JTFUserFocusGained(evt);
@@ -148,6 +157,17 @@ public class JFLogin extends javax.swing.JFrame {
             }
         });
 
+        jCBUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfiles de Usuario", "Administrativo", "Profesor", "Estudiante" }));
+        jCBUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 183, 22)));
+        jCBUsuario.setPreferredSize(new java.awt.Dimension(72, 25));
+        jCBUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBUsuarioActionPerformed(evt);
+            }
+        });
+
+        jLUser1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuarios_32.png"))); // NOI18N
+
         javax.swing.GroupLayout jPLoginLayout = new javax.swing.GroupLayout(jPLogin);
         jPLogin.setLayout(jPLoginLayout);
         jPLoginLayout.setHorizontalGroup(
@@ -156,15 +176,19 @@ public class JFLogin extends javax.swing.JFrame {
                 .addGap(0, 17, Short.MAX_VALUE)
                 .addGroup(jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPLoginLayout.createSequentialGroup()
-                        .addComponent(jLUser)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTFUser, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPLoginLayout.createSequentialGroup()
                         .addComponent(jLPass)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JPFPass, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBVerPass, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBVerPass, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPLoginLayout.createSequentialGroup()
+                        .addGroup(jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLUser)
+                            .addComponent(jLUser1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCBUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JTFUser, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))))
                 .addGap(16, 16, 16))
             .addGroup(jPLoginLayout.createSequentialGroup()
                 .addContainerGap()
@@ -176,10 +200,14 @@ public class JFLogin extends javax.swing.JFrame {
         jPLoginLayout.setVerticalGroup(
             jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPLoginLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLUser, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JTFUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLUser1)
+                    .addComponent(jCBUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(JTFUser, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLUser))
                 .addGap(18, 18, 18)
                 .addGroup(jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(JPFPass, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +220,7 @@ public class JFLogin extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        getContentPane().add(jPLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 270, 240));
+        getContentPane().add(jPLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 270, 270));
 
         jPEncabezado.setBackground(new java.awt.Color(250, 226, 170));
         jPEncabezado.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 2, new java.awt.Color(0, 0, 0)));
@@ -222,26 +250,46 @@ public class JFLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngresoActionPerformed
-        /*Login en hardcode provisional*/
-        //Crear la base de datos para usuarios
-        //Modificar el login
-        String User = "admin";
-        String Password = "admin";
-
+        String Perfil = this.jCBUsuario.getSelectedItem().toString();
+        String User = this.JTFUser.getText();
         String Pass = new String(JPFPass.getPassword());
-
-        if (JTFUser.getText().equals(User) && Pass.equals(Password)) {
-            /*Modulos Mod = new Modulos();
-            Mod.setVisible(true);
-            dispose();*/
-        } else {
-            String titulo = "ERROR AL INICIAR SESION";
-            String mensaje = "\t\tACCESO DENEGADO \n -Usuario o contraseña incorrectos, intentalo nuevamente";
-            JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONERROR);
-            this.JPFPass.setEchoChar((char) 0);
-            this.JTFUser.setText("Usuario");
-            this.JPFPass.setText("Contraseña");
-            this.JTFUser.requestFocus();
+        int index = this.jCBUsuario.getSelectedIndex();
+        String mensaje = "\t\tACCESO DENEGADO \n -Usuario, perfil o contraseña incorrectos";
+        boolean login = conectar.conect(Perfil, User, Pass);
+        switch (index) {
+            case 0:
+                mensaje = "\t\tACCESO DENEGADO \n -Escoja un perfil de usuario primero";
+                borrarLogin(mensaje);
+                break;
+            case 1:
+                if (login == true) {
+                    //INGRESO AL PERFIL ADMINISTRADOR
+                    /*Modulos Mod = new Modulos();
+                    Mod.setVisible(true);
+                    dispose();*/
+                    System.out.println("Administrativo");
+                } else {
+                    borrarLogin(mensaje);
+                }
+                break;
+            case 2:
+                if (login == true) {
+                    //INGRESO AL PERFIL PROFESOR
+                    System.out.println("Profesor");
+                    //Futura interfaz
+                } else {
+                    borrarLogin(mensaje);
+                }
+                break;
+            case 3:
+                if (login == true) {
+                    //INGRESO AL PERFIL ESTUDIANTE
+                    System.out.println("Estudiante");
+                    //Futura interfaz
+                } else {
+                    borrarLogin(mensaje);
+                }
+                break;
         }
     }//GEN-LAST:event_JBIngresoActionPerformed
 
@@ -320,10 +368,23 @@ public class JFLogin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jCBUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBUsuarioActionPerformed
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/icono_app.png"));
         return retValue;
+    }
+
+    private void borrarLogin(String mensaje) {
+        String titulo = "ERROR AL INICIAR SESION";
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONERROR);
+        this.JPFPass.setEchoChar((char) 0);
+        this.JTFUser.setText("Usuario");
+        this.JPFPass.setText("Contraseña");
+        this.JTFUser.requestFocus();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -332,6 +393,7 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JTextField JTFUser;
     private javax.swing.JButton jBSalir;
     private javax.swing.JButton jBVerPass;
+    private javax.swing.JComboBox<String> jCBUsuario;
     private javax.swing.JLabel jLBienvenida;
     private javax.swing.JLabel jLEncabezado;
     private javax.swing.JLabel jLFondo;
@@ -339,6 +401,7 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLPass;
     private javax.swing.JLabel jLRecupearContra;
     private javax.swing.JLabel jLUser;
+    private javax.swing.JLabel jLUser1;
     private javax.swing.JPanel jPEncabezado;
     private javax.swing.JPanel jPLogin;
     // End of variables declaration//GEN-END:variables

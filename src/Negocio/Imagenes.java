@@ -1,4 +1,4 @@
-package GUI.Gestion_Sistema;
+package Negocio;
 
 import javax.swing.ImageIcon;
 
