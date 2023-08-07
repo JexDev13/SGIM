@@ -222,6 +222,8 @@ public class JFLogin extends javax.swing.JFrame {
 
     private void JBIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngresoActionPerformed
         /*Login en hardcode provisional*/
+        //Crear la base de datos para usuarios
+        //Modificar el login
         String User = "admin";
         String Password = "admin";
 
