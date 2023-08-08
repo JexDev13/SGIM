@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 /*
  * @authors G2 SoftwareSolutions
  */
-public class JFAdmin extends javax.swing.JFrame {
+public class JFAdminMenu extends javax.swing.JFrame {
 
     //Declarar aquí los paneles  y clases
     JPHome home = new JPHome(); //home=0
@@ -27,7 +27,7 @@ public class JFAdmin extends javax.swing.JFrame {
     int x;
     int y;
 
-    public JFAdmin() {
+    public JFAdminMenu() {
         initComponents();
         setLocationRelativeTo(this);
         setPanel(0, home);

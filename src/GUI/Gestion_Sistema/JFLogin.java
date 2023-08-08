@@ -279,7 +279,7 @@ public class JFLogin extends javax.swing.JFrame {
             case 1:
                 if (login == true) {
                     //INGRESO AL PERFIL ADMINISTRADOR
-                    JFAdmin admin = new JFAdmin();
+                    JFAdminMenu admin = new JFAdminMenu();
                     admin.setVisible(true);
                     dispose();
                     System.out.println("Administrativo");
