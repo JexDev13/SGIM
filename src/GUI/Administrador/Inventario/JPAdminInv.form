@@ -49,7 +49,7 @@
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               <Component id="jLLupa" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jTFBusqueda" min="-2" pref="162" max="-2" attributes="0"/>
+                                              <Component id="jTFBusquedaInst" min="-2" pref="162" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jLFiltro" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -79,7 +79,7 @@
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLLupa1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jTFBusqueda1" min="-2" pref="153" max="-2" attributes="0"/>
+                                              <Component id="jTFBusquedaLib" min="-2" pref="153" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jLFiltro1" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -123,7 +123,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Component id="jLLupa" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTFBusqueda" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jTFBusquedaInst" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLFiltro" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -151,7 +151,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTFBusqueda1" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jTFBusquedaLib" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLLupa1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -177,7 +177,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFBusqueda">
+    <Component class="javax.swing.JTextField" name="jTFBusquedaInst">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -188,10 +188,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTFBusquedaFocusLost"/>
-        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTFBusquedaMousePressed"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFBusquedaActionPerformed"/>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFBusquedaKeyReleased"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTFBusquedaInstFocusLost"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTFBusquedaInstMousePressed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFBusquedaInstActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFBusquedaInstKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jCBFiltroInst">
@@ -609,7 +609,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarLibActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFBusqueda1">
+    <Component class="javax.swing.JTextField" name="jTFBusquedaLib">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -620,10 +620,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTFBusqueda1FocusLost"/>
-        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTFBusqueda1MousePressed"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFBusqueda1ActionPerformed"/>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFBusqueda1KeyReleased"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTFBusquedaLibFocusLost"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTFBusquedaLibMousePressed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFBusquedaLibActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFBusquedaLibKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLLupa1">

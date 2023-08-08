@@ -29,7 +29,7 @@ public class JPAdminInv extends javax.swing.JPanel {
     private void initComponents() {
 
         jLFiltro = new javax.swing.JLabel();
-        jTFBusqueda = new javax.swing.JTextField();
+        jTFBusquedaInst = new javax.swing.JTextField();
         jCBFiltroInst = new javax.swing.JComboBox<>();
         jLLupa = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -45,7 +45,7 @@ public class JPAdminInv extends javax.swing.JPanel {
         jButtonNuevoLib = new javax.swing.JButton();
         jButtonActualizarLib = new javax.swing.JButton();
         jButtonEliminarLib = new javax.swing.JButton();
-        jTFBusqueda1 = new javax.swing.JTextField();
+        jTFBusquedaLib = new javax.swing.JTextField();
         jLLupa1 = new javax.swing.JLabel();
         jLFiltro1 = new javax.swing.JLabel();
         jCBFiltroLib = new javax.swing.JComboBox<>();
@@ -56,27 +56,27 @@ public class JPAdminInv extends javax.swing.JPanel {
 
         jLFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/filtrar 24.png"))); // NOI18N
 
-        jTFBusqueda.setForeground(new java.awt.Color(102, 102, 102));
-        jTFBusqueda.setText("Colocar código instrumento");
-        jTFBusqueda.setBorder(null);
-        jTFBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTFBusquedaInst.setForeground(new java.awt.Color(102, 102, 102));
+        jTFBusquedaInst.setText("Colocar código instrumento");
+        jTFBusquedaInst.setBorder(null);
+        jTFBusquedaInst.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTFBusquedaFocusLost(evt);
+                jTFBusquedaInstFocusLost(evt);
             }
         });
-        jTFBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTFBusquedaInst.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTFBusquedaMousePressed(evt);
+                jTFBusquedaInstMousePressed(evt);
             }
         });
-        jTFBusqueda.addActionListener(new java.awt.event.ActionListener() {
+        jTFBusquedaInst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFBusquedaActionPerformed(evt);
+                jTFBusquedaInstActionPerformed(evt);
             }
         });
-        jTFBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTFBusquedaInst.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTFBusquedaKeyReleased(evt);
+                jTFBusquedaInstKeyReleased(evt);
             }
         });
 
@@ -334,27 +334,27 @@ public class JPAdminInv extends javax.swing.JPanel {
             }
         });
 
-        jTFBusqueda1.setForeground(new java.awt.Color(102, 102, 102));
-        jTFBusqueda1.setText("Colocar código libro");
-        jTFBusqueda1.setBorder(null);
-        jTFBusqueda1.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTFBusquedaLib.setForeground(new java.awt.Color(102, 102, 102));
+        jTFBusquedaLib.setText("Colocar código libro");
+        jTFBusquedaLib.setBorder(null);
+        jTFBusquedaLib.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTFBusqueda1FocusLost(evt);
+                jTFBusquedaLibFocusLost(evt);
             }
         });
-        jTFBusqueda1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTFBusquedaLib.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTFBusqueda1MousePressed(evt);
+                jTFBusquedaLibMousePressed(evt);
             }
         });
-        jTFBusqueda1.addActionListener(new java.awt.event.ActionListener() {
+        jTFBusquedaLib.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFBusqueda1ActionPerformed(evt);
+                jTFBusquedaLibActionPerformed(evt);
             }
         });
-        jTFBusqueda1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTFBusquedaLib.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTFBusqueda1KeyReleased(evt);
+                jTFBusquedaLibKeyReleased(evt);
             }
         });
 
@@ -423,7 +423,7 @@ public class JPAdminInv extends javax.swing.JPanel {
                                                 .addGap(0, 0, Short.MAX_VALUE)
                                                 .addComponent(jLLupa)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jTFBusquedaInst, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLFiltro)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -445,7 +445,7 @@ public class JPAdminInv extends javax.swing.JPanel {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLLupa1)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTFBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jTFBusquedaLib, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLFiltro1)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -476,7 +476,7 @@ public class JPAdminInv extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLLupa)
-                                .addComponent(jTFBusqueda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTFBusquedaInst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLFiltro))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonConsultarInst, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -499,7 +499,7 @@ public class JPAdminInv extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFBusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFBusquedaLib, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLLupa1))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonConsultarLib, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -511,21 +511,21 @@ public class JPAdminInv extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTFBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusquedaFocusLost
-        if(jTFBusqueda.getText().isEmpty()){this.jTFBusqueda.setText("Buscar nombre");}
-    }//GEN-LAST:event_jTFBusquedaFocusLost
+    private void jTFBusquedaInstFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusquedaInstFocusLost
+        if(jTFBusquedaInst.getText().isEmpty()){this.jTFBusquedaInst.setText("Buscar nombre");}
+    }//GEN-LAST:event_jTFBusquedaInstFocusLost
 
-    private void jTFBusquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBusquedaMousePressed
-        if(jTFBusqueda.getText().equalsIgnoreCase("Buscar nombre")){jTFBusqueda.setText("");}
-    }//GEN-LAST:event_jTFBusquedaMousePressed
+    private void jTFBusquedaInstMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBusquedaInstMousePressed
+        if(jTFBusquedaInst.getText().equalsIgnoreCase("Buscar nombre")){jTFBusquedaInst.setText("");}
+    }//GEN-LAST:event_jTFBusquedaInstMousePressed
 
-    private void jTFBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusquedaActionPerformed
+    private void jTFBusquedaInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusquedaInstActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFBusquedaActionPerformed
+    }//GEN-LAST:event_jTFBusquedaInstActionPerformed
 
-    private void jTFBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaKeyReleased
+    private void jTFBusquedaInstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaInstKeyReleased
 
-    }//GEN-LAST:event_jTFBusquedaKeyReleased
+    }//GEN-LAST:event_jTFBusquedaInstKeyReleased
 
     private void jCBFiltroInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBFiltroInstActionPerformed
         // TODO add your handling code here:
@@ -615,21 +615,21 @@ public class JPAdminInv extends javax.swing.JPanel {
         elimLib.setVisible(true);
     }//GEN-LAST:event_jButtonEliminarLibActionPerformed
 
-    private void jTFBusqueda1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusqueda1FocusLost
-        if(jTFBusqueda1.getText().isEmpty()){this.jTFBusqueda.setText("Buscar código");}
-    }//GEN-LAST:event_jTFBusqueda1FocusLost
+    private void jTFBusquedaLibFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusquedaLibFocusLost
+        if(jTFBusquedaLib.getText().isEmpty()){this.jTFBusquedaInst.setText("Buscar código");}
+    }//GEN-LAST:event_jTFBusquedaLibFocusLost
 
-    private void jTFBusqueda1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBusqueda1MousePressed
-        if(jTFBusqueda1.getText().equalsIgnoreCase("Buscar código")){jTFBusqueda.setText("");}
-    }//GEN-LAST:event_jTFBusqueda1MousePressed
+    private void jTFBusquedaLibMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBusquedaLibMousePressed
+        if(jTFBusquedaLib.getText().equalsIgnoreCase("Buscar código")){jTFBusquedaInst.setText("");}
+    }//GEN-LAST:event_jTFBusquedaLibMousePressed
 
-    private void jTFBusqueda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusqueda1ActionPerformed
+    private void jTFBusquedaLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusquedaLibActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFBusqueda1ActionPerformed
+    }//GEN-LAST:event_jTFBusquedaLibActionPerformed
 
-    private void jTFBusqueda1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusqueda1KeyReleased
+    private void jTFBusquedaLibKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBusquedaLibKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFBusqueda1KeyReleased
+    }//GEN-LAST:event_jTFBusquedaLibKeyReleased
 
     private void jCBFiltroLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBFiltroLibActionPerformed
         // TODO add your handling code here:
@@ -668,8 +668,8 @@ public class JPAdminInv extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator;
-    private javax.swing.JTextField jTFBusqueda;
-    private javax.swing.JTextField jTFBusqueda1;
+    private javax.swing.JTextField jTFBusquedaInst;
+    private javax.swing.JTextField jTFBusquedaLib;
     private javax.swing.JTable jTInst;
     private javax.swing.JTable jTLib;
     // End of variables declaration//GEN-END:variables
