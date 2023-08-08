@@ -35,7 +35,7 @@ public class Conexion {
         return cn;
     }
 
-    public boolean conect(String perfil, String user, String password) {
+    public boolean logIn(String perfil, String user, String password) {
         try {
             cn = conectar();
             // Verificar si el usuario y contraseña son válidos en la base de datos
@@ -57,4 +57,16 @@ public class Conexion {
         }
         return false;
     }
+
+    public void logOut() {
+        try {
+            if (cn != null && !cn.isClosed()) {
+                cn.close();
+                cn = null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

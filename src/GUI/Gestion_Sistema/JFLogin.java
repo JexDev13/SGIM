@@ -48,6 +48,7 @@ public class JFLogin extends javax.swing.JFrame {
         jLImagen = new javax.swing.JLabel();
         jLEncabezado = new javax.swing.JLabel();
         jLBienvenida = new javax.swing.JLabel();
+        jLCreditos = new javax.swing.JLabel();
         jLFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -242,6 +243,20 @@ public class JFLogin extends javax.swing.JFrame {
 
         getContentPane().add(jPEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 270, -1));
 
+        jLCreditos.setForeground(java.awt.Color.gray);
+        jLCreditos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCreditos.setText("©G2 SoftwareSolutions");
+        jLCreditos.setToolTipText("");
+        jLCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLCreditosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLCreditosMouseExited(evt);
+            }
+        });
+        getContentPane().add(jLCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
+
         jLFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_login.png"))); // NOI18N
         getContentPane().add(jLFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 800, 500));
 
@@ -255,7 +270,7 @@ public class JFLogin extends javax.swing.JFrame {
         String Pass = new String(JPFPass.getPassword());
         int index = this.jCBUsuario.getSelectedIndex();
         String mensaje = "\t\tACCESO DENEGADO \n -Usuario, perfil o contraseña incorrectos";
-        boolean login = conectar.conect(Perfil, User, Pass);
+        boolean login = conectar.logIn(Perfil, User, Pass);
         switch (index) {
             case 0:
                 mensaje = "\t\tACCESO DENEGADO \n -Escoja un perfil de usuario primero";
@@ -264,9 +279,9 @@ public class JFLogin extends javax.swing.JFrame {
             case 1:
                 if (login == true) {
                     //INGRESO AL PERFIL ADMINISTRADOR
-                    /*Modulos Mod = new Modulos();
-                    Mod.setVisible(true);
-                    dispose();*/
+                    JFAdmin admin = new JFAdmin();
+                    admin.setVisible(true);
+                    dispose();
                     System.out.println("Administrativo");
                 } else {
                     borrarLogin(mensaje);
@@ -372,6 +387,14 @@ public class JFLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBUsuarioActionPerformed
 
+    private void jLCreditosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCreditosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLCreditosMouseEntered
+
+    private void jLCreditosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCreditosMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLCreditosMouseExited
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/icono_app.png"));
@@ -395,6 +418,7 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JButton jBVerPass;
     private javax.swing.JComboBox<String> jCBUsuario;
     private javax.swing.JLabel jLBienvenida;
+    private javax.swing.JLabel jLCreditos;
     private javax.swing.JLabel jLEncabezado;
     private javax.swing.JLabel jLFondo;
     private javax.swing.JLabel jLImagen;
