@@ -58,14 +58,14 @@
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jButtonAsignarProf" alignment="0" pref="110" max="32767" attributes="0"/>
-                              <Component id="jButtonAsignarEst" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButtonAsistencia" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jButtonAsignarEst" alignment="0" pref="110" max="32767" attributes="0"/>
+                              <Component id="jButtonAsistencia" alignment="0" pref="110" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jCBFiltroClase" min="-2" pref="209" max="-2" attributes="0"/>
-                          <Component id="jButtonConsultarClase" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="jButtonConsultarClase" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -98,7 +98,7 @@
                               <Component id="jButtonAsistencia" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -111,9 +111,9 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLTitTabla" min="-2" pref="24" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jCBFiltroMes" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jCBFiltroAnio" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -377,7 +377,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Consultar Clase"/>
+        <Property name="text" type="java.lang.String" value="consultar"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder roundedCorners="true"/>
@@ -461,7 +461,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Asignar Profesor"/>
+        <Property name="text" type="java.lang.String" value="asignar Profesor"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder roundedCorners="true"/>
@@ -486,7 +486,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Asignar Estudiantes"/>
+        <Property name="text" type="java.lang.String" value="asignar Estudiantes"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder roundedCorners="true"/>
@@ -511,7 +511,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Asistencia"/>
+        <Property name="text" type="java.lang.String" value="asistencia"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder roundedCorners="true"/>

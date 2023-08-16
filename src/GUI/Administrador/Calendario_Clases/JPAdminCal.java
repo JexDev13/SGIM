@@ -193,7 +193,7 @@ public class JPAdminCal extends javax.swing.JPanel {
 
         jButtonConsultarClase.setBackground(new java.awt.Color(250, 183, 22));
         jButtonConsultarClase.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonConsultarClase.setText("Consultar Clase");
+        jButtonConsultarClase.setText("consultar");
         jButtonConsultarClase.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jButtonConsultarClase.setBorderPainted(false);
         jButtonConsultarClase.setPreferredSize(new java.awt.Dimension(73, 40));
@@ -229,7 +229,7 @@ public class JPAdminCal extends javax.swing.JPanel {
 
         jButtonAsignarProf.setBackground(new java.awt.Color(250, 183, 22));
         jButtonAsignarProf.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonAsignarProf.setText("Asignar Profesor");
+        jButtonAsignarProf.setText("asignar Profesor");
         jButtonAsignarProf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jButtonAsignarProf.setBorderPainted(false);
         jButtonAsignarProf.setPreferredSize(new java.awt.Dimension(73, 40));
@@ -249,7 +249,7 @@ public class JPAdminCal extends javax.swing.JPanel {
 
         jButtonAsignarEst.setBackground(new java.awt.Color(250, 183, 22));
         jButtonAsignarEst.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonAsignarEst.setText("Asignar Estudiantes");
+        jButtonAsignarEst.setText("asignar Estudiantes");
         jButtonAsignarEst.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jButtonAsignarEst.setBorderPainted(false);
         jButtonAsignarEst.setPreferredSize(new java.awt.Dimension(73, 40));
@@ -269,7 +269,7 @@ public class JPAdminCal extends javax.swing.JPanel {
 
         jButtonAsistencia.setBackground(new java.awt.Color(250, 183, 22));
         jButtonAsistencia.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonAsistencia.setText("Asistencia");
+        jButtonAsistencia.setText("asistencia");
         jButtonAsistencia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jButtonAsistencia.setBorderPainted(false);
         jButtonAsistencia.setPreferredSize(new java.awt.Dimension(73, 40));
@@ -322,12 +322,12 @@ public class JPAdminCal extends javax.swing.JPanel {
                                 .addComponent(jLFiltro))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jButtonAsignarProf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                .addComponent(jButtonAsignarEst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonAsistencia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jButtonAsignarEst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                .addComponent(jButtonAsistencia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCBFiltroClase, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonConsultarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButtonConsultarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -351,7 +351,7 @@ public class JPAdminCal extends javax.swing.JPanel {
                                 .addComponent(jButtonAsignarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButtonAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))
+                        .addGap(0, 22, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -360,8 +360,8 @@ public class JPAdminCal extends javax.swing.JPanel {
                                 .addComponent(jButtonEliminarClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLFiltro))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLTitTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)))
+                        .addComponent(jLTitTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBFiltroMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCBFiltroAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

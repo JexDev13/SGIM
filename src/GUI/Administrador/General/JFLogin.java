@@ -401,7 +401,7 @@ public class JFLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jBOlvidarContraActionPerformed
 
     private void jBOlvidarContraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBOlvidarContraMouseEntered
-        this.jBOlvidarContra.setForeground(new Color(0,0,0));
+        this.jBOlvidarContra.setForeground(new Color(0, 0, 0));
     }//GEN-LAST:event_jBOlvidarContraMouseEntered
 
     private void jBOlvidarContraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBOlvidarContraMouseExited

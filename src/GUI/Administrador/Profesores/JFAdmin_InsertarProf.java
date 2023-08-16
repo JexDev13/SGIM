@@ -7,7 +7,7 @@ public class JFAdmin_InsertarProf extends javax.swing.JFrame {
 
     private int x;
     private int y;
-    
+
     public JFAdmin_InsertarProf() {
         initComponents();
         setLocationRelativeTo(this);
@@ -244,7 +244,7 @@ public class JFAdmin_InsertarProf extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int posX = evt.getXOnScreen();
         int posY = evt.getYOnScreen();
-        this.setLocation(posX-x,posY-y);
+        this.setLocation(posX - x, posY - y);
     }//GEN-LAST:event_formMouseDragged
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -273,7 +273,7 @@ public class JFAdmin_InsertarProf extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
-        this.setState(this.ICONIFIED);
+        dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
     private void jButtonMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizarActionPerformed
@@ -284,8 +284,7 @@ public class JFAdmin_InsertarProf extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSalirIconActionPerformed
 
-    public void borrarCampos()
-    {
+    public void borrarCampos() {
         this.jTFApellidos.setText("");
         this.jTFCedula.setText("");
         this.jTFCorreo.setText("");
@@ -295,7 +294,7 @@ public class JFAdmin_InsertarProf extends javax.swing.JFrame {
         this.jTFSueldo.setText("");
         this.jTFTelef.setText("");
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;

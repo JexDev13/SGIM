@@ -6,10 +6,12 @@ import Negocio.Diseño;
  * @authors G2 SoftwareSolutions
  */
 public class JPAdminEst extends javax.swing.JPanel {
+
     Diseño gui = new Diseño();
     JFAdmin_InsertarEstudiante inser = new JFAdmin_InsertarEstudiante();
     JFAdmin_ActualizarEstudiante act = new JFAdmin_ActualizarEstudiante();
     JFAdmin_EliminarEstudiante elim = new JFAdmin_EliminarEstudiante();
+
     public JPAdminEst() {
         initComponents();
         gui.jtableHead(this.jTEstudiante);
@@ -279,11 +281,15 @@ public class JPAdminEst extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonEliminarEstudianteActionPerformed
 
     private void jTFBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusquedaFocusLost
-        if(jTFBusqueda.getText().isEmpty()){this.jTFBusqueda.setText("Buscar nombre");}
+        if (jTFBusqueda.getText().isEmpty()) {
+            this.jTFBusqueda.setText("Buscar nombre");
+        }
     }//GEN-LAST:event_jTFBusquedaFocusLost
 
     private void jTFBusquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBusquedaMousePressed
-        if(jTFBusqueda.getText().equalsIgnoreCase("Buscar nombre")){jTFBusqueda.setText("");}
+        if (jTFBusqueda.getText().equalsIgnoreCase("Buscar nombre")) {
+            jTFBusqueda.setText("");
+        }
     }//GEN-LAST:event_jTFBusquedaMousePressed
 
     private void jTFBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusquedaActionPerformed

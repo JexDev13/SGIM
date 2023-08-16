@@ -1,14 +1,14 @@
-package GUI.Administrador.Estudiantes;
+package GUI.Administrador.Gestion_Sistema;
 
 /*
  * @authors G2 SoftwareSolutions
  */
-public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
+public class JFAdmin_EliminarUsuario extends javax.swing.JFrame {
 
     private int x;
     private int y;
 
-    public JFAdmin_EliminarEstudiante() {
+    public JFAdmin_EliminarUsuario() {
         initComponents();
         setLocationRelativeTo(this);
     }
@@ -17,10 +17,10 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonMinimizar = new javax.swing.JButton();
-        jButtonSalirIcon = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabelTitulo1 = new javax.swing.JLabel();
+        jButtonMinimizar = new javax.swing.JButton();
+        jButtonSalirIcon = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         JBCancela1 = new javax.swing.JButton();
         JBIngreso1 = new javax.swing.JButton();
@@ -34,22 +34,14 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         jTFNombres_EliminarEst1 = new javax.swing.JTextField();
         jLabelApe1 = new javax.swing.JLabel();
         jTFApellidos_EliminarEst1 = new javax.swing.JTextField();
-        jLabelSector1 = new javax.swing.JLabel();
-        jTFCelu_EliminarEst1 = new javax.swing.JTextField();
-        jLabelCelu1 = new javax.swing.JLabel();
-        jTFFacultad_EliminarEst1 = new javax.swing.JTextField();
         jLabelCorre2 = new javax.swing.JLabel();
         jTFCorreo_EliminarEst2 = new javax.swing.JTextField();
-        jLabelFacu1 = new javax.swing.JLabel();
-        jTFSectorEst_EliminarEst1 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jLabelCorre3 = new javax.swing.JLabel();
-        jTFCorreo_EliminarEst3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(400, 523));
+        setMinimumSize(new java.awt.Dimension(368, 388));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(400, 523));
+        setPreferredSize(new java.awt.Dimension(368, 388));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -62,6 +54,14 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(250, 183, 22));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTitulo1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 16)); // NOI18N
+        jLabelTitulo1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo1.setText("ELIMINAR USUARIO");
+        jPanel1.add(jLabelTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 40));
+
         jButtonMinimizar.setBackground(new java.awt.Color(250, 183, 22));
         jButtonMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Minimizar 24.png"))); // NOI18N
         jButtonMinimizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -72,7 +72,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 jButtonMinimizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 30, 30));
+        jPanel1.add(jButtonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 30, 30));
 
         jButtonSalirIcon.setBackground(new java.awt.Color(250, 183, 22));
         jButtonSalirIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
@@ -84,17 +84,9 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 jButtonSalirIconActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalirIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
+        jPanel1.add(jButtonSalirIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 30, 30));
 
-        jPanel1.setBackground(new java.awt.Color(250, 183, 22));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelTitulo1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 16)); // NOI18N
-        jLabelTitulo1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitulo1.setText("ELIMINAR ESTUDIANTE");
-        jPanel1.add(jLabelTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 40));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 60));
 
         jPanel2.setBackground(new java.awt.Color(250, 183, 22));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -119,7 +111,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 JBCancela1ActionPerformed(evt);
             }
         });
-        jPanel2.add(JBCancela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
+        jPanel2.add(JBCancela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
 
         JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
         JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
@@ -145,15 +137,15 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 JBIngreso1ActionPerformed(evt);
             }
         });
-        jPanel2.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+        jPanel2.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 400, 60));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 370, 60));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelDatoEstudiante.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDatoEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del profesor"));
+        jPanelDatoEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del usuario"));
 
         jTFBuscar_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTFBuscar_EliminarEst.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -176,7 +168,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLCedula)
                 .addGap(85, 85, 85)
-                .addComponent(jTFBuscar_EliminarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                .addComponent(jTFBuscar_EliminarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelDatoEstudianteLayout.setVerticalGroup(
@@ -189,7 +181,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanelDatoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel3.add(jPanelDatoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 340, -1));
         jPanelDatoEstudiante.getAccessibleContext().setAccessibleName("Datos del estudiante");
 
         jPDatosEstudianteEliminar1.setBackground(new java.awt.Color(255, 255, 255));
@@ -200,56 +192,28 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         jTFCodigo_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelNom1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelNom1.setText("Nombres");
+        jLabelNom1.setText("Usuario");
 
         jTFNombres_EliminarEst1.setEditable(false);
         jTFNombres_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
         jTFNombres_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelApe1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelApe1.setText("Apellidos");
+        jLabelApe1.setText("Rol");
 
         jTFApellidos_EliminarEst1.setEditable(false);
         jTFApellidos_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
         jTFApellidos_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        jLabelSector1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelSector1.setText("Nombres Repre.");
-
-        jTFCelu_EliminarEst1.setEditable(false);
-        jTFCelu_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFCelu_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-
-        jLabelCelu1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelCelu1.setText("F. de Nacimiento");
-
-        jTFFacultad_EliminarEst1.setEditable(false);
-        jTFFacultad_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFFacultad_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-
         jLabelCorre2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelCorre2.setText("Correo elec. Repre.");
+        jLabelCorre2.setText("Correo electrónico");
 
         jTFCorreo_EliminarEst2.setEditable(false);
         jTFCorreo_EliminarEst2.setBackground(new java.awt.Color(255, 255, 255));
         jTFCorreo_EliminarEst2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        jLabelFacu1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelFacu1.setText("Apellidos Repre.");
-
-        jTFSectorEst_EliminarEst1.setEditable(false);
-        jTFSectorEst_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFSectorEst_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-
         jLabel21.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel21.setText("N° Cédula");
-
-        jLabelCorre3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelCorre3.setText("Telefono Repre.");
-
-        jTFCorreo_EliminarEst3.setEditable(false);
-        jTFCorreo_EliminarEst3.setBackground(new java.awt.Color(255, 255, 255));
-        jTFCorreo_EliminarEst3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPDatosEstudianteEliminar1Layout = new javax.swing.GroupLayout(jPDatosEstudianteEliminar1);
         jPDatosEstudianteEliminar1.setLayout(jPDatosEstudianteEliminar1Layout);
@@ -259,23 +223,13 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
-                        .addComponent(jLabelCorre3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTFCorreo_EliminarEst3))
-                    .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
                         .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelApe1)
-                            .addComponent(jLabelCelu1)
-                            .addComponent(jLabelSector1)
-                            .addComponent(jLabelFacu1)
                             .addComponent(jLabelCorre2))
                         .addGap(18, 18, 18)
                         .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFCelu_EliminarEst1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(jTFApellidos_EliminarEst1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTFCorreo_EliminarEst2)
-                            .addComponent(jTFFacultad_EliminarEst1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTFSectorEst_EliminarEst1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(jTFApellidos_EliminarEst1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(jTFCorreo_EliminarEst2)))
                     .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
                         .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
@@ -304,32 +258,16 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFApellidos_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelApe1))
-                .addGap(6, 6, 6)
-                .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFCelu_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCelu1))
-                .addGap(6, 6, 6)
-                .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFSectorEst_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelSector1))
-                .addGap(6, 6, 6)
-                .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFFacultad_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelFacu1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCorreo_EliminarEst2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCorre2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFCorreo_EliminarEst3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCorre3))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPDatosEstudianteEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel3.add(jPDatosEstudianteEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 160));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 400, 400));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 370, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -394,12 +332,8 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLCedula;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabelApe1;
-    private javax.swing.JLabel jLabelCelu1;
     private javax.swing.JLabel jLabelCorre2;
-    private javax.swing.JLabel jLabelCorre3;
-    private javax.swing.JLabel jLabelFacu1;
     private javax.swing.JLabel jLabelNom1;
-    private javax.swing.JLabel jLabelSector1;
     private javax.swing.JLabel jLabelTitulo1;
     private javax.swing.JPanel jPDatosEstudianteEliminar1;
     private javax.swing.JPanel jPanel1;
@@ -408,12 +342,8 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelDatoEstudiante;
     public static javax.swing.JTextField jTFApellidos_EliminarEst1;
     public static javax.swing.JTextField jTFBuscar_EliminarEst;
-    public static javax.swing.JTextField jTFCelu_EliminarEst1;
     public static javax.swing.JTextField jTFCodigo_EliminarEst1;
     public static javax.swing.JTextField jTFCorreo_EliminarEst2;
-    public static javax.swing.JTextField jTFCorreo_EliminarEst3;
-    public static javax.swing.JTextField jTFFacultad_EliminarEst1;
     public static javax.swing.JTextField jTFNombres_EliminarEst1;
-    public static javax.swing.JTextField jTFSectorEst_EliminarEst1;
     // End of variables declaration//GEN-END:variables
 }

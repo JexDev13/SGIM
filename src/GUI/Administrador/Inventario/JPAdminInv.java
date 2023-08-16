@@ -6,6 +6,7 @@ import Negocio.Diseño;
  * @authors G2 SoftwareSolutions
  */
 public class JPAdminInv extends javax.swing.JPanel {
+
     Diseño gui = new Diseño();
     JFAdmin_ActualizarInst actInst = new JFAdmin_ActualizarInst();
     JFAdmin_ActualizarLib actLib = new JFAdmin_ActualizarLib();
@@ -390,7 +391,7 @@ public class JPAdminInv extends javax.swing.JPanel {
             }
         });
 
-        jSeparator.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator.setForeground(new java.awt.Color(250, 183, 22));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -508,11 +509,15 @@ public class JPAdminInv extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFBusquedaInstFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusquedaInstFocusLost
-        if(jTFBusquedaInst.getText().isEmpty()){this.jTFBusquedaInst.setText("Buscar nombre");}
+        if (jTFBusquedaInst.getText().isEmpty()) {
+            this.jTFBusquedaInst.setText("Buscar nombre");
+        }
     }//GEN-LAST:event_jTFBusquedaInstFocusLost
 
     private void jTFBusquedaInstMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBusquedaInstMousePressed
-        if(jTFBusquedaInst.getText().equalsIgnoreCase("Buscar nombre")){jTFBusquedaInst.setText("");}
+        if (jTFBusquedaInst.getText().equalsIgnoreCase("Buscar nombre")) {
+            jTFBusquedaInst.setText("");
+        }
     }//GEN-LAST:event_jTFBusquedaInstMousePressed
 
     private void jTFBusquedaInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusquedaInstActionPerformed
@@ -612,11 +617,15 @@ public class JPAdminInv extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonEliminarLibActionPerformed
 
     private void jTFBusquedaLibFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusquedaLibFocusLost
-        if(jTFBusquedaLib.getText().isEmpty()){this.jTFBusquedaInst.setText("Buscar código");}
+        if (jTFBusquedaLib.getText().isEmpty()) {
+            this.jTFBusquedaInst.setText("Buscar código");
+        }
     }//GEN-LAST:event_jTFBusquedaLibFocusLost
 
     private void jTFBusquedaLibMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBusquedaLibMousePressed
-        if(jTFBusquedaLib.getText().equalsIgnoreCase("Buscar código")){jTFBusquedaInst.setText("");}
+        if (jTFBusquedaLib.getText().equalsIgnoreCase("Buscar código")) {
+            jTFBusquedaInst.setText("");
+        }
     }//GEN-LAST:event_jTFBusquedaLibMousePressed
 
     private void jTFBusquedaLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusquedaLibActionPerformed

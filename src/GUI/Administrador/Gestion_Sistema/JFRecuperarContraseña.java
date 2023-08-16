@@ -2,7 +2,6 @@ package GUI.Administrador.Gestion_Sistema;
 
 import Negocio.Imagenes;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -217,7 +216,7 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
     }//GEN-LAST:event_formMousePressed
 
     private void JBCancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelaActionPerformed
-        this.setState(this.ICONIFIED);
+        dispose();
     }//GEN-LAST:event_JBCancelaActionPerformed
 
     private void JBCancelaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancelaMouseExited

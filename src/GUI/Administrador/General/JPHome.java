@@ -167,7 +167,7 @@ public class JPHome extends javax.swing.JPanel {
     }//GEN-LAST:event_jBSoporteMouseExited
 
     private void jBSoporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSoporteActionPerformed
-        
+
     }//GEN-LAST:event_jBSoporteActionPerformed
 
     private void jBManualMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBManualMouseEntered

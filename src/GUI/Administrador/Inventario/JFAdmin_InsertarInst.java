@@ -7,7 +7,7 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
 
     private int x;
     private int y;
-    
+
     public JFAdmin_InsertarInst() {
         initComponents();
         setLocationRelativeTo(this);
@@ -255,7 +255,7 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int posX = evt.getXOnScreen();
         int posY = evt.getYOnScreen();
-        this.setLocation(posX-x,posY-y);
+        this.setLocation(posX - x, posY - y);
     }//GEN-LAST:event_formMouseDragged
 
     private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
@@ -279,11 +279,10 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
-        this.setState(this.ICONIFIED);
+        dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
-    public void borrarCampos()
-    {
+    public void borrarCampos() {
         this.jTFCodigo.setText("");
         this.jTFCondicion.setText("");
         this.jTFCategoria.setText("");
@@ -291,7 +290,7 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
         this.jTFNombre.setText("");
         this.jTFEstadoAlquiler.setText("");
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;

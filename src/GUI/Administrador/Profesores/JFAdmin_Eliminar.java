@@ -4,12 +4,15 @@ package GUI.Administrador.Profesores;
  * @authors G2 SoftwareSolutions
  */
 public class JFAdmin_Eliminar extends javax.swing.JFrame {
+
     private int x;
     private int y;
+
     public JFAdmin_Eliminar() {
         initComponents();
         setLocationRelativeTo(this);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -338,7 +341,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int posX = evt.getXOnScreen();
         int posY = evt.getYOnScreen();
-        this.setLocation(posX-x,posY-y);
+        this.setLocation(posX - x, posY - y);
     }//GEN-LAST:event_formMouseDragged
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -383,7 +386,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
-        this.setState(this.ICONIFIED);
+        dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
 //    public void limpiarCampos(){
@@ -395,7 +398,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
 //        this.jTFFacultad_EliminarEst.setText("");
 //        this.jTFCorreo_EliminarEst.setText("");
 //    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;

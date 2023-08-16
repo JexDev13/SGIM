@@ -496,7 +496,7 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
-        this.setState(this.ICONIFIED);
+        dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
     public void limpiarCampos() {

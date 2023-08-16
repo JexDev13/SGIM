@@ -1,7 +1,5 @@
 package GUI.Administrador.Inventario;
 
-import GUI.Administrador.Inventario.*;
-
 /*
  * @authors G2 SoftwareSolutions
  */
@@ -442,7 +440,7 @@ public class JFAdmin_ActualizarInst extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
-        this.setState(this.ICONIFIED);
+        dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
     private void jButtonSalirIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirIcon1ActionPerformed

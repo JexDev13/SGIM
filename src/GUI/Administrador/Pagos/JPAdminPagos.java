@@ -1,9 +1,12 @@
 package GUI.Administrador.Pagos;
+
 import Negocio.Diseño;
+
 /*
  * @authors G2 SoftwareSolutions
  */
 public class JPAdminPagos extends javax.swing.JPanel {
+
     Diseño gui = new Diseño();
     JFAdmin_RegistrarPago regPag = new JFAdmin_RegistrarPago();
     JFAdmin_EliminarPago elimPag = new JFAdmin_EliminarPago();
@@ -177,7 +180,7 @@ public class JPAdminPagos extends javax.swing.JPanel {
 
         jButtonConsultarPagos.setBackground(new java.awt.Color(250, 183, 22));
         jButtonConsultarPagos.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonConsultarPagos.setText("Consultar Pagos");
+        jButtonConsultarPagos.setText("consultar");
         jButtonConsultarPagos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jButtonConsultarPagos.setBorderPainted(false);
         jButtonConsultarPagos.setPreferredSize(new java.awt.Dimension(73, 40));
@@ -196,7 +199,10 @@ public class JPAdminPagos extends javax.swing.JPanel {
         });
 
         jTFPorcentajePagado.setEditable(false);
+        jTFPorcentajePagado.setBackground(new java.awt.Color(255, 255, 255));
         jTFPorcentajePagado.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFPorcentajePagado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 183, 22)));
+        jTFPorcentajePagado.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
         jLabel20.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel20.setText("% Estudiantes Pagados");
@@ -261,7 +267,7 @@ public class JPAdminPagos extends javax.swing.JPanel {
                         .addGap(25, 25, 25)
                         .addComponent(jLTitTabla)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFPorcentajePagado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,11 +313,15 @@ public class JPAdminPagos extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonEliminarPagoActionPerformed
 
     private void jTFBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusquedaFocusLost
-        if(jTFBusqueda.getText().isEmpty()){this.jTFBusqueda.setText("Buscar cédula");}
+        if (jTFBusqueda.getText().isEmpty()) {
+            this.jTFBusqueda.setText("Buscar cédula");
+        }
     }//GEN-LAST:event_jTFBusquedaFocusLost
 
     private void jTFBusquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBusquedaMousePressed
-        if(jTFBusqueda.getText().equalsIgnoreCase("Buscar cédula")){jTFBusqueda.setText("");}
+        if (jTFBusqueda.getText().equalsIgnoreCase("Buscar cédula")) {
+            jTFBusqueda.setText("");
+        }
     }//GEN-LAST:event_jTFBusquedaMousePressed
 
     private void jTFBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBusquedaActionPerformed

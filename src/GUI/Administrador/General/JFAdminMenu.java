@@ -9,6 +9,8 @@ import GUI.Administrador.Profesores.JPAdminProf;
 import Negocio.Conexion;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JPanel;
 
 /*
@@ -33,6 +35,7 @@ public class JFAdminMenu extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         setPanel(0, home);
+        setIconImage(getIconImage());
     }
 
     @SuppressWarnings("unchecked")
@@ -377,13 +380,13 @@ public class JFAdminMenu extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int posX = evt.getXOnScreen();
         int posY = evt.getYOnScreen();
-        this.setLocation(posX-x,posY-y);
+        this.setLocation(posX - x, posY - y);
     }//GEN-LAST:event_formMouseDragged
 
     private void jBHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBHomeMouseEntered
         this.jBHome.setText("  HOME");
         this.jBHome.setContentAreaFilled(true);
-        this.jBHome.setBackground(new Color(255,250,244));
+        this.jBHome.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBHomeMouseEntered
 
     private void jBHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBHomeMouseExited
@@ -394,43 +397,43 @@ public class JFAdminMenu extends javax.swing.JFrame {
     private void jBProfesoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBProfesoresMouseEntered
         this.jBProfesores.setText("  PROFESORES");
         this.jBProfesores.setContentAreaFilled(true);
-        this.jBProfesores.setBackground(new Color(255,250,244));
+        this.jBProfesores.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBProfesoresMouseEntered
 
     private void jBEstudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEstudiantesMouseEntered
         this.jBEstudiantes.setText("  ESTUDIANTES");
         this.jBEstudiantes.setContentAreaFilled(true);
-        this.jBEstudiantes.setBackground(new Color(255,250,244));
+        this.jBEstudiantes.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBEstudiantesMouseEntered
 
     private void jBInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBInventarioMouseEntered
         this.jBInventario.setText("  INVENTARIO");
         this.jBInventario.setContentAreaFilled(true);
-        this.jBInventario.setBackground(new Color(255,250,244));
+        this.jBInventario.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBInventarioMouseEntered
 
     private void jBPagosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPagosMouseEntered
         this.jBPagos.setText("  PAGOS");
         this.jBPagos.setContentAreaFilled(true);
-        this.jBPagos.setBackground(new Color(255,250,244));
+        this.jBPagos.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBPagosMouseEntered
 
     private void jBCalendarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCalendarioMouseEntered
         this.jBCalendario.setText("  CLASES");
         this.jBCalendario.setContentAreaFilled(true);
-        this.jBCalendario.setBackground(new Color(255,250,244));
+        this.jBCalendario.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBCalendarioMouseEntered
 
     private void jBGest_SisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGest_SisMouseEntered
         this.jBGest_Sis.setText("GESTIÓN DEL SISTEMA");
         this.jBGest_Sis.setContentAreaFilled(true);
-        this.jBGest_Sis.setBackground(new Color(255,250,244));
+        this.jBGest_Sis.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBGest_SisMouseEntered
 
     private void jBLogOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLogOutMouseEntered
         this.jBLogOut.setText("  LOG OUT");
         this.jBLogOut.setContentAreaFilled(true);
-        this.jBLogOut.setBackground(new Color(255,250,244));
+        this.jBLogOut.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBLogOutMouseEntered
 
     private void jBProfesoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBProfesoresMouseExited
@@ -516,6 +519,13 @@ public class JFAdminMenu extends javax.swing.JFrame {
         }
         this.jLabelTituloPanel.setText(titulo);
     }
+
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/icono_app.png"));
+        return retValue;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCalendario;

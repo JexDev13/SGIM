@@ -1,20 +1,19 @@
-package GUI.Administrador.Pagos;
+package GUI.Administrador.Gestion_Sistema;
 
 import Negocio.Diseño;
 
 /*
  * @authors G2 SoftwareSolutions
  */
-public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
-    
+public class JFAdmin_InsertarUsuario extends javax.swing.JFrame {
+
     private int x;
     private int y;
     Diseño diseño = new Diseño();
-    
-    public JFAdmin_RegistrarPago() {
+
+    public JFAdmin_InsertarUsuario() {
         initComponents();
         setLocationRelativeTo(this);
-        diseño.jComboUsers(this.jComboBoxMetodo);
     }
 
     @SuppressWarnings("unchecked")
@@ -28,21 +27,24 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLCedula = new javax.swing.JLabel();
         jTFCedula = new javax.swing.JTextField();
-        jLCodTran = new javax.swing.JLabel();
-        jTFCodTran = new javax.swing.JTextField();
+        jLNombres = new javax.swing.JLabel();
+        jTFNombres = new javax.swing.JTextField();
+        jLApellidos = new javax.swing.JLabel();
+        jTFApellidos = new javax.swing.JTextField();
         jLNivel = new javax.swing.JLabel();
-        jComboBoxMetodo = new javax.swing.JComboBox<>();
-        jLFecha = new javax.swing.JLabel();
-        jLValor = new javax.swing.JLabel();
-        jTFValor = new javax.swing.JTextField();
-        jFormattedTextFieldFecha = new javax.swing.JFormattedTextField();
+        jTFFDNacimiento = new javax.swing.JTextField();
+        jLTelf = new javax.swing.JLabel();
+        jTFNombresRepre = new javax.swing.JTextField();
+        jLSueldo = new javax.swing.JLabel();
+        jTFCorreoRepre = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         JBCancela1 = new javax.swing.JButton();
-        JBFactura = new javax.swing.JButton();
+        JBIngreso1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(290, 399));
+        setMinimumSize(new java.awt.Dimension(290, 349));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(290, 349));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -60,7 +62,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
 
         jLabelTitulo.setFont(new java.awt.Font("Perpetua Titling MT", 1, 16)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitulo.setText("Registrar Pago");
+        jLabelTitulo.setText("Insertar usuario");
         jPanel1.add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
         jButtonMinimizar.setBackground(new java.awt.Color(250, 183, 22));
@@ -73,7 +75,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
                 jButtonMinimizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 30, 30));
+        jPanel1.add(jButtonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 30, 30));
 
         jButtonSalirIcon.setBackground(new java.awt.Color(250, 183, 22));
         jButtonSalirIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
@@ -85,43 +87,48 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
                 jButtonSalirIconActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSalirIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 30, 30));
+        jPanel1.add(jButtonSalirIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 30, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 49));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 292, 49));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLCedula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLCedula.setText("N°Cédula:");
+        jLCedula.setText("Código:");
         jPanel2.add(jLCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, -1));
-        jPanel2.add(jTFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 11, 230, -1));
 
-        jLCodTran.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLCodTran.setText("Cod. Transacción:");
-        jPanel2.add(jLCodTran, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-        jPanel2.add(jTFCodTran, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 190, -1));
+        jTFCedula.setEnabled(false);
+        jPanel2.add(jTFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 11, 200, -1));
+
+        jLNombres.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLNombres.setText("N°Cédula:");
+        jPanel2.add(jLNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        jPanel2.add(jTFNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 49, 200, -1));
+
+        jLApellidos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLApellidos.setText("Rol:");
+        jPanel2.add(jLApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        jTFApellidos.setEnabled(false);
+        jPanel2.add(jTFApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 190, -1));
 
         jLNivel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLNivel.setText("Método de  Pago:");
-        jPanel2.add(jLNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        jLNivel.setText("Nombre de usuario:");
+        jPanel2.add(jLNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        jPanel2.add(jTFFDNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 140, -1));
 
-        jComboBoxMetodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir Método...", "Efectivo", "Transferencia", "Tarjeta de crédito/débito", "Cheque" }));
-        jPanel2.add(jComboBoxMetodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 190, -1));
+        jLTelf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLTelf.setText("Contraseña:");
+        jPanel2.add(jLTelf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        jPanel2.add(jTFNombresRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 150, -1));
 
-        jLFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLFecha.setText("Fecha de pago:");
-        jPanel2.add(jLFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        jLSueldo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLSueldo.setText("Coreeo electrónico:");
+        jPanel2.add(jLSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 120, -1));
+        jPanel2.add(jTFCorreoRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 140, -1));
 
-        jLValor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLValor.setText("Valor:");
-        jPanel2.add(jLValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
-        jPanel2.add(jTFValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 250, 240, -1));
-
-        jFormattedTextFieldFecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        jPanel2.add(jFormattedTextFieldFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 200, -1));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 49, 310, 300));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 49, 290, 250));
 
         jPanel3.setBackground(new java.awt.Color(250, 183, 22));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -148,48 +155,50 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
         });
         jPanel3.add(JBCancela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
-        JBFactura.setBackground(new java.awt.Color(255, 255, 254));
-        JBFactura.setForeground(new java.awt.Color(250, 183, 22));
-        JBFactura.setText("aceptar");
-        JBFactura.setBorder(null);
-        JBFactura.setBorderPainted(false);
-        JBFactura.setDefaultCapable(false);
-        JBFactura.setFocusPainted(false);
-        JBFactura.setHideActionText(true);
-        JBFactura.setPreferredSize(new java.awt.Dimension(89, 32));
-        JBFactura.setRequestFocusEnabled(false);
-        JBFactura.setRolloverEnabled(false);
-        JBFactura.addMouseListener(new java.awt.event.MouseAdapter() {
+        JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
+        JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
+        JBIngreso1.setText("aceptar");
+        JBIngreso1.setBorder(null);
+        JBIngreso1.setBorderPainted(false);
+        JBIngreso1.setDefaultCapable(false);
+        JBIngreso1.setFocusPainted(false);
+        JBIngreso1.setHideActionText(true);
+        JBIngreso1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBIngreso1.setRequestFocusEnabled(false);
+        JBIngreso1.setRolloverEnabled(false);
+        JBIngreso1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                JBFacturaMouseEntered(evt);
+                JBIngreso1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                JBFacturaMouseExited(evt);
+                JBIngreso1MouseExited(evt);
             }
         });
-        JBFactura.addActionListener(new java.awt.event.ActionListener() {
+        JBIngreso1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBFacturaActionPerformed(evt);
+                JBIngreso1ActionPerformed(evt);
             }
         });
-        jPanel3.add(JBFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        jPanel3.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 310, 49));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 292, 49));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void borrarCampos()
-    {
+    public void borrarCampos() {
+        this.jTFApellidos.setText("");
         this.jTFCedula.setText("");
-        this.jTFCodTran.setText("");
-        this.jTFValor.setText("");
+        this.jTFNombres.setText("");
+        this.jTFFDNacimiento.setText("");
+        this.jTFNombresRepre.setText("");
+        this.jTFCorreoRepre.setText("");
     }
-    
+
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int posX = evt.getXOnScreen();
         int posY = evt.getYOnScreen();
-        this.setLocation(posX-x,posY-y);
+        this.setLocation(posX - x, posY - y);
     }//GEN-LAST:event_formMouseDragged
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -205,17 +214,17 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSalirIconActionPerformed
 
-    private void JBFacturaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBFacturaMouseEntered
-        this.JBFactura.setText("ACEPTAR");
-    }//GEN-LAST:event_JBFacturaMouseEntered
+    private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
+        this.JBIngreso1.setText("ACEPTAR");
+    }//GEN-LAST:event_JBIngreso1MouseEntered
 
-    private void JBFacturaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBFacturaMouseExited
-        this.JBFactura.setText("aceptar");
-    }//GEN-LAST:event_JBFacturaMouseExited
+    private void JBIngreso1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseExited
+        this.JBIngreso1.setText("aceptar");
+    }//GEN-LAST:event_JBIngreso1MouseExited
 
-    private void JBFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFacturaActionPerformed
+    private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
 
-    }//GEN-LAST:event_JBFacturaActionPerformed
+    }//GEN-LAST:event_JBIngreso1ActionPerformed
 
     private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
         this.JBCancela1.setText("CANCELAR");
@@ -231,22 +240,24 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
-    private javax.swing.JButton JBFactura;
+    private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
-    private javax.swing.JComboBox<String> jComboBoxMetodo;
-    private javax.swing.JFormattedTextField jFormattedTextFieldFecha;
+    private javax.swing.JLabel jLApellidos;
     private javax.swing.JLabel jLCedula;
-    private javax.swing.JLabel jLCodTran;
-    private javax.swing.JLabel jLFecha;
     private javax.swing.JLabel jLNivel;
-    private javax.swing.JLabel jLValor;
+    private javax.swing.JLabel jLNombres;
+    private javax.swing.JLabel jLSueldo;
+    private javax.swing.JLabel jLTelf;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField jTFApellidos;
     private javax.swing.JTextField jTFCedula;
-    private javax.swing.JTextField jTFCodTran;
-    private javax.swing.JTextField jTFValor;
+    private javax.swing.JTextField jTFCorreoRepre;
+    private javax.swing.JTextField jTFFDNacimiento;
+    private javax.swing.JTextField jTFNombres;
+    private javax.swing.JTextField jTFNombresRepre;
     // End of variables declaration//GEN-END:variables
 }

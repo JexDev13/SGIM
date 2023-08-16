@@ -3,7 +3,7 @@ package Negocio;
 import javax.swing.ImageIcon;
 
 /*
- * @author JEREMY
+ * @authors G2 SoftwareSolutions
  */
 public class Imagenes {
     
