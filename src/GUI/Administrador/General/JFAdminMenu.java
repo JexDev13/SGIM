@@ -1,12 +1,14 @@
-package GUI.Gestion_Sistema;
+package GUI.Administrador.General;
 
 import GUI.Administrador.Calendario_Clases.JPAdminCal;
 import GUI.Administrador.Estudiantes.JPAdminEst;
+import GUI.Administrador.Gestion_Sistema.JPAdminGest;
 import GUI.Administrador.Inventario.JPAdminInv;
 import GUI.Administrador.Pagos.JPAdminPagos;
 import GUI.Administrador.Profesores.JPAdminProf;
 import Negocio.Conexion;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JPanel;
 
 /*
@@ -51,6 +53,7 @@ public class JFAdminMenu extends javax.swing.JFrame {
         jButtonMinimizar = new javax.swing.JButton();
         jButtonSalirIcon = new javax.swing.JButton();
         jPanelGeneral = new javax.swing.JPanel();
+        jLCreditos = new javax.swing.JLabel();
         jLabelFondoPanel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,16 +72,29 @@ public class JFAdminMenu extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel4.setText("SGE-Mousai");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MousaiLogo.png"))); // NOI18N
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 180));
 
-        jBHome.setFont(new java.awt.Font("Segoe UI Semilight", 0, 13)); // NOI18N
-        jBHome.setText("home");
-        jBHome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jBHome.setBackground(new java.awt.Color(255, 255, 254));
+        jBHome.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
+        jBHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/home.png"))); // NOI18N
+        jBHome.setText("  home");
+        jBHome.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBHome.setBorderPainted(false);
         jBHome.setContentAreaFilled(false);
+        jBHome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jBHome.setHideActionText(true);
         jBHome.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBHomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBHomeMouseExited(evt);
+            }
+        });
         jBHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBHomeActionPerformed(evt);
@@ -86,11 +102,22 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 260, 60));
 
-        jBProfesores.setFont(new java.awt.Font("Segoe UI Semilight", 0, 13)); // NOI18N
-        jBProfesores.setText("profesores");
-        jBProfesores.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jBProfesores.setBackground(new java.awt.Color(255, 255, 254));
+        jBProfesores.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
+        jBProfesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/profesores.png"))); // NOI18N
+        jBProfesores.setText("  profesores");
+        jBProfesores.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBProfesores.setBorderPainted(false);
         jBProfesores.setContentAreaFilled(false);
         jBProfesores.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBProfesores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBProfesoresMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBProfesoresMouseExited(evt);
+            }
+        });
         jBProfesores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBProfesoresActionPerformed(evt);
@@ -98,11 +125,22 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBProfesores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 260, 60));
 
-        jBEstudiantes.setFont(new java.awt.Font("Segoe UI Semilight", 0, 13)); // NOI18N
-        jBEstudiantes.setText("estudiantes");
-        jBEstudiantes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jBEstudiantes.setBackground(new java.awt.Color(255, 255, 254));
+        jBEstudiantes.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
+        jBEstudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estudiantes.png"))); // NOI18N
+        jBEstudiantes.setText("  estudiantes");
+        jBEstudiantes.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBEstudiantes.setBorderPainted(false);
         jBEstudiantes.setContentAreaFilled(false);
         jBEstudiantes.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBEstudiantesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBEstudiantesMouseExited(evt);
+            }
+        });
         jBEstudiantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEstudiantesActionPerformed(evt);
@@ -110,11 +148,21 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 260, 60));
 
-        jBInventario.setFont(new java.awt.Font("Segoe UI Semilight", 0, 13)); // NOI18N
-        jBInventario.setText("inventario");
-        jBInventario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jBInventario.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
+        jBInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inventario.png"))); // NOI18N
+        jBInventario.setText("  inventario");
+        jBInventario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBInventario.setBorderPainted(false);
         jBInventario.setContentAreaFilled(false);
         jBInventario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBInventarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBInventarioMouseExited(evt);
+            }
+        });
         jBInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBInventarioActionPerformed(evt);
@@ -122,11 +170,21 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 260, 60));
 
-        jBPagos.setFont(new java.awt.Font("Segoe UI Semilight", 0, 13)); // NOI18N
-        jBPagos.setText("pagos");
-        jBPagos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jBPagos.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
+        jBPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pagos.png"))); // NOI18N
+        jBPagos.setText("  pagos");
+        jBPagos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBPagos.setBorderPainted(false);
         jBPagos.setContentAreaFilled(false);
         jBPagos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBPagos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBPagosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBPagosMouseExited(evt);
+            }
+        });
         jBPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBPagosActionPerformed(evt);
@@ -134,11 +192,21 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 260, 60));
 
-        jBCalendario.setFont(new java.awt.Font("Segoe UI Semilight", 0, 13)); // NOI18N
-        jBCalendario.setText("calendario");
-        jBCalendario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jBCalendario.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
+        jBCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/clases.png"))); // NOI18N
+        jBCalendario.setText("  clases");
+        jBCalendario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBCalendario.setBorderPainted(false);
         jBCalendario.setContentAreaFilled(false);
         jBCalendario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBCalendario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBCalendarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBCalendarioMouseExited(evt);
+            }
+        });
         jBCalendario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCalendarioActionPerformed(evt);
@@ -146,11 +214,21 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 260, 60));
 
-        jBGest_Sis.setFont(new java.awt.Font("Segoe UI Semilight", 0, 13)); // NOI18N
+        jBGest_Sis.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
+        jBGest_Sis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gestion.png"))); // NOI18N
         jBGest_Sis.setText("gestión del sistema");
-        jBGest_Sis.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jBGest_Sis.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBGest_Sis.setBorderPainted(false);
         jBGest_Sis.setContentAreaFilled(false);
         jBGest_Sis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBGest_Sis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBGest_SisMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBGest_SisMouseExited(evt);
+            }
+        });
         jBGest_Sis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGest_SisActionPerformed(evt);
@@ -158,11 +236,20 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBGest_Sis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 260, 60));
 
-        jBLogOut.setFont(new java.awt.Font("Segoe UI Semilight", 0, 13)); // NOI18N
-        jBLogOut.setText("log out");
-        jBLogOut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jBLogOut.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
+        jBLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/log out.png"))); // NOI18N
+        jBLogOut.setText("  log out");
+        jBLogOut.setBorder(null);
         jBLogOut.setContentAreaFilled(false);
         jBLogOut.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBLogOutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBLogOutMouseExited(evt);
+            }
+        });
         jBLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLogOutActionPerformed(evt);
@@ -170,6 +257,7 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 260, 60));
 
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_Menu.png"))); // NOI18N
         jLabelFondo.setMaximumSize(new java.awt.Dimension(260, 670));
         jLabelFondo.setMinimumSize(new java.awt.Dimension(260, 670));
         jLabelFondo.setPreferredSize(new java.awt.Dimension(260, 670));
@@ -209,6 +297,21 @@ public class JFAdminMenu extends javax.swing.JFrame {
         jPanelGeneral.setMinimumSize(new java.awt.Dimension(970, 630));
         jPanelGeneral.setPreferredSize(new java.awt.Dimension(970, 630));
         getContentPane().add(jPanelGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
+
+        jLCreditos.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+        jLCreditos.setForeground(java.awt.Color.gray);
+        jLCreditos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCreditos.setText("©G2 SoftwareSolutions");
+        jLCreditos.setToolTipText("");
+        jLCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLCreditosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLCreditosMouseExited(evt);
+            }
+        });
+        getContentPane().add(jLCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 660, -1, 10));
 
         jLabelFondoPanel.setBackground(new java.awt.Color(250, 183, 22));
         jLabelFondoPanel.setOpaque(true);
@@ -277,6 +380,102 @@ public class JFAdminMenu extends javax.swing.JFrame {
         this.setLocation(posX-x,posY-y);
     }//GEN-LAST:event_formMouseDragged
 
+    private void jBHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBHomeMouseEntered
+        this.jBHome.setText("  HOME");
+        this.jBHome.setContentAreaFilled(true);
+        this.jBHome.setBackground(new Color(255,250,244));
+    }//GEN-LAST:event_jBHomeMouseEntered
+
+    private void jBHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBHomeMouseExited
+        this.jBHome.setText("  home");
+        this.jBHome.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBHomeMouseExited
+
+    private void jBProfesoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBProfesoresMouseEntered
+        this.jBProfesores.setText("  PROFESORES");
+        this.jBProfesores.setContentAreaFilled(true);
+        this.jBProfesores.setBackground(new Color(255,250,244));
+    }//GEN-LAST:event_jBProfesoresMouseEntered
+
+    private void jBEstudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEstudiantesMouseEntered
+        this.jBEstudiantes.setText("  ESTUDIANTES");
+        this.jBEstudiantes.setContentAreaFilled(true);
+        this.jBEstudiantes.setBackground(new Color(255,250,244));
+    }//GEN-LAST:event_jBEstudiantesMouseEntered
+
+    private void jBInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBInventarioMouseEntered
+        this.jBInventario.setText("  INVENTARIO");
+        this.jBInventario.setContentAreaFilled(true);
+        this.jBInventario.setBackground(new Color(255,250,244));
+    }//GEN-LAST:event_jBInventarioMouseEntered
+
+    private void jBPagosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPagosMouseEntered
+        this.jBPagos.setText("  PAGOS");
+        this.jBPagos.setContentAreaFilled(true);
+        this.jBPagos.setBackground(new Color(255,250,244));
+    }//GEN-LAST:event_jBPagosMouseEntered
+
+    private void jBCalendarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCalendarioMouseEntered
+        this.jBCalendario.setText("  CLASES");
+        this.jBCalendario.setContentAreaFilled(true);
+        this.jBCalendario.setBackground(new Color(255,250,244));
+    }//GEN-LAST:event_jBCalendarioMouseEntered
+
+    private void jBGest_SisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGest_SisMouseEntered
+        this.jBGest_Sis.setText("GESTIÓN DEL SISTEMA");
+        this.jBGest_Sis.setContentAreaFilled(true);
+        this.jBGest_Sis.setBackground(new Color(255,250,244));
+    }//GEN-LAST:event_jBGest_SisMouseEntered
+
+    private void jBLogOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLogOutMouseEntered
+        this.jBLogOut.setText("  LOG OUT");
+        this.jBLogOut.setContentAreaFilled(true);
+        this.jBLogOut.setBackground(new Color(255,250,244));
+    }//GEN-LAST:event_jBLogOutMouseEntered
+
+    private void jBProfesoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBProfesoresMouseExited
+        this.jBProfesores.setText("  profesores");
+        this.jBProfesores.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBProfesoresMouseExited
+
+    private void jBEstudiantesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEstudiantesMouseExited
+        this.jBEstudiantes.setText("  estudiantes");
+        this.jBEstudiantes.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBEstudiantesMouseExited
+
+    private void jBInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBInventarioMouseExited
+        this.jBInventario.setText("  inventario");
+        this.jBInventario.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBInventarioMouseExited
+
+    private void jBPagosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPagosMouseExited
+        this.jBPagos.setText("  pagos");
+        this.jBPagos.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBPagosMouseExited
+
+    private void jBCalendarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCalendarioMouseExited
+        this.jBCalendario.setText("  clases");
+        this.jBCalendario.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBCalendarioMouseExited
+
+    private void jBGest_SisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGest_SisMouseExited
+        this.jBGest_Sis.setText("gestión del sistema");
+        this.jBGest_Sis.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBGest_SisMouseExited
+
+    private void jBLogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLogOutMouseExited
+        this.jBLogOut.setText("  log out");
+        this.jBLogOut.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBLogOutMouseExited
+
+    private void jLCreditosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCreditosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLCreditosMouseEntered
+
+    private void jLCreditosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCreditosMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLCreditosMouseExited
+
     public void setPanel(int menu, JPanel panel) {
         panel.setSize(970, 630);
         panel.setLocation(0, 0);
@@ -329,6 +528,7 @@ public class JFAdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton jBProfesores;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
+    private javax.swing.JLabel jLCreditos;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelFondoPanel;

@@ -1,6 +1,6 @@
 package Negocio;
 
-import GUI.Gestion_Sistema.JFLogin;
+import GUI.Administrador.General.JFLogin;
 
 /*
  * @authors G2 SoftwareSolutions

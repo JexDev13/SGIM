@@ -1,5 +1,6 @@
-package GUI.Gestion_Sistema;
+package GUI.Administrador.General;
 
+import GUI.Administrador.Gestion_Sistema.JFRecuperarContraseña;
 import Negocio.Conexion;
 import Negocio.Imagenes;
 import Negocio.Diseño;
@@ -19,6 +20,7 @@ public class JFLogin extends javax.swing.JFrame {
     ImageIcon ICONERROR = img.getICONERROR();
     Diseño gui = new Diseño();
     Conexion conectar = new Conexion();
+    JFRecuperarContraseña recuperar = new JFRecuperarContraseña();
 
     public JFLogin() {
         initComponents();
@@ -41,9 +43,9 @@ public class JFLogin extends javax.swing.JFrame {
         JPFPass = new javax.swing.JPasswordField();
         jLUser = new javax.swing.JLabel();
         JTFUser = new javax.swing.JTextField();
-        jLRecupearContra = new javax.swing.JLabel();
         jCBUsuario = new javax.swing.JComboBox<>();
         jLUser1 = new javax.swing.JLabel();
+        jBOlvidarContra = new javax.swing.JButton();
         jPEncabezado = new javax.swing.JPanel();
         jLImagen = new javax.swing.JLabel();
         jLEncabezado = new javax.swing.JLabel();
@@ -100,6 +102,7 @@ public class JFLogin extends javax.swing.JFrame {
         JBIngreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login 32 opaco.png"))); // NOI18N
         JBIngreso.setText("log in");
         JBIngreso.setBorderPainted(false);
+        JBIngreso.setFocusPainted(false);
         JBIngreso.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/login 32.png"))); // NOI18N
         JBIngreso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -145,19 +148,6 @@ public class JFLogin extends javax.swing.JFrame {
             }
         });
 
-        jLRecupearContra.setForeground(java.awt.Color.gray);
-        jLRecupearContra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLRecupearContra.setText("¿Olvidaste la contraseña?");
-        jLRecupearContra.setToolTipText("");
-        jLRecupearContra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLRecupearContraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLRecupearContraMouseExited(evt);
-            }
-        });
-
         jCBUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perfiles de Usuario", "Administrativo", "Profesor", "Estudiante" }));
         jCBUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 183, 22)));
         jCBUsuario.setPreferredSize(new java.awt.Dimension(72, 25));
@@ -168,6 +158,25 @@ public class JFLogin extends javax.swing.JFrame {
         });
 
         jLUser1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuarios_32.png"))); // NOI18N
+
+        jBOlvidarContra.setForeground(java.awt.Color.gray);
+        jBOlvidarContra.setText("¿Olvidaste el usuario o contraseña?");
+        jBOlvidarContra.setBorderPainted(false);
+        jBOlvidarContra.setContentAreaFilled(false);
+        jBOlvidarContra.setFocusPainted(false);
+        jBOlvidarContra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBOlvidarContraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBOlvidarContraMouseExited(evt);
+            }
+        });
+        jBOlvidarContra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBOlvidarContraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPLoginLayout = new javax.swing.GroupLayout(jPLogin);
         jPLogin.setLayout(jPLoginLayout);
@@ -194,8 +203,8 @@ public class JFLogin extends javax.swing.JFrame {
             .addGroup(jPLoginLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLRecupearContra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JBIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(JBIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBOlvidarContra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPLoginLayout.setVerticalGroup(
@@ -217,8 +226,8 @@ public class JFLogin extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(JBIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLRecupearContra)
-                .addGap(26, 26, 26))
+                .addComponent(jBOlvidarContra)
+                .addGap(19, 19, 19))
         );
 
         getContentPane().add(jPLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 270, 270));
@@ -356,14 +365,6 @@ public class JFLogin extends javax.swing.JFrame {
         this.JBIngreso.setText("log in");
     }//GEN-LAST:event_JBIngresoMouseExited
 
-    private void jLRecupearContraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLRecupearContraMouseEntered
-        this.jLRecupearContra.setForeground(Color.BLACK);
-    }//GEN-LAST:event_jLRecupearContraMouseEntered
-
-    private void jLRecupearContraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLRecupearContraMouseExited
-        this.jLRecupearContra.setForeground(Color.GRAY);
-    }//GEN-LAST:event_jLRecupearContraMouseExited
-
     private void JPFPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JPFPassKeyTyped
         char variable = evt.getKeyChar();
         if (variable == KeyEvent.VK_ENTER) {
@@ -395,6 +396,18 @@ public class JFLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLCreditosMouseExited
 
+    private void jBOlvidarContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBOlvidarContraActionPerformed
+        recuperar.setVisible(true);
+    }//GEN-LAST:event_jBOlvidarContraActionPerformed
+
+    private void jBOlvidarContraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBOlvidarContraMouseEntered
+        this.jBOlvidarContra.setForeground(new Color(0,0,0));
+    }//GEN-LAST:event_jBOlvidarContraMouseEntered
+
+    private void jBOlvidarContraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBOlvidarContraMouseExited
+        this.jBOlvidarContra.setForeground(new Color(128, 128, 128));
+    }//GEN-LAST:event_jBOlvidarContraMouseExited
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/icono_app.png"));
@@ -414,6 +427,7 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JButton JBIngreso;
     private javax.swing.JPasswordField JPFPass;
     private javax.swing.JTextField JTFUser;
+    private javax.swing.JButton jBOlvidarContra;
     private javax.swing.JButton jBSalir;
     private javax.swing.JButton jBVerPass;
     private javax.swing.JComboBox<String> jCBUsuario;
@@ -423,7 +437,6 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLFondo;
     private javax.swing.JLabel jLImagen;
     private javax.swing.JLabel jLPass;
-    private javax.swing.JLabel jLRecupearContra;
     private javax.swing.JLabel jLUser;
     private javax.swing.JLabel jLUser1;
     private javax.swing.JPanel jPEncabezado;

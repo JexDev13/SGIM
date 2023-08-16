@@ -316,6 +316,9 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
 
         getContentPane().add(jPanelDatoEstudiante);
         jPanelDatoEstudiante.setBounds(10, 40, 360, 70);
+
+        jLabelFondo.setBackground(new java.awt.Color(250, 183, 22));
+        jLabelFondo.setOpaque(true);
         getContentPane().add(jLabelFondo);
         jLabelFondo.setBounds(0, 0, 380, 500);
 

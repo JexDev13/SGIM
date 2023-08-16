@@ -1,4 +1,4 @@
-package GUI.Gestion_Sistema;
+package GUI.Administrador.Gestion_Sistema;
 
 /*
  * @authors G2 SoftwareSolutions
