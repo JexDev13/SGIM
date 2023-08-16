@@ -1,11 +1,12 @@
 package GUI.Administrador.Inventario;
 
-import GUI.Administrador.Inventario.*;
-
 /*
  * @authors G2 SoftwareSolutions
  */
 public class JFAdmin_InsertarLib extends javax.swing.JFrame {
+    
+    private int x;
+    private int y;
 
     public JFAdmin_InsertarLib() {
         initComponents();
@@ -16,29 +17,160 @@ public class JFAdmin_InsertarLib extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelTitulo = new javax.swing.JLabel();
-        jButtonSalirIcon = new javax.swing.JButton();
-        jButtonMinimizar = new javax.swing.JButton();
-        jLCodigo = new javax.swing.JLabel();
-        jLNombre = new javax.swing.JLabel();
-        jLAutor = new javax.swing.JLabel();
+        jPFondo = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLCategoria = new javax.swing.JLabel();
-        jLEstadoAlquiler = new javax.swing.JLabel();
-        jLCondicion = new javax.swing.JLabel();
-        jTFCodigo = new javax.swing.JTextField();
-        jTFNombre = new javax.swing.JTextField();
-        jTFAutor = new javax.swing.JTextField();
         jTFCategoria = new javax.swing.JTextField();
+        jLCodigo = new javax.swing.JLabel();
+        jTFCodigo = new javax.swing.JTextField();
+        jLNombre = new javax.swing.JLabel();
+        jTFNombre = new javax.swing.JTextField();
+        jLCondicion = new javax.swing.JLabel();
         jTFEstadoAlquiler = new javax.swing.JTextField();
         jTFCondicion = new javax.swing.JTextField();
-        jBAceptar = new javax.swing.JButton();
-        jBCancelar = new javax.swing.JButton();
+        jTFAutor = new javax.swing.JTextField();
+        jLAutor = new javax.swing.JLabel();
+        jLEstadoAlquiler = new javax.swing.JLabel();
+        JBIngreso1 = new javax.swing.JButton();
+        jButtonSalirIcon = new javax.swing.JButton();
+        JBCancela1 = new javax.swing.JButton();
+        jButtonMinimizar = new javax.swing.JButton();
+        jLabelTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(292, 422));
+        setUndecorated(true);
+        setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
-        jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
-        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitulo.setText("  Insertar Libro");
+        jPFondo.setBackground(new java.awt.Color(250, 183, 22));
+        jPFondo.setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLCategoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLCategoria.setText("Categoría:");
+
+        jLCodigo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLCodigo.setText("Código:");
+
+        jLNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLNombre.setText("Nombre:");
+
+        jLCondicion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLCondicion.setText("Condición:");
+
+        jLAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLAutor.setText("Autor:");
+
+        jLEstadoAlquiler.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLEstadoAlquiler.setText("Estado Alquiler:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 292, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(31, 31, 31)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLCondicion)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTFCondicion))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLEstadoAlquiler)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTFEstadoAlquiler))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLCategoria)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTFCategoria))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLAutor)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTFAutor))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLCodigo)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLNombre)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(32, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 341, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(19, 19, 19)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLCodigo)
+                        .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(34, 34, 34)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLNombre)
+                        .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLAutor)
+                        .addComponent(jTFAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(34, 34, 34)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLCategoria)
+                        .addComponent(jTFCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(34, 34, 34)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLEstadoAlquiler)
+                        .addComponent(jTFEstadoAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(34, 34, 34)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLCondicion)
+                        .addComponent(jTFCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(20, 20, 20)))
+        );
+
+        jPFondo.add(jPanel1);
+        jPanel1.setBounds(0, 30, 292, 341);
+
+        JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
+        JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
+        JBIngreso1.setText("aceptar");
+        JBIngreso1.setBorder(null);
+        JBIngreso1.setBorderPainted(false);
+        JBIngreso1.setDefaultCapable(false);
+        JBIngreso1.setFocusPainted(false);
+        JBIngreso1.setHideActionText(true);
+        JBIngreso1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBIngreso1.setRequestFocusEnabled(false);
+        JBIngreso1.setRolloverEnabled(false);
+        JBIngreso1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseExited(evt);
+            }
+        });
+        JBIngreso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBIngreso1ActionPerformed(evt);
+            }
+        });
+        jPFondo.add(JBIngreso1);
+        JBIngreso1.setBounds(50, 380, 89, 32);
 
         jButtonSalirIcon.setBackground(new java.awt.Color(250, 183, 22));
         jButtonSalirIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
@@ -50,6 +182,31 @@ public class JFAdmin_InsertarLib extends javax.swing.JFrame {
                 jButtonSalirIconActionPerformed(evt);
             }
         });
+        jPFondo.add(jButtonSalirIcon);
+        jButtonSalirIcon.setBounds(260, 0, 30, 30);
+
+        JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
+        JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
+        JBCancela1.setText("cancelar");
+        JBCancela1.setBorder(null);
+        JBCancela1.setBorderPainted(false);
+        JBCancela1.setFocusPainted(false);
+        JBCancela1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBCancela1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseExited(evt);
+            }
+        });
+        JBCancela1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancela1ActionPerformed(evt);
+            }
+        });
+        jPFondo.add(JBCancela1);
+        JBCancela1.setBounds(160, 380, 89, 32);
 
         jButtonMinimizar.setBackground(new java.awt.Color(250, 183, 22));
         jButtonMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Minimizar 24.png"))); // NOI18N
@@ -61,117 +218,24 @@ public class JFAdmin_InsertarLib extends javax.swing.JFrame {
                 jButtonMinimizarActionPerformed(evt);
             }
         });
+        jPFondo.add(jButtonMinimizar);
+        jButtonMinimizar.setBounds(230, 0, 30, 30);
 
-        jLCodigo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLCodigo.setText("Código:");
-
-        jLNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLNombre.setText("Nombre:");
-
-        jLAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLAutor.setText("Autor:");
-
-        jLCategoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLCategoria.setText("Categoría:");
-
-        jLEstadoAlquiler.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLEstadoAlquiler.setText("Estado Alquiler:");
-
-        jLCondicion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLCondicion.setText("Condición:");
-
-        jBAceptar.setText("Aceptar");
-
-        jBCancelar.setText("Cancelar");
-        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelarActionPerformed(evt);
-            }
-        });
+        jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setText("  Insertar Libro");
+        jPFondo.add(jLabelTitulo);
+        jLabelTitulo.setBounds(0, 0, 160, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLCondicion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTFCondicion))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLEstadoAlquiler)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTFEstadoAlquiler))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLCategoria)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTFCategoria))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLAutor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTFAutor))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLCodigo)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLNombre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTFNombre)))
-                        .addGap(7, 7, 7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                        .addComponent(jButtonMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0)
-                .addComponent(jButtonSalirIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jBAceptar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBCancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSalirIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCodigo)
-                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLNombre)
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLAutor)
-                    .addComponent(jTFAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCategoria)
-                    .addComponent(jTFCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLEstadoAlquiler)
-                    .addComponent(jTFEstadoAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCondicion)
-                    .addComponent(jTFCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBAceptar)
-                    .addComponent(jBCancelar))
-                .addGap(26, 26, 26))
+            .addComponent(jPFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
         );
 
         pack();
@@ -185,10 +249,40 @@ public class JFAdmin_InsertarLib extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSalirIconActionPerformed
 
-    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-        borrarCampos();
-        this.setVisible(false);
-    }//GEN-LAST:event_jBCancelarActionPerformed
+    private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
+        this.JBIngreso1.setText("ACEPTAR");
+    }//GEN-LAST:event_JBIngreso1MouseEntered
+
+    private void JBIngreso1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseExited
+        this.JBIngreso1.setText("aceptar");
+    }//GEN-LAST:event_JBIngreso1MouseExited
+
+    private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
+
+    }//GEN-LAST:event_JBIngreso1ActionPerformed
+
+    private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
+        this.JBCancela1.setText("CANCELAR");
+    }//GEN-LAST:event_JBCancela1MouseEntered
+
+    private void JBCancela1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseExited
+        this.JBCancela1.setText("cancelar");
+    }//GEN-LAST:event_JBCancela1MouseExited
+
+    private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_JBCancela1ActionPerformed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        int posX = evt.getXOnScreen();
+        int posY = evt.getYOnScreen();
+        this.setLocation(posX-x,posY-y);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        this.x = evt.getX();
+        this.y = evt.getY();
+    }//GEN-LAST:event_formMousePressed
 
     public void borrarCampos()
     {
@@ -201,8 +295,8 @@ public class JFAdmin_InsertarLib extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBAceptar;
-    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton JBCancela1;
+    private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
     private javax.swing.JLabel jLAutor;
@@ -212,6 +306,8 @@ public class JFAdmin_InsertarLib extends javax.swing.JFrame {
     private javax.swing.JLabel jLEstadoAlquiler;
     private javax.swing.JLabel jLNombre;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JPanel jPFondo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTFAutor;
     private javax.swing.JTextField jTFCategoria;
     private javax.swing.JTextField jTFCodigo;

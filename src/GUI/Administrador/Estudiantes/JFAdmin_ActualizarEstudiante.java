@@ -6,9 +6,9 @@ package GUI.Administrador.Estudiantes;
  */
 public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JPAdmin_ActualizarEstudiante
-     */
+    private int x;
+    private int y;
+
     public JFAdmin_ActualizarEstudiante() {
         initComponents();
         setLocationRelativeTo(this);
@@ -23,8 +23,17 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabelTitulo1 = new javax.swing.JLabel();
         jButtonMinimizar = new javax.swing.JButton();
         jButtonSalirIcon = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        JBCancela1 = new javax.swing.JButton();
+        JBIngreso1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         jPanelDatoEstudiante = new javax.swing.JPanel();
         jTFBuscar_ActualizarEst = new javax.swing.JTextField();
         jLCedula = new javax.swing.JLabel();
@@ -45,15 +54,34 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jTFTelefono_ActualizarEst = new javax.swing.JTextField();
         jChBTelefono_ActualizarEst1 = new javax.swing.JCheckBox();
-        jBResgistrar_estudiante = new javax.swing.JButton();
-        jBCancelar = new javax.swing.JButton();
-        jLabelTitulo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 523));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(400, 523));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonMinimizar.setBackground(new java.awt.Color(91, 165, 152));
+        jPanel1.setBackground(new java.awt.Color(250, 183, 22));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTitulo1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 16)); // NOI18N
+        jLabelTitulo1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo1.setText("ACTUALIZAR ESTUDIANTE");
+        jPanel1.add(jLabelTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 40));
+
+        jButtonMinimizar.setBackground(new java.awt.Color(250, 183, 22));
         jButtonMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Minimizar 24.png"))); // NOI18N
-        jButtonMinimizar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(57, 116, 104)));
+        jButtonMinimizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonMinimizar.setPreferredSize(new java.awt.Dimension(24, 24));
         jButtonMinimizar.setRequestFocusEnabled(false);
         jButtonMinimizar.addActionListener(new java.awt.event.ActionListener() {
@@ -61,10 +89,11 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                 jButtonMinimizarActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 30, 30));
 
-        jButtonSalirIcon.setBackground(new java.awt.Color(91, 165, 152));
+        jButtonSalirIcon.setBackground(new java.awt.Color(250, 183, 22));
         jButtonSalirIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
-        jButtonSalirIcon.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(48, 108, 97)));
+        jButtonSalirIcon.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSalirIcon.setPreferredSize(new java.awt.Dimension(24, 24));
         jButtonSalirIcon.setRequestFocusEnabled(false);
         jButtonSalirIcon.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +101,84 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                 jButtonSalirIconActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSalirIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 60));
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel4.setBackground(new java.awt.Color(250, 183, 22));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
+        JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
+        JBCancela1.setText("cancelar");
+        JBCancela1.setBorder(null);
+        JBCancela1.setBorderPainted(false);
+        JBCancela1.setFocusPainted(false);
+        JBCancela1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBCancela1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseExited(evt);
+            }
+        });
+        JBCancela1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancela1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(JBCancela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+
+        JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
+        JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
+        JBIngreso1.setText("aceptar");
+        JBIngreso1.setBorder(null);
+        JBIngreso1.setBorderPainted(false);
+        JBIngreso1.setDefaultCapable(false);
+        JBIngreso1.setFocusPainted(false);
+        JBIngreso1.setHideActionText(true);
+        JBIngreso1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBIngreso1.setRequestFocusEnabled(false);
+        JBIngreso1.setRolloverEnabled(false);
+        JBIngreso1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseExited(evt);
+            }
+        });
+        JBIngreso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBIngreso1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 463, 400, 60));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 212, -1, -1));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelDatoEstudiante.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDatoEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del Estudiante"));
@@ -109,6 +216,8 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                     .addComponent(jLCedula))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
+
+        jPanel6.add(jPanelDatoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jPDatosEstudianteActualizar.setBackground(new java.awt.Color(255, 255, 255));
         jPDatosEstudianteActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos a Actualizar"));
@@ -300,115 +409,12 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jBResgistrar_estudiante.setForeground(new java.awt.Color(58, 160, 141));
-        jBResgistrar_estudiante.setText("guardar");
-        jBResgistrar_estudiante.setBorder(null);
-        jBResgistrar_estudiante.setBorderPainted(false);
-        jBResgistrar_estudiante.setHideActionText(true);
-        jBResgistrar_estudiante.setMaximumSize(new java.awt.Dimension(89, 32));
-        jBResgistrar_estudiante.setMinimumSize(new java.awt.Dimension(89, 32));
-        jBResgistrar_estudiante.setPreferredSize(new java.awt.Dimension(89, 32));
-        jBResgistrar_estudiante.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBResgistrar_estudianteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBResgistrar_estudianteMouseExited(evt);
-            }
-        });
-        jBResgistrar_estudiante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBResgistrar_estudianteActionPerformed(evt);
-            }
-        });
+        jPanel6.add(jPDatosEstudianteActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        jBCancelar.setForeground(new java.awt.Color(58, 160, 141));
-        jBCancelar.setText("cancelar");
-        jBCancelar.setBorder(null);
-        jBCancelar.setBorderPainted(false);
-        jBCancelar.setHideActionText(true);
-        jBCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jBCancelar.setMaximumSize(new java.awt.Dimension(89, 32));
-        jBCancelar.setMinimumSize(new java.awt.Dimension(89, 32));
-        jBCancelar.setPreferredSize(new java.awt.Dimension(89, 32));
-        jBCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBCancelarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBCancelarMouseExited(evt);
-            }
-        });
-        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelarActionPerformed(evt);
-            }
-        });
-
-        jLabelTitulo1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 16)); // NOI18N
-        jLabelTitulo1.setForeground(new java.awt.Color(250, 183, 22));
-        jLabelTitulo1.setText("ACTUALIZAR ESTUDIANTE");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelTitulo1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jButtonSalirIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanelDatoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jBResgistrar_estudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPDatosEstudianteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 2, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSalirIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelDatoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBResgistrar_estudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 130, Short.MAX_VALUE)
-                    .addComponent(jPDatosEstudianteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 54, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 56, 400, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizarActionPerformed
-        this.setState(this.ICONIFIED);
-    }//GEN-LAST:event_jButtonMinimizarActionPerformed
-
-    private void jButtonSalirIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirIconActionPerformed
-        this.setVisible(false);
-        limpiarCampos();
-    }//GEN-LAST:event_jButtonSalirIconActionPerformed
 
     private void jTFBuscar_ActualizarEstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_ActualizarEstKeyReleased
 
@@ -473,7 +479,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
             this.jTFApellidosRepre_ActualizarEst.setEditable(false);
         }
     }//GEN-LAST:event_jChBApellidosRepre_ActualizarEstActionPerformed
-    
+
     public void limpiarCampos() {
         this.jTFApellidos_ActualizarEst.setText("");
         this.jTFCodigo_ActualizarEst.setText("");
@@ -484,7 +490,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         this.jTFCorreo_ActualizarEst.setText("");
         this.jTFTelefono_ActualizarEst.setText("");
     }
-    
+
     private void jTFTelefono_ActualizarEstFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFTelefono_ActualizarEstFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFTelefono_ActualizarEstFocusLost
@@ -493,37 +499,56 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jChBTelefono_ActualizarEst1ActionPerformed
 
-    private void jBResgistrar_estudianteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBResgistrar_estudianteMouseEntered
-        this.jBResgistrar_estudiante.setText("GUARDAR");
-    }//GEN-LAST:event_jBResgistrar_estudianteMouseEntered
-
-    private void jBResgistrar_estudianteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBResgistrar_estudianteMouseExited
-        this.jBResgistrar_estudiante.setText("guardar");
-    }//GEN-LAST:event_jBResgistrar_estudianteMouseExited
-
-    private void jBResgistrar_estudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBResgistrar_estudianteActionPerformed
-
-    }//GEN-LAST:event_jBResgistrar_estudianteActionPerformed
-
-    private void jBCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelarMouseEntered
-        this.jBCancelar.setText("CANCELAR");
-    }//GEN-LAST:event_jBCancelarMouseEntered
-
-    private void jBCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelarMouseExited
-        this.jBCancelar.setText("cancelar");
-    }//GEN-LAST:event_jBCancelarMouseExited
-
-    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-
-    }//GEN-LAST:event_jBCancelarActionPerformed
-
     private void jTFTelefono_ActualizarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFTelefono_ActualizarEstActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFTelefono_ActualizarEstActionPerformed
 
+    private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
+        this.JBIngreso1.setText("ACEPTAR");
+    }//GEN-LAST:event_JBIngreso1MouseEntered
+
+    private void JBIngreso1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseExited
+        this.JBIngreso1.setText("aceptar");
+    }//GEN-LAST:event_JBIngreso1MouseExited
+
+    private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
+
+    }//GEN-LAST:event_JBIngreso1ActionPerformed
+
+    private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
+        this.JBCancela1.setText("CANCELAR");
+    }//GEN-LAST:event_JBCancela1MouseEntered
+
+    private void JBCancela1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseExited
+        this.JBCancela1.setText("cancelar");
+    }//GEN-LAST:event_JBCancela1MouseExited
+
+    private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_JBCancela1ActionPerformed
+
+    private void jButtonMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizarActionPerformed
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_jButtonMinimizarActionPerformed
+
+    private void jButtonSalirIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirIconActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonSalirIconActionPerformed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        int posX = evt.getXOnScreen();
+        int posY = evt.getYOnScreen();
+        this.setLocation(posX - x, posY - y);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        this.x = evt.getX();
+        this.y = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBCancelar;
-    private javax.swing.JButton jBResgistrar_estudiante;
+    private javax.swing.JButton JBCancela1;
+    private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
     private javax.swing.JCheckBox jChBApellido_ActualizarEst;
@@ -537,6 +562,12 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabelTitulo1;
     private javax.swing.JPanel jPDatosEstudianteActualizar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelDatoEstudiante;
     public static javax.swing.JTextField jTFApellidosRepre_ActualizarEst;
     public static javax.swing.JTextField jTFApellidos_ActualizarEst;

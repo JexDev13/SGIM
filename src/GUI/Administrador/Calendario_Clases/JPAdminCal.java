@@ -18,6 +18,8 @@ public class JPAdminCal extends javax.swing.JPanel {
         initComponents();
         gui.jComboUsers(this.jCBFiltroClase);
         gui.jtableHead(jTClases);
+        gui.jComboUsers(jCBFiltroMes);
+        gui.jComboUsers(jCBFiltroAnio);
     }
 
     @SuppressWarnings("unchecked")
@@ -364,8 +366,8 @@ public class JPAdminCal extends javax.swing.JPanel {
                     .addComponent(jCBFiltroMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCBFiltroAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
     }// </editor-fold>//GEN-END:initComponents
 

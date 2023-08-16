@@ -1,8 +1,5 @@
 package GUI.Administrador.Estudiantes;
 
-import GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante;
-import GUI.Administrador.Estudiantes.JFAdmin_EliminarEstudiante;
-import GUI.Administrador.Estudiantes.JFAdmin_InsertarEstudiante;
 import Negocio.Diseño;
 
 /*
@@ -15,6 +12,8 @@ public class JPAdminEst extends javax.swing.JPanel {
     JFAdmin_EliminarEstudiante elim = new JFAdmin_EliminarEstudiante();
     public JPAdminEst() {
         initComponents();
+        gui.jtableHead(this.jTEstudiante);
+        gui.jComboUsers(jCBFiltroProf);
     }
 
     @SuppressWarnings("unchecked")

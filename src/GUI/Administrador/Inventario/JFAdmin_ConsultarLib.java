@@ -19,8 +19,6 @@ public class JFAdmin_ConsultarLib extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonSalirIcon = new javax.swing.JButton();
-        jButtonMinimizar = new javax.swing.JButton();
         jLabelTitulo = new javax.swing.JLabel();
         jPDatoConsultadoLibro = new javax.swing.JPanel();
         jTFCodigo_Lib = new javax.swing.JTextField();
@@ -28,10 +26,15 @@ public class JFAdmin_ConsultarLib extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
+        jButtonMinimizar1 = new javax.swing.JButton();
+        jButtonSalirIcon1 = new javax.swing.JButton();
+        JBIngreso1 = new javax.swing.JButton();
+        JBCancela1 = new javax.swing.JButton();
+        jPFondo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(380, 475));
+        setMinimumSize(new java.awt.Dimension(380, 239));
         setUndecorated(true);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -45,32 +48,6 @@ public class JFAdmin_ConsultarLib extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jButtonSalirIcon.setBackground(new java.awt.Color(91, 165, 152));
-        jButtonSalirIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
-        jButtonSalirIcon.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(48, 108, 97)));
-        jButtonSalirIcon.setPreferredSize(new java.awt.Dimension(24, 24));
-        jButtonSalirIcon.setRequestFocusEnabled(false);
-        jButtonSalirIcon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirIconActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonSalirIcon);
-        jButtonSalirIcon.setBounds(350, 0, 30, 30);
-
-        jButtonMinimizar.setBackground(new java.awt.Color(91, 165, 152));
-        jButtonMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Minimizar 24.png"))); // NOI18N
-        jButtonMinimizar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(57, 116, 104)));
-        jButtonMinimizar.setPreferredSize(new java.awt.Dimension(24, 24));
-        jButtonMinimizar.setRequestFocusEnabled(false);
-        jButtonMinimizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMinimizarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonMinimizar);
-        jButtonMinimizar.setBounds(320, 0, 30, 30);
-
         jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitulo.setText("Consultar Dato de Libro");
@@ -81,10 +58,13 @@ public class JFAdmin_ConsultarLib extends javax.swing.JFrame {
         jPDatoConsultadoLibro.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Dato Consultado"));
 
         jTFCodigo_Lib.setEditable(false);
+        jTFCodigo_Lib.setBackground(new java.awt.Color(255, 255, 255));
         jTFCodigo_Lib.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jTFDato_Lib.setEditable(false);
+        jTFDato_Lib.setBackground(new java.awt.Color(255, 255, 255));
         jTFDato_Lib.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFDato_Lib.setActionCommand("<Not Set>");
         jTFDato_Lib.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFDato_LibActionPerformed(evt);
@@ -128,20 +108,95 @@ public class JFAdmin_ConsultarLib extends javax.swing.JFrame {
 
         getContentPane().add(jPDatoConsultadoLibro);
         jPDatoConsultadoLibro.setBounds(10, 60, 360, 120);
+
+        jLabelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelFondo.setOpaque(true);
         getContentPane().add(jLabelFondo);
-        jLabelFondo.setBounds(0, 0, 380, 220);
+        jLabelFondo.setBounds(0, 40, 380, 150);
+
+        jButtonMinimizar1.setBackground(new java.awt.Color(250, 183, 22));
+        jButtonMinimizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Minimizar 24.png"))); // NOI18N
+        jButtonMinimizar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonMinimizar1.setPreferredSize(new java.awt.Dimension(24, 24));
+        jButtonMinimizar1.setRequestFocusEnabled(false);
+        jButtonMinimizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMinimizar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonMinimizar1);
+        jButtonMinimizar1.setBounds(320, 0, 30, 30);
+
+        jButtonSalirIcon1.setBackground(new java.awt.Color(250, 183, 22));
+        jButtonSalirIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
+        jButtonSalirIcon1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonSalirIcon1.setPreferredSize(new java.awt.Dimension(24, 24));
+        jButtonSalirIcon1.setRequestFocusEnabled(false);
+        jButtonSalirIcon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirIcon1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSalirIcon1);
+        jButtonSalirIcon1.setBounds(350, 0, 30, 30);
+
+        JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
+        JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
+        JBIngreso1.setText("aceptar");
+        JBIngreso1.setBorder(null);
+        JBIngreso1.setBorderPainted(false);
+        JBIngreso1.setDefaultCapable(false);
+        JBIngreso1.setFocusPainted(false);
+        JBIngreso1.setHideActionText(true);
+        JBIngreso1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBIngreso1.setRequestFocusEnabled(false);
+        JBIngreso1.setRolloverEnabled(false);
+        JBIngreso1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseExited(evt);
+            }
+        });
+        JBIngreso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBIngreso1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JBIngreso1);
+        JBIngreso1.setBounds(80, 200, 89, 32);
+
+        JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
+        JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
+        JBCancela1.setText("cancelar");
+        JBCancela1.setBorder(null);
+        JBCancela1.setBorderPainted(false);
+        JBCancela1.setFocusPainted(false);
+        JBCancela1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBCancela1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseExited(evt);
+            }
+        });
+        JBCancela1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancela1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JBCancela1);
+        JBCancela1.setBounds(190, 200, 89, 32);
+
+        jPFondo.setBackground(new java.awt.Color(250, 183, 22));
+        jPFondo.setLayout(null);
+        getContentPane().add(jPFondo);
+        jPFondo.setBounds(0, 0, 380, 240);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonSalirIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirIconActionPerformed
-        this.setVisible(false);
-        limpiarCampos();
-    }//GEN-LAST:event_jButtonSalirIconActionPerformed
-
-    private void jButtonMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizarActionPerformed
-        this.setState(this.ICONIFIED);
-    }//GEN-LAST:event_jButtonMinimizarActionPerformed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int posX = evt.getXOnScreen();
@@ -158,19 +213,54 @@ public class JFAdmin_ConsultarLib extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFDato_LibActionPerformed
 
+    private void jButtonMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizar1ActionPerformed
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_jButtonMinimizar1ActionPerformed
+
+    private void jButtonSalirIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirIcon1ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonSalirIcon1ActionPerformed
+
+    private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
+        this.JBIngreso1.setText("ACEPTAR");
+    }//GEN-LAST:event_JBIngreso1MouseEntered
+
+    private void JBIngreso1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseExited
+        this.JBIngreso1.setText("aceptar");
+    }//GEN-LAST:event_JBIngreso1MouseExited
+
+    private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
+
+    }//GEN-LAST:event_JBIngreso1ActionPerformed
+
+    private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
+        this.JBCancela1.setText("CANCELAR");
+    }//GEN-LAST:event_JBCancela1MouseEntered
+
+    private void JBCancela1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseExited
+        this.JBCancela1.setText("cancelar");
+    }//GEN-LAST:event_JBCancela1MouseExited
+
+    private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_JBCancela1ActionPerformed
+
     public void limpiarCampos() {
         this.jTFDato_Lib.setText("");
         this.jTFCodigo_Lib.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonMinimizar;
-    private javax.swing.JButton jButtonSalirIcon;
+    private javax.swing.JButton JBCancela1;
+    private javax.swing.JButton JBIngreso1;
+    private javax.swing.JButton jButtonMinimizar1;
+    private javax.swing.JButton jButtonSalirIcon1;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPDatoConsultadoLibro;
+    private javax.swing.JPanel jPFondo;
     public static javax.swing.JTextField jTFCodigo_Lib;
     public static javax.swing.JTextField jTFDato_Lib;
     // End of variables declaration//GEN-END:variables

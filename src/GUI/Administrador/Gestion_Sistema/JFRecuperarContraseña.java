@@ -39,7 +39,6 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(362, 346));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(362, 346));
         setResizable(false);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -100,6 +99,7 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
         jPContenido.add(jLtitulo1);
         jLtitulo1.setBounds(10, 20, 350, 48);
 
+        jLInstructivo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLInstructivo.setText("Escribe tu email para recibir instruscciones para recuperar tus datos.");
         jPContenido.add(jLInstructivo);
         jLInstructivo.setBounds(0, 130, 360, 30);
@@ -175,7 +175,7 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

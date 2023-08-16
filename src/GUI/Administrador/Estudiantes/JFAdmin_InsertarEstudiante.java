@@ -1,5 +1,7 @@
 package GUI.Administrador.Estudiantes;
 
+import Negocio.Diseño;
+
 /**
  *
  * @author Alexander
@@ -9,8 +11,15 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
     /**
      * Creates new form JPAdminEstudiante_Insertar
      */
+    
+    private int x;
+    private int y;
+    Diseño diseño = new Diseño();
+    
     public JFAdmin_InsertarEstudiante() {
         initComponents();
+        setLocationRelativeTo(this);
+        diseño.jComboUsers(this.jComboBoxSexo);
     }
 
     /**
@@ -22,9 +31,11 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
         jButtonMinimizar = new javax.swing.JButton();
         jButtonSalirIcon = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jLCedula = new javax.swing.JLabel();
         jTFCedula = new javax.swing.JTextField();
         jLNombres = new javax.swing.JLabel();
@@ -32,6 +43,7 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         jLApellidos = new javax.swing.JLabel();
         jTFApellidos = new javax.swing.JTextField();
         jLNivel = new javax.swing.JLabel();
+        jComboBoxSexo = new javax.swing.JComboBox<>();
         jLDireccion = new javax.swing.JLabel();
         jTFFDNacimiento = new javax.swing.JTextField();
         jLTelf = new javax.swing.JLabel();
@@ -40,17 +52,35 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         jTFApellidosRepre = new javax.swing.JTextField();
         jLSueldo = new javax.swing.JLabel();
         jTFCorreoRepre = new javax.swing.JTextField();
-        jBAceptar = new javax.swing.JButton();
-        jBCancelar = new javax.swing.JButton();
-        jComboBoxSexo = new javax.swing.JComboBox<>();
         jLSueldo1 = new javax.swing.JLabel();
         jTFTelefonoRepre = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        JBCancela1 = new javax.swing.JButton();
+        JBIngreso1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(290, 399));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(290, 399));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(250, 183, 22));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelTitulo.setFont(new java.awt.Font("Perpetua Titling MT", 1, 16)); // NOI18N
-        jLabelTitulo.setForeground(new java.awt.Color(250, 183, 22));
+        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitulo.setText("Insertar ESTUDIANTE");
+        jPanel1.add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
         jButtonMinimizar.setBackground(new java.awt.Color(250, 183, 22));
         jButtonMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Minimizar 24.png"))); // NOI18N
@@ -62,6 +92,7 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
                 jButtonMinimizarActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 30, 30));
 
         jButtonSalirIcon.setBackground(new java.awt.Color(250, 183, 22));
         jButtonSalirIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
@@ -73,151 +104,114 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
                 jButtonSalirIconActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSalirIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 30, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 292, 49));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLCedula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLCedula.setText("N°Cédula:");
+        jPanel2.add(jLCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, -1));
+        jPanel2.add(jTFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 11, 189, -1));
 
         jLNombres.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLNombres.setText("Nombres:");
+        jPanel2.add(jLNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        jPanel2.add(jTFNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 49, 189, -1));
 
         jLApellidos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLApellidos.setText("Apellidos:");
+        jPanel2.add(jLApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 76, -1, -1));
+        jPanel2.add(jTFApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 75, 189, -1));
 
         jLNivel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLNivel.setText("Sexo:");
+        jPanel2.add(jLNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 107, -1, -1));
+
+        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino ", "Femenino" }));
+        jPanel2.add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 106, 189, -1));
 
         jLDireccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLDireccion.setText("F. de Nacimiento:");
+        jPanel2.add(jLDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 138, -1, -1));
+        jPanel2.add(jTFFDNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 137, 155, -1));
 
         jLTelf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLTelf.setText("Nombres Repre.:");
+        jPanel2.add(jLTelf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 164, -1, -1));
+        jPanel2.add(jTFNombresRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 163, 155, -1));
 
         jLCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLCorreo.setText("Apellidos Repre.:");
+        jPanel2.add(jLCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 195, -1, -1));
+        jPanel2.add(jTFApellidosRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 194, 155, -1));
 
         jLSueldo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLSueldo.setText("Coreeo Repre.:");
-
-        jBAceptar.setText("Aceptar");
-
-        jBCancelar.setText("Cancelar");
-        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelarActionPerformed(evt);
-            }
-        });
-
-        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino ", "Femenino" }));
+        jPanel2.add(jLSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 226, 93, -1));
+        jPanel2.add(jTFCorreoRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 225, 155, -1));
 
         jLSueldo1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLSueldo1.setText("Telefono Repre.:");
+        jPanel2.add(jLSueldo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 257, -1, -1));
+        jPanel2.add(jTFTelefonoRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 256, 152, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jBAceptar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBCancelar)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabelTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jButtonSalirIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLNombres)
-                                    .addComponent(jLCedula)
-                                    .addComponent(jLApellidos, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addComponent(jLNivel))
-                            .addGap(12, 12, 12)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTFCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTFApellidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                                    .addComponent(jTFNombres, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLDireccion)
-                                .addComponent(jLTelf)
-                                .addComponent(jLCorreo))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTFApellidosRepre)
-                                .addComponent(jTFNombresRepre)
-                                .addComponent(jTFFDNacimiento)
-                                .addComponent(jTFCorreoRepre, javax.swing.GroupLayout.Alignment.TRAILING))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLSueldo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLSueldo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFTelefonoRepre, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSalirIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCedula)
-                    .addComponent(jTFCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLNombres)
-                    .addComponent(jTFNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLApellidos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLNivel)
-                    .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLDireccion)
-                    .addComponent(jTFFDNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLTelf)
-                    .addComponent(jTFNombresRepre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCorreo)
-                    .addComponent(jTFApellidosRepre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLSueldo)
-                    .addComponent(jTFCorreoRepre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLSueldo1)
-                    .addComponent(jTFTelefonoRepre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBAceptar)
-                    .addComponent(jBCancelar))
-                .addGap(32, 32, 32))
-        );
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 49, 290, 300));
+
+        jPanel3.setBackground(new java.awt.Color(250, 183, 22));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
+        JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
+        JBCancela1.setText("cancelar");
+        JBCancela1.setBorder(null);
+        JBCancela1.setBorderPainted(false);
+        JBCancela1.setFocusPainted(false);
+        JBCancela1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBCancela1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseExited(evt);
+            }
+        });
+        JBCancela1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancela1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(JBCancela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+
+        JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
+        JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
+        JBIngreso1.setText("aceptar");
+        JBIngreso1.setBorder(null);
+        JBIngreso1.setBorderPainted(false);
+        JBIngreso1.setDefaultCapable(false);
+        JBIngreso1.setFocusPainted(false);
+        JBIngreso1.setHideActionText(true);
+        JBIngreso1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBIngreso1.setRequestFocusEnabled(false);
+        JBIngreso1.setRolloverEnabled(false);
+        JBIngreso1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseExited(evt);
+            }
+        });
+        JBIngreso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBIngreso1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 292, 49));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -234,6 +228,17 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         this.jTFCorreoRepre.setText("");
     }
     
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        int posX = evt.getXOnScreen();
+        int posY = evt.getYOnScreen();
+        this.setLocation(posX-x,posY-y);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        this.x = evt.getX();
+        this.y = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
     private void jButtonMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizarActionPerformed
         this.setState(this.ICONIFIED);
     }//GEN-LAST:event_jButtonMinimizarActionPerformed
@@ -242,14 +247,33 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSalirIconActionPerformed
 
-    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-        borrarCampos();
-        this.setVisible(false);
-    }//GEN-LAST:event_jBCancelarActionPerformed
+    private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
+        this.JBIngreso1.setText("ACEPTAR");
+    }//GEN-LAST:event_JBIngreso1MouseEntered
+
+    private void JBIngreso1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseExited
+        this.JBIngreso1.setText("aceptar");
+    }//GEN-LAST:event_JBIngreso1MouseExited
+
+    private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
+
+    }//GEN-LAST:event_JBIngreso1ActionPerformed
+
+    private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
+        this.JBCancela1.setText("CANCELAR");
+    }//GEN-LAST:event_JBCancela1MouseEntered
+
+    private void JBCancela1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseExited
+        this.JBCancela1.setText("cancelar");
+    }//GEN-LAST:event_JBCancela1MouseExited
+
+    private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_JBCancela1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBAceptar;
-    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton JBCancela1;
+    private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
     private javax.swing.JComboBox<String> jComboBoxSexo;
@@ -263,6 +287,9 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLSueldo1;
     private javax.swing.JLabel jLTelf;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTFApellidos;
     private javax.swing.JTextField jTFApellidosRepre;
     private javax.swing.JTextField jTFCedula;

@@ -17,11 +17,14 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonSalirIcon = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabelTitulo1 = new javax.swing.JLabel();
         jButtonMinimizar = new javax.swing.JButton();
-        jLabelTitulo = new javax.swing.JLabel();
-        jBCancelar = new javax.swing.JButton();
-        jBResgistrar_estudiante = new javax.swing.JButton();
+        jButtonSalirIcon = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanelDatoEstudiante = new javax.swing.JPanel();
+        jTFBuscar_ActualizarEst = new javax.swing.JTextField();
+        jLCedula = new javax.swing.JLabel();
         jPDatosEstudianteActualizar = new javax.swing.JPanel();
         jTFApellidos_ActualizarEst = new javax.swing.JTextField();
         jTFCorreo_ActualizarEst = new javax.swing.JTextField();
@@ -39,15 +42,15 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jTFCorreo_ActualizarEst1 = new javax.swing.JTextField();
         jChBCorreo_ActualizarEst1 = new javax.swing.JCheckBox();
-        jPanelDatoEstudiante = new javax.swing.JPanel();
-        jTFBuscar_ActualizarEst = new javax.swing.JTextField();
-        jLCedula = new javax.swing.JLabel();
-        jLabelFondo = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        JBCancela1 = new javax.swing.JButton();
+        JBIngreso1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(380, 475));
+        setMinimumSize(new java.awt.Dimension(400, 523));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(400, 523));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -58,24 +61,19 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
                 formMousePressed(evt);
             }
         });
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonSalirIcon.setBackground(new java.awt.Color(91, 165, 152));
-        jButtonSalirIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
-        jButtonSalirIcon.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(48, 108, 97)));
-        jButtonSalirIcon.setPreferredSize(new java.awt.Dimension(24, 24));
-        jButtonSalirIcon.setRequestFocusEnabled(false);
-        jButtonSalirIcon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirIconActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonSalirIcon);
-        jButtonSalirIcon.setBounds(350, 0, 30, 30);
+        jPanel1.setBackground(new java.awt.Color(250, 183, 22));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonMinimizar.setBackground(new java.awt.Color(91, 165, 152));
+        jLabelTitulo1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 16)); // NOI18N
+        jLabelTitulo1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo1.setText("ACTUALIZAR PROFESOR");
+        jPanel1.add(jLabelTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 40));
+
+        jButtonMinimizar.setBackground(new java.awt.Color(250, 183, 22));
         jButtonMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Minimizar 24.png"))); // NOI18N
-        jButtonMinimizar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 0, new java.awt.Color(57, 116, 104)));
+        jButtonMinimizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonMinimizar.setPreferredSize(new java.awt.Dimension(24, 24));
         jButtonMinimizar.setRequestFocusEnabled(false);
         jButtonMinimizar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,63 +81,63 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
                 jButtonMinimizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonMinimizar);
-        jButtonMinimizar.setBounds(320, 0, 30, 30);
+        jPanel1.add(jButtonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 30, 30));
 
-        jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
-        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitulo.setText("Actualizar Estudiante");
-        getContentPane().add(jLabelTitulo);
-        jLabelTitulo.setBounds(10, 0, 210, 30);
-
-        jBCancelar.setForeground(new java.awt.Color(58, 160, 141));
-        jBCancelar.setText("cancelar");
-        jBCancelar.setBorder(null);
-        jBCancelar.setBorderPainted(false);
-        jBCancelar.setHideActionText(true);
-        jBCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jBCancelar.setMaximumSize(new java.awt.Dimension(89, 32));
-        jBCancelar.setMinimumSize(new java.awt.Dimension(89, 32));
-        jBCancelar.setPreferredSize(new java.awt.Dimension(89, 32));
-        jBCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBCancelarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBCancelarMouseExited(evt);
-            }
-        });
-        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalirIcon.setBackground(new java.awt.Color(250, 183, 22));
+        jButtonSalirIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
+        jButtonSalirIcon.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonSalirIcon.setPreferredSize(new java.awt.Dimension(24, 24));
+        jButtonSalirIcon.setRequestFocusEnabled(false);
+        jButtonSalirIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelarActionPerformed(evt);
+                jButtonSalirIconActionPerformed(evt);
             }
         });
-        getContentPane().add(jBCancelar);
-        jBCancelar.setBounds(190, 430, 110, 40);
+        jPanel1.add(jButtonSalirIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
 
-        jBResgistrar_estudiante.setForeground(new java.awt.Color(58, 160, 141));
-        jBResgistrar_estudiante.setText("guardar");
-        jBResgistrar_estudiante.setBorder(null);
-        jBResgistrar_estudiante.setBorderPainted(false);
-        jBResgistrar_estudiante.setHideActionText(true);
-        jBResgistrar_estudiante.setMaximumSize(new java.awt.Dimension(89, 32));
-        jBResgistrar_estudiante.setMinimumSize(new java.awt.Dimension(89, 32));
-        jBResgistrar_estudiante.setPreferredSize(new java.awt.Dimension(89, 32));
-        jBResgistrar_estudiante.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBResgistrar_estudianteMouseEntered(evt);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 60));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelDatoEstudiante.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDatoEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del Estudiante"));
+
+        jTFBuscar_ActualizarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFBuscar_ActualizarEst.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFBuscar_ActualizarEstKeyReleased(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBResgistrar_estudianteMouseExited(evt);
-            }
-        });
-        jBResgistrar_estudiante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBResgistrar_estudianteActionPerformed(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFBuscar_ActualizarEstKeyTyped(evt);
             }
         });
-        getContentPane().add(jBResgistrar_estudiante);
-        jBResgistrar_estudiante.setBounds(50, 430, 110, 40);
+
+        jLCedula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLCedula.setText("N°Cédula:");
+
+        javax.swing.GroupLayout jPanelDatoEstudianteLayout = new javax.swing.GroupLayout(jPanelDatoEstudiante);
+        jPanelDatoEstudiante.setLayout(jPanelDatoEstudianteLayout);
+        jPanelDatoEstudianteLayout.setHorizontalGroup(
+            jPanelDatoEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDatoEstudianteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLCedula)
+                .addGap(79, 79, 79)
+                .addComponent(jTFBuscar_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelDatoEstudianteLayout.setVerticalGroup(
+            jPanelDatoEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDatoEstudianteLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addGroup(jPanelDatoEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFBuscar_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLCedula))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanelDatoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, -1, -1));
 
         jPDatosEstudianteActualizar.setBackground(new java.awt.Color(255, 255, 255));
         jPDatosEstudianteActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos a Actualizar"));
@@ -269,7 +267,7 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
                             .addComponent(jTFCodigo_ActualizarEst)
                             .addComponent(jTFNombres_ActualizarEst)))
                     .addGroup(jPDatosEstudianteActualizarLayout.createSequentialGroup()
-                        .addComponent(jChBCelular_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jChBCelular_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTFCelular_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPDatosEstudianteActualizarLayout.createSequentialGroup()
@@ -323,89 +321,68 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
                 .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jChBCorreo_ActualizarEst1)
                     .addComponent(jTFCorreo_ActualizarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPDatosEstudianteActualizar);
-        jPDatosEstudianteActualizar.setBounds(10, 120, 360, 300);
+        jPanel2.add(jPDatosEstudianteActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 90, -1, -1));
 
-        jPanelDatoEstudiante.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDatoEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del Estudiante"));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 400, 400));
 
-        jTFBuscar_ActualizarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTFBuscar_ActualizarEst.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTFBuscar_ActualizarEstKeyReleased(evt);
+        jPanel3.setBackground(new java.awt.Color(250, 183, 22));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
+        JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
+        JBCancela1.setText("cancelar");
+        JBCancela1.setBorder(null);
+        JBCancela1.setBorderPainted(false);
+        JBCancela1.setFocusPainted(false);
+        JBCancela1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBCancela1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseEntered(evt);
             }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTFBuscar_ActualizarEstKeyTyped(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBCancela1MouseExited(evt);
             }
         });
+        JBCancela1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancela1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(JBCancela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
-        jLCedula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLCedula.setText("N°Cédula:");
+        JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
+        JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
+        JBIngreso1.setText("aceptar");
+        JBIngreso1.setBorder(null);
+        JBIngreso1.setBorderPainted(false);
+        JBIngreso1.setDefaultCapable(false);
+        JBIngreso1.setFocusPainted(false);
+        JBIngreso1.setHideActionText(true);
+        JBIngreso1.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBIngreso1.setRequestFocusEnabled(false);
+        JBIngreso1.setRolloverEnabled(false);
+        JBIngreso1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JBIngreso1MouseExited(evt);
+            }
+        });
+        JBIngreso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBIngreso1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
 
-        javax.swing.GroupLayout jPanelDatoEstudianteLayout = new javax.swing.GroupLayout(jPanelDatoEstudiante);
-        jPanelDatoEstudiante.setLayout(jPanelDatoEstudianteLayout);
-        jPanelDatoEstudianteLayout.setHorizontalGroup(
-            jPanelDatoEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDatoEstudianteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLCedula)
-                .addGap(79, 79, 79)
-                .addComponent(jTFBuscar_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanelDatoEstudianteLayout.setVerticalGroup(
-            jPanelDatoEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDatoEstudianteLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(jPanelDatoEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFBuscar_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLCedula))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanelDatoEstudiante);
-        jPanelDatoEstudiante.setBounds(10, 40, 360, 70);
-        getContentPane().add(jLabelFondo);
-        jLabelFondo.setBounds(0, 0, 380, 475);
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 400, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonSalirIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirIconActionPerformed
-        this.setVisible(false);
-        limpiarCampos();
-    }//GEN-LAST:event_jButtonSalirIconActionPerformed
-
-    private void jButtonMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizarActionPerformed
-        this.setState(this.ICONIFIED);
-    }//GEN-LAST:event_jButtonMinimizarActionPerformed
-
-    private void jBCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelarMouseEntered
-        this.jBCancelar.setText("CANCELAR");
-    }//GEN-LAST:event_jBCancelarMouseEntered
-
-    private void jBCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelarMouseExited
-        this.jBCancelar.setText("cancelar");
-    }//GEN-LAST:event_jBCancelarMouseExited
-
-    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-
-    }//GEN-LAST:event_jBCancelarActionPerformed
-
-    private void jBResgistrar_estudianteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBResgistrar_estudianteMouseEntered
-        this.jBResgistrar_estudiante.setText("GUARDAR");
-    }//GEN-LAST:event_jBResgistrar_estudianteMouseEntered
-
-    private void jBResgistrar_estudianteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBResgistrar_estudianteMouseExited
-        this.jBResgistrar_estudiante.setText("guardar");
-    }//GEN-LAST:event_jBResgistrar_estudianteMouseExited
-
-    private void jBResgistrar_estudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBResgistrar_estudianteActionPerformed
-
-    }//GEN-LAST:event_jBResgistrar_estudianteActionPerformed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int posX = evt.getXOnScreen();
@@ -490,6 +467,38 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFCorreo_ActualizarEst1FocusLost
 
+    private void jButtonMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizarActionPerformed
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_jButtonMinimizarActionPerformed
+
+    private void jButtonSalirIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirIconActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonSalirIconActionPerformed
+
+    private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
+        this.JBIngreso1.setText("ACEPTAR");
+    }//GEN-LAST:event_JBIngreso1MouseEntered
+
+    private void JBIngreso1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseExited
+        this.JBIngreso1.setText("aceptar");
+    }//GEN-LAST:event_JBIngreso1MouseExited
+
+    private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
+
+    }//GEN-LAST:event_JBIngreso1ActionPerformed
+
+    private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
+        this.JBCancela1.setText("CANCELAR");
+    }//GEN-LAST:event_JBCancela1MouseEntered
+
+    private void JBCancela1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseExited
+        this.JBCancela1.setText("cancelar");
+    }//GEN-LAST:event_JBCancela1MouseExited
+
+    private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        this.setState(this.ICONIFIED);
+    }//GEN-LAST:event_JBCancela1ActionPerformed
+
     public void limpiarCampos() {
         this.jTFApellidos_ActualizarEst.setText("");
         this.jTFFacultad_ActualizarEst.setText("");
@@ -502,8 +511,8 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBCancelar;
-    private javax.swing.JButton jBResgistrar_estudiante;
+    private javax.swing.JButton JBCancela1;
+    private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
     private javax.swing.JCheckBox jChBApellido_ActualizarEst;
@@ -515,9 +524,11 @@ public class JFAdminProfActualizar extends javax.swing.JFrame {
     private javax.swing.JCheckBox jChBSector_ActualizarEst;
     private javax.swing.JLabel jLCedula;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabelFondo;
-    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JLabel jLabelTitulo1;
     private javax.swing.JPanel jPDatosEstudianteActualizar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelDatoEstudiante;
     public static javax.swing.JTextField jTFApellidos_ActualizarEst;
     public static javax.swing.JTextField jTFBuscar_ActualizarEst;
