@@ -15,6 +15,7 @@ import java.util.Properties;
 public class Conexion {
 
     Connection cn;
+    Correo email = new Correo();
 
     public Connection getConnection() {
         return cn;
@@ -38,8 +39,10 @@ public class Conexion {
     public boolean logIn(String perfil, String user, String password) {
         try {
             cn = conectar();
+            //Hash, salt y verify de contraseña
+            
             // Verificar si el usuario y contraseña son válidos en la base de datos
-            String query = "SELECT COUNT(*) as count FROM users WHERE perfil = ? AND nombre_usuario = ? AND contrasena = ?";
+            String query = "SELECT COUNT(*) as count FROM users WHERE Rol = ? AND Nombre_Usuario = ? AND Contrasena = ?";
             PreparedStatement preparedStatement = cn.prepareStatement(query);
             preparedStatement.setString(1, perfil);
             preparedStatement.setString(2, user);
@@ -69,4 +72,28 @@ public class Conexion {
         }
     }
 
+    public boolean recuperarDatos(String tipo, String cedula) {
+        try {
+            String resultado;
+            String destinatario;
+            int envio;
+            cn = conectar();
+            String query = "SELECT " + tipo +", correo FROM Admins a JOIN  Users u ON u.Cedula = a.Cedula_Admin WHERE cedula = ?;";
+            PreparedStatement preparedStatement = cn.prepareStatement(query);
+            preparedStatement.setString(1, cedula);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                resultado = resultSet.getString(tipo);
+                destinatario = resultSet.getString("correo");
+                envio = email.recuperarUsuario(tipo, resultado, destinatario);
+                if(envio==1)
+                {
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -177,7 +177,7 @@ public class JPAdminEst extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "N°Cédula", "Nombres", "Apellidos", "Sexo", "Fecha de Nacimiento", "Nombres Representante", "Apellidos Representante", "Correo electronico Representante", "N°Celular Representante"
+                "N°Cédula", "Nombres", "Apellidos", "Sexo", "Fecha de Nacimiento", "Nombres representante", "Apellidos representante", "Correo electrónico representante", "N°Celular representante"
             }
         ));
         jTEstudiante.setGridColor(new java.awt.Color(250, 183, 22));

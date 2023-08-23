@@ -130,22 +130,22 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         jPanel2.add(jTFFDNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 137, 155, -1));
 
         jLTelf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLTelf.setText("Nombres Repre.:");
+        jLTelf.setText("Nombres repre.:");
         jPanel2.add(jLTelf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 164, -1, -1));
         jPanel2.add(jTFNombresRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 163, 155, -1));
 
         jLCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLCorreo.setText("Apellidos Repre.:");
+        jLCorreo.setText("Apellidos repre.:");
         jPanel2.add(jLCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 195, -1, -1));
         jPanel2.add(jTFApellidosRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 194, 155, -1));
 
         jLSueldo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLSueldo.setText("Coreeo Repre.:");
+        jLSueldo.setText("Correo repre.:");
         jPanel2.add(jLSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 226, 93, -1));
         jPanel2.add(jTFCorreoRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 225, 155, -1));
 
         jLSueldo1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLSueldo1.setText("Telefono Repre.:");
+        jLSueldo1.setText("Teléfono repre.:");
         jPanel2.add(jLSueldo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 257, -1, -1));
         jPanel2.add(jTFTelefonoRepre, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 256, 152, -1));
 

@@ -69,7 +69,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
         jLabelTitulo1.setFont(new java.awt.Font("Perpetua Titling MT", 1, 16)); // NOI18N
         jLabelTitulo1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitulo1.setText("ELIMINAR PROFESOR");
-        jPanel1.add(jLabelTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 211, 40));
+        jPanel1.add(jLabelTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 211, 50));
 
         jButtonMinimizar1.setBackground(new java.awt.Color(250, 183, 22));
         jButtonMinimizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Minimizar 24.png"))); // NOI18N
@@ -96,7 +96,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
         jPanel1.add(jButtonSalirIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 400, 60);
+        jPanel1.setBounds(0, 0, 400, 50);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -279,7 +279,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
         jPanel2.add(jPDatosEstudianteEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 60, 400, 400);
+        jPanel2.setBounds(0, 50, 400, 400);
 
         jPanel3.setBackground(new java.awt.Color(250, 183, 22));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -333,7 +333,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
         jPanel3.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 460, 400, 60);
+        jPanel3.setBounds(0, 450, 400, 70);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

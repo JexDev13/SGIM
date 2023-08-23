@@ -38,21 +38,23 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         jTFCodigo_ActualizarEst = new javax.swing.JTextField();
         jTFFechaNacimiento_ActualizarEst = new javax.swing.JTextField();
         jTFNombres_ActualizarEst = new javax.swing.JTextField();
-        jChBNombre_ActualizarEst = new javax.swing.JCheckBox();
-        jChBApellido_ActualizarEst = new javax.swing.JCheckBox();
         jChBNombresRepre_ActualizarEst = new javax.swing.JCheckBox();
-        jChBFechaNacimiento_ActualizarEst = new javax.swing.JCheckBox();
         jChBCorreo_ActualizarEst = new javax.swing.JCheckBox();
         jTFApellidosRepre_ActualizarEst = new javax.swing.JTextField();
         jChBApellidosRepre_ActualizarEst = new javax.swing.JCheckBox();
         jLabel20 = new javax.swing.JLabel();
         jTFTelefono_ActualizarEst = new javax.swing.JTextField();
         jChBTelefono_ActualizarEst1 = new javax.swing.JCheckBox();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jTFFechaNacimiento_ActualizarEst1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(400, 523));
+        setMinimumSize(new java.awt.Dimension(400, 559));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(400, 523));
+        setPreferredSize(new java.awt.Dimension(400, 559));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -156,7 +158,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         });
         jPanel4.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 463, 400, 60));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 400, 60));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -197,8 +199,8 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
             .addGroup(jPanelDatoEstudianteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLCedula)
-                .addGap(79, 79, 79)
-                .addComponent(jTFBuscar_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jTFBuscar_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelDatoEstudianteLayout.setVerticalGroup(
@@ -211,7 +213,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel6.add(jPanelDatoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel6.add(jPanelDatoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 20, 370, -1));
 
         jPDatosEstudianteActualizar.setBackground(new java.awt.Color(255, 255, 255));
         jPDatosEstudianteActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos a Actualizar"));
@@ -244,39 +246,12 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         jTFNombres_ActualizarEst.setEditable(false);
         jTFNombres_ActualizarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        jChBNombre_ActualizarEst.setBackground(new java.awt.Color(255, 255, 255));
-        jChBNombre_ActualizarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jChBNombre_ActualizarEst.setText("Nombres");
-        jChBNombre_ActualizarEst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jChBNombre_ActualizarEstActionPerformed(evt);
-            }
-        });
-
-        jChBApellido_ActualizarEst.setBackground(new java.awt.Color(255, 255, 255));
-        jChBApellido_ActualizarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jChBApellido_ActualizarEst.setText("Apellidos");
-        jChBApellido_ActualizarEst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jChBApellido_ActualizarEstActionPerformed(evt);
-            }
-        });
-
         jChBNombresRepre_ActualizarEst.setBackground(new java.awt.Color(255, 255, 255));
         jChBNombresRepre_ActualizarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jChBNombresRepre_ActualizarEst.setText("Nombres Repre");
         jChBNombresRepre_ActualizarEst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jChBNombresRepre_ActualizarEstActionPerformed(evt);
-            }
-        });
-
-        jChBFechaNacimiento_ActualizarEst.setBackground(new java.awt.Color(255, 255, 255));
-        jChBFechaNacimiento_ActualizarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jChBFechaNacimiento_ActualizarEst.setText("Fecha de Nac.");
-        jChBFechaNacimiento_ActualizarEst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jChBFechaNacimiento_ActualizarEstActionPerformed(evt);
             }
         });
 
@@ -302,7 +277,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         });
 
         jLabel20.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel20.setText("N° Cédula");
+        jLabel20.setText("Nombres:");
 
         jTFTelefono_ActualizarEst.setEditable(false);
         jTFTelefono_ActualizarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -319,10 +294,30 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
 
         jChBTelefono_ActualizarEst1.setBackground(new java.awt.Color(255, 255, 255));
         jChBTelefono_ActualizarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jChBTelefono_ActualizarEst1.setText("Telefono Repre.");
+        jChBTelefono_ActualizarEst1.setText("Teléfono Repre.");
         jChBTelefono_ActualizarEst1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jChBTelefono_ActualizarEst1ActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel21.setText("Apellidos:");
+
+        jLabel22.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel22.setText("N° Cédula");
+
+        jLabel23.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel23.setText("Fech. Nacimiento:");
+
+        jLabel24.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel24.setText("Sexo:");
+
+        jTFFechaNacimiento_ActualizarEst1.setEditable(false);
+        jTFFechaNacimiento_ActualizarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFFechaNacimiento_ActualizarEst1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFFechaNacimiento_ActualizarEst1KeyTyped(evt);
             }
         });
 
@@ -334,22 +329,6 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPDatosEstudianteActualizarLayout.createSequentialGroup()
-                        .addComponent(jChBApellido_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(jTFApellidos_ActualizarEst))
-                    .addGroup(jPDatosEstudianteActualizarLayout.createSequentialGroup()
-                        .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jChBNombre_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFCodigo_ActualizarEst)
-                            .addComponent(jTFNombres_ActualizarEst)))
-                    .addGroup(jPDatosEstudianteActualizarLayout.createSequentialGroup()
-                        .addComponent(jChBFechaNacimiento_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFFechaNacimiento_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPDatosEstudianteActualizarLayout.createSequentialGroup()
                         .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jChBApellidosRepre_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jChBCorreo_ActualizarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
@@ -360,9 +339,27 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                             .addComponent(jTFApellidosRepre_ActualizarEst)
                             .addComponent(jTFNombresRepre_ActualizarEst)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPDatosEstudianteActualizarLayout.createSequentialGroup()
-                        .addComponent(jChBTelefono_ActualizarEst1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jChBTelefono_ActualizarEst1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFTelefono_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTFTelefono_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPDatosEstudianteActualizarLayout.createSequentialGroup()
+                        .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFApellidos_ActualizarEst)
+                            .addComponent(jTFCodigo_ActualizarEst)
+                            .addComponent(jTFNombres_ActualizarEst)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPDatosEstudianteActualizarLayout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFFechaNacimiento_ActualizarEst))
+                    .addGroup(jPDatosEstudianteActualizarLayout.createSequentialGroup()
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTFFechaNacimiento_ActualizarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPDatosEstudianteActualizarLayout.setVerticalGroup(
@@ -371,20 +368,24 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCodigo_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFNombres_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jChBNombre_ActualizarEst)
-                    .addComponent(jTFNombres_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFApellidos_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jChBApellido_ActualizarEst)
-                    .addComponent(jTFApellidos_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTFFechaNacimiento_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jChBFechaNacimiento_ActualizarEst))
+                    .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTFFechaNacimiento_ActualizarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jChBNombresRepre_ActualizarEst)
                     .addComponent(jTFNombresRepre_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -400,12 +401,12 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                 .addGroup(jPDatosEstudianteActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jChBTelefono_ActualizarEst1)
                     .addComponent(jTFTelefono_ActualizarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jPanel6.add(jPDatosEstudianteActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        jPanel6.add(jPDatosEstudianteActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, 330));
 
-        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 56, 400, 410));
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 56, 400, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -426,22 +427,6 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTFFechaNacimiento_ActualizarEstKeyTyped
 
-    private void jChBNombre_ActualizarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChBNombre_ActualizarEstActionPerformed
-        if (jChBNombre_ActualizarEst.isSelected()) {
-            this.jTFNombres_ActualizarEst.setEditable(true);
-        } else {
-            this.jTFNombres_ActualizarEst.setEditable(false);
-        }
-    }//GEN-LAST:event_jChBNombre_ActualizarEstActionPerformed
-
-    private void jChBApellido_ActualizarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChBApellido_ActualizarEstActionPerformed
-        if (jChBApellido_ActualizarEst.isSelected()) {
-            this.jTFApellidos_ActualizarEst.setEditable(true);
-        } else {
-            this.jTFApellidos_ActualizarEst.setEditable(false);
-        }
-    }//GEN-LAST:event_jChBApellido_ActualizarEstActionPerformed
-
     private void jChBNombresRepre_ActualizarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChBNombresRepre_ActualizarEstActionPerformed
         if (jChBNombresRepre_ActualizarEst.isSelected()) {
             this.jTFNombresRepre_ActualizarEst.setEditable(true);
@@ -449,14 +434,6 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
             this.jTFNombresRepre_ActualizarEst.setEditable(false);
         }
     }//GEN-LAST:event_jChBNombresRepre_ActualizarEstActionPerformed
-
-    private void jChBFechaNacimiento_ActualizarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChBFechaNacimiento_ActualizarEstActionPerformed
-        if (jChBFechaNacimiento_ActualizarEst.isSelected()) {
-            this.jTFFechaNacimiento_ActualizarEst.setEditable(true);
-        } else {
-            this.jTFFechaNacimiento_ActualizarEst.setEditable(false);
-        }
-    }//GEN-LAST:event_jChBFechaNacimiento_ActualizarEstActionPerformed
 
     private void jChBCorreo_ActualizarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChBCorreo_ActualizarEstActionPerformed
         if (jChBCorreo_ActualizarEst.isSelected()) {
@@ -540,20 +517,25 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         this.y = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
+    private void jTFFechaNacimiento_ActualizarEst1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFFechaNacimiento_ActualizarEst1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFFechaNacimiento_ActualizarEst1KeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
-    private javax.swing.JCheckBox jChBApellido_ActualizarEst;
     private javax.swing.JCheckBox jChBApellidosRepre_ActualizarEst;
     private javax.swing.JCheckBox jChBCorreo_ActualizarEst;
-    private javax.swing.JCheckBox jChBFechaNacimiento_ActualizarEst;
-    private javax.swing.JCheckBox jChBNombre_ActualizarEst;
     private javax.swing.JCheckBox jChBNombresRepre_ActualizarEst;
     private javax.swing.JCheckBox jChBTelefono_ActualizarEst1;
     private javax.swing.JLabel jLCedula;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabelTitulo1;
     private javax.swing.JPanel jPDatosEstudianteActualizar;
     private javax.swing.JPanel jPanel1;
@@ -569,6 +551,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
     public static javax.swing.JTextField jTFCodigo_ActualizarEst;
     public static javax.swing.JTextField jTFCorreo_ActualizarEst;
     public static javax.swing.JTextField jTFFechaNacimiento_ActualizarEst;
+    public static javax.swing.JTextField jTFFechaNacimiento_ActualizarEst1;
     public static javax.swing.JTextField jTFNombresRepre_ActualizarEst;
     public static javax.swing.JTextField jTFNombres_ActualizarEst;
     public static javax.swing.JTextField jTFTelefono_ActualizarEst;

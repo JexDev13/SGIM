@@ -45,6 +45,8 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabelCorre3 = new javax.swing.JLabel();
         jTFCorreo_EliminarEst3 = new javax.swing.JTextField();
+        jLabelApe2 = new javax.swing.JLabel();
+        jTFApellidos_EliminarEst2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 523));
@@ -251,6 +253,13 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         jTFCorreo_EliminarEst3.setBackground(new java.awt.Color(255, 255, 255));
         jTFCorreo_EliminarEst3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
+        jLabelApe2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabelApe2.setText("Apellidos");
+
+        jTFApellidos_EliminarEst2.setEditable(false);
+        jTFApellidos_EliminarEst2.setBackground(new java.awt.Color(255, 255, 255));
+        jTFApellidos_EliminarEst2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
         javax.swing.GroupLayout jPDatosEstudianteEliminar1Layout = new javax.swing.GroupLayout(jPDatosEstudianteEliminar1);
         jPDatosEstudianteEliminar1.setLayout(jPDatosEstudianteEliminar1Layout);
         jPDatosEstudianteEliminar1Layout.setHorizontalGroup(
@@ -263,30 +272,41 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTFCorreo_EliminarEst3))
                     .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
-                        .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelApe1)
-                            .addComponent(jLabelCelu1)
-                            .addComponent(jLabelSector1)
-                            .addComponent(jLabelFacu1)
-                            .addComponent(jLabelCorre2))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFCelu_EliminarEst1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(jTFApellidos_EliminarEst1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTFCorreo_EliminarEst2)
-                            .addComponent(jTFFacultad_EliminarEst1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTFSectorEst_EliminarEst1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(jLabelCorre2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addComponent(jTFCorreo_EliminarEst2, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
                     .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
                         .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
+                                        .addComponent(jLabelNom1)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
+                                        .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
+                                    .addComponent(jLabelApe1)
+                                    .addGap(46, 46, 46)))
                             .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
-                                .addComponent(jLabelNom1)
-                                .addGap(18, 18, 18))
-                            .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
-                                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTFNombres_EliminarEst1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                            .addComponent(jTFCodigo_EliminarEst1))))
+                                .addComponent(jLabelApe2)
+                                .addGap(46, 46, 46)))
+                        .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFApellidos_EliminarEst2)
+                            .addComponent(jTFApellidos_EliminarEst1)
+                            .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTFNombres_EliminarEst1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                .addComponent(jTFCodigo_EliminarEst1))))
+                    .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
+                        .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCelu1)
+                            .addComponent(jLabelSector1)
+                            .addComponent(jLabelFacu1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFFacultad_EliminarEst1)
+                            .addComponent(jTFSectorEst_EliminarEst1)
+                            .addComponent(jTFCelu_EliminarEst1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPDatosEstudianteEliminar1Layout.setVerticalGroup(
@@ -304,11 +324,19 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFApellidos_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelApe1))
-                .addGap(6, 6, 6)
-                .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFCelu_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCelu1))
-                .addGap(6, 6, 6)
+                .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTFCelu_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelCelu1))
+                        .addGap(6, 6, 6))
+                    .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTFApellidos_EliminarEst2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelApe2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFSectorEst_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSector1))
@@ -324,10 +352,10 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCorreo_EliminarEst3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCorre3))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jPanel3.add(jPDatosEstudianteEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel3.add(jPDatosEstudianteEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 310));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 400, 400));
 
@@ -394,6 +422,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLCedula;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabelApe1;
+    private javax.swing.JLabel jLabelApe2;
     private javax.swing.JLabel jLabelCelu1;
     private javax.swing.JLabel jLabelCorre2;
     private javax.swing.JLabel jLabelCorre3;
@@ -407,6 +436,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelDatoEstudiante;
     public static javax.swing.JTextField jTFApellidos_EliminarEst1;
+    public static javax.swing.JTextField jTFApellidos_EliminarEst2;
     public static javax.swing.JTextField jTFBuscar_EliminarEst;
     public static javax.swing.JTextField jTFCelu_EliminarEst1;
     public static javax.swing.JTextField jTFCodigo_EliminarEst1;

@@ -2,7 +2,6 @@ package GUI.Administrador.General;
 
 import GUI.Administrador.Gestion_Sistema.JFRecuperarContraseña;
 import Negocio.Conexion;
-import Negocio.Imagenes;
 import Negocio.Diseño;
 import java.awt.Color;
 import java.awt.Image;
@@ -16,9 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class JFLogin extends javax.swing.JFrame {
 
-    Imagenes img = new Imagenes();
-    ImageIcon ICONERROR = img.getICONERROR();
     Diseño gui = new Diseño();
+    ImageIcon ICONERROR = gui.getICONERROR();
     Conexion conectar = new Conexion();
     JFRecuperarContraseña recuperar = new JFRecuperarContraseña();
 
@@ -291,7 +289,6 @@ public class JFLogin extends javax.swing.JFrame {
                     JFAdminMenu admin = new JFAdminMenu();
                     admin.setVisible(true);
                     dispose();
-                    System.out.println("Administrativo");
                 } else {
                     borrarLogin(mensaje);
                 }
@@ -299,8 +296,10 @@ public class JFLogin extends javax.swing.JFrame {
             case 2:
                 if (login == true) {
                     //INGRESO AL PERFIL PROFESOR
-                    System.out.println("Profesor");
                     //Futura interfaz
+                    String titulo = "Perfil";
+                    mensaje = "Ingreso a un perfil profesor";
+                    JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONERROR);
                 } else {
                     borrarLogin(mensaje);
                 }
@@ -308,7 +307,9 @@ public class JFLogin extends javax.swing.JFrame {
             case 3:
                 if (login == true) {
                     //INGRESO AL PERFIL ESTUDIANTE
-                    System.out.println("Estudiante");
+                    String titulo = "Perfil";
+                    mensaje = "Ingreso a un perfil estudiante";
+                    JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONERROR);
                     //Futura interfaz
                 } else {
                     borrarLogin(mensaje);

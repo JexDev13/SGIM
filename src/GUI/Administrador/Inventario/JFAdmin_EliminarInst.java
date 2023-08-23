@@ -143,7 +143,7 @@ public class JFAdmin_EliminarInst extends javax.swing.JFrame {
         jTFCategoria_EliminarInst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelCategoria.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelCategoria.setText("Categoria");
+        jLabelCategoria.setText("Categoría");
 
         jTFCondicion_EliminarInst.setEditable(false);
         jTFCondicion_EliminarInst.setBackground(new java.awt.Color(255, 255, 255));

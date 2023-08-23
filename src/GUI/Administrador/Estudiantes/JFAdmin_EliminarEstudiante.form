@@ -311,7 +311,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="90" width="-1" height="-1"/>
+              <AbsoluteConstraints x="20" y="80" width="-1" height="310"/>
             </Constraint>
           </Constraints>
 
@@ -327,36 +327,53 @@
                               <Component id="jTFCorreo_EliminarEst3" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelCorre2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="11" max="32767" attributes="0"/>
+                              <Component id="jTFCorreo_EliminarEst2" pref="175" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabelApe1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelCelu1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSector1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelFacu1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelCorre2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabelNom1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel21" max="32767" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabelApe1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabelApe2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTFCelu_EliminarEst1" alignment="0" pref="175" max="32767" attributes="0"/>
-                                  <Component id="jTFApellidos_EliminarEst1" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jTFCorreo_EliminarEst2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTFFacultad_EliminarEst1" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jTFSectorEst_EliminarEst1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTFApellidos_EliminarEst2" max="32767" attributes="0"/>
+                                  <Component id="jTFApellidos_EliminarEst1" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTFNombres_EliminarEst1" alignment="0" pref="217" max="32767" attributes="0"/>
+                                      <Component id="jTFCodigo_EliminarEst1" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelNom1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel21" max="32767" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabelCelu1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSector1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelFacu1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTFNombres_EliminarEst1" alignment="0" pref="217" max="32767" attributes="0"/>
-                                  <Component id="jTFCodigo_EliminarEst1" alignment="0" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTFFacultad_EliminarEst1" max="32767" attributes="0"/>
+                                  <Component id="jTFSectorEst_EliminarEst1" max="32767" attributes="0"/>
+                                  <Component id="jTFCelu_EliminarEst1" pref="202" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -382,12 +399,24 @@
                           <Component id="jTFApellidos_EliminarEst1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelApe1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTFCelu_EliminarEst1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelCelu1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace pref="39" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTFCelu_EliminarEst1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelCelu1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTFApellidos_EliminarEst2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelApe2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jTFSectorEst_EliminarEst1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelSector1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -407,7 +436,7 @@
                           <Component id="jTFCorreo_EliminarEst3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelCorre3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -576,6 +605,28 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTFCorreo_EliminarEst3">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelApe2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Apellidos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTFApellidos_EliminarEst2">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

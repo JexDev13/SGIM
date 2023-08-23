@@ -83,7 +83,6 @@ public class JPAdminProf extends javax.swing.JPanel {
         jTProf.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTProf.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, "ver", null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},

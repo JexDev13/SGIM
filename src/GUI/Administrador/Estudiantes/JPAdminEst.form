@@ -280,10 +280,10 @@
                 <Column editable="true" title="Apellidos" type="java.lang.Object"/>
                 <Column editable="true" title="Sexo" type="java.lang.Object"/>
                 <Column editable="true" title="Fecha de Nacimiento" type="java.lang.Object"/>
-                <Column editable="true" title="Nombres Representante" type="java.lang.Object"/>
-                <Column editable="true" title="Apellidos Representante" type="java.lang.Object"/>
-                <Column editable="true" title="Correo electronico Representante" type="java.lang.Object"/>
-                <Column editable="true" title="N&#xb0;Celular Representante" type="java.lang.Object">
+                <Column editable="true" title="Nombres representante" type="java.lang.Object"/>
+                <Column editable="true" title="Apellidos representante" type="java.lang.Object"/>
+                <Column editable="true" title="Correo electr&#xf3;nico representante" type="java.lang.Object"/>
+                <Column editable="true" title="N&#xb0;Celular representante" type="java.lang.Object">
                   <Data value=""/>
                   <Data value="null"/>
                   <Data value="null"/>
@@ -314,6 +314,55 @@
                   <Data value="null"/>
                 </Column>
               </Table>
+            </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
             </Property>
             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="16" green="b7" red="fa" type="rgb"/>

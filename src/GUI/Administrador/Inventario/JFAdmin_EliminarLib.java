@@ -145,7 +145,7 @@ public class JFAdmin_EliminarLib extends javax.swing.JFrame {
         jTFCategoria_EliminarLib.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelCategoria.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelCategoria.setText("Categoria");
+        jLabelCategoria.setText("Categoría");
 
         jTFCondicion_EliminarLib.setEditable(false);
         jTFCondicion_EliminarLib.setBackground(new java.awt.Color(255, 255, 255));
@@ -402,7 +402,7 @@ public class JFAdmin_EliminarLib extends javax.swing.JFrame {
     public static javax.swing.JTextField jTFCategoria_EliminarLib;
     public static javax.swing.JTextField jTFCodigo_EliminarLib;
     public static javax.swing.JTextField jTFCondicion_EliminarLib;
-    public static javax.swing.JTextField jTFEstado_EliminarLib;
+    private javax.swing.JTextField jTFEstado_EliminarLib;
     public static javax.swing.JTextField jTFNombre_EliminarLib;
     // End of variables declaration//GEN-END:variables
 }

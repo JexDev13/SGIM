@@ -108,30 +108,30 @@ public class JFAdmin_InsertarProf extends javax.swing.JFrame {
         jCBPiano.setBackground(new java.awt.Color(255, 255, 255));
         jCBPiano.setText("Piano");
         jCBPiano.setContentAreaFilled(false);
-        jPanel2.add(jCBPiano, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 229, -1, -1));
+        jPanel2.add(jCBPiano, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         jCBGuitarra.setBackground(new java.awt.Color(255, 255, 255));
         jCBGuitarra.setText("Guitarra");
         jCBGuitarra.setContentAreaFilled(false);
-        jPanel2.add(jCBGuitarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 229, -1, -1));
+        jPanel2.add(jCBGuitarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
         jCBViolin.setBackground(new java.awt.Color(255, 255, 255));
         jCBViolin.setText("Violín");
         jCBViolin.setContentAreaFilled(false);
-        jPanel2.add(jCBViolin, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 229, -1, -1));
+        jPanel2.add(jCBViolin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
         jCBOtro.setBackground(new java.awt.Color(255, 255, 255));
         jCBOtro.setText("Otro");
         jCBOtro.setContentAreaFilled(false);
-        jPanel2.add(jCBOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 229, -1, -1));
+        jPanel2.add(jCBOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
         jPanel2.add(jTFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 11, 170, -1));
         jPanel2.add(jTFNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 37, 170, -1));
         jPanel2.add(jTFApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 63, 170, -1));
-        jPanel2.add(jTFNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 94, 136, -1));
-        jPanel2.add(jTFDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 125, 174, -1));
-        jPanel2.add(jTFTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 151, 163, -1));
-        jPanel2.add(jTFCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 182, 117, -1));
-        jPanel2.add(jTFSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 262, 139, -1));
+        jPanel2.add(jTFNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 94, 130, -1));
+        jPanel2.add(jTFDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 125, 170, -1));
+        jPanel2.add(jTFTelef, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 151, 160, -1));
+        jPanel2.add(jTFCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 182, 110, -1));
+        jPanel2.add(jTFSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 262, 160, -1));
 
         jLCedula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLCedula.setText("N°Cédula:");
