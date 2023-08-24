@@ -7,15 +7,23 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * @authors G2 SoftwareSolutions
  */
 public class Conexion {
 
-    Connection cn;
     Correo email = new Correo();
+    
+    Connection cn;
+    Statement st;
+    ResultSet rs;
 
     public Connection getConnection() {
         return cn;
@@ -39,8 +47,6 @@ public class Conexion {
     public boolean logIn(String perfil, String user, String password) {
         try {
             cn = conectar();
-            //Hash, salt y verify de contraseña
-            
             // Verificar si el usuario y contraseña son válidos en la base de datos
             String query = "SELECT COUNT(*) as count FROM users WHERE Rol = ? AND Nombre_Usuario = ? AND Contrasena = ?";
             PreparedStatement preparedStatement = cn.prepareStatement(query);
@@ -95,5 +101,30 @@ public class Conexion {
             e.printStackTrace();
         }
         return false;
+    }
+    
+    //Codigo para presentar las tablas y aplicar filtros de busqueda
+    public void busqueda_y_despliegue(JTable jTabla, String selectTabla, String SQL) {
+        try {
+            cn = conectar();
+            st = cn.createStatement();
+            rs = st.executeQuery(SQL);
+            if (selectTabla.equals("Users")) {
+                Object[] users = new Object[4];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"N°Cédula", "Usuario", "Correo electrónico", "Rol"});
+                while (rs.next()) {
+                    users[0] = rs.getString("Cedula");
+                    users[1] = rs.getString("Nombre_Usuario");
+                    users[2] = rs.getString("Correo");
+                    users[3] = rs.getString("Rol");
+                    tabla.addRow(users);
+                }
+                jTabla.setModel(tabla);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 }
