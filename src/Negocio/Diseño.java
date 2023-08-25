@@ -32,49 +32,5 @@ public class Diseño {
         ICONERROR=new ImageIcon(ICONERROR.getImage().getScaledInstance(128, -1, java.awt.Image.SCALE_DEFAULT));
         return ICONERROR;
     }
-    
-    public void setPanel(int menu, JPanel panel, JPanel jPanelGeneral, JLabel jLabelTituloPanel) {
-        panel.setSize(970, 630);
-        panel.setLocation(0, 0);
-        jPanelGeneral.removeAll();
-        jPanelGeneral.add(panel, BorderLayout.CENTER);
-        jPanelGeneral.revalidate();
-        jPanelGeneral.repaint();
-        String titulo = null;
-        switch (menu) {
-            case 0:
-                //Home
-                titulo = "\t HOME";
-                break;
-            case 1:
-                //Profesores
-                titulo = "\t PROFESORES";
-                break;
-            case 2:
-                //Estudiantes
-                titulo = "\t ESTUDIANTES";
-                break;
-            case 3:
-                //Inventario
-                titulo = "\t INVENTARIO";
-                break;
-            case 4:
-                //Pagos
-                titulo = "\t PAGOS";
-                break;
-            case 5:
-                //Calendario
-                titulo = "\t CALENDARIO";
-                break;
-            case 6:
-                //Gestión del sistema
-                titulo = "\t GESTIÓN DEL SISTEMA";
-                break;
-            case 7:
-                //Gestión del sistema
-                titulo = "\t ADMINISTRADORES DEL SISTEMA";
-                break;
-        }
-        jLabelTituloPanel.setText(titulo);
-    }
+
 }
