@@ -10,7 +10,7 @@ public class JPAdminGest extends javax.swing.JPanel {
 
     Diseño gui = new Diseño();
     JFAdmin_desbloquear conInst = new JFAdmin_desbloquear();
-    JFAdmin_InsertarUsuario inser = new JFAdmin_InsertarUsuario();
+    JFAdmin_InsertarAdmin inser = new JFAdmin_InsertarAdmin();
     JFAdmin_ActualizarUsuario act = new JFAdmin_ActualizarUsuario();
     JFAdmin_EliminarUsuario elim = new JFAdmin_EliminarUsuario();
     Conexion con = new Conexion();
@@ -37,13 +37,16 @@ public class JPAdminGest extends javax.swing.JPanel {
         jSeparator = new javax.swing.JSeparator();
         jCBFiltroUsers = new javax.swing.JComboBox<>();
         jLLupa = new javax.swing.JLabel();
-        jButtonActualizarEstu1 = new javax.swing.JButton();
+        jBActualizarUsuario = new javax.swing.JButton();
         jLTitTabla = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTUsers = new javax.swing.JTable();
         jBDesbloquear = new javax.swing.JButton();
-        jBAdministrador = new javax.swing.JButton();
+        jBNuevoAdmin = new javax.swing.JButton();
         jBInactivos = new javax.swing.JButton();
+        jBEliminarAdmin = new javax.swing.JButton();
+        jBVariables = new javax.swing.JButton();
+        jBAuditoria = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -86,23 +89,23 @@ public class JPAdminGest extends javax.swing.JPanel {
 
         jLLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
 
-        jButtonActualizarEstu1.setBackground(new java.awt.Color(250, 183, 22));
-        jButtonActualizarEstu1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonActualizarEstu1.setText("actualizar");
-        jButtonActualizarEstu1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jButtonActualizarEstu1.setBorderPainted(false);
-        jButtonActualizarEstu1.setPreferredSize(new java.awt.Dimension(73, 40));
-        jButtonActualizarEstu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBActualizarUsuario.setBackground(new java.awt.Color(250, 183, 22));
+        jBActualizarUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jBActualizarUsuario.setText("actualizar usuarios");
+        jBActualizarUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jBActualizarUsuario.setBorderPainted(false);
+        jBActualizarUsuario.setPreferredSize(new java.awt.Dimension(73, 40));
+        jBActualizarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonActualizarEstu1MouseEntered(evt);
+                jBActualizarUsuarioMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonActualizarEstu1MouseExited(evt);
+                jBActualizarUsuarioMouseExited(evt);
             }
         });
-        jButtonActualizarEstu1.addActionListener(new java.awt.event.ActionListener() {
+        jBActualizarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonActualizarEstu1ActionPerformed(evt);
+                jBActualizarUsuarioActionPerformed(evt);
             }
         });
 
@@ -160,7 +163,7 @@ public class JPAdminGest extends javax.swing.JPanel {
 
         jBDesbloquear.setBackground(new java.awt.Color(250, 183, 22));
         jBDesbloquear.setForeground(new java.awt.Color(255, 255, 255));
-        jBDesbloquear.setText("(des)bloquear");
+        jBDesbloquear.setText("(des)bloquear estudiantes");
         jBDesbloquear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jBDesbloquear.setBorderPainted(false);
         jBDesbloquear.setPreferredSize(new java.awt.Dimension(73, 40));
@@ -178,23 +181,23 @@ public class JPAdminGest extends javax.swing.JPanel {
             }
         });
 
-        jBAdministrador.setBackground(new java.awt.Color(250, 183, 22));
-        jBAdministrador.setForeground(new java.awt.Color(255, 255, 255));
-        jBAdministrador.setText("administrador");
-        jBAdministrador.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jBAdministrador.setBorderPainted(false);
-        jBAdministrador.setPreferredSize(new java.awt.Dimension(73, 40));
-        jBAdministrador.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBNuevoAdmin.setBackground(new java.awt.Color(250, 183, 22));
+        jBNuevoAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        jBNuevoAdmin.setText("nuevo administrador");
+        jBNuevoAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jBNuevoAdmin.setBorderPainted(false);
+        jBNuevoAdmin.setPreferredSize(new java.awt.Dimension(73, 40));
+        jBNuevoAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBAdministradorMouseEntered(evt);
+                jBNuevoAdminMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBAdministradorMouseExited(evt);
+                jBNuevoAdminMouseExited(evt);
             }
         });
-        jBAdministrador.addActionListener(new java.awt.event.ActionListener() {
+        jBNuevoAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAdministradorActionPerformed(evt);
+                jBNuevoAdminActionPerformed(evt);
             }
         });
 
@@ -218,64 +221,137 @@ public class JPAdminGest extends javax.swing.JPanel {
             }
         });
 
+        jBEliminarAdmin.setBackground(new java.awt.Color(250, 183, 22));
+        jBEliminarAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        jBEliminarAdmin.setText("eliminar administrador");
+        jBEliminarAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jBEliminarAdmin.setBorderPainted(false);
+        jBEliminarAdmin.setPreferredSize(new java.awt.Dimension(73, 40));
+        jBEliminarAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBEliminarAdminMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBEliminarAdminMouseExited(evt);
+            }
+        });
+        jBEliminarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarAdminActionPerformed(evt);
+            }
+        });
+
+        jBVariables.setBackground(new java.awt.Color(250, 183, 22));
+        jBVariables.setForeground(new java.awt.Color(255, 255, 255));
+        jBVariables.setText("variables del sistema");
+        jBVariables.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jBVariables.setBorderPainted(false);
+        jBVariables.setPreferredSize(new java.awt.Dimension(73, 40));
+        jBVariables.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBVariablesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBVariablesMouseExited(evt);
+            }
+        });
+        jBVariables.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVariablesActionPerformed(evt);
+            }
+        });
+
+        jBAuditoria.setBackground(new java.awt.Color(250, 183, 22));
+        jBAuditoria.setForeground(new java.awt.Color(255, 255, 255));
+        jBAuditoria.setText("auditoria del sistema");
+        jBAuditoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jBAuditoria.setBorderPainted(false);
+        jBAuditoria.setPreferredSize(new java.awt.Dimension(73, 40));
+        jBAuditoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBAuditoriaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBAuditoriaMouseExited(evt);
+            }
+        });
+        jBAuditoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAuditoriaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLTitTabla)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonActualizarEstu1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBDesbloquear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBInactivos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLFiltro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCBFiltroUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLLupa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTFBusqueda))
-                            .addComponent(jSeparator, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLTitTabla)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jBNuevoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBEliminarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBVariables, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBAuditoria, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jBActualizarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBDesbloquear, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBInactivos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLFiltro)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jCBFiltroUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLLupa)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTFBusqueda))
+                                .addComponent(jSeparator, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBActualizarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBDesbloquear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBInactivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addComponent(jLLupa)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonActualizarEstu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBDesbloquear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBInactivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jCBFiltroUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLFiltro))
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLTitTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBAuditoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBVariables, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBNuevoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBEliminarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -322,42 +398,41 @@ public class JPAdminGest extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBFiltroUsersActionPerformed
 
-    private void jButtonActualizarEstu1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActualizarEstu1MouseEntered
-        this.jButtonActualizarEstu1.setText("ACTUALIZAR");
-    }//GEN-LAST:event_jButtonActualizarEstu1MouseEntered
+    private void jBActualizarUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBActualizarUsuarioMouseEntered
+        this.jBActualizarUsuario.setText("ACTUALIZAR USUARIOS");
+    }//GEN-LAST:event_jBActualizarUsuarioMouseEntered
 
-    private void jButtonActualizarEstu1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActualizarEstu1MouseExited
-        this.jButtonActualizarEstu1.setText("actualizar");
-    }//GEN-LAST:event_jButtonActualizarEstu1MouseExited
+    private void jBActualizarUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBActualizarUsuarioMouseExited
+        this.jBActualizarUsuario.setText("actualizar usuarios");
+    }//GEN-LAST:event_jBActualizarUsuarioMouseExited
 
-    private void jButtonActualizarEstu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarEstu1ActionPerformed
+    private void jBActualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarUsuarioActionPerformed
         act.setVisible(true);
-    }//GEN-LAST:event_jButtonActualizarEstu1ActionPerformed
+    }//GEN-LAST:event_jBActualizarUsuarioActionPerformed
 
     private void jBDesbloquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDesbloquearActionPerformed
         conInst.setVisible(true);
     }//GEN-LAST:event_jBDesbloquearActionPerformed
 
     private void jBDesbloquearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBDesbloquearMouseExited
-        this.jBDesbloquear.setText("(des)bloquear");
+        this.jBDesbloquear.setText("(des)bloquear estudiantes");
     }//GEN-LAST:event_jBDesbloquearMouseExited
 
     private void jBDesbloquearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBDesbloquearMouseEntered
-        this.jBDesbloquear.setText("(DES)BLOQUEAR");
+        this.jBDesbloquear.setText("(DES)BLOQUEAR ESTUDIANTES");
     }//GEN-LAST:event_jBDesbloquearMouseEntered
 
-    private void jBAdministradorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAdministradorMouseEntered
-        this.jBAdministrador.setText("ADMINISTRADOR");
-    }//GEN-LAST:event_jBAdministradorMouseEntered
+    private void jBNuevoAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNuevoAdminMouseEntered
+        this.jBNuevoAdmin.setText("NUEVO ADMINISTRADOR");
+    }//GEN-LAST:event_jBNuevoAdminMouseEntered
 
-    private void jBAdministradorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAdministradorMouseExited
-        this.jBAdministrador.setText("administrador");
-    }//GEN-LAST:event_jBAdministradorMouseExited
+    private void jBNuevoAdminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNuevoAdminMouseExited
+        this.jBNuevoAdmin.setText("nuevo administrador");
+    }//GEN-LAST:event_jBNuevoAdminMouseExited
 
-    private void jBAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdministradorActionPerformed
-        JFAdministradores admin = new JFAdministradores();
-        admin.setVisible(true);
-    }//GEN-LAST:event_jBAdministradorActionPerformed
+    private void jBNuevoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoAdminActionPerformed
+        inser.setVisible(true);
+    }//GEN-LAST:event_jBNuevoAdminActionPerformed
 
     private void jBInactivosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBInactivosMouseEntered
         this.jBInactivos.setText("USUARIOS INACTIVOS");
@@ -371,12 +446,51 @@ public class JPAdminGest extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBInactivosActionPerformed
 
+    private void jBEliminarAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarAdminMouseEntered
+        this.jBEliminarAdmin.setText("ELIMINAR ADMINISTRADOR");
+    }//GEN-LAST:event_jBEliminarAdminMouseEntered
+
+    private void jBEliminarAdminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarAdminMouseExited
+        this.jBEliminarAdmin.setText("eliminar administrador");
+    }//GEN-LAST:event_jBEliminarAdminMouseExited
+
+    private void jBEliminarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBEliminarAdminActionPerformed
+
+    private void jBVariablesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBVariablesMouseEntered
+        this.jBVariables.setText("VARIABLES DEL SISTEMA");
+    }//GEN-LAST:event_jBVariablesMouseEntered
+
+    private void jBVariablesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBVariablesMouseExited
+       this.jBVariables.setText("variables del sistema");
+    }//GEN-LAST:event_jBVariablesMouseExited
+
+    private void jBVariablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVariablesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBVariablesActionPerformed
+
+    private void jBAuditoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAuditoriaMouseEntered
+        this.jBAuditoria.setText("AUDITORIA DEL SISTEMA");
+    }//GEN-LAST:event_jBAuditoriaMouseEntered
+
+    private void jBAuditoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAuditoriaMouseExited
+        this.jBAuditoria.setText("auditoria del sistema");
+    }//GEN-LAST:event_jBAuditoriaMouseExited
+
+    private void jBAuditoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAuditoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBAuditoriaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBAdministrador;
+    private javax.swing.JButton jBActualizarUsuario;
+    private javax.swing.JButton jBAuditoria;
     private javax.swing.JButton jBDesbloquear;
+    private javax.swing.JButton jBEliminarAdmin;
     private javax.swing.JButton jBInactivos;
-    private javax.swing.JButton jButtonActualizarEstu1;
+    private javax.swing.JButton jBNuevoAdmin;
+    private javax.swing.JButton jBVariables;
     private javax.swing.JComboBox<String> jCBFiltroUsers;
     private javax.swing.JLabel jLFiltro;
     private javax.swing.JLabel jLLupa;

@@ -19,13 +19,6 @@ import javax.swing.JPanel;
 public class JFAdminMenu extends javax.swing.JFrame {
 
     //Declarar aquí los paneles  y clases
-    JPHome home = new JPHome(); //home=0
-    JPAdminProf prof = new JPAdminProf(); //profesores = 1
-    JPAdminEst est = new JPAdminEst();//estudiantes = 2
-    JPAdminInv inv = new JPAdminInv();//Inventario = 3
-    JPAdminPagos pagos = new JPAdminPagos();//Pagos = 4
-    JPAdminCal cal = new JPAdminCal();//Calendario = 5
-    JPAdminGest gest = new JPAdminGest();//Gestión del sistema = 6
     Conexion con = new Conexion();
     JFLogin log = new JFLogin();
     int x;
@@ -34,6 +27,8 @@ public class JFAdminMenu extends javax.swing.JFrame {
     public JFAdminMenu() {
         initComponents();
         setLocationRelativeTo(this);
+
+        JPHome home = new JPHome(); //home=0
         setPanel(0, home);
         setIconImage(getIconImage());
     }
@@ -261,9 +256,6 @@ public class JFAdminMenu extends javax.swing.JFrame {
         getContentPane().add(jBLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 260, 60));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_Menu.png"))); // NOI18N
-        jLabelFondo.setMaximumSize(new java.awt.Dimension(260, 670));
-        jLabelFondo.setMinimumSize(new java.awt.Dimension(260, 670));
-        jLabelFondo.setPreferredSize(new java.awt.Dimension(260, 670));
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabelTituloPanel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
@@ -333,36 +325,42 @@ public class JFAdminMenu extends javax.swing.JFrame {
 
     private void jBGest_SisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGest_SisActionPerformed
         //Gestión del sistema = 6
+        JPAdminGest gest = new JPAdminGest();//Gestión del sistema = 6
         setPanel(6, gest);
     }//GEN-LAST:event_jBGest_SisActionPerformed
 
     private void jBHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBHomeActionPerformed
-        //Home=0
+        JPHome home = new JPHome(); //home=0
         setPanel(0, home);
     }//GEN-LAST:event_jBHomeActionPerformed
 
     private void jBProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProfesoresActionPerformed
         //Profesores = 1
+        JPAdminProf prof = new JPAdminProf(); //profesores = 1
         setPanel(1, prof);
     }//GEN-LAST:event_jBProfesoresActionPerformed
 
     private void jBEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEstudiantesActionPerformed
         //Estudiantes = 2
+        JPAdminEst est = new JPAdminEst();//estudiantes = 2
         setPanel(2, est);
     }//GEN-LAST:event_jBEstudiantesActionPerformed
 
     private void jBInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInventarioActionPerformed
         //Inventario = 3
+        JPAdminInv inv = new JPAdminInv();//Inventario = 3
         setPanel(3, inv);
     }//GEN-LAST:event_jBInventarioActionPerformed
 
     private void jBPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPagosActionPerformed
         //Pagos = 4
+        JPAdminPagos pagos = new JPAdminPagos();//Pagos = 4
         setPanel(4, pagos);
     }//GEN-LAST:event_jBPagosActionPerformed
 
     private void jBCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalendarioActionPerformed
         //Calendario = 5
+        JPAdminCal cal = new JPAdminCal();//Calendario = 5
         setPanel(5, cal);
     }//GEN-LAST:event_jBCalendarioActionPerformed
 
@@ -515,6 +513,10 @@ public class JFAdminMenu extends javax.swing.JFrame {
             case 6:
                 //Gestión del sistema
                 titulo = "\t GESTIÓN DEL SISTEMA";
+                break;
+            case 7:
+                //Gestión del sistema
+                titulo = "\t ADMINISTRADORES DEL SISTEMA";
                 break;
         }
         this.jLabelTituloPanel.setText(titulo);

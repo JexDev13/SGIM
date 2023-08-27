@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class Conexion {
 
     Correo email = new Correo();
-    
+
     Connection cn;
     Statement st;
     ResultSet rs;
@@ -30,6 +32,7 @@ public class Conexion {
         return cn;
     }
 
+    //Abrir conexión
     public Connection conectar() {
         try (InputStream input = getClass().getResourceAsStream("/db.properties")) {
             Properties props = new Properties();
@@ -45,6 +48,7 @@ public class Conexion {
         return cn;
     }
 
+    //Validar usuario y contraseña
     public boolean logIn(String perfil, String user, String password) {
         try {
             cn = conectar();
@@ -68,6 +72,7 @@ public class Conexion {
         return false;
     }
 
+    //Cerrar conexión
     public void logOut() {
         try {
             if (cn != null && !cn.isClosed()) {
@@ -79,13 +84,14 @@ public class Conexion {
         }
     }
 
+    //Recuperar contraseña
     public boolean recuperarDatos(String tipo, String cedula) {
         try {
             String resultado;
             String destinatario;
             int envio;
             cn = conectar();
-            String query = "SELECT " + tipo +", correo FROM Admins a JOIN  Users u ON u.Cedula = a.Cedula_Admin WHERE cedula = ?;";
+            String query = "SELECT " + tipo + ", correo FROM Admins a JOIN  Users u ON u.Cedula = a.Cedula_Admin WHERE cedula = ?;";
             PreparedStatement preparedStatement = cn.prepareStatement(query);
             preparedStatement.setString(1, cedula);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -93,8 +99,7 @@ public class Conexion {
                 resultado = resultSet.getString(tipo);
                 destinatario = resultSet.getString("correo");
                 envio = email.recuperarUsuario(tipo, resultado, destinatario);
-                if(envio==1)
-                {
+                if (envio == 1) {
                     return true;
                 }
             }
@@ -103,8 +108,8 @@ public class Conexion {
         }
         return false;
     }
-    
-    //Codigo para presentar las tablas y aplicar filtros de busqueda
+
+    //Código para presentar las tablas y aplicar filtros de busqueda
     public void busqueda_y_despliegue(JTable jTabla, String selectTabla, String SQL) {
         try {
             cn = conectar();
@@ -206,5 +211,56 @@ public class Conexion {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
         }
         return rs;
+    }
+
+    //Validación para cédulas duplicadas
+    public boolean cedulaDuplicada(String cedula) {
+        try {
+            String SQL = "SELECT count(*) as count FROM Personas WHERE Cedula = ?";
+            cn = conectar();
+            PreparedStatement preparedStatement = cn.prepareStatement(SQL);
+            preparedStatement.setString(1, cedula);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt("count");
+            return count > 0;
+        } catch (SQLException e) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+
+    //Preparar Querys
+    public String prepararAtributos(ArrayList<String> atributosActualizar) {
+        String parametro = "";
+        Iterator i = atributosActualizar.iterator();
+        while (i.hasNext()) {
+            parametro += i.next() + ",";
+        }
+        parametro = parametro.substring(0, parametro.length() - 1);
+        return parametro;
+    }
+
+    //Ingresar datos a la base de datos
+    public boolean insertar_Tablas(String tabla, String parametro) {
+        try {
+            if (tabla.equals("Admins")) {
+                String SQL = "INSERT INTO Personas (Cedula, Nombres, Apellidos, Correo, Rol) VALUES (?, ?, ?, ?,?)";
+                PreparedStatement pps = cn.prepareStatement(SQL);
+
+                // Separar el parámetro en elementos individuales
+                String[] parametrosSeparados = parametro.split(",");
+                // Establecer cada parámetro en el PreparedStatement
+                for (int i = 0; i < parametrosSeparados.length; i++) {
+                    pps.setString(i+1, parametrosSeparados[i]);
+                }
+                pps.setString(parametrosSeparados.length + 1, "Administrativo");
+                pps.executeUpdate();
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }
