@@ -1,5 +1,6 @@
 package GUI.Administrador.Pagos;
 
+import Negocio.Conexion;
 import Negocio.Diseño;
 
 /*
@@ -9,6 +10,9 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
 
     private int x;
     private int y;
+    private Conexion con = new Conexion();
+    private String selectTabla = "Pagos";
+    private String SQL;
 
     Diseño gui = new Diseño();
 
@@ -16,6 +20,7 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         gui.jtableHead(jTPagos);
+        jTFBuscar_CedulaEst.setEditable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -67,34 +72,34 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
         jTPagos.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Código Transacción", "Valor", "Método de Pago"
+                "Código Pago", "Método Pago", "Valor", "Fecha Pago", "Abono"
             }
         ));
         jTPagos.setGridColor(new java.awt.Color(250, 183, 22));
@@ -153,7 +158,7 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
 
         JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
         JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
-        JBIngreso1.setText("aceptar");
+        JBIngreso1.setText("consultar");
         JBIngreso1.setBorder(null);
         JBIngreso1.setBorderPainted(false);
         JBIngreso1.setDefaultCapable(false);
@@ -271,15 +276,17 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFBuscar_CedulaEstKeyReleased
 
     private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
-        this.JBIngreso1.setText("ACEPTAR");
+        this.JBIngreso1.setText("CONSULTAR");
     }//GEN-LAST:event_JBIngreso1MouseEntered
 
     private void JBIngreso1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseExited
-        this.JBIngreso1.setText("aceptar");
+        this.JBIngreso1.setText("consultar");
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-
+        this.SQL = """
+                   SELECT Codigo_pago,Metodo_pago,Monto,Fecha_Pago,Abono FROM pagos WHERE Cedula_estudiante = '""" + jTFBuscar_CedulaEst.getText() + "';";
+            con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
     }//GEN-LAST:event_JBIngreso1ActionPerformed
 
     private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
@@ -304,6 +311,10 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
 
     public void limpiarCampos() {
         this.jTFBuscar_CedulaEst.setText("");
+    }
+    
+    public void setTFBuscar_CedulaEst(String cedula) {
+        this.jTFBuscar_CedulaEst.setText(cedula);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

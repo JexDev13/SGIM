@@ -24,10 +24,7 @@ public class JPAdminGest extends javax.swing.JPanel {
         gui.jtableHead(jTUsers);
 
         this.SQL = """
-                   SELECT Cedula, Nombre_Usuario, COALESCE(a.Correo, e.CorreoRepresentante) AS Correo, Rol
-                   FROM Users u LEFT JOIN Admins a 
-                   ON u.Cedula = a.Cedula_Admin LEFT JOIN Estudiantes e 
-                   ON u.Cedula = e.Cedula_Estudiante;""";
+                   SELECT u.Cedula, u.Nombre_Usuario, p.Correo, u.Rol FROM Personas p JOIN Users u ON p.Cedula = u.Cedula;""";
         con.busqueda_y_despliegue(this.jTUsers, this.selectTabla,this.SQL);
     }
 
@@ -316,10 +313,8 @@ public class JPAdminGest extends javax.swing.JPanel {
             }
         }
         this.SQL = """
-                   SELECT Cedula, Nombre_Usuario, COALESCE(a.Correo, e.CorreoRepresentante) AS Correo, Rol
-                   FROM Users u LEFT JOIN Admins a
-                   ON u.Cedula = a.Cedula_Admin LEFT JOIN Estudiantes e
-                   ON u.Cedula = e.Cedula_Estudiante WHERE """ + " " + Parametro_de_busqueda + " LIKE '%" + Busqueda+ "%';";
+                   SELECT u.Cedula, u.Nombre_Usuario, p.Correo, u.Rol FROM Personas p JOIN Users u ON p.Cedula = u.Cedula WHERE """ 
+                + " " + Parametro_de_busqueda + " LIKE '%" + Busqueda+ "%';";
         con.busqueda_y_despliegue(this.jTUsers, this.selectTabla, this.SQL);
     }//GEN-LAST:event_jTFBusquedaKeyReleased
 

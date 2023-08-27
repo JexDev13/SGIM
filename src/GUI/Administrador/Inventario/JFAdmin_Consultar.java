@@ -3,14 +3,16 @@ package GUI.Administrador.Inventario;
 /*
  * @authors G2 SoftwareSolutions
  */
-public class JFAdmin_ConsultarInst extends javax.swing.JFrame {
+public class JFAdmin_Consultar extends javax.swing.JFrame {
 
     private int x;
     private int y;
 
-    public JFAdmin_ConsultarInst() {
+    public JFAdmin_Consultar() {
         initComponents();
         setLocationRelativeTo(this);
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -27,8 +29,6 @@ public class JFAdmin_ConsultarInst extends javax.swing.JFrame {
         jButtonSalirIcon1 = new javax.swing.JButton();
         jLabelFondo1 = new javax.swing.JLabel();
         jPFondo = new javax.swing.JPanel();
-        JBIngreso1 = new javax.swing.JButton();
-        JBCancela1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -48,7 +48,7 @@ public class JFAdmin_ConsultarInst extends javax.swing.JFrame {
 
         jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitulo.setText("Consultar Dato de Instrumento");
+        jLabelTitulo.setText("Consultar Dato");
         getContentPane().add(jLabelTitulo);
         jLabelTitulo.setBounds(10, 0, 240, 30);
 
@@ -96,15 +96,15 @@ public class JFAdmin_ConsultarInst extends javax.swing.JFrame {
                 .addGroup(jPDatoConsultadoInstrumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCodigo_Inst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addGroup(jPDatoConsultadoInstrumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFDato_Inst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
-                .addGap(190, 190, 190))
+                .addGap(173, 173, 173))
         );
 
         getContentPane().add(jPDatoConsultadoInstrumento);
-        jPDatoConsultadoInstrumento.setBounds(10, 50, 360, 120);
+        jPDatoConsultadoInstrumento.setBounds(10, 50, 360, 140);
 
         jButtonMinimizar1.setBackground(new java.awt.Color(250, 183, 22));
         jButtonMinimizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Minimizar 24.png"))); // NOI18N
@@ -135,61 +135,10 @@ public class JFAdmin_ConsultarInst extends javax.swing.JFrame {
         jLabelFondo1.setBackground(new java.awt.Color(255, 255, 255));
         jLabelFondo1.setOpaque(true);
         getContentPane().add(jLabelFondo1);
-        jLabelFondo1.setBounds(0, 30, 380, 150);
+        jLabelFondo1.setBounds(0, 30, 380, 180);
 
         jPFondo.setBackground(new java.awt.Color(250, 183, 22));
         jPFondo.setLayout(null);
-
-        JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
-        JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
-        JBIngreso1.setText("aceptar");
-        JBIngreso1.setBorder(null);
-        JBIngreso1.setBorderPainted(false);
-        JBIngreso1.setDefaultCapable(false);
-        JBIngreso1.setFocusPainted(false);
-        JBIngreso1.setHideActionText(true);
-        JBIngreso1.setPreferredSize(new java.awt.Dimension(89, 32));
-        JBIngreso1.setRequestFocusEnabled(false);
-        JBIngreso1.setRolloverEnabled(false);
-        JBIngreso1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                JBIngreso1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                JBIngreso1MouseExited(evt);
-            }
-        });
-        JBIngreso1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBIngreso1ActionPerformed(evt);
-            }
-        });
-        jPFondo.add(JBIngreso1);
-        JBIngreso1.setBounds(80, 190, 89, 32);
-
-        JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
-        JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
-        JBCancela1.setText("cancelar");
-        JBCancela1.setBorder(null);
-        JBCancela1.setBorderPainted(false);
-        JBCancela1.setFocusPainted(false);
-        JBCancela1.setPreferredSize(new java.awt.Dimension(89, 32));
-        JBCancela1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                JBCancela1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                JBCancela1MouseExited(evt);
-            }
-        });
-        JBCancela1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBCancela1ActionPerformed(evt);
-            }
-        });
-        jPFondo.add(JBCancela1);
-        JBCancela1.setBounds(190, 190, 89, 32);
-
         getContentPane().add(jPFondo);
         jPFondo.setBounds(0, 0, 380, 240);
 
@@ -219,38 +168,24 @@ public class JFAdmin_ConsultarInst extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSalirIcon1ActionPerformed
 
-    private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
-        this.JBIngreso1.setText("ACEPTAR");
-    }//GEN-LAST:event_JBIngreso1MouseEntered
-
-    private void JBIngreso1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseExited
-        this.JBIngreso1.setText("aceptar");
-    }//GEN-LAST:event_JBIngreso1MouseExited
-
-    private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-
-    }//GEN-LAST:event_JBIngreso1ActionPerformed
-
-    private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
-        this.JBCancela1.setText("CANCELAR");
-    }//GEN-LAST:event_JBCancela1MouseEntered
-
-    private void JBCancela1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseExited
-        this.JBCancela1.setText("cancelar");
-    }//GEN-LAST:event_JBCancela1MouseExited
-
-    private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
-        dispose();
-    }//GEN-LAST:event_JBCancela1ActionPerformed
-
     public void limpiarCampos() {
         this.jTFDato_Inst.setText("");
         this.jTFCodigo_Inst.setText("");
     }
+    
+    public void setTFCodigo(String codigo) {
+        this.jTFCodigo_Inst.setText(codigo);
+    }
+    
+    public void setTFNomDato(String dato) {
+        this.jLabel21.setText(dato);
+    }
+    
+    public void setTFDato(String dato) {
+        this.jTFDato_Inst.setText(dato);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JBCancela1;
-    private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar1;
     private javax.swing.JButton jButtonSalirIcon1;
     private javax.swing.JLabel jLabel20;

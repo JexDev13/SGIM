@@ -1,16 +1,24 @@
 package GUI.Administrador.Inventario;
 
+import Negocio.Conexion;
 import Negocio.Diseño;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * @authors G2 SoftwareSolutions
  */
-public class JFAdmin_InsertarInst extends javax.swing.JFrame {
+public class JFAdmin_Devolucion extends javax.swing.JFrame {
 
     private int x;
     private int y;
+    private Conexion con = new Conexion();
+    private String SQL;
 
-    public JFAdmin_InsertarInst() {
+    public JFAdmin_Devolucion() {
         initComponents();
         setLocationRelativeTo(this);
     }
@@ -26,13 +34,7 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
         JBIngreso1 = new javax.swing.JButton();
         jLabelTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jTFCategoria = new javax.swing.JTextField();
-        jTFFabricante = new javax.swing.JTextField();
-        jTFNombre = new javax.swing.JTextField();
         jTFCodigo = new javax.swing.JTextField();
-        jLCategoria = new javax.swing.JLabel();
-        jLFabricante = new javax.swing.JLabel();
-        jLNombre = new javax.swing.JLabel();
         jLCodigo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +65,7 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
             }
         });
         jPFondo.add(jButtonMinimizar);
-        jButtonMinimizar.setBounds(234, 0, 30, 30);
+        jButtonMinimizar.setBounds(320, 0, 30, 30);
 
         jButtonSalirIcon.setBackground(new java.awt.Color(250, 183, 22));
         jButtonSalirIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
@@ -76,7 +78,7 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
             }
         });
         jPFondo.add(jButtonSalirIcon);
-        jButtonSalirIcon.setBounds(264, 0, 30, 30);
+        jButtonSalirIcon.setBounds(350, 0, 30, 30);
 
         JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
         JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
@@ -99,7 +101,7 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
             }
         });
         jPFondo.add(JBCancela1);
-        JBCancela1.setBounds(160, 190, 89, 32);
+        JBCancela1.setBounds(200, 190, 89, 32);
 
         JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
         JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
@@ -126,24 +128,15 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
             }
         });
         jPFondo.add(JBIngreso1);
-        JBIngreso1.setBounds(50, 190, 89, 32);
+        JBIngreso1.setBounds(60, 190, 89, 32);
 
         jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitulo.setText("  Insertar Instrumento");
+        jLabelTitulo.setText(" Devolución");
         jPFondo.add(jLabelTitulo);
         jLabelTitulo.setBounds(0, 0, 200, 30);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLCategoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLCategoria.setText("Categoría:");
-
-        jLFabricante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLFabricante.setText("Fabricante:");
-
-        jLNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLNombre.setText("Nombre:");
 
         jLCodigo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLCodigo.setText("Código:");
@@ -152,67 +145,37 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLCategoria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFCategoria))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLFabricante)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFFabricante))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(31, 31, 31)
-                    .addComponent(jLCodigo)
-                    .addGap(18, 18, 18)
-                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(32, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLCodigo)
+                .addGap(102, 102, 102)
+                .addComponent(jTFCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLNombre)
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLFabricante)
-                    .addComponent(jTFFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCategoria)
-                    .addComponent(jTFCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(187, 187, 187))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(19, 19, 19)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLCodigo)
-                        .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(272, Short.MAX_VALUE)))
+                    .addComponent(jLCodigo)
+                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         jPFondo.add(jPanel1);
-        jPanel1.setBounds(0, 30, 293, 140);
+        jPanel1.setBounds(0, 30, 380, 150);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+            .addComponent(jPFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -246,7 +209,62 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
+        if (jTFCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        } else {
+            // verificar si existe codigo
+            // verificar si existe cedula
+            // si existen registrar la devolucion
+            if (jTFCodigo.getText().startsWith("INSTR-")) {
+                this.SQL = """
+                           SELECT COUNT(*) AS count FROM prestamos_Instrumentos WHERE Codigo_instrumento = '""" + jTFCodigo.getText() + "';";
+                try {
+                    ResultSet resultado = con.query(SQL);
+                    if (resultado.next()) {
+                        int count = resultado.getInt("count");
+                        if (count > 0) {
+                            this.SQL = """
+                           UPDATE instrumentos SET EstadoAlquiler = 'No Alquilado' WHERE Codigo = '""" + jTFCodigo.getText() + "';";
+                            con.update(SQL);
+                            this.SQL = """
+                           DELETE From prestamos_Instrumentos WHERE Codigo_instrumento = '""" + jTFCodigo.getText() + "';";
+                            con.update(SQL);
+                            JOptionPane.showMessageDialog(null, "Devolución registrada");
+                            jTFCodigo.setText("");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Código de producto no encontrado en prestamos");
+                        }
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (jTFCodigo.getText().startsWith("LIBR-")) {
+                this.SQL = """
+                           SELECT COUNT(*) AS count FROM prestamos_Libros WHERE Codigo_libro = '""" + jTFCodigo.getText() + "';";
+                try {
+                    ResultSet resultado = con.query(SQL);
+                    if (resultado.next()) {
+                        int count = resultado.getInt("count");
+                        if (count > 0) {
+                            this.SQL = """
+                           UPDATE libros SET EstadoAlquiler = 'No Alquilado' WHERE Codigo = '""" + jTFCodigo.getText() + "';";
+                            con.update(SQL);
+                            this.SQL = """
+                           DELETE From prestamos_Libros WHERE Codigo_libro = '""" + jTFCodigo.getText() + "';";
+                            con.update(SQL);
+                            JOptionPane.showMessageDialog(null, "Devolución registrada");
+                            jTFCodigo.setText("");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Código de producto no encontrado en prestamos");
+                        }
 
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }//GEN-LAST:event_JBIngreso1ActionPerformed
 
     private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
@@ -261,28 +279,16 @@ public class JFAdmin_InsertarInst extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
-    public void borrarCampos() {
-        this.jTFCodigo.setText("");
-        this.jTFCategoria.setText("");
-        this.jTFFabricante.setText("");
-        this.jTFNombre.setText("");
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
-    private javax.swing.JLabel jLCategoria;
     private javax.swing.JLabel jLCodigo;
-    private javax.swing.JLabel jLFabricante;
-    private javax.swing.JLabel jLNombre;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPFondo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTFCategoria;
     private javax.swing.JTextField jTFCodigo;
-    private javax.swing.JTextField jTFFabricante;
-    private javax.swing.JTextField jTFNombre;
     // End of variables declaration//GEN-END:variables
 }
