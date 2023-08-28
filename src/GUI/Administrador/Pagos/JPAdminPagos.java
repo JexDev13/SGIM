@@ -1,21 +1,32 @@
 package GUI.Administrador.Pagos;
 
+import Negocio.Conexion;
 import Negocio.Diseño;
+import javax.swing.JOptionPane;
 
 /*
  * @authors G2 SoftwareSolutions
  */
 public class JPAdminPagos extends javax.swing.JPanel {
 
-    Diseño gui = new Diseño();
-    JFAdmin_RegistrarPago regPag = new JFAdmin_RegistrarPago();
-    JFAdmin_EliminarPago elimPag = new JFAdmin_EliminarPago();
-    JFAdmin_ConsultarPago consPag = new JFAdmin_ConsultarPago();
-    JFAdmin_ActualizarPago actPag = new JFAdmin_ActualizarPago();
+    private Diseño gui = new Diseño();
+    private JFAdmin_RegistrarPago regPag = new JFAdmin_RegistrarPago();
+    private JFAdmin_EliminarPago elimPag = new JFAdmin_EliminarPago();
+    private JFAdmin_ConsultarPago consPag = new JFAdmin_ConsultarPago();
+    private JFAdmin_ActualizarPago actPag = new JFAdmin_ActualizarPago();
+    private Conexion con = new Conexion();
+    private String selectTabla = "PagosTotales";
+    private String SQL;
 
     public JPAdminPagos() {
         initComponents();
         gui.jtableHead(this.jTPagos);
+        jLFiltro.setVisible(false);
+        jCBFiltro.setVisible(false);
+        this.SQL = """
+                   SELECT Codigo_pension,Cedula_estudiante,Mes,Total_cancelado,Pagado_total FROM estudiantes_pagados;""";
+            con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
+        obtenerPorcentaje();
     }
 
     @SuppressWarnings("unchecked")
@@ -23,17 +34,16 @@ public class JPAdminPagos extends javax.swing.JPanel {
     private void initComponents() {
 
         jButtonNuevoPago = new javax.swing.JButton();
-        jButtonActualizarPago = new javax.swing.JButton();
-        jButtonEliminarPago = new javax.swing.JButton();
-        jLLupa = new javax.swing.JLabel();
+        jButtonBuscar = new javax.swing.JButton();
         jTFBusqueda = new javax.swing.JTextField();
         jSeparator = new javax.swing.JSeparator();
         jLTitTabla = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTPagos = new javax.swing.JTable();
-        jButtonConsultarPagos = new javax.swing.JButton();
         jTFPorcentajePagado = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
+        jLFiltro = new javax.swing.JLabel();
+        jCBFiltro = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -57,47 +67,13 @@ public class JPAdminPagos extends javax.swing.JPanel {
             }
         });
 
-        jButtonActualizarPago.setBackground(new java.awt.Color(250, 183, 22));
-        jButtonActualizarPago.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonActualizarPago.setText("actualizar");
-        jButtonActualizarPago.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jButtonActualizarPago.setBorderPainted(false);
-        jButtonActualizarPago.setPreferredSize(new java.awt.Dimension(73, 40));
-        jButtonActualizarPago.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonActualizarPagoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonActualizarPagoMouseExited(evt);
-            }
-        });
-        jButtonActualizarPago.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
+        jButtonBuscar.setBorder(null);
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonActualizarPagoActionPerformed(evt);
+                jButtonBuscarActionPerformed(evt);
             }
         });
-
-        jButtonEliminarPago.setBackground(new java.awt.Color(250, 183, 22));
-        jButtonEliminarPago.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEliminarPago.setText("eliminar");
-        jButtonEliminarPago.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jButtonEliminarPago.setBorderPainted(false);
-        jButtonEliminarPago.setPreferredSize(new java.awt.Dimension(73, 40));
-        jButtonEliminarPago.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonEliminarPagoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonEliminarPagoMouseExited(evt);
-            }
-        });
-        jButtonEliminarPago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEliminarPagoActionPerformed(evt);
-            }
-        });
-
-        jLLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
 
         jTFBusqueda.setForeground(new java.awt.Color(102, 102, 102));
         jTFBusqueda.setText("Cédula Estudiante");
@@ -138,37 +114,37 @@ public class JPAdminPagos extends javax.swing.JPanel {
         jTPagos.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "N°Cédula", "Nombres", "Apellidos", "Método de pago", "Pagado", "Código Transacción"
+                "Código Pensión", "N°Cédula", "Mes", "Valor", "Pagado"
             }
         ));
         jTPagos.setGridColor(new java.awt.Color(250, 183, 22));
@@ -177,26 +153,6 @@ public class JPAdminPagos extends javax.swing.JPanel {
         jTPagos.getTableHeader().setResizingAllowed(false);
         jTPagos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTPagos);
-
-        jButtonConsultarPagos.setBackground(new java.awt.Color(250, 183, 22));
-        jButtonConsultarPagos.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonConsultarPagos.setText("consultar");
-        jButtonConsultarPagos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jButtonConsultarPagos.setBorderPainted(false);
-        jButtonConsultarPagos.setPreferredSize(new java.awt.Dimension(73, 40));
-        jButtonConsultarPagos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonConsultarPagosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonConsultarPagosMouseExited(evt);
-            }
-        });
-        jButtonConsultarPagos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarPagosActionPerformed(evt);
-            }
-        });
 
         jTFPorcentajePagado.setEditable(false);
         jTFPorcentajePagado.setBackground(new java.awt.Color(255, 255, 255));
@@ -207,6 +163,16 @@ public class JPAdminPagos extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel20.setText("% Estudiantes Pagados");
 
+        jLFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/filtrar 24.png"))); // NOI18N
+
+        jCBFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mostrar...", "Estado de cuenta" }));
+        jCBFiltro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 183, 22)));
+        jCBFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBFiltroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,35 +180,34 @@ public class JPAdminPagos extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonNuevoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonActualizarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonEliminarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLLupa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(6, 6, 6)
+                        .addComponent(jButtonBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTFPorcentajePagado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel20)
-                .addGap(63, 63, 63))
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLTitTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonConsultarPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(26, Short.MAX_VALUE))))
+                    .addComponent(jLTitTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTFPorcentajePagado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)
+                        .addGap(63, 63, 63))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLFiltro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCBFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,23 +216,19 @@ public class JPAdminPagos extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLLupa)
-                            .addComponent(jTFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonBuscar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonNuevoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonActualizarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonEliminarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonConsultarPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLTitTabla)))
+                    .addComponent(jButtonNuevoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCBFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLFiltro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLTitTabla)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFPorcentajePagado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,38 +249,14 @@ public class JPAdminPagos extends javax.swing.JPanel {
         regPag.setVisible(true);
     }//GEN-LAST:event_jButtonNuevoPagoActionPerformed
 
-    private void jButtonActualizarPagoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActualizarPagoMouseEntered
-        this.jButtonActualizarPago.setText("ACTUALIZAR");
-    }//GEN-LAST:event_jButtonActualizarPagoMouseEntered
-
-    private void jButtonActualizarPagoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActualizarPagoMouseExited
-        this.jButtonActualizarPago.setText("actualizar");
-    }//GEN-LAST:event_jButtonActualizarPagoMouseExited
-
-    private void jButtonActualizarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarPagoActionPerformed
-        actPag.setVisible(true);
-    }//GEN-LAST:event_jButtonActualizarPagoActionPerformed
-
-    private void jButtonEliminarPagoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarPagoMouseEntered
-        this.jButtonEliminarPago.setText("ELIMINAR");
-    }//GEN-LAST:event_jButtonEliminarPagoMouseEntered
-
-    private void jButtonEliminarPagoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarPagoMouseExited
-        this.jButtonEliminarPago.setText("eliminar");
-    }//GEN-LAST:event_jButtonEliminarPagoMouseExited
-
-    private void jButtonEliminarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarPagoActionPerformed
-        elimPag.setVisible(true);
-    }//GEN-LAST:event_jButtonEliminarPagoActionPerformed
-
     private void jTFBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusquedaFocusLost
         if (jTFBusqueda.getText().isEmpty()) {
-            this.jTFBusqueda.setText("Buscar cédula");
+            this.jTFBusqueda.setText("Cédula Estudiante");
         }
     }//GEN-LAST:event_jTFBusquedaFocusLost
 
     private void jTFBusquedaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFBusquedaMousePressed
-        if (jTFBusqueda.getText().equalsIgnoreCase("Buscar cédula")) {
+        if (jTFBusqueda.getText().equalsIgnoreCase("Cédula Estudiante")) {
             jTFBusqueda.setText("");
         }
     }//GEN-LAST:event_jTFBusquedaMousePressed
@@ -332,25 +269,75 @@ public class JPAdminPagos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jTFBusquedaKeyReleased
 
-    private void jButtonConsultarPagosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultarPagosMouseEntered
-        this.jButtonConsultarPagos.setText("CONSULTAR");
-    }//GEN-LAST:event_jButtonConsultarPagosMouseEntered
+    private void jCBFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBFiltroActionPerformed
 
-    private void jButtonConsultarPagosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultarPagosMouseExited
-        this.jButtonConsultarPagos.setText("consultar");
-    }//GEN-LAST:event_jButtonConsultarPagosMouseExited
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        obtenerPorcentaje();
+        if (!jTFBusqueda.getText().equalsIgnoreCase("Cédula Estudiante") && !jTFBusqueda.getText().isEmpty()) {
+            if (existeCedula(jTFBusqueda.getText())) {
+                this.SQL = """
+                   SELECT Codigo_pension,Cedula_estudiante,Mes,Total_cancelado,Pagado_total FROM estudiantes_pagados WHERE """
+                        + " " + "Cedula_estudiante" + " LIKE '%" + jTFBusqueda.getText() + "%';";
+                con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
+                jLFiltro.setVisible(true);
+                jCBFiltro.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
+                jTFBusqueda.setText("");
+            }
+        } else {
 
-    private void jButtonConsultarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarPagosActionPerformed
-        consPag.setVisible(true);
-    }//GEN-LAST:event_jButtonConsultarPagosActionPerformed
+            jLFiltro.setVisible(false);
+            jCBFiltro.setVisible(false);
+            this.SQL = """
+                   SELECT Codigo_pension,Cedula_estudiante,Mes,Total_cancelado,Pagado_total FROM estudiantes_pagados;""";
+            con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
+        }
 
+        if (jCBFiltro.isVisible() && !jCBFiltro.getSelectedItem().equals("Mostrar...")) {
+            // agregar logica a cada uno para que verifique si el código existe y jalar el dato necesario de la db.
+            if (jCBFiltro.getSelectedItem().equals("Estado de cuenta") && (existeCedula(jTFBusqueda.getText()))) {
+                consPag.setTFBuscar_CedulaEst(jTFBusqueda.getText());
+                consPag.setVisible(true);
+            }
+        }
+    }
 
+    private boolean existeCedula(String cedula) {
+        boolean existe = false;
+
+        for (int row = 0; row < jTPagos.getRowCount(); row++) {
+            String cedulaEnTabla = (String) jTPagos.getValueAt(row, 1);
+            if (cedulaEnTabla.equals(cedula)) {
+                existe = true;
+                break;
+            }
+        }
+        return existe;
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void obtenerPorcentaje() {
+        int totalEstudiantes = jTPagos.getRowCount();
+        int estudiantesConAbono = 0;
+        for (int i = 0; i < totalEstudiantes; i++) {
+            Object abono = jTPagos.getValueAt(i, 4); // Reemplaza columnaDeAbono con el índice de la columna Abono
+            
+            if (abono != null && abono.toString().equals("1")) {
+                estudiantesConAbono++;
+            }
+            double porcentaje = (double) estudiantesConAbono / totalEstudiantes * 100;
+            
+            jTFPorcentajePagado.setText(String.valueOf(porcentaje));
+        } 
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonActualizarPago;
-    private javax.swing.JButton jButtonConsultarPagos;
-    private javax.swing.JButton jButtonEliminarPago;
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonNuevoPago;
-    private javax.swing.JLabel jLLupa;
+    private javax.swing.JComboBox<String> jCBFiltro;
+    private javax.swing.JLabel jLFiltro;
     private javax.swing.JLabel jLTitTabla;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JScrollPane jScrollPane1;

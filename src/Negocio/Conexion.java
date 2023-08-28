@@ -14,6 +14,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -127,10 +128,89 @@ public class Conexion {
                     tabla.addRow(users);
                 }
                 jTabla.setModel(tabla);
+            }else if (selectTabla.equals("Instrumentos")) {
+                Object[] instrumentos = new Object[6];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Código", "Nombre", "Fabricante", "Categoría", "Estado Alquiler", "Condición"});
+                while (rs.next()) {
+                    instrumentos[0] = rs.getString("Codigo");
+                    instrumentos[1] = rs.getString("Nombre");
+                    instrumentos[2] = rs.getString("Fabricante");
+                    instrumentos[3] = rs.getString("Categoria");
+                    instrumentos[4] = rs.getString("EstadoAlquiler");
+                    instrumentos[5] = rs.getString("Condicion");
+                    tabla.addRow(instrumentos);
+                }
+                jTabla.setModel(tabla);
+            }else if (selectTabla.equals("Libros")) {
+                Object[] libros = new Object[6];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Código", "Nombre", "Autor", "Categoría", "Estado Alquiler", "Condición"});
+                while (rs.next()) {
+                    libros[0] = rs.getString("Codigo");
+                    libros[1] = rs.getString("Nombre");
+                    libros[2] = rs.getString("Autor");
+                    libros[3] = rs.getString("Categoria");
+                    libros[4] = rs.getString("EstadoAlquiler");
+                    libros[5] = rs.getString("Condicion");
+                    tabla.addRow(libros);
+                }
+                jTabla.setModel(tabla);
+            }else if (selectTabla.equals("PagosTotales")) {
+                Object[] PagosTotales = new Object[5];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Código Pensión", "N°Cédula", "Mes", "Valor", "Pagado"});
+                while (rs.next()) {
+                    PagosTotales[0] = rs.getString("Codigo_pension");
+                    PagosTotales[1] = rs.getString("Cedula_estudiante");
+                    PagosTotales[2] = rs.getString("Mes");
+                    PagosTotales[3] = rs.getString("Total_cancelado");
+                    PagosTotales[4] = rs.getString("Pagado_Total");
+                    tabla.addRow(PagosTotales);
+                }
+                jTabla.setModel(tabla);
+            }else if (selectTabla.equals("Pagos")) {
+                Object[] Pagos = new Object[5];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Código Pago", "Método Pago", "Valor", "Fecha Pago", "Abono"});
+                while (rs.next()) {
+                    Pagos[0] = rs.getString("Codigo_pago");
+                    Pagos[1] = rs.getString("Metodo_pago");
+                    Pagos[2] = rs.getString("Monto");
+                    Pagos[3] = rs.getString("Fecha_Pago");
+                    Pagos[4] = rs.getString("Abono");
+                    tabla.addRow(Pagos);
+                }
+                jTabla.setModel(tabla);
             }
         } catch (SQLException e) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+    
+    public void update(String SQL) {
+        try {
+            cn = conectar();
+            st = cn.createStatement();
+            st.executeUpdate(SQL);
+        } catch (SQLException e) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
+    public ResultSet query(String SQL) {
+        try {
+            cn = conectar();
+            st = cn.createStatement();
+            rs = st.executeQuery(SQL);
+        } catch (SQLException e) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return rs;
     }
 
     //Validación para cédulas duplicadas
