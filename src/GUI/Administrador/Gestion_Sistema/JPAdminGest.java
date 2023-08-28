@@ -379,7 +379,7 @@ public class JPAdminGest extends javax.swing.JPanel {
                 Parametro_de_busqueda = "Nombre_Usuario";
             }
             case 1 ->  {
-                Parametro_de_busqueda = "Cedula";
+                Parametro_de_busqueda = "u.Cedula";
             }
             case 2 ->  {
                 Parametro_de_busqueda = "Nombre_Usuario";
