@@ -1,5 +1,7 @@
 package Negocio;
 
+import java.security.SecureRandom;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,5 +66,20 @@ public class Validaciones {
         }
         Matcher matcher = EMAIL_PATTERN.matcher(email);
         return matcher.matches();
+    }
+
+    public String generarContrasena() {
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+        int longitudContrasena = 12;
+
+        StringBuilder contrasena = new StringBuilder();
+        Random random = new SecureRandom();
+
+        for (int i = 0; i < longitudContrasena; i++) {
+            int indice = random.nextInt(caracteres.length());
+            contrasena.append(caracteres.charAt(indice));
+        }
+
+        return contrasena.toString();
     }
 }

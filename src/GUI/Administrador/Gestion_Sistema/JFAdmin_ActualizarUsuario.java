@@ -1,6 +1,19 @@
 package GUI.Administrador.Gestion_Sistema;
 
+import static GUI.Administrador.Gestion_Sistema.JFAdmin_EliminarUsuario.jTFApellidos;
+import static GUI.Administrador.Gestion_Sistema.JFAdmin_EliminarUsuario.jTFBuscar_EliminarUsu;
+import static GUI.Administrador.Gestion_Sistema.JFAdmin_EliminarUsuario.jTFCedula_elim;
+import static GUI.Administrador.Gestion_Sistema.JFAdmin_EliminarUsuario.jTFCorreo;
+import static GUI.Administrador.Gestion_Sistema.JFAdmin_EliminarUsuario.jTFNombres;
+import static GUI.Administrador.Gestion_Sistema.JFAdmin_EliminarUsuario.jTFRol;
+import static GUI.Administrador.Gestion_Sistema.JFAdmin_EliminarUsuario.jTFUsuario;
+import Negocio.Conexion;
+import Negocio.Diseño;
+import Negocio.Validaciones;
 import java.awt.Color;
+import static java.awt.image.ImageObserver.HEIGHT;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -9,6 +22,14 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
 
     private int x;
     private int y;
+    Validaciones val = new Validaciones();
+    String SQL;
+    Conexion con = new Conexion();
+    String tabla = "UsersAct";
+    String titulo = null;
+    String mensaje = null;
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
 
     public JFAdmin_ActualizarUsuario() {
         initComponents();
@@ -33,7 +54,7 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
         jLNumCedulaDatosAct = new javax.swing.JLabel();
         jChBContraseña = new javax.swing.JCheckBox();
         JBGenContra = new javax.swing.JButton();
-        jTFBuscar_Usuario1 = new javax.swing.JTextField();
+        jTFContrGen = new javax.swing.JTextField();
         jLNumCedulaDatosAct1 = new javax.swing.JLabel();
         jLNumCedulaDatosAct2 = new javax.swing.JLabel();
         jTFCUsuarioAct = new javax.swing.JTextField();
@@ -46,7 +67,6 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(308, 392));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(308, 392));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -185,13 +205,13 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jTFBuscar_Usuario1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTFBuscar_Usuario1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTFContrGen.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFContrGen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTFBuscar_Usuario1KeyReleased(evt);
+                jTFContrGenKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTFBuscar_Usuario1KeyTyped(evt);
+                jTFContrGenKeyTyped(evt);
             }
         });
 
@@ -246,7 +266,7 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
                     .addGroup(jPDatosUsuarioLayout.createSequentialGroup()
                         .addComponent(jLNumCedulaDatosAct1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFBuscar_Usuario1)))
+                        .addComponent(jTFContrGen)))
                 .addContainerGap())
         );
         jPDatosUsuarioLayout.setVerticalGroup(
@@ -271,7 +291,7 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPDatosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLNumCedulaDatosAct1)
-                    .addComponent(jTFBuscar_Usuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFContrGen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -334,7 +354,14 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFBuscar_UsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_UsuarioKeyReleased
-
+        String parametroBusqueda = jTFBuscar_Usuario.getText();
+        if (parametroBusqueda.length() == 10) {
+            this.SQL = "SELECT u.Cedula, u.Nombre_Usuario, u.Rol FROM Users u WHERE u.Cedula LIKE '%" + parametroBusqueda + "%';";
+            con.despliegueFields(SQL, "Admins", jTFCedula_Act, jTFCUsuarioAct, jTFCUsuarioAct1, null,
+                    null, null, null, null, "acutalizar");
+        } else {
+            borrarCampos();
+        }
     }//GEN-LAST:event_jTFBuscar_UsuarioKeyReleased
 
     private void jTFBuscar_UsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_UsuarioKeyTyped
@@ -354,7 +381,39 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_JBAceptarMouseExited
 
     private void JBAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAceptarActionPerformed
-
+        String parametroBusqueda = this.jTFBuscar_Usuario.getText();
+        if (parametroBusqueda.isEmpty()) {
+            titulo = "ADVERTENCIA";
+            mensaje = "Todos los campos deben estar llenos";
+            emitirMensaje(mensaje, titulo);
+        } else {
+            if (!val.validadorDeCedula(parametroBusqueda)) {
+                titulo = "ERROR DE FORMATO";
+                mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
+                emitirMensaje(mensaje, titulo);
+            } else {
+                this.SQL = "Select count(*) from Users where Cedula like '%" + parametroBusqueda + "%'";
+                if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
+                    getToolkit().beep();
+                    titulo = "ADVERTENCIA";
+                    mensaje = "El usuario al que hace referencia no existe";
+                    emitirMensaje(mensaje, titulo);
+                } else {
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la contraseña del usuario?" + "\n     -Esta accion no podrá ser revertida", "Actualizar contraseña", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
+                    if (seleccion == 0) {
+                        this.SQL = "UPDATE Users SET Contrasena = '" + jTFContrGen.getText() + "' WHERE Cedula = '" + jTFCedula_Act.getText() + "';";
+                        if (con.actualizarEliminarTablas(SQL) == true) {
+                            titulo = "RESULTADO";
+                            mensaje = "Contraseña cambiada con exito";
+                            dispose();
+                            emitirMensaje(mensaje, titulo);
+                            limpiarCampos();
+                            jTFBuscar_Usuario.setText("");
+                        }
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_JBAceptarActionPerformed
 
     private void JBCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancelarMouseEntered
@@ -366,7 +425,12 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarMouseExited
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
         dispose();
+        borrarCampos();
+        jTFBuscar_Usuario.setText("");
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void jButtonMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizarActionPerformed
@@ -393,41 +457,51 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jChBContraseñaActionPerformed
 
     private void JBGenContraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBGenContraMouseEntered
-        if(this.jChBContraseña.isSelected())
-        {
+        if (this.jChBContraseña.isSelected()) {
             this.JBGenContra.setEnabled(true);
-            this.JBGenContra.setForeground(new Color (255,255,255));
-            this.JBGenContra.setBackground(new Color (255,232,158));
+            this.JBGenContra.setForeground(new Color(255, 255, 255));
+            this.JBGenContra.setBackground(new Color(255, 232, 158));
             this.JBGenContra.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_JBGenContraMouseEntered
 
     private void JBGenContraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBGenContraMouseExited
-        if(this.jChBContraseña.isSelected())
-        {
-            this.JBGenContra.setBackground(new Color (250,183,22));
-            this.JBGenContra.setForeground(new Color (255,255,255));
+        if (this.jChBContraseña.isSelected()) {
+            this.JBGenContra.setBackground(new Color(250, 183, 22));
+            this.JBGenContra.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_JBGenContraMouseExited
 
     private void JBGenContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGenContraActionPerformed
-        if(this.jChBContraseña.isSelected())
-        {
-            
+        if (this.jChBContraseña.isSelected()) {
+            String contrasena = val.generarContrasena();
+            jTFContrGen.setText(contrasena);
+
         }
     }//GEN-LAST:event_JBGenContraActionPerformed
 
-    private void jTFBuscar_Usuario1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_Usuario1KeyReleased
+    private void jTFContrGenKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFContrGenKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFBuscar_Usuario1KeyReleased
+    }//GEN-LAST:event_jTFContrGenKeyReleased
 
-    private void jTFBuscar_Usuario1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_Usuario1KeyTyped
+    private void jTFContrGenKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFContrGenKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFBuscar_Usuario1KeyTyped
+    }//GEN-LAST:event_jTFContrGenKeyTyped
 
     private void jTFBuscar_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFBuscar_UsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFBuscar_UsuarioActionPerformed
+
+    private void borrarCampos() {
+        jTFCedula_Act.setText("");
+        jTFCUsuarioAct.setText("");
+        jTFCUsuarioAct1.setText("");
+        jTFContrGen.setText("");
+    }
+
+    private void emitirMensaje(String mensaje, String titulo) {
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBAceptar;
@@ -448,9 +522,9 @@ public class JFAdmin_ActualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPEncabezado;
     private javax.swing.JPanel jPie;
     public static javax.swing.JTextField jTFBuscar_Usuario;
-    public static javax.swing.JTextField jTFBuscar_Usuario1;
     public static javax.swing.JTextField jTFCUsuarioAct;
     public static javax.swing.JTextField jTFCUsuarioAct1;
     public static javax.swing.JTextField jTFCedula_Act;
+    public static javax.swing.JTextField jTFContrGen;
     // End of variables declaration//GEN-END:variables
 }

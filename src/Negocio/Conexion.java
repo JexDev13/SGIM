@@ -356,6 +356,18 @@ public class Conexion {
                         cinco.setText("" + rs.getString("p.Correo"));
                     }
                 }
+            }else if (tabla.equals("UsersAct")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("u.Cedula"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("u.Nombre_Usuario"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("u.Rol"));
+                    }
+                }
             }
         } catch (SQLException e) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
