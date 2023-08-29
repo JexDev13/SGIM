@@ -186,6 +186,34 @@ public class Conexion {
                     tabla.addRow(Pagos);
                 }
                 jTabla.setModel(tabla);
+            } else if (selectTabla.equals("Usuarios_Inactivos")) {
+                Object[] inactivos = new Object[4];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Cédula", "Nombres", "Apellidos", "Rol"});
+                while (rs.next()) {
+                    inactivos[0] = rs.getString("cedula");
+                    inactivos[1] = rs.getString("nombres");
+                    inactivos[2] = rs.getString("apellidos");
+                    inactivos[3] = rs.getString("rol");
+                    tabla.addRow(inactivos);
+                }
+                jTabla.setModel(tabla);
+            } else if (selectTabla.equals("Bloqueados")) {
+                Object[] bloqueados = new Object[6];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Cédula", "Nombres", "Apellidos", "Correo", "Usuario","Estado"});
+                while (rs.next()) {
+                    bloqueados[0] = rs.getString("cedula");
+                    bloqueados[1] = rs.getString("nombres");
+                    bloqueados[2] = rs.getString("apellidos");
+                    bloqueados[3] = rs.getString("Correo");
+                    bloqueados[4] = rs.getString("Nombre_Usuario");
+                    bloqueados[5] = "Bloqueado";
+                    tabla.addRow(bloqueados);
+                }
+                jTabla.setModel(tabla);
             }
         } catch (SQLException e) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
@@ -308,6 +336,24 @@ public class Conexion {
                     }
                     if (seis != null) {
                         seis.setText("" + rs.getString("p.Apellidos"));
+                    }
+                }
+            } else if (tabla.equals("Users")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("u.Cedula"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("p.Nombres"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("p.Apellidos"));
+                    }
+                    if (cuatro != null) {
+                        cuatro.setText("" + rs.getString("u.Nombre_Usuario"));
+                    }
+                    if (cinco != null) {
+                        cinco.setText("" + rs.getString("p.Correo"));
                     }
                 }
             }

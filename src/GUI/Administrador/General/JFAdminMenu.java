@@ -7,10 +7,12 @@ import GUI.Administrador.Inventario.JPAdminInv;
 import GUI.Administrador.Pagos.JPAdminPagos;
 import GUI.Administrador.Profesores.JPAdminProf;
 import Negocio.Conexion;
+import Negocio.Diseño;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /*
@@ -19,6 +21,7 @@ import javax.swing.JPanel;
 public class JFAdminMenu extends javax.swing.JFrame {
 
     //Declarar aquí los paneles  y clases
+    Diseño dis = new Diseño();
     Conexion con = new Conexion();
     JFLogin log = new JFLogin();
     int x;
@@ -27,9 +30,8 @@ public class JFAdminMenu extends javax.swing.JFrame {
     public JFAdminMenu() {
         initComponents();
         setLocationRelativeTo(this);
-
-        JPHome home = new JPHome(); //home=0
-        setPanel(0, home);
+            JPHome home = new JPHome(); //home=0
+        setPanel(0, home, jPanelGeneral, jLabelTituloPanel);
         setIconImage(getIconImage());
     }
 
@@ -37,19 +39,19 @@ public class JFAdminMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
+        jLogo = new javax.swing.JLabel();
         jBHome = new javax.swing.JButton();
+        jBInventario = new javax.swing.JButton();
         jBProfesores = new javax.swing.JButton();
         jBEstudiantes = new javax.swing.JButton();
-        jBInventario = new javax.swing.JButton();
         jBPagos = new javax.swing.JButton();
         jBCalendario = new javax.swing.JButton();
         jBGest_Sis = new javax.swing.JButton();
         jBLogOut = new javax.swing.JButton();
-        jLabelFondo = new javax.swing.JLabel();
         jLabelTituloPanel = new javax.swing.JLabel();
         jButtonMinimizar = new javax.swing.JButton();
         jButtonSalirIcon = new javax.swing.JButton();
+        jLabelFondo = new javax.swing.JLabel();
         jPanelGeneral = new javax.swing.JPanel();
         jLCreditos = new javax.swing.JLabel();
         jLabelFondoPanel = new javax.swing.JLabel();
@@ -69,21 +71,24 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MousaiLogo.png"))); // NOI18N
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 180));
+        jLogo.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MousaiLogo.png"))); // NOI18N
+        jLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 180));
 
         jBHome.setBackground(new java.awt.Color(255, 255, 254));
         jBHome.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jBHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/home.png"))); // NOI18N
-        jBHome.setText("  home");
-        jBHome.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBHome.setText("  HOME");
+        jBHome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jBHome.setBorderPainted(false);
         jBHome.setContentAreaFilled(false);
         jBHome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jBHome.setFocusPainted(false);
+        jBHome.setFocusable(false);
         jBHome.setHideActionText(true);
+        jBHome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jBHome.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -100,13 +105,42 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 260, 60));
 
+        jBInventario.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
+        jBInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inventario.png"))); // NOI18N
+        jBInventario.setText("  INVENTARIO");
+        jBInventario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jBInventario.setBorderPainted(false);
+        jBInventario.setContentAreaFilled(false);
+        jBInventario.setFocusPainted(false);
+        jBInventario.setFocusable(false);
+        jBInventario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jBInventario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jBInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBInventarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBInventarioMouseExited(evt);
+            }
+        });
+        jBInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBInventarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 260, 60));
+
         jBProfesores.setBackground(new java.awt.Color(255, 255, 254));
         jBProfesores.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jBProfesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/profesores.png"))); // NOI18N
-        jBProfesores.setText("  profesores");
-        jBProfesores.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBProfesores.setText("  PROFESORES     ");
+        jBProfesores.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jBProfesores.setBorderPainted(false);
         jBProfesores.setContentAreaFilled(false);
+        jBProfesores.setFocusPainted(false);
+        jBProfesores.setFocusable(false);
+        jBProfesores.setHideActionText(true);
+        jBProfesores.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jBProfesores.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBProfesores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -126,10 +160,14 @@ public class JFAdminMenu extends javax.swing.JFrame {
         jBEstudiantes.setBackground(new java.awt.Color(255, 255, 254));
         jBEstudiantes.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jBEstudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/estudiantes.png"))); // NOI18N
-        jBEstudiantes.setText("  estudiantes");
-        jBEstudiantes.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
+        jBEstudiantes.setText("  ESTUDIANTES    ");
+        jBEstudiantes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jBEstudiantes.setBorderPainted(false);
         jBEstudiantes.setContentAreaFilled(false);
+        jBEstudiantes.setFocusPainted(false);
+        jBEstudiantes.setFocusable(false);
+        jBEstudiantes.setHideActionText(true);
+        jBEstudiantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jBEstudiantes.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -146,34 +184,15 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jBEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 260, 60));
 
-        jBInventario.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
-        jBInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inventario.png"))); // NOI18N
-        jBInventario.setText("  inventario");
-        jBInventario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
-        jBInventario.setBorderPainted(false);
-        jBInventario.setContentAreaFilled(false);
-        jBInventario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jBInventario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jBInventarioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jBInventarioMouseExited(evt);
-            }
-        });
-        jBInventario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBInventarioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jBInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 260, 60));
-
         jBPagos.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jBPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pagos.png"))); // NOI18N
-        jBPagos.setText("  pagos");
+        jBPagos.setText("  PAGOS");
         jBPagos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
         jBPagos.setBorderPainted(false);
         jBPagos.setContentAreaFilled(false);
+        jBPagos.setFocusPainted(false);
+        jBPagos.setFocusable(false);
+        jBPagos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jBPagos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBPagos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -192,10 +211,13 @@ public class JFAdminMenu extends javax.swing.JFrame {
 
         jBCalendario.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jBCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/clases.png"))); // NOI18N
-        jBCalendario.setText("  clases");
+        jBCalendario.setText("  CLASES ");
         jBCalendario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
         jBCalendario.setBorderPainted(false);
         jBCalendario.setContentAreaFilled(false);
+        jBCalendario.setFocusPainted(false);
+        jBCalendario.setFocusable(false);
+        jBCalendario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jBCalendario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBCalendario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -214,10 +236,13 @@ public class JFAdminMenu extends javax.swing.JFrame {
 
         jBGest_Sis.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jBGest_Sis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gestion.png"))); // NOI18N
-        jBGest_Sis.setText("gestión del sistema");
+        jBGest_Sis.setText("  GESTIÓN DEL SISTEMA");
         jBGest_Sis.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(250, 183, 22)));
         jBGest_Sis.setBorderPainted(false);
         jBGest_Sis.setContentAreaFilled(false);
+        jBGest_Sis.setFocusPainted(false);
+        jBGest_Sis.setFocusable(false);
+        jBGest_Sis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jBGest_Sis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBGest_Sis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -236,9 +261,13 @@ public class JFAdminMenu extends javax.swing.JFrame {
 
         jBLogOut.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jBLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/log out.png"))); // NOI18N
-        jBLogOut.setText("  log out");
+        jBLogOut.setText("  LOG OUT");
         jBLogOut.setBorder(null);
+        jBLogOut.setBorderPainted(false);
         jBLogOut.setContentAreaFilled(false);
+        jBLogOut.setFocusPainted(false);
+        jBLogOut.setFocusable(false);
+        jBLogOut.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jBLogOut.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jBLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -254,9 +283,6 @@ public class JFAdminMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jBLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 260, 60));
-
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_Menu.png"))); // NOI18N
-        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabelTituloPanel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabelTituloPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -287,6 +313,9 @@ public class JFAdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonSalirIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 0, 30, 30));
 
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_Menu.png"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jPanelGeneral.setBackground(new java.awt.Color(255, 255, 255));
         jPanelGeneral.setMaximumSize(new java.awt.Dimension(970, 630));
         jPanelGeneral.setMinimumSize(new java.awt.Dimension(970, 630));
@@ -298,14 +327,6 @@ public class JFAdminMenu extends javax.swing.JFrame {
         jLCreditos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLCreditos.setText("©G2 SoftwareSolutions");
         jLCreditos.setToolTipText("");
-        jLCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLCreditosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLCreditosMouseExited(evt);
-            }
-        });
         getContentPane().add(jLCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 660, -1, 10));
 
         jLabelFondoPanel.setBackground(new java.awt.Color(250, 183, 22));
@@ -325,43 +346,44 @@ public class JFAdminMenu extends javax.swing.JFrame {
 
     private void jBGest_SisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGest_SisActionPerformed
         //Gestión del sistema = 6
-        JPAdminGest gest = new JPAdminGest();//Gestión del sistema = 6
-        setPanel(6, gest);
+    JPAdminGest gest = new JPAdminGest();//Gestión del sistema = 6
+       setPanel(6, gest, jPanelGeneral, jLabelTituloPanel);
     }//GEN-LAST:event_jBGest_SisActionPerformed
 
     private void jBHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBHomeActionPerformed
-        JPHome home = new JPHome(); //home=0
-        setPanel(0, home);
+        //Home=0
+                            JPHome home = new JPHome(); //home=0
+        setPanel(0, home, jPanelGeneral, jLabelTituloPanel);
     }//GEN-LAST:event_jBHomeActionPerformed
 
     private void jBProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBProfesoresActionPerformed
         //Profesores = 1
-        JPAdminProf prof = new JPAdminProf(); //profesores = 1
-        setPanel(1, prof);
+            JPAdminProf prof = new JPAdminProf(); //profesores = 1
+        setPanel(1, prof, jPanelGeneral, jLabelTituloPanel);
     }//GEN-LAST:event_jBProfesoresActionPerformed
 
     private void jBEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEstudiantesActionPerformed
         //Estudiantes = 2
-        JPAdminEst est = new JPAdminEst();//estudiantes = 2
-        setPanel(2, est);
+            JPAdminEst est = new JPAdminEst();//estudiantes = 2
+        setPanel(2, est, jPanelGeneral, jLabelTituloPanel);
     }//GEN-LAST:event_jBEstudiantesActionPerformed
 
     private void jBInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInventarioActionPerformed
         //Inventario = 3
-        JPAdminInv inv = new JPAdminInv();//Inventario = 3
-        setPanel(3, inv);
+            JPAdminInv inv = new JPAdminInv();//Inventario = 3
+        setPanel(3, inv, jPanelGeneral, jLabelTituloPanel);
     }//GEN-LAST:event_jBInventarioActionPerformed
 
     private void jBPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPagosActionPerformed
         //Pagos = 4
-        JPAdminPagos pagos = new JPAdminPagos();//Pagos = 4
-        setPanel(4, pagos);
+            JPAdminPagos pagos = new JPAdminPagos();//Pagos = 4
+        setPanel(4, pagos, jPanelGeneral, jLabelTituloPanel);
     }//GEN-LAST:event_jBPagosActionPerformed
 
     private void jBCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalendarioActionPerformed
         //Calendario = 5
-        JPAdminCal cal = new JPAdminCal();//Calendario = 5
-        setPanel(5, cal);
+            JPAdminCal cal = new JPAdminCal();//Calendario = 5
+        setPanel(5, cal, jPanelGeneral, jLabelTituloPanel);
     }//GEN-LAST:event_jBCalendarioActionPerformed
 
     private void jBLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLogOutActionPerformed
@@ -381,109 +403,91 @@ public class JFAdminMenu extends javax.swing.JFrame {
         this.setLocation(posX - x, posY - y);
     }//GEN-LAST:event_formMouseDragged
 
-    private void jBHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBHomeMouseEntered
-        this.jBHome.setText("  HOME");
-        this.jBHome.setContentAreaFilled(true);
-        this.jBHome.setBackground(new Color(255, 250, 244));
-    }//GEN-LAST:event_jBHomeMouseEntered
-
-    private void jBHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBHomeMouseExited
-        this.jBHome.setText("  home");
-        this.jBHome.setContentAreaFilled(false);
-    }//GEN-LAST:event_jBHomeMouseExited
-
-    private void jBProfesoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBProfesoresMouseEntered
-        this.jBProfesores.setText("  PROFESORES");
-        this.jBProfesores.setContentAreaFilled(true);
-        this.jBProfesores.setBackground(new Color(255, 250, 244));
-    }//GEN-LAST:event_jBProfesoresMouseEntered
-
     private void jBEstudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEstudiantesMouseEntered
-        this.jBEstudiantes.setText("  ESTUDIANTES");
         this.jBEstudiantes.setContentAreaFilled(true);
         this.jBEstudiantes.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBEstudiantesMouseEntered
 
     private void jBInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBInventarioMouseEntered
-        this.jBInventario.setText("  INVENTARIO");
         this.jBInventario.setContentAreaFilled(true);
         this.jBInventario.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBInventarioMouseEntered
 
     private void jBPagosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPagosMouseEntered
-        this.jBPagos.setText("  PAGOS");
         this.jBPagos.setContentAreaFilled(true);
         this.jBPagos.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBPagosMouseEntered
 
     private void jBCalendarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCalendarioMouseEntered
-        this.jBCalendario.setText("  CLASES");
         this.jBCalendario.setContentAreaFilled(true);
         this.jBCalendario.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBCalendarioMouseEntered
 
     private void jBGest_SisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGest_SisMouseEntered
-        this.jBGest_Sis.setText("GESTIÓN DEL SISTEMA");
         this.jBGest_Sis.setContentAreaFilled(true);
         this.jBGest_Sis.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBGest_SisMouseEntered
 
     private void jBLogOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLogOutMouseEntered
-        this.jBLogOut.setText("  LOG OUT");
         this.jBLogOut.setContentAreaFilled(true);
         this.jBLogOut.setBackground(new Color(255, 250, 244));
     }//GEN-LAST:event_jBLogOutMouseEntered
 
-    private void jBProfesoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBProfesoresMouseExited
-        this.jBProfesores.setText("  profesores");
-        this.jBProfesores.setContentAreaFilled(false);
-    }//GEN-LAST:event_jBProfesoresMouseExited
-
     private void jBEstudiantesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEstudiantesMouseExited
-        this.jBEstudiantes.setText("  estudiantes");
         this.jBEstudiantes.setContentAreaFilled(false);
     }//GEN-LAST:event_jBEstudiantesMouseExited
 
     private void jBInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBInventarioMouseExited
-        this.jBInventario.setText("  inventario");
         this.jBInventario.setContentAreaFilled(false);
     }//GEN-LAST:event_jBInventarioMouseExited
 
     private void jBPagosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPagosMouseExited
-        this.jBPagos.setText("  pagos");
         this.jBPagos.setContentAreaFilled(false);
     }//GEN-LAST:event_jBPagosMouseExited
 
     private void jBCalendarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCalendarioMouseExited
-        this.jBCalendario.setText("  clases");
         this.jBCalendario.setContentAreaFilled(false);
     }//GEN-LAST:event_jBCalendarioMouseExited
 
     private void jBGest_SisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGest_SisMouseExited
-        this.jBGest_Sis.setText("gestión del sistema");
         this.jBGest_Sis.setContentAreaFilled(false);
     }//GEN-LAST:event_jBGest_SisMouseExited
 
     private void jBLogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLogOutMouseExited
-        this.jBLogOut.setText("  log out");
         this.jBLogOut.setContentAreaFilled(false);
     }//GEN-LAST:event_jBLogOutMouseExited
 
-    private void jLCreditosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCreditosMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLCreditosMouseEntered
+    private void jBProfesoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBProfesoresMouseExited
+        this.jBProfesores.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBProfesoresMouseExited
 
-    private void jLCreditosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCreditosMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLCreditosMouseExited
+    private void jBProfesoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBProfesoresMouseEntered
+        this.jBProfesores.setContentAreaFilled(true);
+        this.jBProfesores.setBackground(new Color(255, 250, 244));
+    }//GEN-LAST:event_jBProfesoresMouseEntered
 
-    public void setPanel(int menu, JPanel panel) {
+    private void jBHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBHomeMouseExited
+        this.jBHome.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBHomeMouseExited
+
+    private void jBHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBHomeMouseEntered
+        this.jBHome.setContentAreaFilled(true);
+        this.jBHome.setBackground(new Color(255, 250, 244));
+    }//GEN-LAST:event_jBHomeMouseEntered
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/icono_app.png"));
+        return retValue;
+    }
+    
+    public void setPanel(int menu, JPanel panel, JPanel jPanelGeneral, JLabel jLabelTituloPanel) {
         panel.setSize(970, 630);
         panel.setLocation(0, 0);
-        this.jPanelGeneral.removeAll();
-        this.jPanelGeneral.add(panel, BorderLayout.CENTER);
-        this.jPanelGeneral.revalidate();
-        this.jPanelGeneral.repaint();
+        jPanelGeneral.removeAll();
+        jPanelGeneral.add(panel, BorderLayout.CENTER);
+        jPanelGeneral.revalidate();
+        jPanelGeneral.repaint();
         String titulo = null;
         switch (menu) {
             case 0:
@@ -519,13 +523,7 @@ public class JFAdminMenu extends javax.swing.JFrame {
                 titulo = "\t ADMINISTRADORES DEL SISTEMA";
                 break;
         }
-        this.jLabelTituloPanel.setText(titulo);
-    }
-
-    @Override
-    public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/icono_app.png"));
-        return retValue;
+        jLabelTituloPanel.setText(titulo);
     }
 
 
@@ -541,10 +539,10 @@ public class JFAdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
     private javax.swing.JLabel jLCreditos;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelFondoPanel;
-    private javax.swing.JLabel jLabelTituloPanel;
-    private javax.swing.JPanel jPanelGeneral;
+    public static javax.swing.JLabel jLabelTituloPanel;
+    private javax.swing.JLabel jLogo;
+    public static javax.swing.JPanel jPanelGeneral;
     // End of variables declaration//GEN-END:variables
 }

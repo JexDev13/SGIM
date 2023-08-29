@@ -203,21 +203,17 @@ public class JFAdmin_EliminarUsuario extends javax.swing.JFrame {
             .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
-                            .addComponent(jLUser)
-                            .addGap(18, 18, 18))
-                        .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
+                    .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
+                        .addGroup(jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLNCedulaAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                        .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
-                            .addComponent(jLRol)
-                            .addGap(83, 83, 83))
-                        .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
-                            .addGroup(jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLNombres)
-                                .addComponent(jLCorreo))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
+                                .addGroup(jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLUser)
+                                    .addComponent(jLRol)
+                                    .addComponent(jLNombres)
+                                    .addComponent(jLCorreo))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
                         .addComponent(jLApellidos)
                         .addGap(88, 88, 88)))
@@ -388,7 +384,7 @@ public class JFAdmin_EliminarUsuario extends javax.swing.JFrame {
                         if (con.actualizarEliminarTablas(SQL) == true) {
                             titulo = "RESULTADO";
                             mensaje = "Elemento inactivado exitosamente";
-                            this.setVisible(false);
+                            dispose();
                             emitirMensaje(mensaje, titulo);
                         }
                     }

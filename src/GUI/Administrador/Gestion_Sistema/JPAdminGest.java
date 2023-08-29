@@ -9,7 +9,7 @@ import Negocio.Diseño;
 public class JPAdminGest extends javax.swing.JPanel {
 
     Diseño gui = new Diseño();
-    JFAdmin_desbloquear conInst = new JFAdmin_desbloquear();
+    
     JFAdmin_ActualizarUsuario act = new JFAdmin_ActualizarUsuario();
     Conexion con = new Conexion();
 
@@ -409,6 +409,7 @@ public class JPAdminGest extends javax.swing.JPanel {
     }//GEN-LAST:event_jBActualizarUsuarioActionPerformed
 
     private void jBDesbloquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDesbloquearActionPerformed
+        JFAdmin_desbloquear conInst = new JFAdmin_desbloquear();
         conInst.setVisible(true);
     }//GEN-LAST:event_jBDesbloquearActionPerformed
 
@@ -442,7 +443,8 @@ public class JPAdminGest extends javax.swing.JPanel {
     }//GEN-LAST:event_jBInactivosMouseExited
 
     private void jBInactivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInactivosActionPerformed
-        // TODO add your handling code here:
+        JFAdmin_RecuperarUsuarios inac = new JFAdmin_RecuperarUsuarios();
+        inac.setVisible(true);
     }//GEN-LAST:event_jBInactivosActionPerformed
 
     private void jBEliminarAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarAdminMouseEntered
