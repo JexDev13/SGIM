@@ -285,7 +285,8 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
         this.SQL = """
-                   SELECT Codigo_pago,Metodo_pago,Monto,Fecha_Pago,Abono FROM pagos WHERE Cedula_estudiante = '""" + jTFBuscar_CedulaEst.getText() + "';";
+                   SELECT Codigo_pago,Metodo_pago,Monto,Fecha_Pago,Abono FROM Pagos WHERE Cedula_estudiante = '""" + jTFBuscar_CedulaEst.getText() + "';";
+        System.out.println(SQL);
             con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
     }//GEN-LAST:event_JBIngreso1ActionPerformed
 

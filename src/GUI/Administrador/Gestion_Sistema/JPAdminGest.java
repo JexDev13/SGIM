@@ -10,9 +10,7 @@ public class JPAdminGest extends javax.swing.JPanel {
 
     Diseño gui = new Diseño();
     JFAdmin_desbloquear conInst = new JFAdmin_desbloquear();
-    JFAdmin_InsertarAdmin inser = new JFAdmin_InsertarAdmin();
     JFAdmin_ActualizarUsuario act = new JFAdmin_ActualizarUsuario();
-    JFAdmin_EliminarUsuario elim = new JFAdmin_EliminarUsuario();
     Conexion con = new Conexion();
 
     private String selectTabla = "Users";
@@ -431,6 +429,7 @@ public class JPAdminGest extends javax.swing.JPanel {
     }//GEN-LAST:event_jBNuevoAdminMouseExited
 
     private void jBNuevoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoAdminActionPerformed
+        JFAdmin_InsertarAdmin inser = new JFAdmin_InsertarAdmin();
         inser.setVisible(true);
     }//GEN-LAST:event_jBNuevoAdminActionPerformed
 
@@ -455,7 +454,8 @@ public class JPAdminGest extends javax.swing.JPanel {
     }//GEN-LAST:event_jBEliminarAdminMouseExited
 
     private void jBEliminarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarAdminActionPerformed
-        // TODO add your handling code here:
+        JFAdmin_EliminarUsuario elim = new JFAdmin_EliminarUsuario();
+        elim.setVisible(true);
     }//GEN-LAST:event_jBEliminarAdminActionPerformed
 
     private void jBVariablesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBVariablesMouseEntered

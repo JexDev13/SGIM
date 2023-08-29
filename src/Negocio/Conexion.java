@@ -128,7 +128,7 @@ public class Conexion {
                     tabla.addRow(users);
                 }
                 jTabla.setModel(tabla);
-            }else if (selectTabla.equals("Instrumentos")) {
+            } else if (selectTabla.equals("Instrumentos")) {
                 Object[] instrumentos = new Object[6];
                 DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
@@ -143,7 +143,7 @@ public class Conexion {
                     tabla.addRow(instrumentos);
                 }
                 jTabla.setModel(tabla);
-            }else if (selectTabla.equals("Libros")) {
+            } else if (selectTabla.equals("Libros")) {
                 Object[] libros = new Object[6];
                 DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
@@ -158,7 +158,7 @@ public class Conexion {
                     tabla.addRow(libros);
                 }
                 jTabla.setModel(tabla);
-            }else if (selectTabla.equals("PagosTotales")) {
+            } else if (selectTabla.equals("PagosTotales")) {
                 Object[] PagosTotales = new Object[5];
                 DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
@@ -172,7 +172,7 @@ public class Conexion {
                     tabla.addRow(PagosTotales);
                 }
                 jTabla.setModel(tabla);
-            }else if (selectTabla.equals("Pagos")) {
+            } else if (selectTabla.equals("Pagos")) {
                 Object[] Pagos = new Object[5];
                 DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
@@ -191,7 +191,7 @@ public class Conexion {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    
+
     public void update(String SQL) {
         try {
             cn = conectar();
@@ -201,7 +201,7 @@ public class Conexion {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    
+
     public ResultSet query(String SQL) {
         try {
             cn = conectar();
@@ -252,7 +252,7 @@ public class Conexion {
                 String[] parametrosSeparados = parametro.split(",");
                 // Establecer cada parámetro en el PreparedStatement
                 for (int i = 0; i < parametrosSeparados.length; i++) {
-                    pps.setString(i+1, parametrosSeparados[i]);
+                    pps.setString(i + 1, parametrosSeparados[i]);
                 }
                 pps.setString(parametrosSeparados.length + 1, "Administrativo");
                 pps.executeUpdate();
@@ -263,4 +263,74 @@ public class Conexion {
         }
         return false;
     }
+
+    //Buscar y validar cedulas existentes
+    public int busquedaCod(String tabla, String SQL, String columna) {
+        int codigo = 0;
+        try {
+            cn = conectar();
+            st = cn.createStatement();
+            rs = st.executeQuery(SQL);
+            if (tabla.equals("Personas")) {
+                while (rs.next()) {
+                    codigo = rs.getInt("count(*)");
+                }
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return codigo;
+    }
+
+    //Desplegar en fields
+    public void despliegueFields(String SQL, String tabla, JTextField uno, JTextField dos, JTextField tres, JTextField cuatro,
+            JTextField cinco, JTextField seis, JTextField siete, JTextField ocho, String operacion) {
+        try {
+            cn = conectar();
+            st = cn.createStatement();
+            rs = st.executeQuery(SQL);
+            if (tabla.equals("Admins")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("u.Cedula"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("u.Nombre_Usuario"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("u.Rol"));
+                    }
+                    if (cuatro != null) {
+                        cuatro.setText("" + rs.getString("p.Correo"));
+                    }
+                    if (cinco != null) {
+                        cinco.setText("" + rs.getString("p.Nombres"));
+                    }
+                    if (seis != null) {
+                        seis.setText("" + rs.getString("p.Apellidos"));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    //Ejecutar querys para eliminar o actualizar
+    public boolean actualizarEliminarTablas(String SQL) {
+        int pos;
+        try {
+            cn = conectar();
+            PreparedStatement PS = cn.prepareStatement(SQL);
+            pos = PS.executeUpdate();
+            if (pos > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+        return false;
+    }
+
 }
