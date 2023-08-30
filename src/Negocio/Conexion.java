@@ -203,7 +203,7 @@ public class Conexion {
                 Object[] bloqueados = new Object[6];
                 DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
-                        new String[]{"Cédula", "Nombres", "Apellidos", "Correo", "Usuario","Estado"});
+                        new String[]{"Cédula", "Nombres", "Apellidos", "Correo", "Usuario", "Estado"});
                 while (rs.next()) {
                     bloqueados[0] = rs.getString("cedula");
                     bloqueados[1] = rs.getString("nombres");
@@ -212,6 +212,52 @@ public class Conexion {
                     bloqueados[4] = rs.getString("Nombre_Usuario");
                     bloqueados[5] = "Bloqueado";
                     tabla.addRow(bloqueados);
+                }
+                jTabla.setModel(tabla);
+            } else if (selectTabla.equals("Calendario")) {
+                Object[] horarios = new Object[7];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Código horario", "Aula", "Materia", "Cédula profesor", "Profesor asignado", "Cupos disponibles", "Horario"});
+                while (rs.next()) {
+                    horarios[0] = rs.getString("Codigo_horario");
+                    horarios[1] = rs.getString("Aula");
+                    horarios[2] = rs.getString("Materia");
+                    horarios[3] = rs.getString("Cedula_profesor");
+                    horarios[4] = rs.getString("ProfesorAsignado");
+                    horarios[5] = rs.getString("Cupos_disponibles");
+                    horarios[6] = rs.getString("Horario");
+                    tabla.addRow(horarios);
+                }
+                jTabla.setModel(tabla);
+            } else if (selectTabla.equals("Clases")) {
+                Object[] clases = new Object[5];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Código de clase", "Aula", "Materia", "Cédula profesor", "Profesor asignado"});
+                while (rs.next()) {
+                    clases[0] = rs.getString("Codigo_Clase");
+                    clases[1] = rs.getString("Aula");
+                    clases[2] = rs.getString("Materia");
+                    clases[3] = rs.getString("Cedula_profesor");
+                    clases[4] = rs.getString("ProfesorAsignado");
+                    tabla.addRow(clases);
+                }
+                jTabla.setModel(tabla);
+            } else if (selectTabla.equals("Asistencia")) {
+                Object[] asistencia = new Object[7];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Código horario", "Cédula", "Estudiante", "Materia", "Aula", "Horario", "Asistencia"});
+                while (rs.next()) {
+                    asistencia[0] = rs.getString("Codigo_Horario");
+                    asistencia[1] = rs.getString("Cedula");
+                    asistencia[2] = rs.getString("Estudiante");
+                    asistencia[3] = rs.getString("Materia");
+                    asistencia[4] = rs.getString("Aula");
+                    asistencia[5] = rs.getString("Horario");
+                    asistencia[6] = rs.getInt("asistencia") == 0 ? "Presente" : "Ausente";
+                    tabla.addRow(asistencia);
                 }
                 jTabla.setModel(tabla);
             }
@@ -285,6 +331,30 @@ public class Conexion {
                 pps.setString(parametrosSeparados.length + 1, "Administrativo");
                 pps.executeUpdate();
                 return true;
+            } else if (tabla.equals("Clases")) {
+                String SQL = "INSERT INTO Clases (Aula, Materia, Cedula_profesor) VALUES (?, ?, ?);";
+                PreparedStatement pps = cn.prepareStatement(SQL);
+
+                // Separar el parámetro en elementos individuales
+                String[] parametrosSeparados = parametro.split(",");
+                // Establecer cada parámetro en el PreparedStatement
+                for (int i = 0; i < parametrosSeparados.length; i++) {
+                    pps.setString(i + 1, parametrosSeparados[i]);
+                }
+                pps.executeUpdate();
+                return true;
+            } else if (tabla.equals("Horarios")) {
+                String SQL = "INSERT INTO Horarios (Codigo_Clase, DiaSemana, Hora, Cupos_disponibles) VALUES (?, ?, ?, ?);";
+                PreparedStatement pps = cn.prepareStatement(SQL);
+
+                // Separar el parámetro en elementos individuales
+                String[] parametrosSeparados = parametro.split(",");
+                // Establecer cada parámetro en el PreparedStatement
+                for (int i = 0; i < parametrosSeparados.length; i++) {
+                    pps.setString(i + 1, parametrosSeparados[i]);
+                }
+                pps.executeUpdate();
+                return true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -302,6 +372,14 @@ public class Conexion {
             if (tabla.equals("Personas")) {
                 while (rs.next()) {
                     codigo = rs.getInt("count(*)");
+                }
+            } else if (tabla.equals("Variables") && columna.equals("cupos")) {
+                while (rs.next()) {
+                    codigo = rs.getInt("cupos");
+                }
+            } else if (tabla.equals("Variables") && columna.equals("valor_pension")) {
+                while (rs.next()) {
+                    codigo = rs.getInt("valor_pension");
                 }
             }
         } catch (SQLException e) {
@@ -356,7 +434,7 @@ public class Conexion {
                         cinco.setText("" + rs.getString("p.Correo"));
                     }
                 }
-            }else if (tabla.equals("UsersAct")) {
+            } else if (tabla.equals("UsersAct")) {
                 while (rs.next()) {
                     if (uno != null) {
                         uno.setText("" + rs.getString("u.Cedula"));
@@ -366,6 +444,81 @@ public class Conexion {
                     }
                     if (tres != null) {
                         tres.setText("" + rs.getString("u.Rol"));
+                    }
+                }
+            } else if (tabla.equals("Clases")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("Nombres"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("Apellidos"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("Correo"));
+                    }
+                }
+            } else if (tabla.equals("Horarios")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("Codigo_Clase"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("Aula"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("Materia"));
+                    }
+                    if (cuatro != null) {
+                        cuatro.setText("" + rs.getString("c.Cedula_Profesor"));
+                    }
+                    if (cinco != null) {
+                        cinco.setText("" + rs.getString("ProfesorAsignado"));
+                    }
+                    if (seis != null) {
+                        seis.setText("" + rs.getString("Codigo_horario"));
+                    }
+                    if (siete != null) {
+                        siete.setText("" + rs.getString("Horario"));
+                    }
+                }
+            } else if (tabla.equals("Cupos")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("h.Codigo_horario"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("h.DiaSemana"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("h.Hora"));
+                    }
+                    if (cuatro != null) {
+                        cuatro.setText("" + rs.getString("c.Codigo_clase"));
+                    }
+                    if (cinco != null) {
+                        cinco.setText("" + rs.getString("c.aula"));
+                    }
+                    if (seis != null) {
+                        seis.setText("" + rs.getString("c.materia"));
+                    }
+                    if (siete != null) {
+                        siete.setText("" + rs.getString("h.cupos_disponibles"));
+                    }
+                }
+            } else if (tabla.equals("Personas")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("Cedula"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("Nombres"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("Apellido"));
+                    }
+                    if (cuatro != null) {
+                        cuatro.setText("" + rs.getString("Correo"));
                     }
                 }
             }

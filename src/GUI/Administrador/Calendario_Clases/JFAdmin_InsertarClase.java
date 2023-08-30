@@ -1,5 +1,13 @@
 package GUI.Administrador.Calendario_Clases;
 
+import Negocio.Conexion;
+import Negocio.Diseño;
+import Negocio.Validaciones;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /*
  * @authors G2 SoftwareSolutions
  */
@@ -7,7 +15,15 @@ public class JFAdmin_InsertarClase extends javax.swing.JFrame {
 
     private int x;
     private int y;
-    
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
+    Conexion con = new Conexion();
+    Validaciones val = new Validaciones();
+    String SQL;
+    String titulo = null;
+    String mensaje = null;
+    String tabla = "Clases";
+
     public JFAdmin_InsertarClase() {
         initComponents();
         setLocationRelativeTo(this);
@@ -18,25 +34,31 @@ public class JFAdmin_InsertarClase extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelTitulo = new javax.swing.JLabel();
-        jPFondo = new javax.swing.JPanel();
-        jButtonMinimizar1 = new javax.swing.JButton();
-        jButtonSalirIcon1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jPContenido = new javax.swing.JPanel();
+        jPDatosClase = new javax.swing.JPanel();
         jTFMateria = new javax.swing.JTextField();
         jLMateria = new javax.swing.JLabel();
         jLAula = new javax.swing.JLabel();
-        jTFCodigo = new javax.swing.JTextField();
-        jLCodigo = new javax.swing.JLabel();
         jTFAula = new javax.swing.JTextField();
-        jLHorario = new javax.swing.JLabel();
-        jFormattedTextFieldHorario = new javax.swing.JFormattedTextField();
-        JBIngreso1 = new javax.swing.JButton();
+        jLCodigo = new javax.swing.JLabel();
+        jTFCedula = new javax.swing.JTextField();
+        jPDatosAdminEliminar = new javax.swing.JPanel();
+        jLCorreo = new javax.swing.JLabel();
+        jTFCorreo = new javax.swing.JTextField();
+        jLNombres = new javax.swing.JLabel();
+        jTFNombres = new javax.swing.JTextField();
+        jLApellidos = new javax.swing.JLabel();
+        jTFApellidos = new javax.swing.JTextField();
+        jPFondo = new javax.swing.JPanel();
+        jButtonMinimizar1 = new javax.swing.JButton();
+        jButtonSalirIcon1 = new javax.swing.JButton();
+        JBAceptar = new javax.swing.JButton();
         JBCancela1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(279, 253));
+        setMinimumSize(new java.awt.Dimension(280, 343));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(279, 253));
+        setPreferredSize(new java.awt.Dimension(280, 343));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -54,6 +76,157 @@ public class JFAdmin_InsertarClase extends javax.swing.JFrame {
         jLabelTitulo.setText("   Insertar Clase");
         getContentPane().add(jLabelTitulo);
         jLabelTitulo.setBounds(0, 0, 167, 30);
+
+        jPContenido.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPDatosClase.setBackground(new java.awt.Color(255, 255, 255));
+        jPDatosClase.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos de la clase"));
+
+        jLMateria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLMateria.setText("Materia:");
+
+        jLAula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLAula.setText("Cédula profesor:");
+
+        jLCodigo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLCodigo.setText("Aula:");
+
+        jTFCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFCedulaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCedulaKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPDatosClaseLayout = new javax.swing.GroupLayout(jPDatosClase);
+        jPDatosClase.setLayout(jPDatosClaseLayout);
+        jPDatosClaseLayout.setHorizontalGroup(
+            jPDatosClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPDatosClaseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPDatosClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPDatosClaseLayout.createSequentialGroup()
+                        .addGroup(jPDatosClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLCodigo)
+                            .addComponent(jLMateria))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPDatosClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFMateria)
+                            .addComponent(jTFAula)))
+                    .addGroup(jPDatosClaseLayout.createSequentialGroup()
+                        .addComponent(jLAula)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFCedula)))
+                .addContainerGap())
+        );
+        jPDatosClaseLayout.setVerticalGroup(
+            jPDatosClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPDatosClaseLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPDatosClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCodigo)
+                    .addComponent(jTFAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPDatosClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLMateria)
+                    .addComponent(jTFMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPDatosClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLAula)
+                    .addComponent(jTFCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        jPDatosAdminEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        jPDatosAdminEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del profesor"));
+
+        jLCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLCorreo.setText("Correo electrónico");
+
+        jTFCorreo.setEditable(false);
+        jTFCorreo.setBackground(new java.awt.Color(255, 255, 255));
+        jTFCorreo.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFCorreo.setPreferredSize(new java.awt.Dimension(64, 22));
+
+        jLNombres.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLNombres.setText("Nombres");
+
+        jTFNombres.setEditable(false);
+        jTFNombres.setBackground(new java.awt.Color(255, 255, 255));
+        jTFNombres.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFNombres.setPreferredSize(new java.awt.Dimension(64, 22));
+
+        jLApellidos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLApellidos.setText("Apellidos");
+
+        jTFApellidos.setEditable(false);
+        jTFApellidos.setBackground(new java.awt.Color(255, 255, 255));
+        jTFApellidos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFApellidos.setPreferredSize(new java.awt.Dimension(64, 22));
+
+        javax.swing.GroupLayout jPDatosAdminEliminarLayout = new javax.swing.GroupLayout(jPDatosAdminEliminar);
+        jPDatosAdminEliminar.setLayout(jPDatosAdminEliminarLayout);
+        jPDatosAdminEliminarLayout.setHorizontalGroup(
+            jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
+                        .addComponent(jLNombres)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1))
+                    .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
+                        .addComponent(jLApellidos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
+                        .addComponent(jLCorreo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPDatosAdminEliminarLayout.setVerticalGroup(
+            jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPDatosAdminEliminarLayout.createSequentialGroup()
+                .addGroup(jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLNombres))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLApellidos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPDatosAdminEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCorreo)
+                    .addComponent(jTFCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPContenidoLayout = new javax.swing.GroupLayout(jPContenido);
+        jPContenido.setLayout(jPContenidoLayout);
+        jPContenidoLayout.setHorizontalGroup(
+            jPContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPContenidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPDatosClase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPDatosAdminEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPContenidoLayout.setVerticalGroup(
+            jPContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPContenidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPDatosClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPDatosAdminEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPContenido);
+        jPContenido.setBounds(0, 30, 280, 260);
 
         jPFondo.setBackground(new java.awt.Color(250, 183, 22));
         jPFondo.setLayout(null);
@@ -84,110 +257,32 @@ public class JFAdmin_InsertarClase extends javax.swing.JFrame {
         jPFondo.add(jButtonSalirIcon1);
         jButtonSalirIcon1.setBounds(250, 0, 30, 30);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLMateria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLMateria.setText("Materia:");
-
-        jLAula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLAula.setText("Aula:");
-
-        jLCodigo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLCodigo.setText("Cod. Clase:");
-
-        jLHorario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLHorario.setText("Horario:");
-
-        jFormattedTextFieldHorario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLCodigo)
-                        .addGap(12, 12, 12)
-                        .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLMateria)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTFMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLHorario)
-                                    .addGap(18, 18, 18))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLAula)
-                                    .addGap(36, 36, 36)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTFAula, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                .addComponent(jFormattedTextFieldHorario)))))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLCodigo))
-                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLMateria))
-                    .addComponent(jTFMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLAula))
-                    .addComponent(jTFAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLHorario))
-                    .addComponent(jFormattedTextFieldHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        jPFondo.add(jPanel1);
-        jPanel1.setBounds(0, 30, 280, 170);
-
-        JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
-        JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
-        JBIngreso1.setText("aceptar");
-        JBIngreso1.setBorder(null);
-        JBIngreso1.setBorderPainted(false);
-        JBIngreso1.setDefaultCapable(false);
-        JBIngreso1.setFocusPainted(false);
-        JBIngreso1.setHideActionText(true);
-        JBIngreso1.setPreferredSize(new java.awt.Dimension(89, 32));
-        JBIngreso1.setRequestFocusEnabled(false);
-        JBIngreso1.setRolloverEnabled(false);
-        JBIngreso1.addMouseListener(new java.awt.event.MouseAdapter() {
+        JBAceptar.setBackground(new java.awt.Color(255, 255, 254));
+        JBAceptar.setForeground(new java.awt.Color(250, 183, 22));
+        JBAceptar.setText("aceptar");
+        JBAceptar.setBorder(null);
+        JBAceptar.setBorderPainted(false);
+        JBAceptar.setDefaultCapable(false);
+        JBAceptar.setFocusPainted(false);
+        JBAceptar.setHideActionText(true);
+        JBAceptar.setPreferredSize(new java.awt.Dimension(89, 32));
+        JBAceptar.setRequestFocusEnabled(false);
+        JBAceptar.setRolloverEnabled(false);
+        JBAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                JBIngreso1MouseEntered(evt);
+                JBAceptarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                JBIngreso1MouseExited(evt);
+                JBAceptarMouseExited(evt);
             }
         });
-        JBIngreso1.addActionListener(new java.awt.event.ActionListener() {
+        JBAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBIngreso1ActionPerformed(evt);
+                JBAceptarActionPerformed(evt);
             }
         });
-        jPFondo.add(JBIngreso1);
-        JBIngreso1.setBounds(30, 210, 89, 32);
+        jPFondo.add(JBAceptar);
+        JBAceptar.setBounds(40, 300, 89, 32);
 
         JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
         JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
@@ -210,10 +305,10 @@ public class JFAdmin_InsertarClase extends javax.swing.JFrame {
             }
         });
         jPFondo.add(JBCancela1);
-        JBCancela1.setBounds(140, 210, 89, 32);
+        JBCancela1.setBounds(150, 300, 89, 32);
 
         getContentPane().add(jPFondo);
-        jPFondo.setBounds(0, 0, 280, 260);
+        jPFondo.setBounds(0, 0, 280, 380);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -226,17 +321,53 @@ public class JFAdmin_InsertarClase extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSalirIcon1ActionPerformed
 
-    private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
-        this.JBIngreso1.setText("ACEPTAR");
-    }//GEN-LAST:event_JBIngreso1MouseEntered
+    private void JBAceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBAceptarMouseEntered
+        this.JBAceptar.setText("ACEPTAR");
+    }//GEN-LAST:event_JBAceptarMouseEntered
 
-    private void JBIngreso1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseExited
-        this.JBIngreso1.setText("aceptar");
-    }//GEN-LAST:event_JBIngreso1MouseExited
+    private void JBAceptarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBAceptarMouseExited
+        this.JBAceptar.setText("aceptar");
+    }//GEN-LAST:event_JBAceptarMouseExited
 
-    private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-
-    }//GEN-LAST:event_JBIngreso1ActionPerformed
+    private void JBAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAceptarActionPerformed
+        String parametroBusqueda = this.jTFCedula.getText();
+        if (parametroBusqueda.isEmpty() || jTFMateria.getText().isEmpty() || jTFAula.getText().isEmpty()) {
+            titulo = "ADVERTENCIA";
+            mensaje = "Todos los campos deben estar llenos";
+            emitirMensaje(mensaje, titulo);
+        } else {
+            if (val.validadorDeCedula(parametroBusqueda)) {
+                this.SQL = "Select count(*) from Profesores where Cedula_profesor like '%" + parametroBusqueda + "%'";
+                if (con.busquedaCod(tabla, SQL, "count(*)") < 1) {
+                    getToolkit().beep();
+                    titulo = "ADVERTENCIA";
+                    mensaje = "El profesor al que hace referencia no existe";
+                    emitirMensaje(mensaje, titulo);
+                } else {
+                    ArrayList<String> atributosInsetar = new ArrayList<>();
+                    atributosInsetar.add(jTFAula.getText());
+                    atributosInsetar.add(jTFMateria.getText());
+                    atributosInsetar.add(jTFCedula.getText());
+                    String parametro = con.prepararAtributos(atributosInsetar);
+                    if (con.insertar_Tablas("Clases", parametro)) {
+                        titulo = "Ingresado";
+                        mensaje = "Los datos fueron ingresados correctamente";
+                        dispose();
+                        borrarCampos();
+                        jTFCedula.setText("");
+                    } else {
+                        titulo = "ERROR: Ingresado";
+                        mensaje = "Los datos NO fueron ingresados debido a un error";
+                    }
+                    emitirMensaje(mensaje, titulo);
+                }
+            } else {
+                titulo = "ERROR DE FORMATO";
+                mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
+                emitirMensaje(mensaje, titulo);
+            }
+        }
+    }//GEN-LAST:event_JBAceptarActionPerformed
 
     private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
         this.JBCancela1.setText("CANCELAR");
@@ -247,6 +378,11 @@ public class JFAdmin_InsertarClase extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        borrarCampos();
+        jTFCedula.setText("");
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
@@ -261,28 +397,53 @@ public class JFAdmin_InsertarClase extends javax.swing.JFrame {
         this.y = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
-    public void borrarCampos()
-    {
+    private void jTFCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCedulaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCedulaKeyTyped
+
+    private void jTFCedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCedulaKeyReleased
+        String parametroBusqueda = this.jTFCedula.getText();
+        if (parametroBusqueda.length() == 10) {
+            this.SQL = "SELECT Nombres, Apellidos, Correo FROM Personas WHERE Rol = 'Profesor' AND Cedula LIKE '%" + parametroBusqueda + "%';";
+            con.despliegueFields(SQL, tabla, jTFNombres, jTFApellidos, jTFCorreo, null,
+                    null, null, null, null, "insertar");
+        } else {
+            jTFNombres.setText("");
+            jTFApellidos.setText("");
+            jTFCorreo.setText("");
+        }
+    }//GEN-LAST:event_jTFCedulaKeyReleased
+
+    public void borrarCampos() {
         this.jTFAula.setText("");
-        this.jTFCodigo.setText("");
         this.jTFMateria.setText("");
     }
-    
+
+    private void emitirMensaje(String mensaje, String titulo) {
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBAceptar;
     private javax.swing.JButton JBCancela1;
-    private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar1;
     private javax.swing.JButton jButtonSalirIcon1;
-    private javax.swing.JFormattedTextField jFormattedTextFieldHorario;
+    private javax.swing.JLabel jLApellidos;
     private javax.swing.JLabel jLAula;
     private javax.swing.JLabel jLCodigo;
-    private javax.swing.JLabel jLHorario;
+    private javax.swing.JLabel jLCorreo;
     private javax.swing.JLabel jLMateria;
+    private javax.swing.JLabel jLNombres;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JPanel jPContenido;
+    private javax.swing.JPanel jPDatosAdminEliminar;
+    private javax.swing.JPanel jPDatosClase;
     private javax.swing.JPanel jPFondo;
-    private javax.swing.JPanel jPanel1;
+    public static javax.swing.JTextField jTFApellidos;
     private javax.swing.JTextField jTFAula;
-    private javax.swing.JTextField jTFCodigo;
+    private javax.swing.JTextField jTFCedula;
+    public static javax.swing.JTextField jTFCorreo;
     private javax.swing.JTextField jTFMateria;
+    public static javax.swing.JTextField jTFNombres;
     // End of variables declaration//GEN-END:variables
 }
