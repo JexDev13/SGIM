@@ -377,7 +377,8 @@ public class JFAdmin_AsistenciaClase extends javax.swing.JFrame {
     }//GEN-LAST:event_jBEliminarEstudiantesMouseExited
 
     private void jBEliminarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarEstudiantesActionPerformed
-
+        JFAdmin_EliminarEstudiante elim = new JFAdmin_EliminarEstudiante();
+        elim.setVisible(true);
     }//GEN-LAST:event_jBEliminarEstudiantesActionPerformed
 
     private void jTFBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBusquedaFocusLost
@@ -442,7 +443,7 @@ public class JFAdmin_AsistenciaClase extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JBCancela1;
+    public static javax.swing.JButton JBCancela1;
     private javax.swing.JButton jBAsignarEstudiante;
     private javax.swing.JButton jBEliminarEstudiantes;
     private javax.swing.JButton jButtonMinimizar;

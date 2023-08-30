@@ -308,7 +308,8 @@ public class JPAdminCal extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonEliminarClasesMouseExited
 
     private void jButtonEliminarClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarClasesActionPerformed
-        // TODO add your handling code here:
+        JFAdmin_EliminarClase elim = new JFAdmin_EliminarClase();
+        elim.setVisible(true);
     }//GEN-LAST:event_jButtonEliminarClasesActionPerformed
 
     private void jCBFiltroUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBFiltroUsersActionPerformed

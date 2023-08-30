@@ -355,6 +355,18 @@ public class Conexion {
                 }
                 pps.executeUpdate();
                 return true;
+            } else if (tabla.equals("Asistencia")) {
+                String SQL = "INSERT INTO Asignacion_cupos (Codigo_Clase, Cedula_estudiante, Codigo_Horario) VALUES (?, ?, ?);";
+                PreparedStatement pps = cn.prepareStatement(SQL);
+
+                // Separar el parámetro en elementos individuales
+                String[] parametrosSeparados = parametro.split(",");
+                // Establecer cada parámetro en el PreparedStatement
+                for (int i = 0; i < parametrosSeparados.length; i++) {
+                    pps.setString(i + 1, parametrosSeparados[i]);
+                }
+                pps.executeUpdate();
+                return true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);

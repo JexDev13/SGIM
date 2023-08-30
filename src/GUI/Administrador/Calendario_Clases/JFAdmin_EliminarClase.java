@@ -1,15 +1,42 @@
 package GUI.Administrador.Calendario_Clases;
 
+import static GUI.Administrador.Calendario_Clases.JFAdmin_AsignarEstudiante.jTFBuscar_AsignarHorario;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_AsignarEstudiante.jTFBuscar_Estudiante;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_AsignarEstudiante.jTFCodigo_Clase;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_EliminarEstudiante.jTFBuscar_AsignarHorario;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_EliminarEstudiante.jTFBuscar_Estudiante;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_InsertarClase.jTFApellidos;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_InsertarClase.jTFCorreo;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_InsertarClase.jTFNombres;
+import Negocio.Conexion;
+import Negocio.Diseño;
+import Negocio.Validaciones;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /*
  * @authors G2 SoftwareSolutions
  */
 public class JFAdmin_EliminarClase extends javax.swing.JFrame {
+
     private int x;
     private int y;
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
+    Conexion con = new Conexion();
+    Validaciones val = new Validaciones();
+    String SQL;
+    String titulo = null;
+    String mensaje = null;
+    String tabla = "Clases";
+
     public JFAdmin_EliminarClase() {
         initComponents();
         setLocationRelativeTo(this);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -24,6 +51,8 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
         jTFHorario_EliminarClase = new javax.swing.JTextField();
         jLabelHorario = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabelHorario1 = new javax.swing.JLabel();
+        jTFHorario_EliminarClase1 = new javax.swing.JTextField();
         jPanelDatoClase = new javax.swing.JPanel();
         jTFBuscar_EliminarClase = new javax.swing.JTextField();
         jLCodigo = new javax.swing.JLabel();
@@ -36,9 +65,9 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(380, 349));
+        setMinimumSize(new java.awt.Dimension(380, 378));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(380, 349));
+        setPreferredSize(new java.awt.Dimension(380, 378));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -83,10 +112,17 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
         jTFHorario_EliminarClase.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelHorario.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelHorario.setText("Horario");
+        jLabelHorario.setText("Ced. Profesor");
 
         jLabel20.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel20.setText("Código Clase");
+
+        jLabelHorario1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabelHorario1.setText("Nombre");
+
+        jTFHorario_EliminarClase1.setEditable(false);
+        jTFHorario_EliminarClase1.setBackground(new java.awt.Color(255, 255, 255));
+        jTFHorario_EliminarClase1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPDatosClaseEliminarLayout = new javax.swing.GroupLayout(jPDatosClaseEliminar);
         jPDatosClaseEliminar.setLayout(jPDatosClaseEliminarLayout);
@@ -97,25 +133,23 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
                 .addGroup(jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPDatosClaseEliminarLayout.createSequentialGroup()
                         .addGroup(jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelAula)
-                            .addComponent(jLabelHorario))
-                        .addGap(95, 95, 95)
-                        .addGroup(jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFHorario_EliminarClase, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(jTFAula_EliminarClase))
-                        .addGap(19, 19, 19))
-                    .addGroup(jPDatosClaseEliminarLayout.createSequentialGroup()
-                        .addGroup(jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPDatosClaseEliminarLayout.createSequentialGroup()
-                                .addComponent(jLabelMateria)
-                                .addGap(18, 18, 18))
-                            .addGroup(jPDatosClaseEliminarLayout.createSequentialGroup()
-                                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(jLabelMateria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
                         .addGroup(jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTFMateria_EliminarClase, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                            .addComponent(jTFCodigo_EliminarClase))
-                        .addContainerGap())))
+                            .addComponent(jTFCodigo_EliminarClase)))
+                    .addGroup(jPDatosClaseEliminarLayout.createSequentialGroup()
+                        .addGroup(jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelAula)
+                            .addComponent(jLabelHorario)
+                            .addComponent(jLabelHorario1))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFHorario_EliminarClase1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(jTFAula_EliminarClase)
+                            .addComponent(jTFHorario_EliminarClase))))
+                .addContainerGap())
         );
         jPDatosClaseEliminarLayout.setVerticalGroup(
             jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,11 +170,15 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
                 .addGroup(jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFHorario_EliminarClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelHorario))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPDatosClaseEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFHorario_EliminarClase1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelHorario1))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPDatosClaseEliminar);
-        jPDatosClaseEliminar.setBounds(10, 120, 360, 170);
+        jPDatosClaseEliminar.setBounds(10, 120, 360, 190);
 
         jPanelDatoClase.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDatoClase.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos de la clase"));
@@ -164,18 +202,20 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
             jPanelDatoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatoClaseLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLCodigo)
-                .addGap(85, 85, 85)
-                .addComponent(jTFBuscar_EliminarClase, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                .addComponent(jLCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jTFBuscar_EliminarClase, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanelDatoClaseLayout.setVerticalGroup(
             jPanelDatoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatoClaseLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelDatoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFBuscar_EliminarClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLCodigo))
+                .addGroup(jPanelDatoClaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanelDatoClaseLayout.createSequentialGroup()
+                        .addComponent(jLCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(4, 4, 4))
+                    .addComponent(jTFBuscar_EliminarClase, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -221,11 +261,11 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
+            .addGap(0, 290, Short.MAX_VALUE)
         );
 
         jPFondo.add(jPanel1);
-        jPanel1.setBounds(0, 30, 380, 270);
+        jPanel1.setBounds(0, 30, 380, 290);
 
         JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
         JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
@@ -252,7 +292,7 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
             }
         });
         jPFondo.add(JBIngreso1);
-        JBIngreso1.setBounds(90, 310, 89, 32);
+        JBIngreso1.setBounds(80, 330, 89, 32);
 
         JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
         JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
@@ -275,10 +315,10 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
             }
         });
         jPFondo.add(JBCancela1);
-        JBCancela1.setBounds(200, 310, 89, 32);
+        JBCancela1.setBounds(190, 330, 89, 32);
 
         getContentPane().add(jPFondo);
-        jPFondo.setBounds(0, 0, 380, 350);
+        jPFondo.setBounds(0, 0, 380, 380);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -286,7 +326,7 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int posX = evt.getXOnScreen();
         int posY = evt.getYOnScreen();
-        this.setLocation(posX-x,posY-y);
+        this.setLocation(posX - x, posY - y);
     }//GEN-LAST:event_formMouseDragged
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -299,7 +339,22 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFBuscar_EliminarClaseKeyTyped
 
     private void jTFBuscar_EliminarClaseKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_EliminarClaseKeyReleased
-
+        String parametroBusqueda = jTFBuscar_EliminarClase.getText();
+        if (parametroBusqueda.length() >= 1) {
+            this.SQL = """
+                       Select 
+                          Codigo_clase, 
+                          Materia, 
+                          Aula, 
+                          c.Cedula_profesor, 
+                          CONCAT(P.Nombres, ' ', P.Apellidos) as ProfesorAsignado
+                       from Clases c JOIN Personas p 
+                       on c.cedula_profesor = p.cedula WHERE Codigo_clase LIKE '%""" + parametroBusqueda + "%';";
+            con.despliegueFields(SQL, "Horarios", jTFCodigo_EliminarClase, jTFMateria_EliminarClase, jTFAula_EliminarClase, jTFHorario_EliminarClase,
+                    jTFHorario_EliminarClase1, null, null, null, "insertar");
+        } else {
+            limpiarCampos();
+        }
     }//GEN-LAST:event_jTFBuscar_EliminarClaseKeyReleased
 
     private void jButtonMinimizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinimizar1ActionPerformed
@@ -319,7 +374,41 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-
+        String codClase = jTFBuscar_EliminarClase.getText();
+        if (codClase.isEmpty()) {
+            titulo = "ADVERTENCIA";
+            mensaje = "Todos los campos deben estar llenos";
+            emitirMensaje(mensaje, titulo);
+        } else {
+            this.SQL = "Select count(*) from Clases where Codigo_clase like '%" + codClase + "%'";
+            if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
+                titulo = "ADVERTENCIA";
+                mensaje = "La clase a al que hace referencia no existe";
+                emitirMensaje(mensaje, titulo);
+            } else {
+                this.SQL = "SELECT COUNT(*) FROM Asignacion_cupos WHERE Codigo_Clase  like '%" + codClase + "%'";
+                if (con.busquedaCod("Personas", SQL, "count(*)") >= 1) {
+                    titulo = "ADVERTENCIA";
+                    mensaje = "La clase que estas intentando tiene estudiantes asignados, elimina la lista de estudiantes primero";
+                    emitirMensaje(mensaje, titulo);
+                } else {
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar la clase?" + "\n     -Esta accion no podrá ser revertida y se eliminaran todos los horarios asociados a la misma", "Eliminar clase", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
+                    if (seleccion == 0) {
+                        this.SQL = "Delete from Clases WHERE Codigo_Clase = '" + codClase + "';";
+                        if (con.actualizarEliminarTablas(SQL) == true) {
+                            titulo = "RESULTADO";
+                            mensaje = "Lista de estudiantes borrada exitosamente";
+                            dispose();
+                            jTFBuscar_EliminarClase.setText("");
+                        } else {
+                            titulo = "ERROR: Borrado";
+                            mensaje = "Los estudiantes NO fueron borrados debido a un error";
+                        }
+                        emitirMensaje(mensaje, titulo);
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_JBIngreso1ActionPerformed
 
     private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
@@ -331,19 +420,27 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        limpiarCampos();
+        jTFBuscar_EliminarClase.setText("");
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
-//    public void limpiarCampos(){
-//        this.jTFCodigo_EliminarEst.setText("");
-//        this.jTFNombres_EliminarEst.setText("");
-//        this.jTFApellidos_EliminarEst.setText("");
-//        this.jTFCelu_EliminarEst.setText("");
-//        this.jTFSectorEst_EliminarEst.setText("");
-//        this.jTFFacultad_EliminarEst.setText("");
-//        this.jTFCorreo_EliminarEst.setText("");
-//    }
-    
+    public void limpiarCampos() {
+        this.jTFCodigo_EliminarClase.setText("");
+        this.jTFMateria_EliminarClase.setText("");
+        this.jTFAula_EliminarClase.setText("");
+        this.jTFHorario_EliminarClase.setText("");
+        this.jTFHorario_EliminarClase1.setText("");
+    }
+
+    private void emitirMensaje(String mensaje, String titulo) {
+        getToolkit().beep();
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;
@@ -353,6 +450,7 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabelAula;
     private javax.swing.JLabel jLabelHorario;
+    private javax.swing.JLabel jLabelHorario1;
     private javax.swing.JLabel jLabelMateria;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPDatosClaseEliminar;
@@ -363,6 +461,7 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
     public static javax.swing.JTextField jTFBuscar_EliminarClase;
     public static javax.swing.JTextField jTFCodigo_EliminarClase;
     public static javax.swing.JTextField jTFHorario_EliminarClase;
+    public static javax.swing.JTextField jTFHorario_EliminarClase1;
     public static javax.swing.JTextField jTFMateria_EliminarClase;
     // End of variables declaration//GEN-END:variables
 }

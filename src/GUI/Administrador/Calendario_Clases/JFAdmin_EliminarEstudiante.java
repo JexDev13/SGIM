@@ -1,5 +1,7 @@
 package GUI.Administrador.Calendario_Clases;
 
+import static GUI.Administrador.Calendario_Clases.JFAdmin_AsignarEstudiante.jTFBuscar_AsignarHorario;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_AsignarEstudiante.jTFBuscar_Estudiante;
 import Negocio.Conexion;
 import Negocio.Diseño;
 import Negocio.Validaciones;
@@ -11,7 +13,7 @@ import javax.swing.JOptionPane;
 /*
  * @authors G2 SoftwareSolutions
  */
-public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
+public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
 
     private int x;
     private int y;
@@ -24,7 +26,7 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
     String mensaje = null;
     String tabla = "Horarios";
 
-    public JFAdmin_AsignarEstudiante() {
+    public JFAdmin_EliminarEstudiante() {
         initComponents();
         setLocationRelativeTo(this);
     }
@@ -55,13 +57,14 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
         jTFCodigo_Horario = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jTFHorario = new javax.swing.JTextField();
+        jCBElimTodo = new javax.swing.JCheckBox();
         jPanelDatoClase = new javax.swing.JPanel();
         jTFBuscar_AsignarHorario = new javax.swing.JTextField();
         jLCodigo = new javax.swing.JLabel();
-        jPanelDatoClase1 = new javax.swing.JPanel();
+        jPDatosEst = new javax.swing.JPanel();
         jTFBuscar_Estudiante = new javax.swing.JTextField();
         jLCodigo1 = new javax.swing.JLabel();
-        jPDatosClaseAsignar1 = new javax.swing.JPanel();
+        jPDatosEstudiElim = new javax.swing.JPanel();
         jTFCedulaEst = new javax.swing.JTextField();
         jTFNombresEst = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
@@ -69,8 +72,9 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(379, 600));
+        setMinimumSize(new java.awt.Dimension(379, 639));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(379, 639));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -85,7 +89,7 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
 
         jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitulo.setText("Asignar Estudiante");
+        jLabelTitulo.setText("Eliminar estudiante");
         getContentPane().add(jLabelTitulo);
         jLabelTitulo.setBounds(10, 0, 210, 30);
 
@@ -143,7 +147,7 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
             }
         });
         jPFondo.add(JBIngreso1);
-        JBIngreso1.setBounds(80, 550, 89, 32);
+        JBIngreso1.setBounds(70, 590, 89, 32);
 
         JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
         JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
@@ -166,7 +170,7 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
             }
         });
         jPFondo.add(JBCancela1);
-        JBCancela1.setBounds(180, 550, 89, 32);
+        JBCancela1.setBounds(170, 590, 89, 32);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -215,6 +219,16 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
         jTFHorario.setEditable(false);
         jTFHorario.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
+        jCBElimTodo.setBackground(new java.awt.Color(255, 255, 255));
+        jCBElimTodo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jCBElimTodo.setText("¿Eliminar toda la lista de estudiantes de esta clase?");
+        jCBElimTodo.setContentAreaFilled(false);
+        jCBElimTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBElimTodoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPDatosClaseAsignarLayout = new javax.swing.GroupLayout(jPDatosClaseAsignar);
         jPDatosClaseAsignar.setLayout(jPDatosClaseAsignarLayout);
         jPDatosClaseAsignarLayout.setHorizontalGroup(
@@ -222,22 +236,27 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
             .addGroup(jPDatosClaseAsignarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPDatosClaseAsignarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPDatosClaseAsignarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFHorario)
-                    .addComponent(jTFCodigo_Horario)
-                    .addComponent(jTFMateria, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(jTFCodigo_Clase)
-                    .addComponent(jTFAula)
-                    .addComponent(jTFCedProf, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTFNombreProf, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPDatosClaseAsignarLayout.createSequentialGroup()
+                        .addGroup(jPDatosClaseAsignarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPDatosClaseAsignarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                            .addComponent(jTFCodigo_Horario)
+                            .addComponent(jTFMateria)
+                            .addComponent(jTFCodigo_Clase)
+                            .addComponent(jTFAula)
+                            .addComponent(jTFCedProf, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTFNombreProf, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPDatosClaseAsignarLayout.createSequentialGroup()
+                        .addComponent(jCBElimTodo)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPDatosClaseAsignarLayout.setVerticalGroup(
@@ -266,11 +285,13 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
                 .addGroup(jPDatosClaseAsignarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFNombreProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPDatosClaseAsignarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCBElimTodo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelDatoClase.setBackground(new java.awt.Color(255, 255, 255));
@@ -297,7 +318,7 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLCodigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTFBuscar_AsignarHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addComponent(jTFBuscar_AsignarHorario)
                 .addContainerGap())
         );
         jPanelDatoClaseLayout.setVerticalGroup(
@@ -310,8 +331,8 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanelDatoClase1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDatoClase1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del estudiante"));
+        jPDatosEst.setBackground(new java.awt.Color(255, 255, 255));
+        jPDatosEst.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del estudiante"));
 
         jTFBuscar_Estudiante.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTFBuscar_Estudiante.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -326,29 +347,29 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
         jLCodigo1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLCodigo1.setText("Cédula del estudiante:");
 
-        javax.swing.GroupLayout jPanelDatoClase1Layout = new javax.swing.GroupLayout(jPanelDatoClase1);
-        jPanelDatoClase1.setLayout(jPanelDatoClase1Layout);
-        jPanelDatoClase1Layout.setHorizontalGroup(
-            jPanelDatoClase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDatoClase1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPDatosEstLayout = new javax.swing.GroupLayout(jPDatosEst);
+        jPDatosEst.setLayout(jPDatosEstLayout);
+        jPDatosEstLayout.setHorizontalGroup(
+            jPDatosEstLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPDatosEstLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLCodigo1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTFBuscar_Estudiante, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                .addComponent(jTFBuscar_Estudiante)
                 .addContainerGap())
         );
-        jPanelDatoClase1Layout.setVerticalGroup(
-            jPanelDatoClase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDatoClase1Layout.createSequentialGroup()
+        jPDatosEstLayout.setVerticalGroup(
+            jPDatosEstLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPDatosEstLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addGroup(jPanelDatoClase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPDatosEstLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFBuscar_Estudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLCodigo1))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPDatosClaseAsignar1.setBackground(new java.awt.Color(255, 255, 255));
-        jPDatosClaseAsignar1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del estudiante"));
+        jPDatosEstudiElim.setBackground(new java.awt.Color(255, 255, 255));
+        jPDatosEstudiElim.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del estudiante"));
 
         jTFCedulaEst.setEditable(false);
         jTFCedulaEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -362,30 +383,30 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel25.setText("Estudiante");
 
-        javax.swing.GroupLayout jPDatosClaseAsignar1Layout = new javax.swing.GroupLayout(jPDatosClaseAsignar1);
-        jPDatosClaseAsignar1.setLayout(jPDatosClaseAsignar1Layout);
-        jPDatosClaseAsignar1Layout.setHorizontalGroup(
-            jPDatosClaseAsignar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPDatosClaseAsignar1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPDatosEstudiElimLayout = new javax.swing.GroupLayout(jPDatosEstudiElim);
+        jPDatosEstudiElim.setLayout(jPDatosEstudiElimLayout);
+        jPDatosEstudiElimLayout.setHorizontalGroup(
+            jPDatosEstudiElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPDatosEstudiElimLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPDatosClaseAsignar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPDatosEstudiElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel25)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPDatosClaseAsignar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPDatosEstudiElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTFCedulaEst)
                     .addComponent(jTFNombresEst))
                 .addContainerGap())
         );
-        jPDatosClaseAsignar1Layout.setVerticalGroup(
-            jPDatosClaseAsignar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPDatosClaseAsignar1Layout.createSequentialGroup()
+        jPDatosEstudiElimLayout.setVerticalGroup(
+            jPDatosEstudiElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPDatosEstudiElimLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPDatosClaseAsignar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPDatosEstudiElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCedulaEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPDatosClaseAsignar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPDatosEstudiElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFNombresEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
                 .addGap(202, 202, 202))
@@ -400,28 +421,28 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPDatosClaseAsignar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelDatoClase, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPDatosClaseAsignar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelDatoClase1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(jPDatosEstudiElim, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPDatosEst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanelDatoClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPDatosClaseAsignar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPDatosClaseAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPDatosEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelDatoClase1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPDatosClaseAsignar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPDatosEstudiElim, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
 
         jPFondo.add(jPanel1);
-        jPanel1.setBounds(0, 30, 380, 500);
+        jPanel1.setBounds(0, 30, 380, 540);
 
         getContentPane().add(jPFondo);
-        jPFondo.setBounds(0, 0, 380, 600);
+        jPFondo.setBounds(0, 0, 380, 640);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -457,59 +478,76 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
         String cedulaEst = jTFBuscar_Estudiante.getText();
         String codClase = jTFCodigo_Clase.getText();
         String codHorario = jTFBuscar_AsignarHorario.getText();
-        if (cedulaEst.isEmpty() || codHorario.isEmpty()) {
+        if (codHorario.isEmpty() || cedulaEst.isEmpty() && !jCBElimTodo.isSelected()) {
             titulo = "ADVERTENCIA";
             mensaje = "Todos los campos deben estar llenos";
             emitirMensaje(mensaje, titulo);
         } else {
-            if (val.validadorDeCedula(cedulaEst)) {
-                this.SQL = "Select count(*) from Horarios where Codigo_horario like '%" + codHorario + "%'";
-                if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
-                    getToolkit().beep();
-                    titulo = "ADVERTENCIA";
-                    mensaje = "El horario al que hace referencia no existe";
+            this.SQL = "Select count(*) from Horarios where Codigo_horario like '%" + codHorario + "%'";
+            if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
+                titulo = "ADVERTENCIA";
+                mensaje = "El horario al que hace referencia no existe";
+                emitirMensaje(mensaje, titulo);
+            } else {
+                if (!val.validadorDeCedula(cedulaEst) && !jCBElimTodo.isSelected()) {
+                    titulo = "ERROR DE FORMATO";
+                    mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
                     emitirMensaje(mensaje, titulo);
                 } else {
                     this.SQL = "Select count(*) from Estudiantes where Cedula_Estudiante like '%" + cedulaEst + "%'";
-                    if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
-                        getToolkit().beep();
+                    if (con.busquedaCod("Personas", SQL, "count(*)") < 1 && !jCBElimTodo.isSelected()) {
                         titulo = "ADVERTENCIA";
                         mensaje = "El estudiante al que hace referencia no existe";
                         emitirMensaje(mensaje, titulo);
                     } else {
-                        this.SQL = "SELECT COUNT(*) FROM Asignacion_cupos WHERE Codigo_Horario = '" + codHorario + "' AND Codigo_clase = '" + codClase + "' AND Cedula_estudiante = '" + cedulaEst + "';";
-                        if (con.busquedaCod("Personas", SQL, "count(*)") >= 1) {
+                        this.SQL = "SELECT COUNT(*) FROM Asignacion_cupos WHERE Codigo_clase = '" + codClase + "' AND Cedula_estudiante = '" + cedulaEst + "' AND Codigo_Horario = '" + codHorario + "';";
+                        if (con.busquedaCod("Personas", SQL, "count(*)") < 1 && !jCBElimTodo.isSelected()) {
                             titulo = "ADVERTENCIA";
-                            mensaje = "El estudiante ya se encuentra registrado en esa clase";
+                            mensaje = "El estudiante al que hace referencia no esta registrado en esa clase";
                             emitirMensaje(mensaje, titulo);
                         } else {
-                            ArrayList<String> atributosInsetar = new ArrayList<>();
-                            atributosInsetar.add(codClase);
-                            atributosInsetar.add(cedulaEst);
-                            atributosInsetar.add(codHorario);
-                            String parametro = con.prepararAtributos(atributosInsetar);
-                            if (con.insertar_Tablas("Asistencia", parametro)) {
-                                titulo = "Ingresado";
-                                mensaje = "Los datos fueron ingresados correctamente";
-                                dispose();
-                                limpiarCampos();
-                                jTFBuscar_AsignarHorario.setText("");
-                                jTFBuscar_Estudiante.setText("");
-                                JFAdmin_AsistenciaClase.JBCancela1.doClick();
-                                JFAdmin_AsistenciaClase clas = new JFAdmin_AsistenciaClase();
-                                clas.setVisible(true);
+                            if (this.jCBElimTodo.isSelected()) {
+                                int seleccion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar toda la lista de la clase?" + "\n     -Esta accion no podrá ser revertida", "Eliminar lista de estudiantes", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
+                                if (seleccion == 0) {
+                                    this.SQL = "DELETE FROM Asignacion_cupos WHERE Codigo_Horario = '" + codHorario + "';";
+                                    if (con.actualizarEliminarTablas(SQL) == true) {
+                                        titulo = "RESULTADO";
+                                        mensaje = "Lista de estudiantes borrada exitosamente";
+                                        dispose();
+                                        jTFBuscar_AsignarHorario.setText("");
+                                        jTFBuscar_Estudiante.setText("");
+                                        JFAdmin_AsistenciaClase.JBCancela1.doClick();
+                                        JFAdmin_AsistenciaClase clas = new JFAdmin_AsistenciaClase();
+                                        clas.setVisible(true);
+                                    } else {
+                                        titulo = "ERROR: Borrado";
+                                        mensaje = "Los estudiantes NO fueron borrados debido a un error";
+                                    }
+                                    emitirMensaje(mensaje, titulo);
+                                }
                             } else {
-                                titulo = "ERROR: Ingresado";
-                                mensaje = "Los datos NO fueron ingresados debido a un error";
+                                int seleccion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar al estudiante de la clase?" + "\n     -Esta accion podrá ser revertida", "Eliminar estudiante de la clase", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
+                                if (seleccion == 0) {
+                                    this.SQL = "DELETE FROM Asignacion_cupos WHERE Codigo_Horario = '" + codHorario + "' AND Codigo_clase = '" + codClase + "'AND Cedula_estudiante = '" + cedulaEst + "';";
+                                    if (con.actualizarEliminarTablas(SQL) == true) {
+                                        titulo = "RESULTADO";
+                                        mensaje = "Elemento inactivado exitosamente";
+                                        dispose();
+                                        jTFBuscar_AsignarHorario.setText("");
+                                        jTFBuscar_Estudiante.setText("");
+                                        JFAdmin_AsistenciaClase.JBCancela1.doClick();
+                                        JFAdmin_AsistenciaClase clas = new JFAdmin_AsistenciaClase();
+                                        clas.setVisible(true);
+                                    } else {
+                                        titulo = "ERROR: Ingresado";
+                                        mensaje = "El estudiante NO fue borrado debido a un error";
+                                    }
+                                    emitirMensaje(mensaje, titulo);
+                                }
                             }
-                            emitirMensaje(mensaje, titulo);
                         }
                     }
                 }
-            } else {
-                titulo = "ERROR DE FORMATO";
-                mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
-                emitirMensaje(mensaje, titulo);
             }
         }
     }//GEN-LAST:event_JBIngreso1ActionPerformed
@@ -523,6 +561,12 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        limpiarCampos();
+        jTFBuscar_AsignarHorario.setText("");
+        jTFBuscar_Estudiante.setText("");
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
@@ -571,6 +615,18 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFBuscar_EstudianteKeyTyped
 
+    private void jCBElimTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBElimTodoActionPerformed
+        if (this.jCBElimTodo.isSelected()) {
+            jTFBuscar_Estudiante.setEditable(false);
+            jTFBuscar_Estudiante.setText("");
+            jTFCedulaEst.setText("");
+            jTFNombresEst.setText("");
+        } else {
+            jTFBuscar_Estudiante.setEditable(true);
+            jTFBuscar_Estudiante.setText("");
+        }
+    }//GEN-LAST:event_jCBElimTodoActionPerformed
+
     public void limpiarCampos() {
         jTFAula.setText("");
         jTFCedProf.setText("");
@@ -582,6 +638,7 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
     }
 
     private void emitirMensaje(String mensaje, String titulo) {
+        getToolkit().beep();
         JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
     }
 
@@ -591,6 +648,7 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
     private javax.swing.JButton JBIngreso1;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
+    private javax.swing.JCheckBox jCBElimTodo;
     private javax.swing.JLabel jLCodigo;
     private javax.swing.JLabel jLCodigo1;
     private javax.swing.JLabel jLabel20;
@@ -604,11 +662,11 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPDatosClaseAsignar;
-    private javax.swing.JPanel jPDatosClaseAsignar1;
+    private javax.swing.JPanel jPDatosEst;
+    private javax.swing.JPanel jPDatosEstudiElim;
     private javax.swing.JPanel jPFondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelDatoClase;
-    private javax.swing.JPanel jPanelDatoClase1;
     public static javax.swing.JTextField jTFAula;
     public static javax.swing.JTextField jTFBuscar_AsignarHorario;
     public static javax.swing.JTextField jTFBuscar_Estudiante;
