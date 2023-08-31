@@ -6,9 +6,12 @@ import Negocio.Diseño;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -19,6 +22,9 @@ public class JFLogin extends javax.swing.JFrame {
     ImageIcon ICONERROR = gui.getICONERROR();
     Conexion conectar = new Conexion();
     JFRecuperarContraseña recuperar = new JFRecuperarContraseña();
+    int contador = 0;
+    Timer timer;
+    int tiempoRestante = 0;
 
     public JFLogin() {
         initComponents();
@@ -272,49 +278,79 @@ public class JFLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngresoActionPerformed
-        String Perfil = this.jCBUsuario.getSelectedItem().toString();
-        String User = this.JTFUser.getText();
-        String Pass = new String(JPFPass.getPassword());
-        int index = this.jCBUsuario.getSelectedIndex();
         String mensaje = "\t\tACCESO DENEGADO \n -Usuario, perfil o contraseña incorrectos";
-        boolean login = conectar.logIn(Perfil, User, Pass);
-        switch (index) {
-            case 0:
-                mensaje = "\t\tACCESO DENEGADO \n -Escoja un perfil de usuario primero";
+        if (this.contador < 3) {
+            String Perfil = this.jCBUsuario.getSelectedItem().toString();
+            String User = this.JTFUser.getText();
+            String Pass = new String(JPFPass.getPassword());
+            int index = this.jCBUsuario.getSelectedIndex();
+            boolean login = conectar.logIn(Perfil, User, Pass);
+            switch (index) {
+                case 0:
+                    mensaje = "\t\tACCESO DENEGADO \n -Escoja un perfil de usuario primero";
+                    borrarLogin(mensaje);
+                    break;
+                case 1:
+                    if (login == true) {
+                        //INGRESO AL PERFIL ADMINISTRADOR
+                        JFAdminMenu admin = new JFAdminMenu();
+                        admin.setVisible(true);
+                        dispose();
+                        this.contador = 0;
+                    } else {
+                        borrarLogin(mensaje);
+                    }
+                    break;
+                case 2:
+                    if (login == true) {
+                        //INGRESO AL PERFIL PROFESOR
+                        //Futura interfaz
+                        String titulo = "Perfil";
+                        mensaje = "Ingreso a un perfil profesor";
+                        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONERROR);
+                    } else {
+                        borrarLogin(mensaje);
+                    }
+                    break;
+                case 3:
+                    if (login == true) {
+                        //INGRESO AL PERFIL ESTUDIANTE
+                        String titulo = "Perfil";
+                        mensaje = "Ingreso a un perfil estudiante";
+                        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONERROR);
+                        //Futura interfaz
+                    } else {
+                        borrarLogin(mensaje);
+                    }
+                    break;
+            }
+        } else {
+            if (tiempoRestante == 0) {
+                tiempoRestante = 300;  // Comienza a subir el tiempo
+                mensaje = "Sistema bloqueado por múltiples intentos de sesión erróneos"
+                        + "\nVuelve a intentarlo en " + (tiempoRestante / 60) + " minutos";
+
                 borrarLogin(mensaje);
-                break;
-            case 1:
-                if (login == true) {
-                    //INGRESO AL PERFIL ADMINISTRADOR
-                    JFAdminMenu admin = new JFAdminMenu();
-                    admin.setVisible(true);
-                    dispose();
-                } else {
-                    borrarLogin(mensaje);
-                }
-                break;
-            case 2:
-                if (login == true) {
-                    //INGRESO AL PERFIL PROFESOR
-                    //Futura interfaz
-                    String titulo = "Perfil";
-                    mensaje = "Ingreso a un perfil profesor";
-                    JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONERROR);
-                } else {
-                    borrarLogin(mensaje);
-                }
-                break;
-            case 3:
-                if (login == true) {
-                    //INGRESO AL PERFIL ESTUDIANTE
-                    String titulo = "Perfil";
-                    mensaje = "Ingreso a un perfil estudiante";
-                    JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONERROR);
-                    //Futura interfaz
-                } else {
-                    borrarLogin(mensaje);
-                }
-                break;
+
+                // Inicia el temporizador para disminuir el tiempoRestante
+                timer = new Timer(1000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        tiempoRestante--;
+
+                        if (tiempoRestante == 0) {
+                            ((Timer) e.getSource()).stop();  // Detener el temporizador
+                            contador = 0;  // Reiniciar el contador
+                        }
+                    }
+                });
+                timer.start();
+            } else {
+                mensaje = "Sistema bloqueado por múltiples intentos de sesión erróneos"
+                        + "\nVuelve a intentarlo en " + ((tiempoRestante / 60)+1) + " minutos";
+
+                borrarLogin(mensaje);
+            }
         }
     }//GEN-LAST:event_JBIngresoActionPerformed
 
@@ -416,12 +452,14 @@ public class JFLogin extends javax.swing.JFrame {
     }
 
     private void borrarLogin(String mensaje) {
+        getToolkit().beep();
         String titulo = "ERROR AL INICIAR SESION";
         JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONERROR);
         this.JPFPass.setEchoChar((char) 0);
         this.JTFUser.setText("Usuario");
         this.JPFPass.setText("Contraseña");
         this.JTFUser.requestFocus();
+        this.contador++;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -13,7 +13,7 @@ public class JPAdminCal extends javax.swing.JPanel {
     JFAdmin_AsignarEstudiante asgEst = new JFAdmin_AsignarEstudiante();
     JFAdmin_AsignarHorarios asgProf = new JFAdmin_AsignarHorarios();
     JFAdmin_AsistenciaClase asisClase = new JFAdmin_AsistenciaClase();
-    JFAdmin_ConsultarClase consClase = new JFAdmin_ConsultarClase();
+    JFAdmin_ConsultarClase cons = new JFAdmin_ConsultarClase();
     JFAdmin_EliminarClase elimClase = new JFAdmin_EliminarClase();
 
     Conexion con = new Conexion();
@@ -43,7 +43,6 @@ public class JPAdminCal extends javax.swing.JPanel {
         jLTitTabla = new javax.swing.JLabel();
         jButtonNuevaClase = new javax.swing.JButton();
         jButtonEliminarClases = new javax.swing.JButton();
-        jLLupa = new javax.swing.JLabel();
         jTFBusqueda = new javax.swing.JTextField();
         jSeparator = new javax.swing.JSeparator();
         jCBFiltroUsers = new javax.swing.JComboBox<>();
@@ -52,6 +51,7 @@ public class JPAdminCal extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTClases = new javax.swing.JTable();
         jButtonEliminarClases2 = new javax.swing.JButton();
+        jButtonBuscar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -99,8 +99,6 @@ public class JPAdminCal extends javax.swing.JPanel {
             }
         });
 
-        jLLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
-
         jTFBusqueda.setForeground(new java.awt.Color(102, 102, 102));
         jTFBusqueda.setText("Buscar clase");
         jTFBusqueda.setBorder(null);
@@ -128,7 +126,7 @@ public class JPAdminCal extends javax.swing.JPanel {
         jSeparator.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator.setForeground(new java.awt.Color(250, 183, 22));
 
-        jCBFiltroUsers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtrar por...", "Aula", "Materia", "Cédula del profesor", "Profesor asignado" }));
+        jCBFiltroUsers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filtrar por...", "Código de clase", "Aula", "Materia", "Cédula del profesor", "Profesor asignado" }));
         jCBFiltroUsers.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 183, 22)));
         jCBFiltroUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,6 +222,16 @@ public class JPAdminCal extends javax.swing.JPanel {
             }
         });
 
+        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
+        jButtonBuscar.setBorder(null);
+        jButtonBuscar.setContentAreaFilled(false);
+        jButtonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -247,7 +255,7 @@ public class JPAdminCal extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCBFiltroUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLLupa)
+                                .addComponent(jButtonBuscar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -264,9 +272,7 @@ public class JPAdminCal extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLLupa)))
+                            .addComponent(jButtonBuscar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -281,8 +287,8 @@ public class JPAdminCal extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addComponent(jLTitTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                .addGap(78, 78, 78))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -321,18 +327,21 @@ public class JPAdminCal extends javax.swing.JPanel {
         String Busqueda = this.jTFBusqueda.getText();
         switch (this.jCBFiltroUsers.getSelectedIndex()) {
             case 0 -> {
-                Parametro_de_busqueda = "Aula";
+                Parametro_de_busqueda = "Codigo_clase";
             }
             case 1 -> {
-                Parametro_de_busqueda = "Aula";
+                Parametro_de_busqueda = "Codigo_clase";
             }
             case 2 -> {
-                Parametro_de_busqueda = "Materia";
+                Parametro_de_busqueda = "Aula";
             }
             case 3 -> {
-                Parametro_de_busqueda = "C.Cedula_Profesor";
+                Parametro_de_busqueda = "Materia";
             }
             case 4 -> {
+                Parametro_de_busqueda = "C.Cedula_Profesor";
+            }
+            case 5 -> {
                 Parametro_de_busqueda = "CONCAT(P.Nombres, ' ', P.Apellidos)";
             }
         }
@@ -389,15 +398,38 @@ public class JPAdminCal extends javax.swing.JPanel {
         asis.setVisible(true);
     }//GEN-LAST:event_jButtonEliminarClases2ActionPerformed
 
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        String Busqueda = this.jTFBusqueda.getText();
+        if (jCBFiltroUsers.isVisible() && !jCBFiltroUsers.getSelectedItem().equals("Filtrar por...")) {
+            if (jCBFiltroUsers.getSelectedItem().equals("Código de clase") && (existeCodigoInstrumento(jTFBusqueda.getText()))) {
+                cons.setTFCodigo(Busqueda);
+                cons.setTFNomDato("Materia: ");
+                cons.setTFDato(jTClases.getValueAt(0, 2).toString());
+                cons.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private boolean existeCodigoInstrumento(String codigo) {
+        boolean existe = false;
+        for (int row = 0; row < jTClases.getRowCount(); row++) {
+            String codigoEnTabla = (String) jTClases.getValueAt(row, 0);
+            if (codigoEnTabla.equals(codigo)) {
+                existe = true;
+                break;
+            }
+        }
+        return existe;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEliminarClases;
     private javax.swing.JButton jButtonEliminarClases1;
     private javax.swing.JButton jButtonEliminarClases2;
     private javax.swing.JButton jButtonNuevaClase;
     private javax.swing.JComboBox<String> jCBFiltroUsers;
     private javax.swing.JLabel jLFiltro;
-    private javax.swing.JLabel jLLupa;
     private javax.swing.JLabel jLTitTabla;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator;

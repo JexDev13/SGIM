@@ -2,6 +2,7 @@ package GUI.Administrador.Gestion_Sistema;
 
 import Negocio.Conexion;
 import Negocio.Diseño;
+import Negocio.Validaciones;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -16,6 +17,7 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
     Diseño dis = new Diseño();
     ImageIcon ICONCANCELAR = dis.getICONERROR();
     Conexion conect = new Conexion();
+    Validaciones val = new Validaciones();
 
     public JFRecuperarContraseña() {
         initComponents();
@@ -120,7 +122,7 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
         jTextAreaTexto.setColumns(20);
         jTextAreaTexto.setFont(new java.awt.Font("Monospaced", 0, 15)); // NOI18N
         jTextAreaTexto.setRows(5);
-        jTextAreaTexto.setText("Cuando solicitas recuperación de usuario o contraseña \nel sistema te enviara al correo asociado la \ninformación de recuperación de tus datos, por tu \nseguridad te recomendamos cambiar tu contraseña \ncada vez que realices una recuperación.");
+        jTextAreaTexto.setText("Cuando solicitas recuperación de usuario o contraseña \nel sistema te enviara al correo asociado la \ninformación de recuperación de tus datos, por tú \nseguridad te recomendamos cambiar tu contraseña \ncada vez que realices una recuperación.");
         jTextAreaTexto.setBorder(null);
         jPContenido.add(jTextAreaTexto);
         jTextAreaTexto.setBounds(10, 130, 490, 110);
@@ -251,8 +253,9 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
     }//GEN-LAST:event_formMousePressed
 
     private void JBCancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelaActionPerformed
+        String mensaje = "Si cancela ningún dato sera cambiado";
+        emitirMensaje(mensaje);
         dispose();
-        this.JTFUser.setText("");
     }//GEN-LAST:event_JBCancelaActionPerformed
 
     private void JBCancelaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancelaMouseExited
@@ -274,8 +277,13 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
     private void JBRecContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRecContActionPerformed
         String tipo = "Contrasena";
         String cedula = this.JTFUser.getText();
-        ejecutarRecuperacionEnHilo(tipo, cedula);
-        dispose();
+        if (val.validadorDeCedula(cedula)) {
+            ejecutarRecuperacionEnHilo(tipo, cedula);
+            dispose();
+        } else {
+            String mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
+            emitirMensaje(mensaje);
+        }
     }//GEN-LAST:event_JBRecContActionPerformed
 
     private void JBRecUsuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBRecUsuMouseEntered
@@ -289,8 +297,13 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
     private void JBRecUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRecUsuActionPerformed
         String tipo = "Nombre_Usuario";
         String cedula = this.JTFUser.getText();
-        ejecutarRecuperacionEnHilo(tipo, cedula);
-        dispose();
+        if (val.validadorDeCedula(cedula)) {
+            ejecutarRecuperacionEnHilo(tipo, cedula);
+            dispose();
+        } else {
+            String mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
+            emitirMensaje(mensaje);
+        }
     }//GEN-LAST:event_JBRecUsuActionPerformed
 
     private void ejecutarRecuperacionEnHilo(String tipo, String cedula) {
@@ -300,17 +313,19 @@ public class JFRecuperarContraseña extends javax.swing.JFrame {
             if (respuesta) {
                 mensaje = tipo.equals("Contrasena") ? "Contraseña enviada al correo" : "Usuario enviado al correo";
             }
-            emitirMensaje(mensaje);
+            emitirMensaje(mensaje+"\nRevisa tu bandeja de entrada y sigue las instrucciones");
         });
 
         thread.start();
     }
 
     private void emitirMensaje(String mensaje) {
+        getToolkit().beep();
         String titulo = "Recuperar usuario y contraseña";
         JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
         this.JTFUser.setText("");
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela;

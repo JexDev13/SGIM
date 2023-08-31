@@ -1,5 +1,6 @@
 package GUI.Administrador.Gestion_Sistema;
 
+import GUI.Administrador.Calendario_Clases.JFAdmin_ConsultarClase;
 import Negocio.Conexion;
 import Negocio.Diseño;
 
@@ -15,6 +16,7 @@ public class JPAdminGest extends javax.swing.JPanel {
 
     private String selectTabla = "Users";
     private String SQL;
+    JFAdmin_ConsultarClase cons = new JFAdmin_ConsultarClase();
 
     public JPAdminGest() {
         initComponents();
@@ -34,7 +36,6 @@ public class JPAdminGest extends javax.swing.JPanel {
         jLFiltro = new javax.swing.JLabel();
         jSeparator = new javax.swing.JSeparator();
         jCBFiltroUsers = new javax.swing.JComboBox<>();
-        jLLupa = new javax.swing.JLabel();
         jBActualizarUsuario = new javax.swing.JButton();
         jLTitTabla = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -45,6 +46,7 @@ public class JPAdminGest extends javax.swing.JPanel {
         jBEliminarAdmin = new javax.swing.JButton();
         jBVariables = new javax.swing.JButton();
         jBAuditoria = new javax.swing.JButton();
+        jButtonBuscar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -84,8 +86,6 @@ public class JPAdminGest extends javax.swing.JPanel {
                 jCBFiltroUsersActionPerformed(evt);
             }
         });
-
-        jLLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
 
         jBActualizarUsuario.setBackground(new java.awt.Color(250, 183, 22));
         jBActualizarUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,6 +279,16 @@ public class JPAdminGest extends javax.swing.JPanel {
             }
         });
 
+        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
+        jButtonBuscar.setBorder(null);
+        jButtonBuscar.setContentAreaFilled(false);
+        jButtonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -310,7 +320,7 @@ public class JPAdminGest extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jCBFiltroUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLLupa)
+                                    .addComponent(jButtonBuscar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jTFBusqueda))
                                 .addComponent(jSeparator, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -328,11 +338,9 @@ public class JPAdminGest extends javax.swing.JPanel {
                             .addComponent(jBInactivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTFBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLLupa)))
+                            .addComponent(jButtonBuscar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -469,7 +477,8 @@ public class JPAdminGest extends javax.swing.JPanel {
     }//GEN-LAST:event_jBVariablesMouseExited
 
     private void jBVariablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVariablesActionPerformed
-        // TODO add your handling code here:
+        JFAdmin_ActualizarVariables var = new JFAdmin_ActualizarVariables();
+        var.setVisible(true);
     }//GEN-LAST:event_jBVariablesActionPerformed
 
     private void jBAuditoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAuditoriaMouseEntered
@@ -484,6 +493,30 @@ public class JPAdminGest extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBAuditoriaActionPerformed
 
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        String Busqueda = this.jTFBusqueda.getText();
+        if (jCBFiltroUsers.isVisible() && !jCBFiltroUsers.getSelectedItem().equals("Filtrar por...")) {
+            if (jCBFiltroUsers.getSelectedItem().equals("Cédula") && (existeCodigoInstrumento(jTFBusqueda.getText()))) {
+                cons.setTFCodigo(Busqueda);
+                cons.setTFNomDato("Usuario: ");
+                cons.setTFDato(jTUsers.getValueAt(0, 1).toString());
+                cons.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private boolean existeCodigoInstrumento(String codigo) {
+        boolean existe = false;
+        for (int row = 0; row < jTUsers.getRowCount(); row++) {
+            String codigoEnTabla = (String) jTUsers.getValueAt(row, 0);
+            if (codigoEnTabla.equals(codigo)) {
+                existe = true;
+                break;
+            }
+        }
+        return existe;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizarUsuario;
@@ -493,9 +526,9 @@ public class JPAdminGest extends javax.swing.JPanel {
     private javax.swing.JButton jBInactivos;
     private javax.swing.JButton jBNuevoAdmin;
     private javax.swing.JButton jBVariables;
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JComboBox<String> jCBFiltroUsers;
     private javax.swing.JLabel jLFiltro;
-    private javax.swing.JLabel jLLupa;
     private javax.swing.JLabel jLTitTabla;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator;

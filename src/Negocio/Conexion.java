@@ -91,14 +91,19 @@ public class Conexion {
             String destinatario;
             int envio;
             cn = conectar();
-            String query = "SELECT " + tipo + ", correo FROM Admins a JOIN  Users u ON u.Cedula = a.Cedula_Admin WHERE cedula = ?;";
+            String query = "SELECT " + tipo + ", correo from Users u JOIN  Personas p ON p.Cedula = u.Cedula WHERE u.cedula = ?;";
             PreparedStatement preparedStatement = cn.prepareStatement(query);
             preparedStatement.setString(1, cedula);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 resultado = resultSet.getString(tipo);
                 destinatario = resultSet.getString("correo");
-                envio = email.recuperarUsuario(tipo, resultado, destinatario);
+                String mensaje = "<html><body style=\"text-align:center;\">"
+                    + "<h1 style=\"font-size:32px;color:rgb(250,183,22);\">Sistema de Gestión e Inventario Mousai-SGIM</h1>"
+                    + "<p style=\"font-size:24px;\">Recuperación de " + tipo + ": <strong>" + resultado + "</strong></p>"
+                    + "<p style=\"font-size:16px;color:gray;\">Si usted no generó este mensaje, cambie su contraseña inmediatamente.</p>"
+                    + "</body></html>";
+                envio = email.enviarCorreos(mensaje, destinatario);
                 if (envio == 1) {
                     return true;
                 }
@@ -531,6 +536,15 @@ public class Conexion {
                     }
                     if (cuatro != null) {
                         cuatro.setText("" + rs.getString("Correo"));
+                    }
+                }
+            } else if (tabla.equals("variables_del_sistema")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("valor_pension"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("cupos"));
                     }
                 }
             }

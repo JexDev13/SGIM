@@ -373,7 +373,6 @@ public class JFAdmin_EliminarUsuario extends javax.swing.JFrame {
             } else {
                 this.SQL = "Select count(*) from Personas where Cedula like '%" + parametroBusqueda + "%'";
                 if (con.busquedaCod(tabla, SQL, "count(*)") < 1) {
-                    getToolkit().beep();
                     titulo = "ADVERTENCIA";
                     mensaje = "El administrador al que hace referencia no existe";
                     emitirMensaje(mensaje, titulo);
@@ -409,6 +408,7 @@ public class JFAdmin_EliminarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void emitirMensaje(String mensaje, String titulo) {
+        getToolkit().beep();
         JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
     }
 

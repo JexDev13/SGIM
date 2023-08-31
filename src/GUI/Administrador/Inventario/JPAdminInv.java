@@ -29,7 +29,7 @@ public class JPAdminInv extends javax.swing.JPanel {
         gui.jtableHead(jTLib);
         jLFiltro.setVisible(false);
         jCBFiltro.setVisible(false);
-        
+
         mostrarDatos();
     }
 
@@ -587,7 +587,7 @@ public class JPAdminInv extends javax.swing.JPanel {
         }
         return existe;
     }
-    
+
     private boolean existeCodigoLibro(String codigo) {
         boolean existe = false;
 
@@ -600,15 +600,15 @@ public class JPAdminInv extends javax.swing.JPanel {
         }
         return existe;
     }
-    
+
     public void mostrarDatos() {
         this.SQL = """
                    SELECT Codigo,Nombre,Fabricante,Categoria,EstadoAlquiler,Condicion FROM instrumentos;""";
-        con.busqueda_y_despliegue(this.jTInst, this.selectTabla,this.SQL);
-        
+        con.busqueda_y_despliegue(this.jTInst, this.selectTabla, this.SQL);
+
         this.SQL1 = """
                    SELECT Codigo,Nombre,Autor,Categoria,EstadoAlquiler,Condicion FROM libros;""";
-        con.busqueda_y_despliegue(this.jTLib, this.selectTabla1,this.SQL1);
+        con.busqueda_y_despliegue(this.jTLib, this.selectTabla1, this.SQL1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

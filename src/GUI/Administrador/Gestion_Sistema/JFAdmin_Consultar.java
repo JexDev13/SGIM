@@ -1,14 +1,14 @@
-package GUI.Administrador.Calendario_Clases;
+package GUI.Administrador.Gestion_Sistema;
 
 /*
  * @authors G2 SoftwareSolutions
  */
-public class JFAdmin_ConsultarClase extends javax.swing.JFrame {
+public class JFAdmin_Consultar extends javax.swing.JFrame {
 
     private int x;
     private int y;
 
-    public JFAdmin_ConsultarClase() {
+    public JFAdmin_Consultar() {
         initComponents();
         setLocationRelativeTo(this);
     }
@@ -26,14 +26,13 @@ public class JFAdmin_ConsultarClase extends javax.swing.JFrame {
         jPFondo = new javax.swing.JPanel();
         jButtonMinimizar1 = new javax.swing.JButton();
         jButtonSalirIcon1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         JBCancela1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(380, 226));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(380, 226));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -133,22 +132,6 @@ public class JFAdmin_ConsultarClase extends javax.swing.JFrame {
         jPFondo.add(jButtonSalirIcon1);
         jButtonSalirIcon1.setBounds(350, 0, 30, 30);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
-        );
-
-        jPFondo.add(jPanel1);
-        jPanel1.setBounds(0, 30, 380, 140);
-
         JBCancela1.setBackground(new java.awt.Color(255, 255, 254));
         JBCancela1.setForeground(new java.awt.Color(250, 183, 22));
         JBCancela1.setText("cerrar");
@@ -171,6 +154,22 @@ public class JFAdmin_ConsultarClase extends javax.swing.JFrame {
         });
         jPFondo.add(JBCancela1);
         JBCancela1.setBounds(140, 180, 89, 32);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
+        );
+
+        jPFondo.add(jPanel1);
+        jPanel1.setBounds(0, 30, 380, 140);
 
         getContentPane().add(jPFondo);
         jPFondo.setBounds(0, 0, 380, 230);

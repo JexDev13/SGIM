@@ -18,7 +18,7 @@ public class Correo {
     MimeMessage mail;
     Session sesion;
 
-    public int recuperarUsuario(String tipo, String resultado, String destinatario) {
+    public int enviarCorreos(String mensaje, String destinatario) {
 
         try (InputStream input = getClass().getResourceAsStream("/db.properties")) {
 
@@ -27,18 +27,7 @@ public class Correo {
             props.load(input);
             String remitente = props.getProperty("db.userCorreo");
             String password = props.getProperty("db.passCorreo");
-            if (tipo.equalsIgnoreCase("contrasena")) {
-                tipo = "contraseña";
-            } else {
-                tipo = "usuario";
-            }
-
-            String mensaje = "<html><body style=\"text-align:center;\">"
-                    + "<h1 style=\"font-size:32px;color:rgb(250,183,22);\">Sistema de Gestión e Inventario Mousai-SGIM</h1>"
-                    + "<p style=\"font-size:24px;\">Recuperación de " + tipo + ": <strong>" + resultado + "</strong></p>"
-                    + "<p style=\"font-size:16px;color:gray;\">Si usted no generó este mensaje, cambie su contraseña inmediatamente.</p>"
-                    + "</body></html>";
-
+            
             props.put("mail.smtp.host", "smtp.gmail.com");
             props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
             props.put("mail.smtp.port", "587");
