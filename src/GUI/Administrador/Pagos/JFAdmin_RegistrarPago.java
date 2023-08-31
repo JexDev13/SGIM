@@ -12,6 +12,7 @@ import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -118,7 +119,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
         jPanel2.add(jTFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 230, -1));
 
         jLValor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLValor.setText("Valor:");
+        jLValor.setText("Valor ($):");
         jPanel2.add(jLValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         jTFValor.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -251,6 +252,9 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
         JBFactura.requestFocusInWindow();
         if (jTFCedula.getText().isEmpty() || jTFValor.getText().isEmpty() || jComboBoxMetodo.getSelectedItem().equals("Elegir Método...") || jComboBoxMetodo1.getSelectedItem().equals("Elegir Tipo...")) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        } else if (!isValidNumber(jTFValor.getText())){
+            JOptionPane.showMessageDialog(null, "Valor inválido. Ingrese solo números y decimales.");
+            jTFValor.setText("");
         } else {
             int tipo = 0;
             this.SQL = """
@@ -356,8 +360,12 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
     private void jTFValorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFValorFocusLost
         // controlar que solo ingrese 3 numeros y 2 decimales
         if (!jTFValor.getText().isEmpty()) {
-            if (Integer.parseInt(jTFValor.getText()) > 100) {
+            if (!isValidNumber(jTFValor.getText())) {
+                JOptionPane.showMessageDialog(null, "Valor inválido. Ingrese solo números y decimales.");
+                jTFValor.setText("");
+            }else if (Integer.parseInt(jTFValor.getText()) > 100) {
                 JOptionPane.showMessageDialog(null, "Valor mayor a total");
+                jTFValor.setText("");
             }
         }
     }//GEN-LAST:event_jTFValorFocusLost
@@ -380,6 +388,10 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
         DateFormatSymbols symbols = new DateFormatSymbols(new Locale("es", "ES"));
         String nombreMes = symbols.getMonths()[mes];
         return nombreMes;
+    }
+    
+    private boolean isValidNumber(String text) {
+        return Pattern.matches("^\\d*\\.?\\d*$", text);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
