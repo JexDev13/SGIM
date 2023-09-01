@@ -1,5 +1,6 @@
 package GUI.Administrador.Estudiantes;
 
+import Negocio.Conexion;
 import Negocio.Diseño;
 
 /*
@@ -11,11 +12,27 @@ public class JPAdminEst extends javax.swing.JPanel {
     JFAdmin_InsertarEstudiante inser = new JFAdmin_InsertarEstudiante();
     JFAdmin_ActualizarEstudiante act = new JFAdmin_ActualizarEstudiante();
     JFAdmin_EliminarEstudiante elim = new JFAdmin_EliminarEstudiante();
+    
+    Conexion con = new Conexion();
+    private String selectTabla = "Estudiantes";
+    private String SQL;
+
 
     public JPAdminEst() {
         initComponents();
         gui.jtableHead(this.jTEstudiante);
         gui.jComboUsers(jCBFiltroProf);
+        this.SQL = """
+                   SELECT 
+                   	p.Cedula, 
+                       concat(p.Nombres,' ', p.Apellidos) AS Nombre,
+                       e.Sexo, 
+                       e.FechaNacimiento, 
+                       concat(e.NombresRepresentante,' ', e.ApellidosRepresentante) AS NombreRepresentante,
+                       p.Correo, 
+                       e.TelefonoRepresentante
+                   FROM Personas P JOIN Estudiantes  e ON P.Cedula = e.Cedula_estudiante;""";
+        con.busqueda_y_despliegue(jTEstudiante, this.selectTabla, this.SQL);
     }
 
     @SuppressWarnings("unchecked")
@@ -147,37 +164,37 @@ public class JPAdminEst extends javax.swing.JPanel {
         jTEstudiante.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTEstudiante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, ""},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, ""},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "N°Cédula", "Nombres", "Apellidos", "Sexo", "Fecha de Nacimiento", "Nombres representante", "Apellidos representante", "Correo electrónico representante", "N°Celular representante"
+                "N°Cédula", "Nombre", "Sexo", "Fecha de Nacimiento", "Nombre representante", "Correo electrónico representante", "N°Celular representante"
             }
         ));
         jTEstudiante.setGridColor(new java.awt.Color(250, 183, 22));
