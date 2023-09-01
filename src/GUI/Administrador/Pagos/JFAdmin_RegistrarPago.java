@@ -25,6 +25,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
     private Conexion con = new Conexion();
     private String SQL;
     private double valorPension;
+    private double valorTotal;
 
     public JFAdmin_RegistrarPago() {
         initComponents();
@@ -62,6 +63,8 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
         jComboBoxMetodo1 = new javax.swing.JComboBox<>();
         jLNivel = new javax.swing.JLabel();
         jComboBoxMetodo = new javax.swing.JComboBox<>();
+        jLNivel2 = new javax.swing.JLabel();
+        jComboBoxMes = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         JBCancela1 = new javax.swing.JButton();
         JBFactura = new javax.swing.JButton();
@@ -120,14 +123,14 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
 
         jLCedula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLCedula.setText("N°Cédula:");
-        jPanel2.add(jLCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        jPanel2.add(jLCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         jTFCedula.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTFCedulaFocusLost(evt);
             }
         });
-        jPanel2.add(jTFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 230, -1));
+        jPanel2.add(jTFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 230, -1));
 
         jLValor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLValor.setText("Valor ($):");
@@ -142,7 +145,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
 
         jLNivel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLNivel1.setText("Tipo:");
-        jPanel2.add(jLNivel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        jPanel2.add(jLNivel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         jComboBoxMetodo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir Tipo...", "Abono", "Total" }));
         jComboBoxMetodo1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -155,7 +158,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
                 jComboBoxMetodo1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBoxMetodo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 230, -1));
+        jPanel2.add(jComboBoxMetodo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 230, -1));
 
         jLNivel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLNivel.setText("Método de  Pago:");
@@ -168,6 +171,23 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jComboBoxMetodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 190, -1));
+
+        jLNivel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLNivel2.setText("Mes:");
+        jPanel2.add(jLNivel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+
+        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir Mes...", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        jComboBoxMes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxMesFocusLost(evt);
+            }
+        });
+        jComboBoxMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMesActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBoxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 230, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 49, 310, 300));
 
@@ -260,16 +280,14 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
     }//GEN-LAST:event_JBFacturaMouseExited
 
     private void JBFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFacturaActionPerformed
-        
-        
+
         JBFactura.requestFocusInWindow();
-        if (jTFCedula.getText().isEmpty() || jTFValor.getText().isEmpty() || jComboBoxMetodo.getSelectedItem().equals("Elegir Método...") || jComboBoxMetodo1.getSelectedItem().equals("Elegir Tipo...")) {
+        if (jTFCedula.getText().isEmpty() || jTFValor.getText().isEmpty() || jComboBoxMetodo.getSelectedItem().equals("Elegir Método...") || jComboBoxMetodo1.getSelectedItem().equals("Elegir Tipo...") || jComboBoxMes.getSelectedItem().equals("Elegir Mes...")) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
-        } else if (!isValidNumber(jTFValor.getText())){
+        } else if (!isValidNumber(jTFValor.getText())) {
             JOptionPane.showMessageDialog(null, "Valor inválido. Ingrese solo números y decimales.");
             jTFValor.setText("");
         } else {
-            int tipo = 0;
             this.SQL = """
                            SELECT COUNT(*) AS count FROM estudiantes WHERE Cedula_Estudiante = '""" + jTFCedula.getText() + "';";
             try {
@@ -278,27 +296,40 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
                     int count = resultado.getInt("count");
                     if (count > 0) {
                         this.SQL = """
-                           SELECT Total_cancelado FROM estudiantes_pagados WHERE Cedula_Estudiante = '""" + jTFCedula.getText() + "';";
+                           SELECT COUNT(*) AS count FROM estudiantes_pagados WHERE Cedula_Estudiante = '""" + jTFCedula.getText() + "' AND Mes = '" + jComboBoxMes.getSelectedItem() + "';";
                         try {
-                            ResultSet resultado1 = con.query(SQL);
-                            if (resultado1.next()) {
-                                double valorTotal = resultado1.getDouble("Total_cancelado");
-                                if (valorTotal + Double.parseDouble(jTFValor.getText()) > valorPension) {
-                                    JOptionPane.showMessageDialog(null, "Valor ingresado mayor al máximo");
-                                    jTFValor.setText("");
+                            ResultSet resultado2 = con.query(SQL);
+                            if (resultado2.next()) {
+                                int count1 = resultado2.getInt("count");
+                                if (count1 > 0) {
+                                    this.SQL = """
+                           SELECT Total_cancelado FROM estudiantes_pagados WHERE Cedula_Estudiante = '""" + jTFCedula.getText() + "' AND Mes = '" + jComboBoxMes.getSelectedItem() + "';";
+                                    try {
+                                        ResultSet resultado1 = con.query(SQL);
+                                        if (resultado1.next()) {
+                                            valorTotal = resultado1.getDouble("Total_cancelado");
+                                            if (valorTotal + Double.parseDouble(jTFValor.getText()) > valorPension) {
+                                                JOptionPane.showMessageDialog(null, "Valor ingresado mayor al máximo");
+                                                jTFValor.setText("");
+                                            } else {
+                                                this.SQL = """
+                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "', '" + jComboBoxMetodo1.getSelectedItem() + "');";
+                                                con.update(SQL);
+                                                JOptionPane.showMessageDialog(null, "Pago registrado exitosamente");
+                                                borrarCampos();
+                                            }
+                                        }
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(JFAdmin_RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
                                 } else {
-                                    if (jComboBoxMetodo1.getSelectedItem().equals("Abono")) {
-                                        tipo = 1;
+                                    valorTotal = 0;
+                                    if (valorTotal + Double.parseDouble(jTFValor.getText()) > valorPension) {
+                                        JOptionPane.showMessageDialog(null, "Valor ingresado mayor al máximo");
+                                        jTFValor.setText("");
+                                    } else {
                                         this.SQL = """
-                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " + jTFValor.getText() + ", '" + obtenerFecha() + "', '" + obtenerMes() + "', " + tipo + ");";
-                                        con.update(SQL);
-                                        JOptionPane.showMessageDialog(null, "Pago registrado exitosamente");
-                                        borrarCampos();
-                                        this.dispose();
-                                    } else if (jComboBoxMetodo1.getSelectedItem().equals("Total")) {
-                                        tipo = 0;
-                                        this.SQL = """
-                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', 100, '" + obtenerFecha() + "', '" + obtenerMes() + "', " + tipo + ");";
+                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "', '" + jComboBoxMetodo1.getSelectedItem() + "');";
                                         con.update(SQL);
                                         JOptionPane.showMessageDialog(null, "Pago registrado exitosamente");
                                         borrarCampos();
@@ -368,6 +399,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
             jTFCedula.setEditable(true);
             jTFValor.setEditable(false);
             JBFactura.setVisible(true);
+            jTFValor.setText("100");
         }
     }//GEN-LAST:event_jComboBoxMetodo1FocusLost
 
@@ -383,6 +415,14 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTFValorFocusLost
+
+    private void jComboBoxMesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxMesFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxMesFocusLost
+
+    private void jComboBoxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxMesActionPerformed
 
     private String obtenerFecha() {
         Date fechaActual = new Date(System.currentTimeMillis());
@@ -412,11 +452,13 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
     private javax.swing.JButton JBFactura;
     private javax.swing.JButton jButtonMinimizar;
     private javax.swing.JButton jButtonSalirIcon;
+    private javax.swing.JComboBox<String> jComboBoxMes;
     private javax.swing.JComboBox<String> jComboBoxMetodo;
     private javax.swing.JComboBox<String> jComboBoxMetodo1;
     private javax.swing.JLabel jLCedula;
     private javax.swing.JLabel jLNivel;
     private javax.swing.JLabel jLNivel1;
+    private javax.swing.JLabel jLNivel2;
     private javax.swing.JLabel jLValor;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;

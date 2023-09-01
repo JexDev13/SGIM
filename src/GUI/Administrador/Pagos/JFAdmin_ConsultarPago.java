@@ -104,7 +104,7 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código Pago", "Método Pago", "Valor", "Fecha Pago", "Abono"
+                "Código Pago", "Método Pago", "Valor", "Fecha Pago", "Tipo"
             }
         ));
         jTPagos.setGridColor(new java.awt.Color(250, 183, 22));

@@ -141,7 +141,7 @@ public class JPAdminPagos extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código Pensión", "N°Cédula", "Mes", "Valor", "Pagado"
+                "Código Pensión", "N°Cédula", "Mes", "Valor", "Estado"
             }
         ));
         jTPagos.setGridColor(new java.awt.Color(250, 183, 22));
