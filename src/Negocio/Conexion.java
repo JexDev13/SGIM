@@ -167,7 +167,7 @@ public class Conexion {
                 Object[] PagosTotales = new Object[5];
                 DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
-                        new String[]{"Código Pensión", "N°Cédula", "Mes", "Valor", "Pagado"});
+                        new String[]{"Código Pensión", "N°Cédula", "Mes", "Valor", "Estado"});
                 while (rs.next()) {
                     PagosTotales[0] = rs.getString("Codigo_pension");
                     PagosTotales[1] = rs.getString("Cedula_estudiante");
@@ -181,7 +181,7 @@ public class Conexion {
                 Object[] Pagos = new Object[5];
                 DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
-                        new String[]{"Código Pago", "Método Pago", "Valor", "Fecha Pago", "Abono"});
+                        new String[]{"Código Pago", "Método Pago", "Valor", "Fecha Pago", "Tipo"});
                 while (rs.next()) {
                     Pagos[0] = rs.getString("Codigo_pago");
                     Pagos[1] = rs.getString("Metodo_pago");
