@@ -231,6 +231,7 @@ public class JFAdmin_Devolucion extends javax.swing.JFrame {
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Devolución registrada");
                             jTFCodigo.setText("");
+                            this.dispose();
                         } else {
                             JOptionPane.showMessageDialog(null, "Código de producto no encontrado en prestamos");
                         }
@@ -254,6 +255,7 @@ public class JFAdmin_Devolucion extends javax.swing.JFrame {
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Devolución registrada");
                             jTFCodigo.setText("");
+                            this.dispose();
                         } else {
                             JOptionPane.showMessageDialog(null, "Código de producto no encontrado en prestamos");
                         }

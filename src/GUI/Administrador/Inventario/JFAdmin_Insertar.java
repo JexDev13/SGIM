@@ -345,6 +345,7 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Instrumento registrado exitosamente");
                             borrarCampos();
+                            this.dispose();
                         }
                     }
                 } catch (SQLException ex) {
@@ -365,6 +366,7 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Libro registrado exitosamente");
                             borrarCampos();
+                            this.dispose();
                         }
                     }
                 } catch (SQLException ex) {

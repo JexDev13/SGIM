@@ -20,6 +20,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
     public JFAdmin_Eliminar() {
         initComponents();
         setLocationRelativeTo(this);
+        jTFCodigo_Eliminar.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -397,6 +398,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                            DELETE FROM instrumentos WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
                                             con.update(SQL);
                                             JOptionPane.showMessageDialog(null, "Producto eliminado");
+                                            this.dispose();
                                         } else {
                                             JOptionPane.showMessageDialog(null, "Producto no eliminado");
                                         }
@@ -447,6 +449,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                            DELETE FROM libros WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
                                                 con.update(SQL);
                                                 JOptionPane.showMessageDialog(null, "Producto eliminado");
+                                                this.dispose();
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "Producto no eliminado");
                                             }

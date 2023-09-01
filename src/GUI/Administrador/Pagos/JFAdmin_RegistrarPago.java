@@ -24,6 +24,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
     Diseño diseño = new Diseño();
     private Conexion con = new Conexion();
     private String SQL;
+    private double valorPension;
 
     public JFAdmin_RegistrarPago() {
         initComponents();
@@ -32,6 +33,16 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
         jTFCedula.setEditable(false);
         jTFValor.setEditable(false);
         JBFactura.setVisible(false);
+        this.SQL = """
+                           SELECT valor_pension FROM variables_del_sistema WHERE id = 1;""";
+        ResultSet resultado0 = con.query(SQL);
+        try {
+            if (resultado0.next()) {
+                valorPension = resultado0.getDouble("valor_pension");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JFAdmin_RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -249,6 +260,8 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
     }//GEN-LAST:event_JBFacturaMouseExited
 
     private void JBFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFacturaActionPerformed
+        
+        
         JBFactura.requestFocusInWindow();
         if (jTFCedula.getText().isEmpty() || jTFValor.getText().isEmpty() || jComboBoxMetodo.getSelectedItem().equals("Elegir Método...") || jComboBoxMetodo1.getSelectedItem().equals("Elegir Tipo...")) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
@@ -270,7 +283,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
                             ResultSet resultado1 = con.query(SQL);
                             if (resultado1.next()) {
                                 double valorTotal = resultado1.getDouble("Total_cancelado");
-                                if (valorTotal + Double.parseDouble(jTFValor.getText()) > 100) {
+                                if (valorTotal + Double.parseDouble(jTFValor.getText()) > valorPension) {
                                     JOptionPane.showMessageDialog(null, "Valor ingresado mayor al máximo");
                                     jTFValor.setText("");
                                 } else {
@@ -281,6 +294,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
                                         con.update(SQL);
                                         JOptionPane.showMessageDialog(null, "Pago registrado exitosamente");
                                         borrarCampos();
+                                        this.dispose();
                                     } else if (jComboBoxMetodo1.getSelectedItem().equals("Total")) {
                                         tipo = 0;
                                         this.SQL = """
@@ -350,7 +364,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
             jTFValor.setEditable(true);
             JBFactura.setVisible(true);
         } else {
-            jTFValor.setText("100");
+            jTFValor.setText(Double.toString(valorPension));
             jTFCedula.setEditable(true);
             jTFValor.setEditable(false);
             JBFactura.setVisible(true);
@@ -363,7 +377,7 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
             if (!isValidNumber(jTFValor.getText())) {
                 JOptionPane.showMessageDialog(null, "Valor inválido. Ingrese solo números y decimales.");
                 jTFValor.setText("");
-            }else if (Integer.parseInt(jTFValor.getText()) > 100) {
+            }else if (Double.parseDouble(jTFValor.getText()) > valorPension) {
                 JOptionPane.showMessageDialog(null, "Valor mayor a total");
                 jTFValor.setText("");
             }

@@ -23,6 +23,8 @@ public class JFAdmin_Prestamo extends javax.swing.JFrame {
     public JFAdmin_Prestamo() {
         initComponents();
         setLocationRelativeTo(this);
+        jTFCodigo.setText("");
+        jTFNoCedula.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -254,6 +256,7 @@ public class JFAdmin_Prestamo extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null, "Préstamo registrado");
                                         jTFCodigo.setText("");
                                         jTFNoCedula.setText("");
+                                        this.dispose();
                                     } else {
                                         JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
                                     }
@@ -293,6 +296,7 @@ public class JFAdmin_Prestamo extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null, "Préstamo registrado");
                                         jTFCodigo.setText("");
                                         jTFNoCedula.setText("");
+                                        this.dispose();
                                     } else {
                                         JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
                                     }

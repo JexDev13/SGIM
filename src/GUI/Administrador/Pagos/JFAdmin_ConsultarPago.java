@@ -2,6 +2,11 @@ package GUI.Administrador.Pagos;
 
 import Negocio.Conexion;
 import Negocio.Diseño;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -20,7 +25,7 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         gui.jtableHead(jTPagos);
-        jTFBuscar_CedulaEst.setEditable(false);
+        jTFBuscar_CedulaEst.setEditable(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -284,10 +289,30 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-        this.SQL = """
+        if (jTFBuscar_CedulaEst.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Coloque una cédula");
+        } else {
+            int tipo = 0;
+            this.SQL = """
+                           SELECT COUNT(*) AS count FROM estudiantes WHERE Cedula_Estudiante = '""" + jTFBuscar_CedulaEst.getText() + "';";
+            try {
+                ResultSet resultado = con.query(SQL);
+                if (resultado.next()) {
+                    int count = resultado.getInt("count");
+                    if (count > 0) {
+                        this.SQL = """
                    SELECT Codigo_pago,Metodo_pago,Monto,Fecha_Pago,Abono FROM Pagos WHERE Cedula_estudiante = '""" + jTFBuscar_CedulaEst.getText() + "';";
-        System.out.println(SQL);
-            con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
+                        System.out.println(SQL);
+                        con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Estudiante no encontrado o no contiene pagos");
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(JFAdmin_RegistrarPago.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }//GEN-LAST:event_JBIngreso1ActionPerformed
 
     private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered

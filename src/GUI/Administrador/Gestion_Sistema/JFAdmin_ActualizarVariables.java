@@ -358,7 +358,7 @@ public class JFAdmin_ActualizarVariables extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTFCupos;
-    private javax.swing.JTextField jTFPension;
+    public static javax.swing.JTextField jTFCupos;
+    public static javax.swing.JTextField jTFPension;
     // End of variables declaration//GEN-END:variables
 }

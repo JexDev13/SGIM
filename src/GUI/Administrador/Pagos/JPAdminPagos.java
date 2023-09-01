@@ -11,9 +11,7 @@ public class JPAdminPagos extends javax.swing.JPanel {
 
     private Diseño gui = new Diseño();
     private JFAdmin_RegistrarPago regPag = new JFAdmin_RegistrarPago();
-    private JFAdmin_EliminarPago elimPag = new JFAdmin_EliminarPago();
     private JFAdmin_ConsultarPago consPag = new JFAdmin_ConsultarPago();
-    private JFAdmin_ActualizarPago actPag = new JFAdmin_ActualizarPago();
     private Conexion con = new Conexion();
     private String selectTabla = "PagosTotales";
     private String SQL;
@@ -21,8 +19,6 @@ public class JPAdminPagos extends javax.swing.JPanel {
     public JPAdminPagos() {
         initComponents();
         gui.jtableHead(this.jTPagos);
-        jLFiltro.setVisible(false);
-        jCBFiltro.setVisible(false);
         this.SQL = """
                    SELECT Codigo_pension,Cedula_estudiante,Mes,Total_cancelado,Pagado_total FROM estudiantes_pagados;""";
             con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
@@ -42,8 +38,7 @@ public class JPAdminPagos extends javax.swing.JPanel {
         jTPagos = new javax.swing.JTable();
         jTFPorcentajePagado = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jLFiltro = new javax.swing.JLabel();
-        jCBFiltro = new javax.swing.JComboBox<>();
+        jButtonEstadoCuenta = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -165,13 +160,23 @@ public class JPAdminPagos extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel20.setText("% Estudiantes Pagados");
 
-        jLFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/filtrar 24.png"))); // NOI18N
-
-        jCBFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mostrar...", "Estado de cuenta" }));
-        jCBFiltro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 183, 22)));
-        jCBFiltro.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstadoCuenta.setBackground(new java.awt.Color(250, 183, 22));
+        jButtonEstadoCuenta.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEstadoCuenta.setText("consultar estado de cuenta");
+        jButtonEstadoCuenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jButtonEstadoCuenta.setBorderPainted(false);
+        jButtonEstadoCuenta.setPreferredSize(new java.awt.Dimension(73, 40));
+        jButtonEstadoCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonEstadoCuentaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonEstadoCuentaMouseExited(evt);
+            }
+        });
+        jButtonEstadoCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBFiltroActionPerformed(evt);
+                jButtonEstadoCuentaActionPerformed(evt);
             }
         });
 
@@ -182,6 +187,8 @@ public class JPAdminPagos extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonNuevoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jButtonEstadoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -199,17 +206,10 @@ public class JPAdminPagos extends javax.swing.JPanel {
                 .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTFPorcentajePagado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20)
-                        .addGap(63, 63, 63))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLFiltro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCBFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addComponent(jTFPorcentajePagado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,12 +222,10 @@ public class JPAdminPagos extends javax.swing.JPanel {
                             .addComponent(jButtonBuscar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButtonNuevoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCBFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLFiltro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonNuevoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonEstadoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36)
                 .addComponent(jLTitTabla)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
@@ -271,10 +269,6 @@ public class JPAdminPagos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jTFBusquedaKeyReleased
 
-    private void jCBFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBFiltroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBFiltroActionPerformed
-
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         obtenerPorcentaje();
         if (!jTFBusqueda.getText().equalsIgnoreCase("Cédula Estudiante") && !jTFBusqueda.getText().isEmpty()) {
@@ -283,27 +277,14 @@ public class JPAdminPagos extends javax.swing.JPanel {
                    SELECT Codigo_pension,Cedula_estudiante,Mes,Total_cancelado,Pagado_total FROM estudiantes_pagados WHERE """
                         + " " + "Cedula_estudiante" + " LIKE '%" + jTFBusqueda.getText() + "%';";
                 con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
-                jLFiltro.setVisible(true);
-                jCBFiltro.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Estudiante no encontrado");
                 jTFBusqueda.setText("");
             }
         } else {
-
-            jLFiltro.setVisible(false);
-            jCBFiltro.setVisible(false);
             this.SQL = """
                    SELECT Codigo_pension,Cedula_estudiante,Mes,Total_cancelado,Pagado_total FROM estudiantes_pagados;""";
             con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
-        }
-
-        if (jCBFiltro.isVisible() && !jCBFiltro.getSelectedItem().equals("Mostrar...")) {
-            // agregar logica a cada uno para que verifique si el código existe y jalar el dato necesario de la db.
-            if (jCBFiltro.getSelectedItem().equals("Estado de cuenta") && (existeCedula(jTFBusqueda.getText()))) {
-                consPag.setTFBuscar_CedulaEst(jTFBusqueda.getText());
-                consPag.setVisible(true);
-            }
         }
     }
 
@@ -319,6 +300,18 @@ public class JPAdminPagos extends javax.swing.JPanel {
         }
         return existe;
     }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void jButtonEstadoCuentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEstadoCuentaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEstadoCuentaMouseEntered
+
+    private void jButtonEstadoCuentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEstadoCuentaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEstadoCuentaMouseExited
+
+    private void jButtonEstadoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstadoCuentaActionPerformed
+        consPag.setVisible(true);
+    }//GEN-LAST:event_jButtonEstadoCuentaActionPerformed
 
     private void obtenerPorcentaje() {
         int totalEstudiantes = jTPagos.getRowCount();
@@ -337,9 +330,8 @@ public class JPAdminPagos extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonEstadoCuenta;
     private javax.swing.JButton jButtonNuevoPago;
-    private javax.swing.JComboBox<String> jCBFiltro;
-    private javax.swing.JLabel jLFiltro;
     private javax.swing.JLabel jLTitTabla;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JScrollPane jScrollPane1;

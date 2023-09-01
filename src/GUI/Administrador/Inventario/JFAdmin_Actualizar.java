@@ -327,9 +327,11 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
                            UPDATE instrumentos SET Condicion = '""" + jTextAreaCondicion.getText() + "' WHERE Codigo = '" + jTFBuscar_Actualizar.getText() + "';";
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Producto actualizado");
+                            limpiarCampos();
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Código de producto no encontrado");
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Código de producto no encontrado");
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
@@ -346,9 +348,11 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
                            UPDATE libros SET Condicion = '""" + jTextAreaCondicion.getText() + "' WHERE Codigo = '" + jTFBuscar_Actualizar.getText() + "';";
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Producto actualizado");
+                            limpiarCampos();
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Código de producto no encontrado");
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Código de producto no encontrado");
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
