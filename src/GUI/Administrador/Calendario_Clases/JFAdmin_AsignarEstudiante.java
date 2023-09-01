@@ -463,7 +463,7 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
             emitirMensaje(mensaje, titulo);
         } else {
             if (val.validadorDeCedula(cedulaEst)) {
-                this.SQL = "Select count(*) from Horarios where Codigo_horario like '%" + codHorario + "%'";
+                this.SQL = "Select count(*) from Horarios where Codigo_horario = '" + codHorario + "';";
                 if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
                     getToolkit().beep();
                     titulo = "ADVERTENCIA";

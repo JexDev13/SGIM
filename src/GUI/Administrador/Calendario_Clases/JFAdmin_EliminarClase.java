@@ -380,13 +380,13 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
             mensaje = "Todos los campos deben estar llenos";
             emitirMensaje(mensaje, titulo);
         } else {
-            this.SQL = "Select count(*) from Clases where Codigo_clase like '%" + codClase + "%'";
+            this.SQL = "Select count(*) from Clases where Codigo_clase = '" + codClase + "'";
             if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
                 titulo = "ADVERTENCIA";
                 mensaje = "La clase a al que hace referencia no existe";
                 emitirMensaje(mensaje, titulo);
             } else {
-                this.SQL = "SELECT COUNT(*) FROM Asignacion_cupos WHERE Codigo_Clase  like '%" + codClase + "%'";
+                this.SQL = "SELECT COUNT(*) FROM Asignacion_cupos WHERE Codigo_Clase  = '" + codClase + "'";
                 if (con.busquedaCod("Personas", SQL, "count(*)") >= 1) {
                     titulo = "ADVERTENCIA";
                     mensaje = "La clase que estas intentando tiene estudiantes asignados, elimina la lista de estudiantes primero";

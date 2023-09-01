@@ -458,8 +458,8 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
                 mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
                 emitirMensaje(mensaje, titulo);
             } else {
-                this.SQL = "Select count(*) from Estudiantes where Cedula_Estudiante like '%" + parametroBusqueda + "%'";
-                if (con.busquedaCod(tabla, SQL, "count(*)") < 1) {
+                this.SQL = "Select count(*) from Personas where Rol = 'Estudiante' AND Cedula = '" + parametroBusqueda + "'";
+                if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
                     getToolkit().beep();
                     titulo = "ADVERTENCIA";
                     mensaje = "El estudiante al que hace referencia no existe";

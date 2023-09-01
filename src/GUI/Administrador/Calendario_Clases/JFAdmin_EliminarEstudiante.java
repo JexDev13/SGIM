@@ -483,7 +483,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
             mensaje = "Todos los campos deben estar llenos";
             emitirMensaje(mensaje, titulo);
         } else {
-            this.SQL = "Select count(*) from Horarios where Codigo_horario like '%" + codHorario + "%'";
+            this.SQL = "Select count(*) from Horarios where Codigo_horario = '" + codHorario + "'";
             if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
                 titulo = "ADVERTENCIA";
                 mensaje = "El horario al que hace referencia no existe";
@@ -494,7 +494,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                     mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
                     emitirMensaje(mensaje, titulo);
                 } else {
-                    this.SQL = "Select count(*) from Estudiantes where Cedula_Estudiante like '%" + cedulaEst + "%'";
+                    this.SQL = "Select count(*) from Estudiantes where Cedula_Estudiante = '" + cedulaEst + "'";
                     if (con.busquedaCod("Personas", SQL, "count(*)") < 1 && !jCBElimTodo.isSelected()) {
                         titulo = "ADVERTENCIA";
                         mensaje = "El estudiante al que hace referencia no existe";

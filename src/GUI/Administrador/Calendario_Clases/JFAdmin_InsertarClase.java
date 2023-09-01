@@ -337,8 +337,10 @@ public class JFAdmin_InsertarClase extends javax.swing.JFrame {
             emitirMensaje(mensaje, titulo);
         } else {
             if (val.validadorDeCedula(parametroBusqueda)) {
-                this.SQL = "Select count(*) from Profesores where Cedula_profesor like '%" + parametroBusqueda + "%'";
-                if (con.busquedaCod(tabla, SQL, "count(*)") < 1) {
+                this.SQL = "Select count(*) from Profesores where Cedula_profesor = '" + parametroBusqueda + "';";
+                System.out.println(SQL);
+                System.out.println(con.busquedaCod("Personas", SQL, "count(*)"));
+                if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
                     titulo = "ADVERTENCIA";
                     mensaje = "El profesor al que hace referencia no existe";
                     emitirMensaje(mensaje, titulo);

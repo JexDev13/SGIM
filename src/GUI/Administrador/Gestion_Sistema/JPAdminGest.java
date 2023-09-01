@@ -391,7 +391,7 @@ public class JPAdminGest extends javax.swing.JPanel {
                 Parametro_de_busqueda = "Nombre_Usuario";
             }
             case 3 ->  {
-                Parametro_de_busqueda = "Rol";
+                Parametro_de_busqueda = "u.Rol";
             }
         }
         this.SQL = """
