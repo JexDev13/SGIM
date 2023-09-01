@@ -1,5 +1,9 @@
 package GUI.Administrador.General;
 
+import java.awt.Desktop;
+import java.io.File;
+import javax.swing.JOptionPane;
+
 /*
  * @authors G2 SoftwareSolutions
  */
@@ -167,7 +171,10 @@ public class JPHome extends javax.swing.JPanel {
     }//GEN-LAST:event_jBSoporteMouseExited
 
     private void jBSoporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSoporteActionPerformed
-
+        JFSoporteTecnico soporteTecnico = new JFSoporteTecnico();
+        soporteTecnico.setLocationRelativeTo(null);
+        this.setVisible(false);
+        soporteTecnico.setVisible(true);
     }//GEN-LAST:event_jBSoporteActionPerformed
 
     private void jBManualMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBManualMouseEntered
@@ -179,7 +186,21 @@ public class JPHome extends javax.swing.JPanel {
     }//GEN-LAST:event_jBManualMouseExited
 
     private void jBManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBManualActionPerformed
-        // TODO add your handling code here:
+        
+        try{
+            File file = new File("C:\\Users\\Alexander\\OneDrive - Escuela Politécnica Nacional\\SEMESTRE ACTUAL\\INGENIERIA EN SOFTWARE Y REQUERIMIENTOS\\Tabla_GR2SW.pdf");
+            if(file.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(file);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Archivo Inválido");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "El Manual de Usuario no Existe");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jBManualActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

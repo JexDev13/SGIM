@@ -1,5 +1,11 @@
 package GUI.Administrador.Estudiantes;
 
+import Negocio.Conexion;
+import Negocio.Diseño;
+import Negocio.Validaciones;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /*
  * @authors G2 SoftwareSolutions
  */
@@ -7,10 +13,22 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
 
     private int x;
     private int y;
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
+    Conexion con = new Conexion();
+    Validaciones val = new Validaciones();
+    String SQL;
+    String titulo = null;
+    String mensaje = null;
 
     public JFAdmin_ActualizarEstudiante() {
         initComponents();
         setLocationRelativeTo(this);
+        this.jTFCodigo_ActualizarEst.setEditable(false);
+        this.jTFNombres_ActualizarEst.setEditable(false);
+        this.jTFApellidos_ActualizarEst.setEditable(false);
+        this.jTFFechaNacimiento_ActualizarEst.setEditable(false);
+        this.jTFFechaNacimiento_ActualizarEst1.setEditable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -412,7 +430,17 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFBuscar_ActualizarEstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_ActualizarEstKeyReleased
-
+        String parametroBusqueda = jTFBuscar_ActualizarEst.getText();
+        if (parametroBusqueda.length() == 10) {
+            this.SQL = "SELECT e.Cedula_Estudiante, p.Nombres, p.Apellidos, e.FechaNacimiento, e.NombresRepresentante, "
+                + "e.ApellidosRepresentante, p.Correo, e.TelefonoRepresentante FROM Estudiantes e JOIN Personas p "
+                + "ON p.Cedula = e.Cedula_Estudiante WHERE e.Cedula_Estudiante LIKE '%" 
+                + parametroBusqueda + "%';";        
+            con.despliegueFields(SQL, "Estudiantes", null, null, null, null, jTFNombresRepre_ActualizarEst, 
+                jTFApellidosRepre_ActualizarEst, jTFCorreo_ActualizarEst, jTFTelefono_ActualizarEst, "acutalizar");
+        } else {
+            limpiarCampos();
+        }
     }//GEN-LAST:event_jTFBuscar_ActualizarEstKeyReleased
 
     private void jTFBuscar_ActualizarEstKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_ActualizarEstKeyTyped
@@ -451,17 +479,6 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jChBApellidosRepre_ActualizarEstActionPerformed
 
-    public void limpiarCampos() {
-        this.jTFApellidos_ActualizarEst.setText("");
-        this.jTFCodigo_ActualizarEst.setText("");
-        this.jTFNombres_ActualizarEst.setText("");
-        this.jTFFechaNacimiento_ActualizarEst.setText("");
-        this.jTFNombresRepre_ActualizarEst.setText("");
-        this.jTFApellidosRepre_ActualizarEst.setText("");
-        this.jTFCorreo_ActualizarEst.setText("");
-        this.jTFTelefono_ActualizarEst.setText("");
-    }
-
     private void jTFTelefono_ActualizarEstFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFTelefono_ActualizarEstFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFTelefono_ActualizarEstFocusLost
@@ -483,7 +500,39 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-
+        String parametroBusqueda = this.jTFBuscar_ActualizarEst.getText();
+        if (parametroBusqueda.isEmpty()) {
+            titulo = "ADVERTENCIA";
+            mensaje = "Todos los campos deben estar llenos";
+            emitirMensaje(mensaje, titulo);
+        } else {
+            if (!val.validadorDeCedula(parametroBusqueda)) {
+                titulo = "ERROR DE FORMATO";
+                mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
+                emitirMensaje(mensaje, titulo);
+            } else {
+                this.SQL = "Select count(*) from Users where Cedula like '%" + parametroBusqueda + "%'";
+                if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
+                    getToolkit().beep();
+                    titulo = "ADVERTENCIA";
+                    mensaje = "El Estudiante al que hace referencia no existe";
+                    emitirMensaje(mensaje, titulo);
+                } else {
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información del estudiante?" + "\n     -Esta accion no podrá ser revertida", "Actualizar Estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
+                    if (seleccion == 0) {
+                        this.SQL = "DELETE from Estudiante Where Cedula_Estudiante = '" + parametroBusqueda + "';";
+                        if (con.actualizarEliminarTablas(SQL) == true) {
+                            titulo = "RESULTADO";
+                            mensaje = "Estudiante cambiado con exito";
+                            dispose();
+                            emitirMensaje(mensaje, titulo);
+                            limpiarCampos();
+                            jTFBuscar_ActualizarEst.setText("");
+                        }
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_JBIngreso1ActionPerformed
 
     private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
@@ -495,6 +544,11 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        limpiarCampos();
+        jTFBuscar_ActualizarEst.setText("");
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
@@ -521,6 +575,22 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFFechaNacimiento_ActualizarEst1KeyTyped
 
+    private void emitirMensaje(String mensaje, String titulo) {
+        getToolkit().beep();
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
+    }
+    
+    public void limpiarCampos() {
+        this.jTFApellidos_ActualizarEst.setText("");
+        this.jTFCodigo_ActualizarEst.setText("");
+        this.jTFNombres_ActualizarEst.setText("");
+        this.jTFFechaNacimiento_ActualizarEst.setText("");
+        this.jTFNombresRepre_ActualizarEst.setText("");
+        this.jTFApellidosRepre_ActualizarEst.setText("");
+        this.jTFCorreo_ActualizarEst.setText("");
+        this.jTFTelefono_ActualizarEst.setText("");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;

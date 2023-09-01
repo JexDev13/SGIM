@@ -1,6 +1,11 @@
 package GUI.Administrador.Estudiantes;
 
+import Negocio.Conexion;
 import Negocio.Diseño;
+import Negocio.Validaciones;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -9,6 +14,13 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
 
     private int x;
     private int y;
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
+    Conexion con = new Conexion();
+    Validaciones val = new Validaciones();
+    String SQL;
+    String titulo = null;
+    String mensaje = null;
     
     Diseño diseño = new Diseño();
 
@@ -174,7 +186,7 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
                 JBCancela1ActionPerformed(evt);
             }
         });
-        jPanel3.add(JBCancela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+        jPanel3.add(JBCancela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         JBIngreso1.setBackground(new java.awt.Color(255, 255, 254));
         JBIngreso1.setForeground(new java.awt.Color(250, 183, 22));
@@ -200,23 +212,12 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
                 JBIngreso1ActionPerformed(evt);
             }
         });
-        jPanel3.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        jPanel3.add(JBIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 292, 49));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public void borrarCampos() {
-        this.jTFApellidos.setText("");
-        this.jTFCedula.setText("");
-        this.jTFNombres.setText("");
-        this.jTFFDNacimiento.setText("");
-        this.jTFNombresRepre.setText("");
-        this.jTFApellidosRepre.setText("");
-        this.jTFTelefonoRepre.setText("");
-        this.jTFCorreoRepre.setText("");
-    }
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int posX = evt.getXOnScreen();
@@ -246,7 +247,53 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
+        String cedula = this.jTFCedula.getText();
+        String nombres = this.jTFNombres.getText();
+        String apellidos = this.jTFApellidos.getText();
+        String genero = (String) this.jComboBoxSexo.getSelectedItem();
+        String fechaNacimiento = this.jTFFDNacimiento.getText();
+        String nombresRepresentante = this.jTFNombresRepre.getText();
+        String apellidosRepresentante = this.jTFApellidosRepre.getText();
+        String correoRepresentante = this.jTFCorreoRepre.getText();
+        String telefonoRepresentante = this.jTFTelefonoRepre.getText();
 
+        if (val.validadorDeCedula(cedula)) {
+            if (con.cedulaDuplicada(cedula)) {
+                titulo = "Error de duplicidad";
+                mensaje = "La cédula que estás intentando registrar ya está en el sistema";
+            } else {
+                if (val.emailValidator(correoRepresentante)) {
+                    ArrayList<String> atributosInsertar = new ArrayList<>();
+                    atributosInsertar.add(cedula);
+                    atributosInsertar.add(nombres);
+                    atributosInsertar.add(apellidos);
+                    atributosInsertar.add(genero);
+                    atributosInsertar.add(fechaNacimiento);
+                    atributosInsertar.add(nombresRepresentante);
+                    atributosInsertar.add(apellidosRepresentante);
+                    atributosInsertar.add(correoRepresentante);
+                    atributosInsertar.add(telefonoRepresentante);
+
+                    String parametro = con.prepararAtributos(atributosInsertar);
+
+                    if (con.insertar_Tablas("Estudiantes", parametro)) {
+                        titulo = "Ingresado";
+                        mensaje = "Los datos del estudiante fueron ingresados correctamente";
+                        dispose();
+                    } else {
+                        titulo = "ERROR: Ingresado";
+                        mensaje = "Los datos del estudiante NO fueron ingresados debido a un error";
+                    }
+                } else {
+                    titulo = "ERROR DE FORMATO";
+                    mensaje = "El correo ingresado para el representante no es válido.";
+                }
+            }
+        } else {
+            titulo = "ERROR DE FORMATO";
+            mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
+        }
+        emitirMensaje(mensaje, titulo);
     }//GEN-LAST:event_JBIngreso1ActionPerformed
 
     private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
@@ -258,9 +305,29 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        borrarCampos();
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
+    
+    public void borrarCampos() {
+        this.jTFApellidos.setText("");
+        this.jTFCedula.setText("");
+        this.jTFNombres.setText("");
+        this.jTFFDNacimiento.setText("");
+        this.jTFNombresRepre.setText("");
+        this.jTFApellidosRepre.setText("");
+        this.jTFTelefonoRepre.setText("");
+        this.jTFCorreoRepre.setText("");      
+    }
 
+    private void emitirMensaje(String mensaje, String titulo) {
+        getToolkit().beep();
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;
