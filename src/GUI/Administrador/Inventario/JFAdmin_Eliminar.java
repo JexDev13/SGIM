@@ -373,26 +373,40 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                         int count = resultado.getInt("count");
                         if (count > 0) {
                             this.SQL = """
+                           SELECT COUNT(*) AS count FROM prestamos_instrumentos WHERE Codigo_instrumento = '""" + jTFBuscar_Eliminar.getText() + "';";
+                            try {
+                                ResultSet resultado3 = con.query(SQL);
+                                if (resultado3.next()) {
+                                    int count3 = resultado3.getInt("count");
+                                    if (count3 == 0) {
+                                        this.SQL = """
                    SELECT Codigo,Nombre,Fabricante,Categoria,EstadoAlquiler,Condicion FROM instrumentos WHERE """
-                                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
-                            ResultSet resultado1 = con.query(SQL);
-                            if (resultado1.next()) {
-                                jTFCodigo_Eliminar.setText(resultado1.getString("Codigo"));
-                                jTFNombre_Eliminar.setText(resultado1.getString("Nombre"));
-                                jTFFabricanteAutor_Eliminar.setText(resultado1.getString("Fabricante"));
-                                jTFCategoria_Eliminar.setText(resultado1.getString("Categoria"));
-                                jTFEstado_Eliminar.setText(resultado1.getString("EstadoAlquiler"));
-                                jTFCondicion_Eliminar.setText(resultado1.getString("Condicion"));
-                            }
-                            int resultado2 = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el producto?");
-                                if (resultado2 == JOptionPane.YES_OPTION) {
-                                    this.SQL = """
+                                                + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
+                                        ResultSet resultado1 = con.query(SQL);
+                                        if (resultado1.next()) {
+                                            jTFCodigo_Eliminar.setText(resultado1.getString("Codigo"));
+                                            jTFNombre_Eliminar.setText(resultado1.getString("Nombre"));
+                                            jTFFabricanteAutor_Eliminar.setText(resultado1.getString("Fabricante"));
+                                            jTFCategoria_Eliminar.setText(resultado1.getString("Categoria"));
+                                            jTFEstado_Eliminar.setText(resultado1.getString("EstadoAlquiler"));
+                                            jTFCondicion_Eliminar.setText(resultado1.getString("Condicion"));
+                                        }
+                                        int resultado2 = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el producto?");
+                                        if (resultado2 == JOptionPane.YES_OPTION) {
+                                            this.SQL = """
                            DELETE FROM instrumentos WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
-                                    con.update(SQL);
-                                    JOptionPane.showMessageDialog(null, "Producto eliminado");
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Producto no eliminado");
+                                            con.update(SQL);
+                                            JOptionPane.showMessageDialog(null, "Producto eliminado");
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "Producto no eliminado");
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Producto en alquiler");
+                                    }
                                 }
+                            } catch (SQLException ex) {
+                                Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         } else {
                             JOptionPane.showMessageDialog(null, "Código de producto no encontrado");
                         }
@@ -409,26 +423,40 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                         int count = resultado.getInt("count");
                         if (count > 0) {
                             this.SQL = """
+                           SELECT COUNT(*) AS count FROM prestamos_libros WHERE Codigo_libro = '""" + jTFBuscar_Eliminar.getText() + "';";
+                            try {
+                                ResultSet resultado3 = con.query(SQL);
+                                if (resultado3.next()) {
+                                    int count3 = resultado3.getInt("count");
+                                    if (count3 == 0) {
+                                        this.SQL = """
                    SELECT Codigo,Nombre,Categoria,Autor,EstadoAlquiler,Condicion FROM libros WHERE """
-                                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
-                            ResultSet resultado1 = con.query(SQL);
-                            if (resultado1.next()) {
-                                jTFCodigo_Eliminar.setText(resultado1.getString("Codigo"));
-                                jTFNombre_Eliminar.setText(resultado1.getString("Nombre"));
-                                jTFFabricanteAutor_Eliminar.setText(resultado1.getString("Autor"));
-                                jTFCategoria_Eliminar.setText(resultado1.getString("Categoria"));
-                                jTFEstado_Eliminar.setText(resultado1.getString("EstadoAlquiler"));
-                                jTFCondicion_Eliminar.setText(resultado1.getString("Condicion"));
+                                                + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
+                                        ResultSet resultado1 = con.query(SQL);
+                                        if (resultado1.next()) {
+                                            jTFCodigo_Eliminar.setText(resultado1.getString("Codigo"));
+                                            jTFNombre_Eliminar.setText(resultado1.getString("Nombre"));
+                                            jTFFabricanteAutor_Eliminar.setText(resultado1.getString("Autor"));
+                                            jTFCategoria_Eliminar.setText(resultado1.getString("Categoria"));
+                                            jTFEstado_Eliminar.setText(resultado1.getString("EstadoAlquiler"));
+                                            jTFCondicion_Eliminar.setText(resultado1.getString("Condicion"));
 
-                                int resultado2 = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el producto?");
-                                if (resultado2 == JOptionPane.YES_OPTION) {
-                                    this.SQL = """
+                                            int resultado2 = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el producto?");
+                                            if (resultado2 == JOptionPane.YES_OPTION) {
+                                                this.SQL = """
                            DELETE FROM libros WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
-                                    con.update(SQL);
-                                    JOptionPane.showMessageDialog(null, "Producto eliminado");
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Producto no eliminado");
+                                                con.update(SQL);
+                                                JOptionPane.showMessageDialog(null, "Producto eliminado");
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Producto no eliminado");
+                                            }
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Producto en alquiler");
+                                    }
                                 }
+                            } catch (SQLException ex) {
+                                Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "Código de producto no encontrado");
