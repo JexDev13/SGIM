@@ -433,11 +433,11 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         String parametroBusqueda = jTFBuscar_ActualizarEst.getText();
         if (parametroBusqueda.length() == 10) {
             this.SQL = "SELECT e.Cedula_Estudiante, p.Nombres, p.Apellidos, e.FechaNacimiento, e.NombresRepresentante, "
-                + "e.ApellidosRepresentante, p.Correo, e.TelefonoRepresentante FROM Estudiantes e JOIN Personas p "
-                + "ON p.Cedula = e.Cedula_Estudiante WHERE e.Cedula_Estudiante LIKE '%" 
-                + parametroBusqueda + "%';";        
-            con.despliegueFields(SQL, "Estudiantes", null, null, null, null, jTFNombresRepre_ActualizarEst, 
-                jTFApellidosRepre_ActualizarEst, jTFCorreo_ActualizarEst, jTFTelefono_ActualizarEst, "acutalizar");
+                    + "e.ApellidosRepresentante, p.Correo, e.TelefonoRepresentante FROM Estudiantes e JOIN Personas p "
+                    + "ON p.Cedula = e.Cedula_Estudiante WHERE e.Cedula_Estudiante LIKE '%"
+                    + parametroBusqueda + "%';";
+            con.despliegueFields(SQL, "Estudiantes", null, null, null, null, jTFNombresRepre_ActualizarEst,
+                    jTFApellidosRepre_ActualizarEst, jTFCorreo_ActualizarEst, jTFTelefono_ActualizarEst, "acutalizar");
         } else {
             limpiarCampos();
         }
@@ -484,7 +484,11 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFTelefono_ActualizarEstFocusLost
 
     private void jChBTelefono_ActualizarEst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChBTelefono_ActualizarEst1ActionPerformed
-        // TODO add your handling code here:
+        if (jChBTelefono_ActualizarEst1.isSelected()) {
+            jTFTelefono_ActualizarEst.setEditable(true);
+        } else {
+            jTFTelefono_ActualizarEst.setEditable(false);
+        }
     }//GEN-LAST:event_jChBTelefono_ActualizarEst1ActionPerformed
 
     private void jTFTelefono_ActualizarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFTelefono_ActualizarEstActionPerformed
@@ -511,24 +515,45 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                 mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
                 emitirMensaje(mensaje, titulo);
             } else {
-                this.SQL = "Select count(*) from Users where Cedula like '%" + parametroBusqueda + "%'";
+                this.SQL = "Select count(*) from Personas where Cedula = '" + parametroBusqueda + "'";
                 if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
                     getToolkit().beep();
                     titulo = "ADVERTENCIA";
                     mensaje = "El Estudiante al que hace referencia no existe";
                     emitirMensaje(mensaje, titulo);
                 } else {
-                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información del estudiante?" + "\n     -Esta accion no podrá ser revertida", "Actualizar Estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Desea actualizar la información del estudiante?" + "\n     -Esta accion podrá ser revertida", "Actualizar Estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
                     if (seleccion == 0) {
-                        this.SQL = "DELETE from Estudiante Where Cedula_Estudiante = '" + parametroBusqueda + "';";
-                        if (con.actualizarEliminarTablas(SQL) == true) {
-                            titulo = "RESULTADO";
-                            mensaje = "Estudiante cambiado con exito";
-                            dispose();
-                            emitirMensaje(mensaje, titulo);
-                            limpiarCampos();
-                            jTFBuscar_ActualizarEst.setText("");
+                        if (jChBCorreo_ActualizarEst.isSelected()) {
+                            this.SQL = "UPDATE Personas SET Correo = '" + jTFCorreo_ActualizarEst.getText() + "'WHERE Cedula = '" + parametroBusqueda + "';";
+                            con.actualizarEliminarTablas(SQL);
+                            this.SQL = "UPDATE Estudiantes SET NombresRepresentante = '" + jTFNombresRepre_ActualizarEst.getText()
+                                    + "',ApellidosRepresentante = '" + jTFApellidosRepre_ActualizarEst.getText()
+                                    + "', TelefonoRepresentante = '" + jTFTelefono_ActualizarEst.getText()
+                                    + "' WHERE Cedula_estudiante = '" + parametroBusqueda + "';";
+                            if (con.actualizarEliminarTablas(SQL)) {
+                                titulo = "Ingresado";
+                                mensaje = "Los datos del estudiante fueron actualizados correctamente";
+                                dispose();
+                            } else {
+                                titulo = "ERROR: Ingresado";
+                                mensaje = "Los datos del estudiante NO fueron ingresados debido a un error";
+                            }
+                        } else {
+                            this.SQL = "UPDATE Estudiantes SET NombresRepresentante = '" + jTFNombresRepre_ActualizarEst.getText()
+                                    + "',ApellidosRepresentante = '" + jTFApellidosRepre_ActualizarEst.getText()
+                                    + "', TelefonoRepresentante = '" + jTFTelefono_ActualizarEst.getText()
+                                    + "' WHERE Cedula_estudiante = '" + parametroBusqueda + "';";
+                            if (con.actualizarEliminarTablas(SQL)) {
+                                titulo = "Ingresado";
+                                mensaje = "Los datos del estudiante fueron actualizados correctamente";
+                                dispose();
+                            } else {
+                                titulo = "ERROR: Ingresado";
+                                mensaje = "Los datos del estudiante NO fueron ingresados debido a un error";
+                            }
                         }
+                        emitirMensaje(mensaje, titulo);
                     }
                 }
             }
@@ -579,7 +604,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         getToolkit().beep();
         JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
     }
-    
+
     public void limpiarCampos() {
         this.jTFApellidos_ActualizarEst.setText("");
         this.jTFCodigo_ActualizarEst.setText("");
@@ -590,7 +615,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
         this.jTFCorreo_ActualizarEst.setText("");
         this.jTFTelefono_ActualizarEst.setText("");
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;

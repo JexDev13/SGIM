@@ -266,6 +266,23 @@ public class Conexion {
                 }
                 jTabla.setModel(tabla);
             }
+            else if (selectTabla.equals("Estudiantes")) {
+                Object[] estudiantes = new Object[7];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Cédula", "Nombre", "Sexo", "Fecha de nacimiento", "Representante", "Correo representante", "Celular representante"});
+                while (rs.next()) {
+                    estudiantes[0] = rs.getString("Cedula");
+                    estudiantes[1] = rs.getString("Nombre");
+                    estudiantes[2] = rs.getString("Sexo");
+                    estudiantes[3] = rs.getString("FechaNacimiento");
+                    estudiantes[4] = rs.getString("NombreRepresentante");
+                    estudiantes[5] = rs.getString("Correo");
+                    estudiantes[6] = rs.getString("TelefonoRepresentante");
+                    tabla.addRow(estudiantes);
+                }
+                jTabla.setModel(tabla);
+            }
         } catch (SQLException e) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -362,6 +379,18 @@ public class Conexion {
                 return true;
             } else if (tabla.equals("Asistencia")) {
                 String SQL = "INSERT INTO Asignacion_cupos (Codigo_Clase, Cedula_estudiante, Codigo_Horario) VALUES (?, ?, ?);";
+                PreparedStatement pps = cn.prepareStatement(SQL);
+
+                // Separar el parámetro en elementos individuales
+                String[] parametrosSeparados = parametro.split(",");
+                // Establecer cada parámetro en el PreparedStatement
+                for (int i = 0; i < parametrosSeparados.length; i++) {
+                    pps.setString(i + 1, parametrosSeparados[i]);
+                }
+                pps.executeUpdate();
+                return true;
+            }else if (tabla.equals("Estudiantes")) {
+                String SQL = "INSERT INTO Personas (Cedula, Nombres, Apellidos, Correo, Rol) VALUES (?, ?, ?, ?, ?);";
                 PreparedStatement pps = cn.prepareStatement(SQL);
 
                 // Separar el parámetro en elementos individuales

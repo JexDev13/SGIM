@@ -236,7 +236,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="F. de Nacimiento:"/>
+            <Property name="text" type="java.lang.String" value="F.Nacimiento (aaaa-mm-dd):"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -247,7 +247,7 @@
         <Component class="javax.swing.JTextField" name="jTFFDNacimiento">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="110" y="137" width="155" height="-1"/>
+              <AbsoluteConstraints x="175" y="137" width="90" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

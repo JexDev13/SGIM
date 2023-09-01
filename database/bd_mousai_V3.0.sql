@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Estudiantes (
     FechaNacimiento DATE,
     NombresRepresentante VARCHAR(50),
     ApellidosRepresentante VARCHAR(50),
-    TelefonoRepresentante VARCHAR(15),
+    TelefonoRepresentante VARCHAR(20),
     FOREIGN KEY (Cedula_Estudiante) REFERENCES Personas(Cedula)
 )ENGINE = InnoDB;
 
@@ -451,4 +451,4 @@ UPDATE Users SET Nombre_Usuario = 'admin' WHERE Cedula = '0000000000';
 UPDATE Users SET Contrasena = 'admin' WHERE Cedula = '0000000000';
 -- Profesor para pruebas
 INSERT INTO Personas (Cedula, Nombres, Apellidos, Correo, Rol)
-VALUES ('1234567890', 'Juan', 'Pérez', 'juan@example.com', 'Profesor');
+VALUES ('1706172648', 'Juan', 'Pérez', 'juan@example.com', 'Profesor');

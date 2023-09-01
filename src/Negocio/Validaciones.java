@@ -79,7 +79,14 @@ public class Validaciones {
             int indice = random.nextInt(caracteres.length());
             contrasena.append(caracteres.charAt(indice));
         }
-
         return contrasena.toString();
+    }
+    
+    private static final String DATE_PATTERN = "^(\\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$";
+
+    public boolean validarFecha(String fecha) {
+        Pattern pattern = Pattern.compile(DATE_PATTERN);
+        Matcher matcher = pattern.matcher(fecha);
+        return matcher.matches();
     }
 }

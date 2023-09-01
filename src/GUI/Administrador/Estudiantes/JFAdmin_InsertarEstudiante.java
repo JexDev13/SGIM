@@ -1,5 +1,9 @@
 package GUI.Administrador.Estudiantes;
 
+import static GUI.Administrador.Calendario_Clases.JFAdmin_ActCupos.jTFBuscar_Horario;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_ActCupos.jTFCodigo_Horario;
+import static GUI.Administrador.Calendario_Clases.JFAdmin_ActCupos.jTFCupos;
+import GUI.Administrador.Calendario_Clases.JFAdmin_Calendario;
 import Negocio.Conexion;
 import Negocio.Diseño;
 import Negocio.Validaciones;
@@ -21,7 +25,7 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
     String SQL;
     String titulo = null;
     String mensaje = null;
-    
+
     Diseño diseño = new Diseño();
 
     public JFAdmin_InsertarEstudiante() {
@@ -137,9 +141,9 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         jPanel2.add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 106, 189, -1));
 
         jLDireccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLDireccion.setText("F. de Nacimiento:");
+        jLDireccion.setText("F.Nacimiento (aaaa-mm-dd):");
         jPanel2.add(jLDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 138, -1, -1));
-        jPanel2.add(jTFFDNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 137, 155, -1));
+        jPanel2.add(jTFFDNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 137, 90, -1));
 
         jLTelf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLTelf.setText("Nombres repre.:");
@@ -251,49 +255,72 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         String nombres = this.jTFNombres.getText();
         String apellidos = this.jTFApellidos.getText();
         String genero = (String) this.jComboBoxSexo.getSelectedItem();
+        if (genero.equalsIgnoreCase("Masculino")) {
+            genero = "M";
+        } else {
+            genero = "F";
+        }
         String fechaNacimiento = this.jTFFDNacimiento.getText();
         String nombresRepresentante = this.jTFNombresRepre.getText();
         String apellidosRepresentante = this.jTFApellidosRepre.getText();
         String correoRepresentante = this.jTFCorreoRepre.getText();
         String telefonoRepresentante = this.jTFTelefonoRepre.getText();
 
-        if (val.validadorDeCedula(cedula)) {
-            if (con.cedulaDuplicada(cedula)) {
-                titulo = "Error de duplicidad";
-                mensaje = "La cédula que estás intentando registrar ya está en el sistema";
-            } else {
-                if (val.emailValidator(correoRepresentante)) {
-                    ArrayList<String> atributosInsertar = new ArrayList<>();
-                    atributosInsertar.add(cedula);
-                    atributosInsertar.add(nombres);
-                    atributosInsertar.add(apellidos);
-                    atributosInsertar.add(genero);
-                    atributosInsertar.add(fechaNacimiento);
-                    atributosInsertar.add(nombresRepresentante);
-                    atributosInsertar.add(apellidosRepresentante);
-                    atributosInsertar.add(correoRepresentante);
-                    atributosInsertar.add(telefonoRepresentante);
-
-                    String parametro = con.prepararAtributos(atributosInsertar);
-
-                    if (con.insertar_Tablas("Estudiantes", parametro)) {
-                        titulo = "Ingresado";
-                        mensaje = "Los datos del estudiante fueron ingresados correctamente";
-                        dispose();
+        if (cedula.isEmpty() || nombres.isEmpty() || apellidos.isEmpty() || genero.isEmpty() || fechaNacimiento.isEmpty() || nombresRepresentante.isEmpty()
+                || apellidosRepresentante.isEmpty() || correoRepresentante.isEmpty() || telefonoRepresentante.isEmpty()) {
+            titulo = "ERROR DE FORMATO";
+            mensaje = "los campos no pueden estar vacíos.";
+            emitirMensaje(mensaje, titulo);
+        } else {
+            if (val.validarFecha(fechaNacimiento)) {
+                if (val.validadorDeCedula(cedula)) {
+                    if (con.cedulaDuplicada(cedula)) {
+                        titulo = "Error de duplicidad";
+                        mensaje = "La cédula que estás intentando registrar ya está en el sistema";
                     } else {
-                        titulo = "ERROR: Ingresado";
-                        mensaje = "Los datos del estudiante NO fueron ingresados debido a un error";
+                        if (val.emailValidator(correoRepresentante)) {
+                            ArrayList<String> atributosInsertar = new ArrayList<>();
+                            atributosInsertar.add(cedula);
+                            atributosInsertar.add(nombres);
+                            atributosInsertar.add(apellidos);
+                            atributosInsertar.add(correoRepresentante);
+                            atributosInsertar.add("Estudiante");
+                            String parametro = con.prepararAtributos(atributosInsertar);
+
+                            this.SQL = "UPDATE Estudiantes SET Sexo = '" + genero
+                                    + "',FechaNacimiento = '" + fechaNacimiento
+                                    + "',NombresRepresentante = '" + nombresRepresentante
+                                    + "',ApellidosRepresentante = '" + apellidosRepresentante
+                                    + "', TelefonoRepresentante = '" + telefonoRepresentante
+                                    + "' WHERE Cedula_estudiante = '" + cedula + "';";
+                            if (con.insertar_Tablas("Estudiantes", parametro)) {
+                                if (con.actualizarEliminarTablas(SQL)) {
+                                    titulo = "Ingresado";
+                                    mensaje = "Los datos del estudiante fueron ingresados correctamente";
+                                    dispose();
+                                } else {
+                                    titulo = "ERROR: Ingresado";
+                                    mensaje = "Los datos del estudiante NO fueron ingresados debido a un error";
+                                }
+                            }
+                            emitirMensaje(mensaje, titulo);
+                        } else {
+                            titulo = "ERROR DE FORMATO";
+                            mensaje = "El correo ingresado para el representante no es válido.";
+                            emitirMensaje(mensaje, titulo);
+                        }
                     }
                 } else {
                     titulo = "ERROR DE FORMATO";
-                    mensaje = "El correo ingresado para el representante no es válido.";
+                    mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
+                    emitirMensaje(mensaje, titulo);
                 }
+            } else {
+                titulo = "ERROR DE FORMATO";
+                mensaje = "La fecha de nacimiento no es válida.";
+                emitirMensaje(mensaje, titulo);
             }
-        } else {
-            titulo = "ERROR DE FORMATO";
-            mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
         }
-        emitirMensaje(mensaje, titulo);
     }//GEN-LAST:event_JBIngreso1ActionPerformed
 
     private void JBCancela1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBCancela1MouseEntered
@@ -311,7 +338,7 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         borrarCampos();
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
-    
+
     public void borrarCampos() {
         this.jTFApellidos.setText("");
         this.jTFCedula.setText("");
@@ -320,14 +347,14 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         this.jTFNombresRepre.setText("");
         this.jTFApellidosRepre.setText("");
         this.jTFTelefonoRepre.setText("");
-        this.jTFCorreoRepre.setText("");      
+        this.jTFCorreoRepre.setText("");
     }
 
     private void emitirMensaje(String mensaje, String titulo) {
         getToolkit().beep();
         JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;

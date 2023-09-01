@@ -420,7 +420,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                 } else {
                     int seleccion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el estudiante?" + "\n     -Esta accion podrá ser revertida", "Eliminar Estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
                     if (seleccion == 0) {
-                        this.SQL = "DELETE from Estudiante Where Cedula_Estudiante = '" + parametroBusqueda + "';";
+                        this.SQL = "DELETE from Estudiantes Where Cedula_Estudiante = '" + parametroBusqueda + "';";
                         if (con.actualizarEliminarTablas(SQL) == true) {
                             titulo = "RESULTADO";
                             mensaje = "Estudiante Eliminado exitosamente";
