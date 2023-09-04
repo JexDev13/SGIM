@@ -314,19 +314,24 @@ public class JPAdminPagos extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonEstadoCuentaActionPerformed
 
     private void obtenerPorcentaje() {
-        int totalEstudiantes = jTPagos.getRowCount();
-        int estudiantesConAbono = 0;
-        for (int i = 0; i < totalEstudiantes; i++) {
-            Object abono = jTPagos.getValueAt(i, 4); // Reemplaza columnaDeAbono con el índice de la columna Abono
-            
-            if (abono != null && abono.toString().equals("1")) {
-                estudiantesConAbono++;
-            }
-            double porcentaje = (double) estudiantesConAbono / totalEstudiantes * 100;
-            
-            jTFPorcentajePagado.setText(String.valueOf(porcentaje));
-        } 
+    int totalEstudiantes = jTPagos.getRowCount();
+    int estudiantesConAbono = 0;
+    for (int i = 0; i < totalEstudiantes; i++) {
+        Object abono = jTPagos.getValueAt(i, 4); // Reemplaza columnaDeAbono con el índice de la columna Abono
+
+        if (abono != null && abono.toString().equals("Pagado")) {
+            estudiantesConAbono++;
+        }
     }
+    
+    double porcentaje = (double) estudiantesConAbono / totalEstudiantes * 100;
+    
+    // Formatear el porcentaje con 2 decimales
+    String porcentajeFormateado = String.format("%.2f", porcentaje);
+    
+    jTFPorcentajePagado.setText(porcentajeFormateado);
+}
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;
