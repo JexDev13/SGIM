@@ -1,5 +1,14 @@
 package GUI.Administrador.Estudiantes;
 
+import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFApellidosRepre_ActualizarEst;
+import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFBuscar_ActualizarEst;
+import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFCodigo_ActualizarEst;
+import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFCorreo_ActualizarEst;
+import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFFechaNacimiento_ActualizarEst;
+import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFFechaNacimiento_ActualizarSexo;
+import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFNombresRepre_ActualizarEst;
+import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFNombres_ActualizarEst;
+import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFTelefono_ActualizarEst;
 import Negocio.Conexion;
 import Negocio.Diseño;
 import Negocio.Validaciones;
@@ -43,27 +52,26 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         jTFBuscar_EliminarEst = new javax.swing.JTextField();
         jLCedula = new javax.swing.JLabel();
         jPDatosEstudianteEliminar1 = new javax.swing.JPanel();
-        jTFCodigo_EliminarEst1 = new javax.swing.JTextField();
+        jTFCodigo_EliminarEst = new javax.swing.JTextField();
         jLabelNom1 = new javax.swing.JLabel();
-        jTFNombres_EliminarEst1 = new javax.swing.JTextField();
+        jTFNombres_EliminarEst = new javax.swing.JTextField();
         jLabelApe1 = new javax.swing.JLabel();
-        jTFApellidos_EliminarEst1 = new javax.swing.JTextField();
+        jTFSexo_EliminarEst = new javax.swing.JTextField();
         jLabelSector1 = new javax.swing.JLabel();
-        jTFCelu_EliminarEst1 = new javax.swing.JTextField();
+        jTFFecha_EliminarEst = new javax.swing.JTextField();
         jLabelCelu1 = new javax.swing.JLabel();
-        jTFFacultad_EliminarEst1 = new javax.swing.JTextField();
+        jTFApellidosRe_EliminarEst = new javax.swing.JTextField();
         jLabelCorre2 = new javax.swing.JLabel();
-        jTFCorreo_EliminarEst2 = new javax.swing.JTextField();
+        jTFCorreo_EliminarEst = new javax.swing.JTextField();
         jLabelFacu1 = new javax.swing.JLabel();
-        jTFSectorEst_EliminarEst1 = new javax.swing.JTextField();
+        jTFNombresRe_EliminarEst = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabelCorre3 = new javax.swing.JLabel();
-        jTFCorreo_EliminarEst3 = new javax.swing.JTextField();
+        jTFTelf_EliminarEst = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 523));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(400, 523));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -167,7 +175,12 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelDatoEstudiante.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDatoEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del profesor"));
+        jPanelDatoEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del eliminar"));
+        jPanelDatoEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jPanelDatoEstudianteKeyReleased(evt);
+            }
+        });
 
         jTFBuscar_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTFBuscar_EliminarEst.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -209,51 +222,51 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         jPDatosEstudianteEliminar1.setBackground(new java.awt.Color(255, 255, 255));
         jPDatosEstudianteEliminar1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Eliminar"));
 
-        jTFCodigo_EliminarEst1.setEditable(false);
-        jTFCodigo_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFCodigo_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFCodigo_EliminarEst.setEditable(false);
+        jTFCodigo_EliminarEst.setBackground(new java.awt.Color(255, 255, 255));
+        jTFCodigo_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelNom1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelNom1.setText("Nombres");
+        jLabelNom1.setText("Nombre");
 
-        jTFNombres_EliminarEst1.setEditable(false);
-        jTFNombres_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFNombres_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFNombres_EliminarEst.setEditable(false);
+        jTFNombres_EliminarEst.setBackground(new java.awt.Color(255, 255, 255));
+        jTFNombres_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelApe1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabelApe1.setText("Apellidos");
+        jLabelApe1.setText("Sexo");
 
-        jTFApellidos_EliminarEst1.setEditable(false);
-        jTFApellidos_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFApellidos_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFSexo_EliminarEst.setEditable(false);
+        jTFSexo_EliminarEst.setBackground(new java.awt.Color(255, 255, 255));
+        jTFSexo_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelSector1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelSector1.setText("Nombres Repre.");
 
-        jTFCelu_EliminarEst1.setEditable(false);
-        jTFCelu_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFCelu_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFFecha_EliminarEst.setEditable(false);
+        jTFFecha_EliminarEst.setBackground(new java.awt.Color(255, 255, 255));
+        jTFFecha_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelCelu1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelCelu1.setText("F. de Nacimiento");
 
-        jTFFacultad_EliminarEst1.setEditable(false);
-        jTFFacultad_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFFacultad_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFApellidosRe_EliminarEst.setEditable(false);
+        jTFApellidosRe_EliminarEst.setBackground(new java.awt.Color(255, 255, 255));
+        jTFApellidosRe_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelCorre2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelCorre2.setText("Correo elec. Repre.");
 
-        jTFCorreo_EliminarEst2.setEditable(false);
-        jTFCorreo_EliminarEst2.setBackground(new java.awt.Color(255, 255, 255));
-        jTFCorreo_EliminarEst2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFCorreo_EliminarEst.setEditable(false);
+        jTFCorreo_EliminarEst.setBackground(new java.awt.Color(255, 255, 255));
+        jTFCorreo_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabelFacu1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelFacu1.setText("Apellidos Repre.");
 
-        jTFSectorEst_EliminarEst1.setEditable(false);
-        jTFSectorEst_EliminarEst1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFSectorEst_EliminarEst1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFNombresRe_EliminarEst.setEditable(false);
+        jTFNombresRe_EliminarEst.setBackground(new java.awt.Color(255, 255, 255));
+        jTFNombresRe_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel21.setText("N° Cédula");
@@ -261,9 +274,9 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         jLabelCorre3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabelCorre3.setText("Telefono Repre.");
 
-        jTFCorreo_EliminarEst3.setEditable(false);
-        jTFCorreo_EliminarEst3.setBackground(new java.awt.Color(255, 255, 255));
-        jTFCorreo_EliminarEst3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFTelf_EliminarEst.setEditable(false);
+        jTFTelf_EliminarEst.setBackground(new java.awt.Color(255, 255, 255));
+        jTFTelf_EliminarEst.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPDatosEstudianteEliminar1Layout = new javax.swing.GroupLayout(jPDatosEstudianteEliminar1);
         jPDatosEstudianteEliminar1.setLayout(jPDatosEstudianteEliminar1Layout);
@@ -275,11 +288,11 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                     .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
                         .addComponent(jLabelCorre3)
                         .addGap(18, 18, 18)
-                        .addComponent(jTFCorreo_EliminarEst3))
+                        .addComponent(jTFTelf_EliminarEst))
                     .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
                         .addComponent(jLabelCorre2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(jTFCorreo_EliminarEst2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                        .addComponent(jTFCorreo_EliminarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
                     .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
                         .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,10 +306,10 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                                 .addComponent(jLabelApe1)
                                 .addGap(46, 46, 46)))
                         .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFApellidos_EliminarEst1)
+                            .addComponent(jTFSexo_EliminarEst)
                             .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTFNombres_EliminarEst1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                .addComponent(jTFCodigo_EliminarEst1))))
+                                .addComponent(jTFNombres_EliminarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                .addComponent(jTFCodigo_EliminarEst))))
                     .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
                         .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelCelu1)
@@ -304,9 +317,9 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
                             .addComponent(jLabelFacu1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFFacultad_EliminarEst1)
-                            .addComponent(jTFSectorEst_EliminarEst1)
-                            .addComponent(jTFCelu_EliminarEst1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))))
+                            .addComponent(jTFApellidosRe_EliminarEst)
+                            .addComponent(jTFNombresRe_EliminarEst)
+                            .addComponent(jTFFecha_EliminarEst, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPDatosEstudianteEliminar1Layout.setVerticalGroup(
@@ -314,35 +327,35 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
             .addGroup(jPDatosEstudianteEliminar1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFCodigo_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFCodigo_EliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFNombres_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFNombres_EliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNom1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFApellidos_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFSexo_EliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelApe1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFCelu_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFFecha_EliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCelu1))
                 .addGap(6, 6, 6)
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFSectorEst_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFNombresRe_EliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSector1))
                 .addGap(6, 6, 6)
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFFacultad_EliminarEst1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFApellidosRe_EliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelFacu1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFCorreo_EliminarEst2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFCorreo_EliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCorre2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPDatosEstudianteEliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFCorreo_EliminarEst3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFTelf_EliminarEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCorre3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -357,13 +370,16 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     private void jTFBuscar_EliminarEstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_EliminarEstKeyReleased
         String parametroBusqueda = this.jTFBuscar_EliminarEst.getText();
         if (parametroBusqueda.length() == 10) {
-        this.SQL = "SELECT e.Cedula_Estudiante, p.Nombres, p.Apellidos, e.FechaNacimiento, e.NombresRepresentante, "
-                + "e.ApellidosRepresentante, p.Correo, e.TelefonoRepresentante FROM Estudiantes e JOIN Personas p "
-                + "ON p.Cedula = e.Cedula_Estudiante WHERE e.Cedula_Estudiante LIKE '%" 
-                + parametroBusqueda + "%';";        
-        con.despliegueFields(SQL, "Estudiantes", jTFCodigo_EliminarEst1, jTFNombres_EliminarEst1, 
-                jTFApellidos_EliminarEst1, jTFCelu_EliminarEst1, jTFSectorEst_EliminarEst1, 
-                jTFFacultad_EliminarEst1, jTFCorreo_EliminarEst2, jTFCorreo_EliminarEst3, "eliminar");
+            this.SQL = "SELECT e.Cedula_Estudiante, CONCAT(p.Nombres,' ',p.Apellidos) as Nombre, e.FechaNacimiento, e.Sexo, e.NombresRepresentante, e.ApellidosRepresentante, p.Correo, e.TelefonoRepresentante FROM Estudiantes e JOIN Personas p ON p.Cedula = e.Cedula_Estudiante WHERE e.Cedula_Estudiante LIKE '%" + parametroBusqueda + "%';";
+            con.despliegueFields(SQL, "Estudiantes", 
+                    jTFCodigo_EliminarEst, 
+                    jTFNombres_EliminarEst,
+                    jTFFecha_EliminarEst,
+                    jTFSexo_EliminarEst,
+                    jTFNombresRe_EliminarEst,
+                    jTFApellidosRe_EliminarEst, 
+                    jTFCorreo_EliminarEst, 
+                    jTFTelf_EliminarEst, "actualizar");
         } else {
             limpiarCampos();
         }
@@ -450,17 +466,35 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
+    private void jPanelDatoEstudianteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanelDatoEstudianteKeyReleased
+        String parametroBusqueda = this.jTFBuscar_EliminarEst.getText();
+        if (parametroBusqueda.length() == 10) {
+            this.SQL = "SELECT e.Cedula_Estudiante, CONCAT(p.Nombres,' ',p.Apellidos) as Nombre, e.FechaNacimiento, e.Sexo, e.NombresRepresentante, e.ApellidosRepresentante, p.Correo, e.TelefonoRepresentante FROM Estudiantes e JOIN Personas p ON p.Cedula = e.Cedula_Estudiante WHERE e.Cedula_Estudiante LIKE '%" + parametroBusqueda + "%';";
+            con.despliegueFields(SQL, "Estudiantes",
+                    this.jTFCodigo_EliminarEst,
+                    this.jTFNombres_EliminarEst,
+                    this.jTFSexo_EliminarEst,
+                    this.jTFFecha_EliminarEst,
+                    this.jTFNombresRe_EliminarEst,
+                    this.jTFApellidosRe_EliminarEst,
+                    this.jTFCorreo_EliminarEst,
+                    this.jTFTelf_EliminarEst, "acutalizar");
+        } else {
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_jPanelDatoEstudianteKeyReleased
+
     public void limpiarCampos() {
-        jTFCodigo_EliminarEst1.setText("");
-        jTFNombres_EliminarEst1.setText("");
-        jTFApellidos_EliminarEst1.setText("");
-        jTFCelu_EliminarEst1.setText("");
-        jTFSectorEst_EliminarEst1.setText("");
-        jTFFacultad_EliminarEst1.setText("");
-        jTFCorreo_EliminarEst2.setText("");
-        jTFCorreo_EliminarEst3.setText("");
+        jTFCodigo_EliminarEst.setText("");
+        jTFNombres_EliminarEst.setText("");
+        jTFSexo_EliminarEst.setText("");
+        jTFFecha_EliminarEst.setText("");
+        jTFNombresRe_EliminarEst.setText("");
+        jTFApellidosRe_EliminarEst.setText("");
+        jTFCorreo_EliminarEst.setText("");
+        jTFTelf_EliminarEst.setText("");
     }
-    
+
     private void emitirMensaje(String mensaje, String titulo) {
         getToolkit().beep();
         JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
@@ -486,14 +520,14 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelDatoEstudiante;
-    public static javax.swing.JTextField jTFApellidos_EliminarEst1;
+    private javax.swing.JTextField jTFApellidosRe_EliminarEst;
     public static javax.swing.JTextField jTFBuscar_EliminarEst;
-    public static javax.swing.JTextField jTFCelu_EliminarEst1;
-    public static javax.swing.JTextField jTFCodigo_EliminarEst1;
-    public static javax.swing.JTextField jTFCorreo_EliminarEst2;
-    public static javax.swing.JTextField jTFCorreo_EliminarEst3;
-    public static javax.swing.JTextField jTFFacultad_EliminarEst1;
-    public static javax.swing.JTextField jTFNombres_EliminarEst1;
-    public static javax.swing.JTextField jTFSectorEst_EliminarEst1;
+    private javax.swing.JTextField jTFCodigo_EliminarEst;
+    private javax.swing.JTextField jTFCorreo_EliminarEst;
+    private javax.swing.JTextField jTFFecha_EliminarEst;
+    private javax.swing.JTextField jTFNombresRe_EliminarEst;
+    private javax.swing.JTextField jTFNombres_EliminarEst;
+    private javax.swing.JTextField jTFSexo_EliminarEst;
+    private javax.swing.JTextField jTFTelf_EliminarEst;
     // End of variables declaration//GEN-END:variables
 }

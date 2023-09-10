@@ -10,7 +10,5 @@ public class main {
     public static void main(String[] args) {
         JFLogin log = new JFLogin();
         log.setVisible(true);
-        
-        
     }
 }

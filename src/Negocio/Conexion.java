@@ -99,10 +99,10 @@ public class Conexion {
                 resultado = resultSet.getString(tipo);
                 destinatario = resultSet.getString("correo");
                 String mensaje = "<html><body style=\"text-align:center;\">"
-                    + "<h1 style=\"font-size:32px;color:rgb(250,183,22);\">Sistema de Gestión e Inventario Mousai-SGIM</h1>"
-                    + "<p style=\"font-size:24px;\">Recuperación de " + tipo + ": <strong>" + resultado + "</strong></p>"
-                    + "<p style=\"font-size:16px;color:gray;\">Si usted no generó este mensaje, cambie su contraseña inmediatamente.</p>"
-                    + "</body></html>";
+                        + "<h1 style=\"font-size:32px;color:rgb(250,183,22);\">Sistema de Gestión e Inventario Mousai-SGIM</h1>"
+                        + "<p style=\"font-size:24px;\">Recuperación de " + tipo + ": <strong>" + resultado + "</strong></p>"
+                        + "<p style=\"font-size:16px;color:gray;\">Si usted no generó este mensaje, cambie su contraseña inmediatamente.</p>"
+                        + "</body></html>";
                 envio = email.enviarCorreos(mensaje, destinatario);
                 if (envio == 1) {
                     return true;
@@ -265,8 +265,7 @@ public class Conexion {
                     tabla.addRow(asistencia);
                 }
                 jTabla.setModel(tabla);
-            }
-            else if (selectTabla.equals("Estudiantes")) {
+            } else if (selectTabla.equals("Estudiantes")) {
                 Object[] estudiantes = new Object[7];
                 DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
@@ -280,6 +279,20 @@ public class Conexion {
                     estudiantes[5] = rs.getString("Correo");
                     estudiantes[6] = rs.getString("TelefonoRepresentante");
                     tabla.addRow(estudiantes);
+                }
+                jTabla.setModel(tabla);
+            }else if (selectTabla.equals("Rentas")) {
+                Object[] rentas = new Object[5];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"Código prodcuto", "Elemento", "Cédula", "Nombre del cliente", "Fecha del préstamo"});
+                while (rs.next()) {
+                    rentas[0] = rs.getString("codigo");
+                    rentas[1] = rs.getString("Elemento");
+                    rentas[2] = rs.getString("Cedula");
+                    rentas[3] = rs.getString("Cliente");
+                    rentas[4] = rs.getString("Fecha");
+                    tabla.addRow(rentas);
                 }
                 jTabla.setModel(tabla);
             }
@@ -389,7 +402,7 @@ public class Conexion {
                 }
                 pps.executeUpdate();
                 return true;
-            }else if (tabla.equals("Estudiantes")) {
+            } else if (tabla.equals("Estudiantes")) {
                 String SQL = "INSERT INTO Personas (Cedula, Nombres, Apellidos, Correo, Rol) VALUES (?, ?, ?, ?, ?);";
                 PreparedStatement pps = cn.prepareStatement(SQL);
 
@@ -574,6 +587,54 @@ public class Conexion {
                     }
                     if (dos != null) {
                         dos.setText("" + rs.getString("cupos"));
+                    }
+                }
+            } else if (tabla.equals("Estudiantes")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("Cedula_Estudiante"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("Nombre"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("FechaNacimiento"));
+                    }
+                    if (cuatro != null) {
+                        cuatro.setText("" + rs.getString("Sexo"));
+                    }
+                    if (cinco != null) {
+                        cinco.setText("" + rs.getString("NombresRepresentante"));
+                    }
+                    if (seis != null) {
+                        seis.setText("" + rs.getString("ApellidosRepresentante"));
+                    }
+                    if (siete != null) {
+                        siete.setText("" + rs.getString("Correo"));
+                    }
+                    if (ocho != null) {
+                        ocho.setText("" + rs.getString("TelefonoRepresentante"));
+                    }
+                }
+            } else if (tabla.equals("Renta")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("Codigo"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("Nombre"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("Categoria"));
+                    }
+                    if (cuatro != null) {
+                        cuatro.setText("" + rs.getString("Creador"));
+                    }
+                    if (cinco != null) {
+                        cinco.setText("" + rs.getString("EstadoAlquiler"));
+                    }
+                    if (seis != null) {
+                        seis.setText("" + rs.getString("Condicion"));
                     }
                 }
             }

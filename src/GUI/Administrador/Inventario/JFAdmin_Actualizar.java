@@ -1,11 +1,13 @@
 package GUI.Administrador.Inventario;
 
 import Negocio.Conexion;
+import Negocio.Diseño;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -16,6 +18,8 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
     private int y;
     private Conexion con = new Conexion();
     private String SQL;
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
 
     public JFAdmin_Actualizar() {
         initComponents();
@@ -298,7 +302,33 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFBuscar_ActualizarKeyTyped
 
     private void jTFBuscar_ActualizarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_ActualizarKeyReleased
-
+        if (jTFBuscar_Actualizar.getText().startsWith("INSTR-")) {
+            this.SQL = """
+                   SELECT Codigo,Condicion FROM instrumentos WHERE """
+                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText() + "%';";
+            ResultSet resultado1 = con.query(SQL);
+            try {
+                if (resultado1.next()) {
+                    jTFCodigo_Actualizar.setText(resultado1.getString("Codigo"));
+                    jTextAreaCondicion.setText(resultado1.getString("Condicion"));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(JFAdmin_Actualizar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (jTFBuscar_Actualizar.getText().startsWith("LIBR-")) {
+            this.SQL = """
+                   SELECT Codigo,Condicion FROM libros WHERE """
+                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText() + "%';";
+            ResultSet resultado1 = con.query(SQL);
+            try {
+                if (resultado1.next()) {
+                    jTFCodigo_Actualizar.setText(resultado1.getString("Codigo"));
+                    jTextAreaCondicion.setText(resultado1.getString("Condicion"));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(JFAdmin_Actualizar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jTFBuscar_ActualizarKeyReleased
 
     private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
@@ -370,6 +400,10 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        limpiarCampos();
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
@@ -389,38 +423,42 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextAreaCondicionFocusLost
 
     private void jTFBuscar_ActualizarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBuscar_ActualizarFocusLost
-        if (jTFBuscar_Actualizar.getText().startsWith("INSTR-")) {
-            this.SQL = """
-                   SELECT Codigo,Condicion FROM instrumentos WHERE """
-                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText() + "%';";
-            ResultSet resultado1 = con.query(SQL);
-            try {
-                if (resultado1.next()) {
-                    jTFCodigo_Actualizar.setText(resultado1.getString("Codigo"));
-                    jTextAreaCondicion.setText(resultado1.getString("Condicion"));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(JFAdmin_Actualizar.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else if (jTFBuscar_Actualizar.getText().startsWith("LIBR-")) {
-            this.SQL = """
-                   SELECT Codigo,Condicion FROM libros WHERE """
-                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText() + "%';";
-            ResultSet resultado1 = con.query(SQL);
-            try {
-                if (resultado1.next()) {
-                    jTFCodigo_Actualizar.setText(resultado1.getString("Codigo"));
-                    jTextAreaCondicion.setText(resultado1.getString("Condicion"));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(JFAdmin_Actualizar.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+//        if (jTFBuscar_Actualizar.getText().startsWith("INSTR-")) {
+//            this.SQL = """
+//                   SELECT Codigo,Condicion FROM instrumentos WHERE """
+//                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText() + "%';";
+//            ResultSet resultado1 = con.query(SQL);
+//            try {
+//                if (resultado1.next()) {
+//                    jTFCodigo_Actualizar.setText(resultado1.getString("Codigo"));
+//                    jTextAreaCondicion.setText(resultado1.getString("Condicion"));
+//                }
+//            } catch (SQLException ex) {
+//                Logger.getLogger(JFAdmin_Actualizar.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        } else if (jTFBuscar_Actualizar.getText().startsWith("LIBR-")) {
+//            this.SQL = """
+//                   SELECT Codigo,Condicion FROM libros WHERE """
+//                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText() + "%';";
+//            ResultSet resultado1 = con.query(SQL);
+//            try {
+//                if (resultado1.next()) {
+//                    jTFCodigo_Actualizar.setText(resultado1.getString("Codigo"));
+//                    jTextAreaCondicion.setText(resultado1.getString("Condicion"));
+//                }
+//            } catch (SQLException ex) {
+//                Logger.getLogger(JFAdmin_Actualizar.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }//GEN-LAST:event_jTFBuscar_ActualizarFocusLost
 
     public void limpiarCampos() {
         this.jTFCodigo_Actualizar.setText("");
         this.jTFBuscar_Actualizar.setText("");
+    }
+    
+    private void emitirMensaje(String mensaje, String titulo) {
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

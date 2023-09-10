@@ -254,8 +254,8 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
         String cedula = this.jTFCedula.getText();
         String nombres = this.jTFNombres.getText();
         String apellidos = this.jTFApellidos.getText();
-        String genero = (String) this.jComboBoxSexo.getSelectedItem();
-        if (genero.equalsIgnoreCase("Masculino")) {
+        String genero;
+        if (jComboBoxSexo.getSelectedIndex()==0) {
             genero = "M";
         } else {
             genero = "F";
@@ -286,14 +286,13 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
                             atributosInsertar.add(correoRepresentante);
                             atributosInsertar.add("Estudiante");
                             String parametro = con.prepararAtributos(atributosInsertar);
-
-                            this.SQL = "UPDATE Estudiantes SET Sexo = '" + genero
+                            if (con.insertar_Tablas("Estudiantes", parametro)) {
+                                this.SQL = "UPDATE Estudiantes SET Sexo = '" + genero
                                     + "',FechaNacimiento = '" + fechaNacimiento
                                     + "',NombresRepresentante = '" + nombresRepresentante
                                     + "',ApellidosRepresentante = '" + apellidosRepresentante
                                     + "', TelefonoRepresentante = '" + telefonoRepresentante
                                     + "' WHERE Cedula_estudiante = '" + cedula + "';";
-                            if (con.insertar_Tablas("Estudiantes", parametro)) {
                                 if (con.actualizarEliminarTablas(SQL)) {
                                     titulo = "Ingresado";
                                     mensaje = "Los datos del estudiante fueron ingresados correctamente";

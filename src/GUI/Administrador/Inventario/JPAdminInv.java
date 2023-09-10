@@ -50,9 +50,8 @@ public class JPAdminInv extends javax.swing.JPanel {
         jLTitTabla1 = new javax.swing.JLabel();
         jSeparator = new javax.swing.JSeparator();
         jButtonActualizar = new javax.swing.JButton();
-        jButtonPrestamo = new javax.swing.JButton();
-        jButtonDevolucion = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
+        jButtonActualizar1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -257,46 +256,6 @@ public class JPAdminInv extends javax.swing.JPanel {
             }
         });
 
-        jButtonPrestamo.setBackground(new java.awt.Color(250, 183, 22));
-        jButtonPrestamo.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonPrestamo.setText("Préstamo");
-        jButtonPrestamo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jButtonPrestamo.setBorderPainted(false);
-        jButtonPrestamo.setPreferredSize(new java.awt.Dimension(73, 40));
-        jButtonPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonPrestamoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonPrestamoMouseExited(evt);
-            }
-        });
-        jButtonPrestamo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPrestamoActionPerformed(evt);
-            }
-        });
-
-        jButtonDevolucion.setBackground(new java.awt.Color(250, 183, 22));
-        jButtonDevolucion.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonDevolucion.setText("Devolución");
-        jButtonDevolucion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jButtonDevolucion.setBorderPainted(false);
-        jButtonDevolucion.setPreferredSize(new java.awt.Dimension(73, 40));
-        jButtonDevolucion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonDevolucionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonDevolucionMouseExited(evt);
-            }
-        });
-        jButtonDevolucion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDevolucionActionPerformed(evt);
-            }
-        });
-
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
         jButtonBuscar.setBorder(null);
         jButtonBuscar.setContentAreaFilled(false);
@@ -304,6 +263,28 @@ public class JPAdminInv extends javax.swing.JPanel {
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuscarActionPerformed(evt);
+            }
+        });
+
+        jButtonActualizar1.setBackground(new java.awt.Color(250, 183, 22));
+        jButtonActualizar1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonActualizar1.setText("Rentas");
+        jButtonActualizar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jButtonActualizar1.setBorderPainted(false);
+        jButtonActualizar1.setFocusPainted(false);
+        jButtonActualizar1.setFocusable(false);
+        jButtonActualizar1.setPreferredSize(new java.awt.Dimension(73, 40));
+        jButtonActualizar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonActualizar1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonActualizar1MouseExited(evt);
+            }
+        });
+        jButtonActualizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonActualizar1ActionPerformed(evt);
             }
         });
 
@@ -317,23 +298,20 @@ public class JPAdminInv extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButtonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(107, 107, 107)
-                                                .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jButtonPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLTitTabla))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLTitTabla)
+                                        .addGap(244, 244, 244)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -341,7 +319,7 @@ public class JPAdminInv extends javax.swing.JPanel {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jCBFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(78, 78, 78)
+                                                .addGap(204, 204, 204)
                                                 .addComponent(jButtonBuscar)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jTFBusqueda)))))))
@@ -370,8 +348,7 @@ public class JPAdminInv extends javax.swing.JPanel {
                                 .addComponent(jButtonNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButtonPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButtonDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButtonActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -453,30 +430,6 @@ public class JPAdminInv extends javax.swing.JPanel {
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
         act.setVisible(true);
     }//GEN-LAST:event_jButtonActualizarActionPerformed
-
-    private void jButtonPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrestamoMouseEntered
-        this.jButtonPrestamo.setText("PRÉSTAMO");
-    }//GEN-LAST:event_jButtonPrestamoMouseEntered
-
-    private void jButtonPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrestamoMouseExited
-        this.jButtonPrestamo.setText("préstamo");
-    }//GEN-LAST:event_jButtonPrestamoMouseExited
-
-    private void jButtonPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrestamoActionPerformed
-        pres.setVisible(true);
-    }//GEN-LAST:event_jButtonPrestamoActionPerformed
-
-    private void jButtonDevolucionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDevolucionMouseEntered
-        this.jButtonDevolucion.setText("DEVOLUCIÓN");
-    }//GEN-LAST:event_jButtonDevolucionMouseEntered
-
-    private void jButtonDevolucionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDevolucionMouseExited
-        this.jButtonDevolucion.setText("devolución");
-    }//GEN-LAST:event_jButtonDevolucionMouseExited
-
-    private void jButtonDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDevolucionActionPerformed
-        dev.setVisible(true);
-    }//GEN-LAST:event_jButtonDevolucionActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         // Verificar si el codigo existe y mostrarlo en la tabla adecuada para abrir lo siguiente
@@ -575,6 +528,19 @@ public class JPAdminInv extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
+    private void jButtonActualizar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActualizar1MouseEntered
+        this.jButtonActualizar1.setText("RENTAS");
+    }//GEN-LAST:event_jButtonActualizar1MouseEntered
+
+    private void jButtonActualizar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActualizar1MouseExited
+        this.jButtonActualizar1.setText("rentas");
+    }//GEN-LAST:event_jButtonActualizar1MouseExited
+
+    private void jButtonActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizar1ActionPerformed
+        JFAdmin_Rentas rentas = new JFAdmin_Rentas();
+        rentas.setVisible(true);
+    }//GEN-LAST:event_jButtonActualizar1ActionPerformed
+
     private boolean existeCodigoInstrumento(String codigo) {
         boolean existe = false;
 
@@ -613,11 +579,10 @@ public class JPAdminInv extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonActualizar;
+    private javax.swing.JButton jButtonActualizar1;
     private javax.swing.JButton jButtonBuscar;
-    private javax.swing.JButton jButtonDevolucion;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonNuevo;
-    private javax.swing.JButton jButtonPrestamo;
     private javax.swing.JComboBox<String> jCBFiltro;
     private javax.swing.JLabel jLFiltro;
     private javax.swing.JLabel jLTitTabla;

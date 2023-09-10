@@ -3,7 +3,6 @@ package GUI.Administrador.Gestion_Sistema;
 import Negocio.Conexion;
 import Negocio.Diseño;
 import Negocio.Validaciones;
-import static com.sun.source.tree.Tree.Kind.OR;
 import static java.awt.image.ImageObserver.HEIGHT;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -485,7 +484,6 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
                         mensaje = "Ocurrio un error realizando la acción";
                         emitirMensaje(mensaje, titulo);
                     }
-                    
                 }
             }
         }

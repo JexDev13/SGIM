@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -17,6 +18,8 @@ public class JFAdmin_Devolucion extends javax.swing.JFrame {
     private int y;
     private Conexion con = new Conexion();
     private String SQL;
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
 
     public JFAdmin_Devolucion() {
         initComponents();
@@ -278,10 +281,21 @@ public class JFAdmin_Devolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        borrarCampos();
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
-
+    public void borrarCampos() {
+        this.jTFCodigo.setText("");
+    }
+    
+    private void emitirMensaje(String mensaje, String titulo) {
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;
     private javax.swing.JButton JBIngreso1;

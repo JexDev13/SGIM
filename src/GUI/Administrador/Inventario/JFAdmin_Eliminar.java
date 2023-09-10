@@ -1,11 +1,13 @@
 package GUI.Administrador.Inventario;
 
 import Negocio.Conexion;
+import Negocio.Diseño;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -16,6 +18,8 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
     private int y;
     private Conexion con = new Conexion();
     private String SQL;
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
 
     public JFAdmin_Eliminar() {
         initComponents();
@@ -349,7 +353,33 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFBuscar_EliminarKeyTyped
 
     private void jTFBuscar_EliminarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_EliminarKeyReleased
-
+        if (jTFBuscar_Eliminar.getText().startsWith("INSTR-")) {
+            this.SQL = """
+                   SELECT Codigo,Nombre,Fabricante as Creador,Categoria,EstadoAlquiler,Condicion FROM instrumentos WHERE """
+                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
+            con.despliegueFields(SQL, "Renta", 
+                    jTFCodigo_Eliminar, 
+                    jTFNombre_Eliminar,
+                    jTFFabricanteAutor_Eliminar, 
+                    jTFCategoria_Eliminar, 
+                    jTFEstado_Eliminar, 
+                    jTFCondicion_Eliminar, 
+                    null, 
+                    null, "Eliminar");
+        } else if (jTFBuscar_Eliminar.getText().startsWith("LIBR-")) {
+            this.SQL = """
+                    SELECT Codigo,Nombre,Categoria,Autor as Creador,EstadoAlquiler,Condicion FROM libros WHERE """
+                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
+            con.despliegueFields(SQL, "Renta", 
+                    jTFCodigo_Eliminar, 
+                    jTFNombre_Eliminar,
+                    jTFFabricanteAutor_Eliminar, 
+                    jTFCategoria_Eliminar, 
+                    jTFEstado_Eliminar, 
+                    jTFCondicion_Eliminar, 
+                    null, 
+                    null, "Eliminar");
+        }
     }//GEN-LAST:event_jTFBuscar_EliminarKeyReleased
 
     private void JBIngreso1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JBIngreso1MouseEntered
@@ -404,17 +434,21 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                                         }
                                     } else {
                                         JOptionPane.showMessageDialog(null, "Producto en alquiler");
+
                                     }
                                 }
                             } catch (SQLException ex) {
-                                Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(JFAdmin_Insertar.class
+                                        .getName()).log(Level.SEVERE, null, ex);
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "Código de producto no encontrado");
+
                         }
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JFAdmin_Insertar.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             } else if (jTFBuscar_Eliminar.getText().startsWith("LIBR-")) {
                 this.SQL = """
@@ -456,17 +490,21 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                                         }
                                     } else {
                                         JOptionPane.showMessageDialog(null, "Producto en alquiler");
+
                                     }
                                 }
                             } catch (SQLException ex) {
-                                Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(JFAdmin_Insertar.class
+                                        .getName()).log(Level.SEVERE, null, ex);
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "Código de producto no encontrado");
+
                         }
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JFAdmin_Insertar.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -481,6 +519,10 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        limpiarCampos();
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
@@ -495,20 +537,25 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
     private void jTFBuscar_EliminarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFBuscar_EliminarFocusLost
         if (jTFBuscar_Eliminar.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Colocar código");
-        }else {
+        } else {
             //colocar datos en campos
         }
     }//GEN-LAST:event_jTFBuscar_EliminarFocusLost
 
-//    public void limpiarCampos(){
-//        this.jTFCodigo_EliminarEst.setText("");
-//        this.jTFNombres_EliminarEst.setText("");
-//        this.jTFApellidos_EliminarEst.setText("");
-//        this.jTFCelu_EliminarEst.setText("");
-//        this.jTFSectorEst_EliminarEst.setText("");
-//        this.jTFFacultad_EliminarEst.setText("");
-//        this.jTFCorreo_EliminarEst.setText("");
-//    }
+    private void emitirMensaje(String mensaje, String titulo) {
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
+    }
+
+    
+    public void limpiarCampos(){
+        this.jTFCategoria_Eliminar.setText("");
+        jTFBuscar_Eliminar.setText("");
+        jTFCodigo_Eliminar.setText("");
+        jTFCondicion_Eliminar.setText("");
+        jTFEstado_Eliminar.setText("");
+        jTFFabricanteAutor_Eliminar.setText("");
+        jTFNombre_Eliminar.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancela1;

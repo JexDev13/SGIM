@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS Admins (
 CREATE TABLE IF NOT EXISTS Profesores (
     Cedula_Profesor VARCHAR(20) NOT NULL PRIMARY KEY,
     NivelAcademico VARCHAR(50),
-    Direccion VARCHAR(100),
+    Direccion VARCHAR(150),
     Telefono VARCHAR(15),
     Especializacion VARCHAR(50),
     SueldoBase DECIMAL(10, 2),
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS Usuarios_Inactivos (
 -- Tabla "Clases"
 CREATE TABLE IF NOT EXISTS Clases (
     Codigo_Clase INT AUTO_INCREMENT PRIMARY KEY,
-    Aula VARCHAR(20),
+    Aula TEXT,
     Materia VARCHAR(50),
     Cedula_profesor VARCHAR(20),
     FOREIGN KEY (Cedula_profesor) REFERENCES Profesores(Cedula_Profesor)
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS Libros (
     Nombre VARCHAR(50) NOT NULL,
     Categoria VARCHAR(30) NOT NULL,
     Autor VARCHAR(50) NOT NULL,
-    EstadoAlquiler ENUM('Alquilado', 'No Alquilado') NOT NULL,
+    EstadoAlquiler ENUM('Alquilado', 'No Alquilado') NOT NULL DEFAULT 'No Alquilado',
     Condicion TEXT
 ) ENGINE = InnoDB;
 
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS Instrumentos (
     Nombre VARCHAR(50) NOT NULL,
     Fabricante VARCHAR(50) NOT NULL,
     Categoria VARCHAR(30) NOT NULL,
-    EstadoAlquiler ENUM('Alquilado', 'No Alquilado') NOT NULL,
+    EstadoAlquiler ENUM('Alquilado', 'No Alquilado') NOT NULL DEFAULT 'No Alquilado',
     Condicion TEXT
 ) ENGINE = InnoDB;
 
@@ -449,6 +449,3 @@ INSERT INTO Personas (Cedula, Nombres, Apellidos, Correo, Rol)
 VALUES ('0000000000', 'Admin', 'Admin', 'soportetecnicomousai@gmail.com', 'Administrativo');
 UPDATE Users SET Nombre_Usuario = 'admin' WHERE Cedula = '0000000000';
 UPDATE Users SET Contrasena = 'admin' WHERE Cedula = '0000000000';
--- Profesor para pruebas
-INSERT INTO Personas (Cedula, Nombres, Apellidos, Correo, Rol)
-VALUES ('1706172648', 'Juan', 'Pérez', 'juan@example.com', 'Profesor');
