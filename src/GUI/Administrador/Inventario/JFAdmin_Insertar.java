@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -17,6 +18,8 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
     private int y;
     private Conexion con = new Conexion();
     private String SQL;
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
 
     public JFAdmin_Insertar() {
         initComponents();
@@ -385,6 +388,10 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        borrarCampos();
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
@@ -480,6 +487,10 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
         this.jTFFabricanteAutor.setText("");
         this.jTFNombre.setText("");
         this.jTextAreaCondicion.setText("");
+    }
+    
+    private void emitirMensaje(String mensaje, String titulo) {
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

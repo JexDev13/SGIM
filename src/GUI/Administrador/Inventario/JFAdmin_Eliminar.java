@@ -353,7 +353,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFBuscar_EliminarKeyTyped
 
     private void jTFBuscar_EliminarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_EliminarKeyReleased
-        if (jTFBuscar_Eliminar.getText().startsWith("INSTR-")) {
+        if (jTFBuscar_Eliminar.getText().toUpperCase().startsWith("INSTR-")) {
             this.SQL = """
                    SELECT Codigo,Nombre,Fabricante as Creador,Categoria,EstadoAlquiler,Condicion FROM instrumentos WHERE """
                     + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
@@ -366,7 +366,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                     jTFCondicion_Eliminar, 
                     null, 
                     null, "Eliminar");
-        } else if (jTFBuscar_Eliminar.getText().startsWith("LIBR-")) {
+        } else if (jTFBuscar_Eliminar.getText().toUpperCase().startsWith("LIBR-")) {
             this.SQL = """
                     SELECT Codigo,Nombre,Categoria,Autor as Creador,EstadoAlquiler,Condicion FROM libros WHERE """
                     + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
@@ -395,7 +395,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
         if (jTFBuscar_Eliminar.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Colocar código");
         } else {
-            if (jTFBuscar_Eliminar.getText().startsWith("INSTR-")) {
+            if (jTFBuscar_Eliminar.getText().toUpperCase().startsWith("INSTR-")) {
                 this.SQL = """
                            SELECT COUNT(*) AS count FROM instrumentos WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
                 try {
@@ -450,7 +450,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                     Logger.getLogger(JFAdmin_Insertar.class
                             .getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (jTFBuscar_Eliminar.getText().startsWith("LIBR-")) {
+            } else if (jTFBuscar_Eliminar.getText().toUpperCase().startsWith("LIBR-")) {
                 this.SQL = """
                            SELECT COUNT(*) AS count FROM libros WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
                 try {

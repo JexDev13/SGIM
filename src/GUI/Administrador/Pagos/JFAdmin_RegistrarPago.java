@@ -313,9 +313,11 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
                                                 jTFValor.setText("");
                                             } else {
                                                 this.SQL = """
-                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "', '" + jComboBoxMetodo1.getSelectedItem() + "');";
+                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "'," + 1 + ");";
+                                                System.out.println(SQL);
                                                 con.update(SQL);
                                                 JOptionPane.showMessageDialog(null, "Pago registrado exitosamente");
+                                                dispose();
                                                 borrarCampos();
                                             }
                                         }
@@ -329,9 +331,11 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
                                         jTFValor.setText("");
                                     } else {
                                         this.SQL = """
-                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "', '" + jComboBoxMetodo1.getSelectedItem() + "');";
+                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "'," + 0 + ");";
+                                        System.out.println(SQL);
                                         con.update(SQL);
                                         JOptionPane.showMessageDialog(null, "Pago registrado exitosamente");
+                                        dispose();
                                         borrarCampos();
                                     }
                                 }

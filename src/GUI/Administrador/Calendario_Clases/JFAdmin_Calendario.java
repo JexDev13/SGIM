@@ -56,6 +56,7 @@ public class JFAdmin_Calendario extends javax.swing.JFrame {
         jBAumentarcupos = new javax.swing.JButton();
         jLTitTabla = new javax.swing.JLabel();
         jBAsignarHorario = new javax.swing.JButton();
+        jButtonEliminarClases2 = new javax.swing.JButton();
         jLLupa = new javax.swing.JLabel();
         jTFBusqueda = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -139,6 +140,28 @@ public class JFAdmin_Calendario extends javax.swing.JFrame {
         });
         jPFondo.add(jBAsignarHorario);
         jBAsignarHorario.setBounds(20, 40, 150, 40);
+
+        jButtonEliminarClases2.setBackground(new java.awt.Color(250, 183, 22));
+        jButtonEliminarClases2.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEliminarClases2.setText("asistencia");
+        jButtonEliminarClases2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jButtonEliminarClases2.setBorderPainted(false);
+        jButtonEliminarClases2.setPreferredSize(new java.awt.Dimension(73, 40));
+        jButtonEliminarClases2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonEliminarClases2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonEliminarClases2MouseExited(evt);
+            }
+        });
+        jButtonEliminarClases2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarClases2ActionPerformed(evt);
+            }
+        });
+        jPFondo.add(jButtonEliminarClases2);
+        jButtonEliminarClases2.setBounds(340, 40, 150, 40);
 
         jLLupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
         jPFondo.add(jLLupa);
@@ -423,6 +446,19 @@ public class JFAdmin_Calendario extends javax.swing.JFrame {
         cupo.setVisible(true);
     }//GEN-LAST:event_jBAumentarcuposActionPerformed
 
+    private void jButtonEliminarClases2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarClases2MouseEntered
+        this.jButtonEliminarClases2.setText("ASISTENCIA");
+    }//GEN-LAST:event_jButtonEliminarClases2MouseEntered
+
+    private void jButtonEliminarClases2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarClases2MouseExited
+        this.jButtonEliminarClases2.setText("asistencia");
+    }//GEN-LAST:event_jButtonEliminarClases2MouseExited
+
+    private void jButtonEliminarClases2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarClases2ActionPerformed
+        JFAdmin_AsistenciaClase asis = new JFAdmin_AsistenciaClase();
+        asis.setVisible(true);
+    }//GEN-LAST:event_jButtonEliminarClases2ActionPerformed
+
     private void emitirMensaje(String mensaje, String titulo) {
         JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
     }
@@ -431,6 +467,7 @@ public class JFAdmin_Calendario extends javax.swing.JFrame {
     public static javax.swing.JButton JBCancela1;
     private javax.swing.JButton jBAsignarHorario;
     private javax.swing.JButton jBAumentarcupos;
+    private javax.swing.JButton jButtonEliminarClases2;
     private javax.swing.JButton jButtonMinimizar1;
     private javax.swing.JButton jButtonSalirIcon1;
     private javax.swing.JComboBox<String> jCBFiltroUsers;

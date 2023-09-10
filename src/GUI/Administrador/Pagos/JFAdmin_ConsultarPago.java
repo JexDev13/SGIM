@@ -302,7 +302,6 @@ public class JFAdmin_ConsultarPago extends javax.swing.JFrame {
                     if (count > 0) {
                         this.SQL = """
                    SELECT Codigo_pago,Metodo_pago,Monto,Fecha_Pago,Abono FROM Pagos WHERE Cedula_estudiante = '""" + jTFBuscar_CedulaEst.getText() + "';";
-                        System.out.println(SQL);
                         con.busqueda_y_despliegue(this.jTPagos, this.selectTabla, this.SQL);
                     } else {
                         JOptionPane.showMessageDialog(null, "Estudiante no encontrado o no contiene pagos");

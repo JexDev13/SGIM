@@ -31,10 +31,13 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         buttonGroup.add(jRBBloquear);
         buttonGroup.add(jRBDesbloquear);
+        buttonGroup.add(jRTodos);
+        buttonGroup.add(jRBloqueados);
+        buttonGroup.add(jRDesbloqueados);
         dis.jtableHead(jTPagos);
         this.SQL = """
                    Select u.cedula, p.Nombres, p.Apellidos, p.correo, u.Nombre_Usuario, u.bloqueo from Users u JOIN Personas p
-                   ON p.Cedula = u.cedula WHERE u.bloqueo = 1 and u.rol = 'estudiante';""";
+                   ON p.Cedula = u.cedula WHERE u.rol = 'estudiante';""";
         con.busqueda_y_despliegue(this.jTPagos, tabla, this.SQL);
     }
 
@@ -59,6 +62,9 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
         jTFUsuario = new javax.swing.JTextField();
         jLCorreo = new javax.swing.JLabel();
         jTFCorreo = new javax.swing.JTextField();
+        jRTodos = new javax.swing.JRadioButton();
+        jRBloqueados = new javax.swing.JRadioButton();
+        jRDesbloqueados = new javax.swing.JRadioButton();
         jPanelDatoAdmin = new javax.swing.JPanel();
         jTFBuscar_EliminarUsu = new javax.swing.JTextField();
         jLCedula = new javax.swing.JLabel();
@@ -153,12 +159,12 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
         jPanelDatoAdmin1Layout.setVerticalGroup(
             jPanelDatoAdmin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatoAdmin1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         getContentPane().add(jPanelDatoAdmin1);
-        jPanelDatoAdmin1.setBounds(380, 30, 450, 280);
+        jPanelDatoAdmin1.setBounds(380, 70, 450, 240);
 
         jPDatoConsultadoInstrumento.setBackground(new java.awt.Color(255, 255, 255));
         jPDatoConsultadoInstrumento.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del estudiante"));
@@ -283,6 +289,39 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
 
         getContentPane().add(jPDatoConsultadoInstrumento);
         jPDatoConsultadoInstrumento.setBounds(10, 100, 360, 210);
+
+        jRTodos.setBackground(new java.awt.Color(255, 255, 255));
+        jRTodos.setText("Ver todos");
+        jRTodos.setContentAreaFilled(false);
+        jRTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRTodosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRTodos);
+        jRTodos.setBounds(380, 40, 100, 21);
+
+        jRBloqueados.setBackground(new java.awt.Color(255, 255, 255));
+        jRBloqueados.setText("Ver bloqueados");
+        jRBloqueados.setContentAreaFilled(false);
+        jRBloqueados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBloqueadosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRBloqueados);
+        jRBloqueados.setBounds(480, 40, 130, 21);
+
+        jRDesbloqueados.setBackground(new java.awt.Color(255, 255, 255));
+        jRDesbloqueados.setText("Ver desbloqueados");
+        jRDesbloqueados.setContentAreaFilled(false);
+        jRDesbloqueados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRDesbloqueadosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRDesbloqueados);
+        jRDesbloqueados.setBounds(610, 40, 140, 21);
 
         jPanelDatoAdmin.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDatoAdmin.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del usuario"));
@@ -466,23 +505,37 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
                 } else {
                     int seleccion;
                     if (jRBBloquear.isSelected()) {
-                        seleccion = JOptionPane.showConfirmDialog(null, "¿Desea bloquear al estudiante?" + "\n     -Se podrá volver a desbloquear despues", "Bloquear estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
-                        this.SQL = "UPDATE Users SET bloqueo = 1 WHERE Rol = 'estudiante' AND Cedula = '" + parametroBusqueda + "';";
-                        mensaje = "Elemento bloqueado exitosamente";
-                        con.actualizarEliminarTablas(SQL);
-                    }else if (jRBDesbloquear.isSelected()) {
-                        seleccion = JOptionPane.showConfirmDialog(null, "¿Desea desbloquear al estudiante?" + "\n     -Se podrá volver a bloquear despues", "Desbloquear estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
-                        this.SQL = "UPDATE Users SET bloqueo = 0 WHERE Rol = 'estudiante' AND Cedula = '" + parametroBusqueda + "';";
-                        mensaje = "Elemento desbloqueado exitosamente";
+                        titulo = "RESULTADO";
+                        this.SQL = "Select count(*) from Users where Rol = 'Estudiante' AND Bloqueo = 0 AND Cedula = '" + parametroBusqueda + "'";
+                        System.out.println(SQL);
+                        if (con.busquedaCod("Personas", SQL, "count(*)") == 1) {
+                            seleccion = JOptionPane.showConfirmDialog(null, "¿Desea bloquear al estudiante?" + "\n     -Se podrá volver a desbloquear despues", "Bloquear estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
+                            this.SQL = "UPDATE Users SET bloqueo = 1 WHERE Rol = 'estudiante' AND Cedula = '" + parametroBusqueda + "';";
+                            mensaje = "Elemento bloqueado exitosamente";
+                            con.actualizarEliminarTablas(SQL);
+                        } else {
+                            mensaje = "El estudiante ya se encuentra bloqueado";
+                            emitirMensaje(mensaje, titulo);
+                        }
                     }
-                    titulo = "RESULTADO";
-                    if (con.actualizarEliminarTablas(SQL)) {
-                        dispose();
-                        emitirMensaje(mensaje, titulo);
-                    }else
-                    {
-                        mensaje = "Ocurrio un error realizando la acción";
-                        emitirMensaje(mensaje, titulo);
+                    if (jRBDesbloquear.isSelected()) {
+                        titulo = "RESULTADO";
+                        this.SQL = "Select count(*) from Users where Rol = 'Estudiante' AND Bloqueo = 1 AND Cedula = '" + parametroBusqueda + "'";
+                        if (con.busquedaCod("Personas", SQL, "count(*)") == 1) {
+                            seleccion = JOptionPane.showConfirmDialog(null, "¿Desea desbloquear al estudiante?" + "\n     -Se podrá volver a bloquear despues", "Desbloquear estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, ICONCANCELAR);
+                            this.SQL = "UPDATE Users SET bloqueo = 0 WHERE Rol = 'estudiante' AND Cedula = '" + parametroBusqueda + "';";
+                            mensaje = "Elemento desbloqueado exitosamente";
+                            if (con.actualizarEliminarTablas(SQL)) {
+                                dispose();
+                                emitirMensaje(mensaje, titulo);
+                            } else {
+                                mensaje = "Ocurrio un error realizando la acción";
+                                emitirMensaje(mensaje, titulo);
+                            }
+                        } else {
+                            mensaje = "El estudiante se encuentra sin bloqueos";
+                            emitirMensaje(mensaje, titulo);
+                        }
                     }
                 }
             }
@@ -533,6 +586,27 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTFBuscar_EliminarUsuKeyTyped
 
+    private void jRTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRTodosActionPerformed
+        this.SQL = """
+                   Select u.cedula, p.Nombres, p.Apellidos, p.correo, u.Nombre_Usuario, u.bloqueo from Users u JOIN Personas p
+                   ON p.Cedula = u.cedula WHERE u.rol = 'estudiante';""";
+        con.busqueda_y_despliegue(this.jTPagos, tabla, this.SQL);
+    }//GEN-LAST:event_jRTodosActionPerformed
+
+    private void jRBloqueadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBloqueadosActionPerformed
+        this.SQL = """
+                   Select u.cedula, p.Nombres, p.Apellidos, p.correo, u.Nombre_Usuario, u.bloqueo from Users u JOIN Personas p
+                   ON p.Cedula = u.cedula WHERE u.bloqueo = 1 and u.rol = 'estudiante';""";
+        con.busqueda_y_despliegue(this.jTPagos, tabla, this.SQL);
+    }//GEN-LAST:event_jRBloqueadosActionPerformed
+
+    private void jRDesbloqueadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRDesbloqueadosActionPerformed
+        this.SQL = """
+                   Select u.cedula, p.Nombres, p.Apellidos, p.correo, u.Nombre_Usuario, u.bloqueo from Users u JOIN Personas p
+                   ON p.Cedula = u.cedula WHERE u.bloqueo = 0 and u.rol = 'estudiante';""";
+        con.busqueda_y_despliegue(this.jTPagos, tabla, this.SQL);
+    }//GEN-LAST:event_jRDesbloqueadosActionPerformed
+
     public void limpiarCampos() {
         this.jTFCedula.setText("");
         this.jTFNombres.setText("");
@@ -565,6 +639,9 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelDatoAdmin1;
     private javax.swing.JRadioButton jRBBloquear;
     private javax.swing.JRadioButton jRBDesbloquear;
+    private javax.swing.JRadioButton jRBloqueados;
+    private javax.swing.JRadioButton jRDesbloqueados;
+    private javax.swing.JRadioButton jRTodos;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTextField jTFApellidos;
     public static javax.swing.JTextField jTFBuscar_EliminarUsu;

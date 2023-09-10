@@ -3,6 +3,7 @@ package GUI.Administrador.Gestion_Sistema;
 import Negocio.Conexion;
 import Negocio.Diseño;
 import static java.awt.image.ImageObserver.HEIGHT;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -178,6 +179,11 @@ public class JFAdmin_ActualizarVariables extends javax.swing.JFrame {
 
         jTFPension.setEditable(false);
         jTFPension.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTFPension.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTFPensionFocusLost(evt);
+            }
+        });
 
         jChBPension.setBackground(new java.awt.Color(255, 255, 255));
         jChBPension.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -267,12 +273,16 @@ public class JFAdmin_ActualizarVariables extends javax.swing.JFrame {
                 }
             }
             if (jChBPension.isSelected()) {
-                this.SQL = "UPDATE variables_del_sistema SET valor_pension = " + pension + " WHERE id = 1;";
-                mensaje = "Pensión cambiada con éxito";
-                if (con.actualizarEliminarTablas(SQL) == true) {
-                    titulo = "RESULTADO";
-                    dispose();
-                    emitirMensaje(mensaje, titulo);
+                if (!isValidNumber(jTFPension.getText())) {
+                    JOptionPane.showMessageDialog(null, "Valor inválido. Ingrese solo números y decimales con punto.");
+                } else {
+                    this.SQL = "UPDATE variables_del_sistema SET valor_pension = " + pension + " WHERE id = 1;";
+                    mensaje = "Pensión cambiada con éxito";
+                    if (con.actualizarEliminarTablas(SQL) == true) {
+                        titulo = "RESULTADO";
+                        dispose();
+                        emitirMensaje(mensaje, titulo);
+                    }
                 }
             }
         }
@@ -332,6 +342,14 @@ public class JFAdmin_ActualizarVariables extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFCuposActionPerformed
 
+    private void jTFPensionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFPensionFocusLost
+        if (!jTFPension.getText().isEmpty()) {
+            if (!isValidNumber(jTFPension.getText())) {
+                JOptionPane.showMessageDialog(null, "Valor inválido. Ingrese solo números y decimales.");
+            }
+        }
+    }//GEN-LAST:event_jTFPensionFocusLost
+
     private void emitirMensaje(String mensaje, String titulo) {
         getToolkit();
         JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
@@ -341,6 +359,10 @@ public class JFAdmin_ActualizarVariables extends javax.swing.JFrame {
         this.SQL = "Select * from variables_del_sistema where id = 1;";
         con.despliegueFields(SQL, tabla, jTFPension, jTFCupos, null, null,
                 null, null, null, null, "acutalizar");
+    }
+
+    private boolean isValidNumber(String text) {
+        return Pattern.matches("^\\d*\\.?\\d*$", text);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

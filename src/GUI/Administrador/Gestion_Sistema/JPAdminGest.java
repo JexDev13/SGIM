@@ -3,6 +3,9 @@ package GUI.Administrador.Gestion_Sistema;
 import GUI.Administrador.Calendario_Clases.JFAdmin_ConsultarClase;
 import Negocio.Conexion;
 import Negocio.Diseño;
+import static java.awt.image.ImageObserver.HEIGHT;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /*
  * @authors G2 SoftwareSolutions
@@ -10,9 +13,11 @@ import Negocio.Diseño;
 public class JPAdminGest extends javax.swing.JPanel {
 
     Diseño gui = new Diseño();
-    
+
     JFAdmin_ActualizarUsuario act = new JFAdmin_ActualizarUsuario();
     Conexion con = new Conexion();
+    Diseño dis = new Diseño();
+    ImageIcon ICONCANCELAR = dis.getICONERROR();
 
     private String selectTabla = "Users";
     private String SQL;
@@ -25,7 +30,7 @@ public class JPAdminGest extends javax.swing.JPanel {
 
         this.SQL = """
                    SELECT u.Cedula, u.Nombre_Usuario, p.Correo, u.Rol FROM Personas p JOIN Users u ON p.Cedula = u.Cedula;""";
-        con.busqueda_y_despliegue(this.jTUsers, this.selectTabla,this.SQL);
+        con.busqueda_y_despliegue(this.jTUsers, this.selectTabla, this.SQL);
     }
 
     @SuppressWarnings("unchecked")
@@ -381,22 +386,22 @@ public class JPAdminGest extends javax.swing.JPanel {
         String Parametro_de_busqueda = "Nombre_Usuario";
         String Busqueda = this.jTFBusqueda.getText();
         switch (this.jCBFiltroUsers.getSelectedIndex()) {
-            case 0 ->  {
+            case 0 -> {
                 Parametro_de_busqueda = "Nombre_Usuario";
             }
-            case 1 ->  {
+            case 1 -> {
                 Parametro_de_busqueda = "u.Cedula";
             }
-            case 2 ->  {
+            case 2 -> {
                 Parametro_de_busqueda = "Nombre_Usuario";
             }
-            case 3 ->  {
+            case 3 -> {
                 Parametro_de_busqueda = "u.Rol";
             }
         }
         this.SQL = """
-                   SELECT u.Cedula, u.Nombre_Usuario, p.Correo, u.Rol FROM Personas p JOIN Users u ON p.Cedula = u.Cedula WHERE """ 
-                + " " + Parametro_de_busqueda + " LIKE '%" + Busqueda+ "%';";
+                   SELECT u.Cedula, u.Nombre_Usuario, p.Correo, u.Rol FROM Personas p JOIN Users u ON p.Cedula = u.Cedula WHERE """
+                + " " + Parametro_de_busqueda + " LIKE '%" + Busqueda + "%';";
         con.busqueda_y_despliegue(this.jTUsers, this.selectTabla, this.SQL);
     }//GEN-LAST:event_jTFBusquedaKeyReleased
 
@@ -473,7 +478,7 @@ public class JPAdminGest extends javax.swing.JPanel {
     }//GEN-LAST:event_jBVariablesMouseEntered
 
     private void jBVariablesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBVariablesMouseExited
-       this.jBVariables.setText("variables del sistema");
+        this.jBVariables.setText("variables del sistema");
     }//GEN-LAST:event_jBVariablesMouseExited
 
     private void jBVariablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVariablesActionPerformed
@@ -501,6 +506,10 @@ public class JPAdminGest extends javax.swing.JPanel {
                 cons.setTFNomDato("Usuario: ");
                 cons.setTFDato(jTUsers.getValueAt(0, 1).toString());
                 cons.setVisible(true);
+            } else {
+                String tituo = "¿Error de busqueda?";
+                String mensaje = "Usuario no encontrado";
+                emitirMensaje(mensaje, tituo);
             }
         }
     }//GEN-LAST:event_jButtonBuscarActionPerformed
@@ -516,7 +525,10 @@ public class JPAdminGest extends javax.swing.JPanel {
         }
         return existe;
     }
-    
+
+    private void emitirMensaje(String mensaje, String titulo) {
+        JOptionPane.showMessageDialog(null, mensaje, titulo, HEIGHT, ICONCANCELAR);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizarUsuario;

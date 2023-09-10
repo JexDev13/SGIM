@@ -1,5 +1,6 @@
 package GUI.Administrador.Calendario_Clases;
 
+import static GUI.Administrador.Calendario_Clases.JFAdmin_AsignarHorarios.jTFBuscar_AsignarClase;
 import Negocio.Conexion;
 import Negocio.Diseño;
 import Negocio.Validaciones;
@@ -274,7 +275,7 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
         );
 
         jPanelDatoClase.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDatoClase.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos de la clase"));
+        jPanelDatoClase.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del horario"));
 
         jTFBuscar_AsignarHorario.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTFBuscar_AsignarHorario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -523,6 +524,10 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1MouseExited
 
     private void JBCancela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancela1ActionPerformed
+        String tituo = "¿Cancelar ingreso?";
+        String mensaje = "Si cancela los datos ingresados no serán guardados";
+        emitirMensaje(mensaje, tituo);
+        limpiarCampos();
         dispose();
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
@@ -540,9 +545,15 @@ public class JFAdmin_AsignarEstudiante extends javax.swing.JFrame {
                 CONCAT(H.DiaSemana, ' ', H.Hora) AS Horario
             FROM Clases C JOIN Personas P 
             ON C.Cedula_Profesor = P.Cedula JOIN Horarios H 
-            ON C.Codigo_Clase = H.Codigo_Clase WHERE H.Codigo_Horario LIKE '%""" + parametroBusqueda + "%';";
-            con.despliegueFields(SQL, tabla, jTFCodigo_Clase, jTFAula, jTFMateria, jTFCedProf,
-                    jTFNombreProf, jTFCodigo_Horario, jTFHorario, null, "insertar");
+            ON C.Codigo_Clase = H.Codigo_Clase WHERE H.Codigo_Horario = '""" + parametroBusqueda + "';";
+            con.despliegueFields(SQL, "Calendario", 
+                    jTFCodigo_Horario,
+                    jTFCodigo_Clase, 
+                    jTFAula, 
+                    jTFMateria, 
+                    jTFCedProf,
+                    jTFNombreProf, 
+                    jTFHorario, null, "insertar");
         } else {
             limpiarCampos();
         }

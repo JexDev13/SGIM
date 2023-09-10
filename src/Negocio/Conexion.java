@@ -173,7 +173,11 @@ public class Conexion {
                     PagosTotales[1] = rs.getString("Cedula_estudiante");
                     PagosTotales[2] = rs.getString("Mes");
                     PagosTotales[3] = rs.getString("Total_cancelado");
-                    PagosTotales[4] = rs.getString("Pagado_Total");
+                    if ("1".equals(rs.getString("Pagado_Total"))) {
+                        PagosTotales[4] = "Pagado total";
+                    } else {
+                        PagosTotales[4] = "Abono";
+                    }
                     tabla.addRow(PagosTotales);
                 }
                 jTabla.setModel(tabla);
@@ -187,7 +191,11 @@ public class Conexion {
                     Pagos[1] = rs.getString("Metodo_pago");
                     Pagos[2] = rs.getString("Monto");
                     Pagos[3] = rs.getString("Fecha_Pago");
-                    Pagos[4] = rs.getString("Abono");
+                    if ("1".equals(rs.getString("Abono"))) {
+                        Pagos[4] = "Abono";
+                    } else {
+                        Pagos[4] = "Pagado Total";
+                    }
                     tabla.addRow(Pagos);
                 }
                 jTabla.setModel(tabla);
@@ -215,7 +223,11 @@ public class Conexion {
                     bloqueados[2] = rs.getString("apellidos");
                     bloqueados[3] = rs.getString("Correo");
                     bloqueados[4] = rs.getString("Nombre_Usuario");
-                    bloqueados[5] = "Bloqueado";
+                    if ("1".equals(rs.getString("Bloqueo"))) {
+                        bloqueados[5] = "Bloqueado";
+                    } else {
+                        bloqueados[5] = "Libre";
+                    }
                     tabla.addRow(bloqueados);
                 }
                 jTabla.setModel(tabla);
@@ -281,7 +293,7 @@ public class Conexion {
                     tabla.addRow(estudiantes);
                 }
                 jTabla.setModel(tabla);
-            }else if (selectTabla.equals("Rentas")) {
+            } else if (selectTabla.equals("Rentas")) {
                 Object[] rentas = new Object[5];
                 DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
@@ -635,6 +647,48 @@ public class Conexion {
                     }
                     if (seis != null) {
                         seis.setText("" + rs.getString("Condicion"));
+                    }
+                }
+            } else if (tabla.equals("Prestamos")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("codigo"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("Elemento"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("Cedula"));
+                    }
+                    if (cuatro != null) {
+                        cuatro.setText("" + rs.getString("Cliente"));
+                    }
+                    if (cinco != null) {
+                        cinco.setText("" + rs.getString("Fecha"));
+                    }
+                }
+            } else if (tabla.equals("Calendario")) {
+                while (rs.next()) {
+                    if (uno != null) {
+                        uno.setText("" + rs.getString("H.Codigo_horario"));
+                    }
+                    if (dos != null) {
+                        dos.setText("" + rs.getString("C.Codigo_Clase"));
+                    }
+                    if (tres != null) {
+                        tres.setText("" + rs.getString("C.Aula"));
+                    }
+                    if (cuatro != null) {
+                        cuatro.setText("" + rs.getString("C.Materia"));
+                    }
+                    if (cinco != null) {
+                        cinco.setText("" + rs.getString("C.Cedula_Profesor"));
+                    }
+                    if (seis != null) {
+                        seis.setText("" + rs.getString("ProfesorAsignado"));
+                    }
+                    if (siete != null) {
+                        siete.setText("" + rs.getString("Horario"));
                     }
                 }
             }

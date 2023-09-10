@@ -397,12 +397,12 @@ public class JFAdmin_EliminarClase extends javax.swing.JFrame {
                         this.SQL = "Delete from Clases WHERE Codigo_Clase = '" + codClase + "';";
                         if (con.actualizarEliminarTablas(SQL) == true) {
                             titulo = "RESULTADO";
-                            mensaje = "Lista de estudiantes borrada exitosamente";
+                            mensaje = "Clase borrada exitosamente";
                             dispose();
                             jTFBuscar_EliminarClase.setText("");
                         } else {
                             titulo = "ERROR: Borrado";
-                            mensaje = "Los estudiantes NO fueron borrados debido a un error";
+                            mensaje = "La clase NO fue borrada debido a un error";
                         }
                         emitirMensaje(mensaje, titulo);
                     }

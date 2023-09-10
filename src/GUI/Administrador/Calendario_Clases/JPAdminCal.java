@@ -50,7 +50,6 @@ public class JPAdminCal extends javax.swing.JPanel {
         jButtonEliminarClases1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTClases = new javax.swing.JTable();
-        jButtonEliminarClases2 = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -202,26 +201,6 @@ public class JPAdminCal extends javax.swing.JPanel {
         jTClases.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTClases);
 
-        jButtonEliminarClases2.setBackground(new java.awt.Color(250, 183, 22));
-        jButtonEliminarClases2.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEliminarClases2.setText("asistencia");
-        jButtonEliminarClases2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jButtonEliminarClases2.setBorderPainted(false);
-        jButtonEliminarClases2.setPreferredSize(new java.awt.Dimension(73, 40));
-        jButtonEliminarClases2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonEliminarClases2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonEliminarClases2MouseExited(evt);
-            }
-        });
-        jButtonEliminarClases2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEliminarClases2ActionPerformed(evt);
-            }
-        });
-
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon buscar 24.png"))); // NOI18N
         jButtonBuscar.setBorder(null);
         jButtonBuscar.setContentAreaFilled(false);
@@ -246,8 +225,6 @@ public class JPAdminCal extends javax.swing.JPanel {
                         .addComponent(jButtonEliminarClases, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEliminarClases1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEliminarClases2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -282,8 +259,7 @@ public class JPAdminCal extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonNuevaClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonEliminarClases1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonEliminarClases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonEliminarClases2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEliminarClases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
                 .addComponent(jLTitTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -385,19 +361,6 @@ public class JPAdminCal extends javax.swing.JPanel {
         cal.setVisible(true);
     }//GEN-LAST:event_jButtonEliminarClases1ActionPerformed
 
-    private void jButtonEliminarClases2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarClases2MouseEntered
-        this.jButtonEliminarClases2.setText("ASISTENCIA");
-    }//GEN-LAST:event_jButtonEliminarClases2MouseEntered
-
-    private void jButtonEliminarClases2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEliminarClases2MouseExited
-        this.jButtonEliminarClases2.setText("asistencia");
-    }//GEN-LAST:event_jButtonEliminarClases2MouseExited
-
-    private void jButtonEliminarClases2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarClases2ActionPerformed
-        JFAdmin_AsistenciaClase asis = new JFAdmin_AsistenciaClase();
-        asis.setVisible(true);
-    }//GEN-LAST:event_jButtonEliminarClases2ActionPerformed
-
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         String Busqueda = this.jTFBusqueda.getText();
         if (jCBFiltroUsers.isVisible() && !jCBFiltroUsers.getSelectedItem().equals("Filtrar por...")) {
@@ -426,7 +389,6 @@ public class JPAdminCal extends javax.swing.JPanel {
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEliminarClases;
     private javax.swing.JButton jButtonEliminarClases1;
-    private javax.swing.JButton jButtonEliminarClases2;
     private javax.swing.JButton jButtonNuevaClase;
     private javax.swing.JComboBox<String> jCBFiltroUsers;
     private javax.swing.JLabel jLFiltro;
