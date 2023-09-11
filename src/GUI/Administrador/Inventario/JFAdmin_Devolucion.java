@@ -1,7 +1,5 @@
 package GUI.Administrador.Inventario;
 
-import static GUI.Administrador.Inventario.JFAdmin_Prestamo.jTFCedula;
-import static GUI.Administrador.Inventario.JFAdmin_Prestamo.jTFNombre;
 import Negocio.Conexion;
 import Negocio.Diseño;
 import java.sql.ResultSet;
@@ -327,25 +325,25 @@ public class JFAdmin_Devolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-        if (jTFCodigo.getText().isEmpty()) {
+        if (jTFCodigo.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
         } else {
             // verificar si existe codigo
             // verificar si existe cedula
             // si existen registrar la devolucion
-            if (jTFCodigo.getText().startsWith("INSTR-")) {
+            if (jTFCodigo.getText().trim().startsWith("INSTR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM prestamos_Instrumentos WHERE Codigo_instrumento = '""" + jTFCodigo.getText() + "';";
+                           SELECT COUNT(*) AS count FROM prestamos_Instrumentos WHERE Codigo_instrumento = '""" + jTFCodigo.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
                         int count = resultado.getInt("count");
                         if (count > 0) {
                             this.SQL = """
-                           UPDATE instrumentos SET EstadoAlquiler = 'No Alquilado' WHERE Codigo = '""" + jTFCodigo.getText() + "';";
+                           UPDATE instrumentos SET EstadoAlquiler = 'No Alquilado' WHERE Codigo = '""" + jTFCodigo.getText().trim() + "';";
                             con.update(SQL);
                             this.SQL = """
-                           DELETE From prestamos_Instrumentos WHERE Codigo_instrumento = '""" + jTFCodigo.getText() + "';";
+                           DELETE From prestamos_Instrumentos WHERE Codigo_instrumento = '""" + jTFCodigo.getText().trim() + "';";
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Devolución registrada");
                             jTFCodigo.setText("");
@@ -357,19 +355,19 @@ public class JFAdmin_Devolucion extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (jTFCodigo.getText().startsWith("LIBR-")) {
+            } else if (jTFCodigo.getText().trim().startsWith("LIBR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM prestamos_Libros WHERE Codigo_libro = '""" + jTFCodigo.getText() + "';";
+                           SELECT COUNT(*) AS count FROM prestamos_Libros WHERE Codigo_libro = '""" + jTFCodigo.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
                         int count = resultado.getInt("count");
                         if (count > 0) {
                             this.SQL = """
-                           UPDATE libros SET EstadoAlquiler = 'No Alquilado' WHERE Codigo = '""" + jTFCodigo.getText() + "';";
+                           UPDATE libros SET EstadoAlquiler = 'No Alquilado' WHERE Codigo = '""" + jTFCodigo.getText().trim() + "';";
                             con.update(SQL);
                             this.SQL = """
-                           DELETE From prestamos_Libros WHERE Codigo_libro = '""" + jTFCodigo.getText() + "';";
+                           DELETE From prestamos_Libros WHERE Codigo_libro = '""" + jTFCodigo.getText().trim() + "';";
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Devolución registrada");
                             jTFCodigo.setText("");
@@ -408,7 +406,7 @@ public class JFAdmin_Devolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFCondicionKeyTyped
 
     private void jTFCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCodigoKeyReleased
-        String parametroBusqueda = this.jTFCodigo.getText().toUpperCase();
+        String parametroBusqueda = this.jTFCodigo.getText().toUpperCase().trim();
         if (parametroBusqueda.length() >= 1) {
             this.SQL = """
                    SELECT

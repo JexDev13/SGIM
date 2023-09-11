@@ -485,7 +485,7 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-        String parametroBusqueda = jTFBuscar_EliminarUsu.getText();
+        String parametroBusqueda = jTFBuscar_EliminarUsu.getText().trim();
         if (parametroBusqueda.isEmpty()) {
             titulo = "ADVERTENCIA";
             mensaje = "Todos los campos deben estar llenos";
@@ -513,6 +513,7 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
                             this.SQL = "UPDATE Users SET bloqueo = 1 WHERE Rol = 'estudiante' AND Cedula = '" + parametroBusqueda + "';";
                             mensaje = "Elemento bloqueado exitosamente";
                             con.actualizarEliminarTablas(SQL);
+                            emitirMensaje(mensaje, titulo);
                         } else {
                             mensaje = "El estudiante ya se encuentra bloqueado";
                             emitirMensaje(mensaje, titulo);
@@ -571,7 +572,7 @@ public class JFAdmin_desbloquear extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFCorreoActionPerformed
 
     private void jTFBuscar_EliminarUsuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_EliminarUsuKeyReleased
-        String parametroBusqueda = this.jTFBuscar_EliminarUsu.getText();
+        String parametroBusqueda = this.jTFBuscar_EliminarUsu.getText().trim();
         if (parametroBusqueda.length() == 10) {
             this.SQL = "SELECT u.Cedula, p.Nombres, p.Apellidos, u.Nombre_Usuario, p.Correo FROM "
                     + "Users u JOIN Personas p ON p.Cedula = u.Cedula WHERE u.Cedula LIKE '%" + parametroBusqueda + "%';";

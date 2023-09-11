@@ -282,39 +282,38 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
     private void JBFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFacturaActionPerformed
 
         JBFactura.requestFocusInWindow();
-        if (jTFCedula.getText().isEmpty() || jTFValor.getText().isEmpty() || jComboBoxMetodo.getSelectedItem().equals("Elegir Método...") || jComboBoxMetodo1.getSelectedItem().equals("Elegir Tipo...") || jComboBoxMes.getSelectedItem().equals("Elegir Mes...")) {
+        if (jTFCedula.getText().trim().isEmpty() || jTFValor.getText().trim().isEmpty() || jComboBoxMetodo.getSelectedItem().equals("Elegir Método...") || jComboBoxMetodo1.getSelectedItem().equals("Elegir Tipo...") || jComboBoxMes.getSelectedItem().equals("Elegir Mes...")) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
-        } else if (!isValidNumber(jTFValor.getText())) {
+        } else if (!isValidNumber(jTFValor.getText().trim())) {
             JOptionPane.showMessageDialog(null, "Valor inválido. Ingrese solo números y decimales.");
             jTFValor.setText("");
         } else {
             this.SQL = """
-                           SELECT COUNT(*) AS count FROM estudiantes WHERE Cedula_Estudiante = '""" + jTFCedula.getText() + "';";
+                           SELECT COUNT(*) AS count FROM estudiantes WHERE Cedula_Estudiante = '""" + jTFCedula.getText().trim() + "';";
             try {
                 ResultSet resultado = con.query(SQL);
                 if (resultado.next()) {
                     int count = resultado.getInt("count");
                     if (count > 0) {
                         this.SQL = """
-                           SELECT COUNT(*) AS count FROM estudiantes_pagados WHERE Cedula_Estudiante = '""" + jTFCedula.getText() + "' AND Mes = '" + jComboBoxMes.getSelectedItem() + "';";
+                           SELECT COUNT(*) AS count FROM estudiantes_pagados WHERE Cedula_Estudiante = '""" + jTFCedula.getText().trim() + "' AND Mes = '" + jComboBoxMes.getSelectedItem() + "';";
                         try {
                             ResultSet resultado2 = con.query(SQL);
                             if (resultado2.next()) {
                                 int count1 = resultado2.getInt("count");
                                 if (count1 > 0) {
                                     this.SQL = """
-                           SELECT Total_cancelado FROM estudiantes_pagados WHERE Cedula_Estudiante = '""" + jTFCedula.getText() + "' AND Mes = '" + jComboBoxMes.getSelectedItem() + "';";
+                           SELECT Total_cancelado FROM estudiantes_pagados WHERE Cedula_Estudiante = '""" + jTFCedula.getText().trim() + "' AND Mes = '" + jComboBoxMes.getSelectedItem() + "';";
                                     try {
                                         ResultSet resultado1 = con.query(SQL);
                                         if (resultado1.next()) {
                                             valorTotal = resultado1.getDouble("Total_cancelado");
-                                            if (valorTotal + Double.parseDouble(jTFValor.getText()) > valorPension) {
+                                            if (valorTotal + Double.parseDouble(jTFValor.getText().trim()) > valorPension) {
                                                 JOptionPane.showMessageDialog(null, "Valor ingresado mayor al máximo");
                                                 jTFValor.setText("");
                                             } else {
                                                 this.SQL = """
-                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "'," + 1 + ");";
-                                                System.out.println(SQL);
+                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText().trim() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText().trim() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "'," + 1 + ");";
                                                 con.update(SQL);
                                                 JOptionPane.showMessageDialog(null, "Pago registrado exitosamente");
                                                 dispose();
@@ -326,12 +325,12 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
                                     }
                                 } else {
                                     valorTotal = 0;
-                                    if (valorTotal + Double.parseDouble(jTFValor.getText()) > valorPension) {
+                                    if (valorTotal + Double.parseDouble(jTFValor.getText().trim()) > valorPension) {
                                         JOptionPane.showMessageDialog(null, "Valor ingresado mayor al máximo");
                                         jTFValor.setText("");
                                     } else {
                                         this.SQL = """
-                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "'," + 0 + ");";
+                           INSERT INTO pagos (Cedula_estudiante,Metodo_pago,Monto,Fecha_pago,Mes_pagado,Abono) VALUES """ + "('" + jTFCedula.getText().trim() + "', '" + jComboBoxMetodo.getSelectedItem() + "', " +  jTFValor.getText().trim() + ", '" + obtenerFecha() + "', '" + jComboBoxMes.getSelectedItem() + "'," + 0 + ");";
                                         System.out.println(SQL);
                                         con.update(SQL);
                                         JOptionPane.showMessageDialog(null, "Pago registrado exitosamente");
@@ -409,11 +408,11 @@ public class JFAdmin_RegistrarPago extends javax.swing.JFrame {
 
     private void jTFValorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFValorFocusLost
         // controlar que solo ingrese 3 numeros y 2 decimales
-        if (!jTFValor.getText().isEmpty()) {
-            if (!isValidNumber(jTFValor.getText())) {
+        if (!jTFValor.getText().trim().isEmpty()) {
+            if (!isValidNumber(jTFValor.getText().trim())) {
                 JOptionPane.showMessageDialog(null, "Valor inválido. Ingrese solo números y decimales.");
                 jTFValor.setText("");
-            }else if (Double.parseDouble(jTFValor.getText()) > valorPension) {
+            }else if (Double.parseDouble(jTFValor.getText().trim()) > valorPension) {
                 JOptionPane.showMessageDialog(null, "Valor mayor a total");
                 jTFValor.setText("");
             }

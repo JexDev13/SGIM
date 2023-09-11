@@ -326,16 +326,16 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
         JBIngreso1.requestFocusInWindow();
         if (jComboBoxTipo.getSelectedItem().equals("Seleccionar tipo...")) {
             JOptionPane.showMessageDialog(null, "Seleccione un tipo");
-        } else if (jTFCodigo.getText().length() == 10 && jComboBoxTipo.getSelectedItem().equals("Libro")) {
+        } else if (jTFCodigo.getText().trim().length() == 10 && jComboBoxTipo.getSelectedItem().equals("Libro")) {
             JOptionPane.showMessageDialog(null, "Seleccione el tipo adecuado para el código");
-        } else if (jTFCodigo.getText().length() == 9 && jComboBoxTipo.getSelectedItem().equals("Instrumento")) {
+        } else if (jTFCodigo.getText().trim().length() == 9 && jComboBoxTipo.getSelectedItem().equals("Instrumento")) {
             JOptionPane.showMessageDialog(null, "Seleccione el tipo adecuado para el código");
-        } else if (jTFCodigo.getText().isEmpty() || jTFNombre.getText().isEmpty() || jTFCategoria.getText().isEmpty() || jTFFabricanteAutor.getText().isEmpty() || jTextAreaCondicion.getText().isEmpty()) {
+        } else if (jTFCodigo.getText().trim().isEmpty() || jTFNombre.getText().trim().isEmpty() || jTFCategoria.getText().trim().isEmpty() || jTFFabricanteAutor.getText().trim().isEmpty() || jTextAreaCondicion.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
         } else {
-            if (jTFCodigo.getText().startsWith("INSTR-")) {
+            if (jTFCodigo.getText().trim().startsWith("INSTR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM instrumentos WHERE Codigo = '""" + jTFCodigo.getText() + "';";
+                           SELECT COUNT(*) AS count FROM instrumentos WHERE Codigo = '""" + jTFCodigo.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
@@ -344,7 +344,7 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "El código ya existe");
                         } else {
                             this.SQL = """
-                           INSERT INTO instrumentos (Codigo, Nombre, Fabricante, Categoria, EstadoAlquiler, Condicion) VALUES """ + "('" + jTFCodigo.getText() + "', '" + jTFNombre.getText() + "', '" + jTFFabricanteAutor.getText() + "', '" + jTFCategoria.getText() + "', '" + "No Alquilado" + "', '" + jTextAreaCondicion.getText() + "');";
+                           INSERT INTO instrumentos (Codigo, Nombre, Fabricante, Categoria, EstadoAlquiler, Condicion) VALUES """ + "('" + jTFCodigo.getText().trim() + "', '" + jTFNombre.getText().trim() + "', '" + jTFFabricanteAutor.getText().trim() + "', '" + jTFCategoria.getText().trim() + "', '" + "No Alquilado" + "', '" + jTextAreaCondicion.getText().trim() + "');";
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Instrumento registrado exitosamente");
                             borrarCampos();
@@ -354,9 +354,9 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (jTFCodigo.getText().startsWith("LIBR-")) {
+            } else if (jTFCodigo.getText().trim().startsWith("LIBR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM libros WHERE Codigo = '""" + jTFCodigo.getText() + "';";
+                           SELECT COUNT(*) AS count FROM libros WHERE Codigo = '""" + jTFCodigo.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
@@ -365,7 +365,7 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "El código ya existe");
                         } else {
                             this.SQL = """
-                           INSERT INTO libros (Codigo, Nombre, Autor, Categoria, EstadoAlquiler, Condicion) VALUES """ + "('" + jTFCodigo.getText() + "', '" + jTFNombre.getText() + "', '" + jTFFabricanteAutor.getText() + "', '" + jTFCategoria.getText() + "', '" + "No Alquilado" + "', '" + jTextAreaCondicion.getText() + "')";
+                           INSERT INTO libros (Codigo, Nombre, Autor, Categoria, EstadoAlquiler, Condicion) VALUES """ + "('" + jTFCodigo.getText().trim() + "', '" + jTFNombre.getText().trim() + "', '" + jTFFabricanteAutor.getText().trim() + "', '" + jTFCategoria.getText().trim() + "', '" + "No Alquilado" + "', '" + jTextAreaCondicion.getText().trim() + "')";
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Libro registrado exitosamente");
                             borrarCampos();
@@ -402,11 +402,11 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
     private void jTFCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFCodigoFocusLost
         if (jTFCodigo.isEditable()) {
             if (jComboBoxTipo.getSelectedItem().equals("Instrumento")) {
-                if (!jTFCodigo.getText().isEmpty()) {
-                    if (jTFCodigo.getText().length() != 10) {
+                if (!jTFCodigo.getText().trim().isEmpty()) {
+                    if (jTFCodigo.getText().trim().length() != 10) {
                         JOptionPane.showMessageDialog(null, "Código con número de caracteres incorrectos");
                         jTFCodigo.setText("");
-                    } else if (!jTFCodigo.getText().startsWith("INSTR-") || !jTFCodigo.getText().matches("INSTR-\\d{4}")) {
+                    } else if (!jTFCodigo.getText().trim().startsWith("INSTR-") || !jTFCodigo.getText().trim().matches("INSTR-\\d{4}")) {
                         JOptionPane.showMessageDialog(null, "Formato de código incorrecto");
                         jTFCodigo.setText("");
                     }
@@ -416,7 +416,7 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
                     if (jTFCodigo.getText().length() != 9) {
                         JOptionPane.showMessageDialog(null, "Código con número de caracteres incorrectos");
                         jTFCodigo.setText("");
-                    } else if (!jTFCodigo.getText().startsWith("LIBR-") || !jTFCodigo.getText().matches("LIBR-\\d{4}")) {
+                    } else if (!jTFCodigo.getText().trim().startsWith("LIBR-") || !jTFCodigo.getText().trim().matches("LIBR-\\d{4}")) {
                         JOptionPane.showMessageDialog(null, "Formato de código incorrecto");
                         jTFCodigo.setText("");
                     }
@@ -456,7 +456,7 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
 
     private void jTFCategoriaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFCategoriaFocusLost
         if (jTFCategoria.isEditable()) {
-            if (jTFCategoria.getText().length() > 30) {
+            if (jTFCategoria.getText().trim().length() > 30) {
                 JOptionPane.showMessageDialog(null, "Categoria con exceso de caracteres");
                 jTFCategoria.setText("");
             }
@@ -465,7 +465,7 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
 
     private void jTFFabricanteAutorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFFabricanteAutorFocusLost
         if (jTFFabricanteAutor.isEditable()) {
-            if (jTFFabricanteAutor.getText().length() > 50) {
+            if (jTFFabricanteAutor.getText().trim().length() > 50) {
                 JOptionPane.showMessageDialog(null, "Elaborador con exceso de caracteres");
                 jTFFabricanteAutor.setText("");
             }
@@ -474,7 +474,7 @@ public class JFAdmin_Insertar extends javax.swing.JFrame {
 
     private void jTextAreaCondicionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextAreaCondicionFocusLost
         if (jTextAreaCondicion.isEditable()) {
-            if (jTextAreaCondicion.getText().length() > 200) {
+            if (jTextAreaCondicion.getText().trim().length() > 200) {
                 JOptionPane.showMessageDialog(null, "Condición con exceso de caracteres");
                 jTextAreaCondicion.setText("");
             }

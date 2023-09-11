@@ -385,7 +385,7 @@ public class JFAdmin_AsignarHorarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFBuscar_AsignarClaseKeyTyped
 
     private void jTFBuscar_AsignarClaseKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_AsignarClaseKeyReleased
-        String parametroBusqueda = jTFBuscar_AsignarClase.getText();
+        String parametroBusqueda = jTFBuscar_AsignarClase.getText().trim();
         if (parametroBusqueda.length() >= 1) {
 
             this.SQL = """
@@ -415,7 +415,7 @@ public class JFAdmin_AsignarHorarios extends javax.swing.JFrame {
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
         String dia = jCBFiltroUsers.getSelectedItem().toString();
         String hora = jCBFiltroUsers1.getSelectedItem().toString();
-        String clase = jTFBuscar_AsignarClase.getText();
+        String clase = jTFBuscar_AsignarClase.getText().trim();
         this.SQL = "Select count(*) from Clases WHERE Codigo_Clase like '" + clase + "'";
         if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
             getToolkit().beep();

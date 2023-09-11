@@ -302,10 +302,10 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFBuscar_ActualizarKeyTyped
 
     private void jTFBuscar_ActualizarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_ActualizarKeyReleased
-        if (jTFBuscar_Actualizar.getText().startsWith("INSTR-")) {
+        if (jTFBuscar_Actualizar.getText().trim().startsWith("INSTR-")) {
             this.SQL = """
                    SELECT Codigo,Condicion FROM instrumentos WHERE """
-                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText() + "%';";
+                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText().trim() + "%';";
             ResultSet resultado1 = con.query(SQL);
             try {
                 if (resultado1.next()) {
@@ -315,10 +315,10 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(JFAdmin_Actualizar.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else if (jTFBuscar_Actualizar.getText().startsWith("LIBR-")) {
+        } else if (jTFBuscar_Actualizar.getText().trim().startsWith("LIBR-")) {
             this.SQL = """
                    SELECT Codigo,Condicion FROM libros WHERE """
-                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText() + "%';";
+                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Actualizar.getText().trim() + "%';";
             ResultSet resultado1 = con.query(SQL);
             try {
                 if (resultado1.next()) {
@@ -341,12 +341,12 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
         JBIngreso1.requestFocusInWindow();
-        if (jTFBuscar_Actualizar.getText().isEmpty() || jTextAreaCondicion.getText().isEmpty()) {
+        if (jTFBuscar_Actualizar.getText().trim().isEmpty() || jTextAreaCondicion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Completar todos los campos");
         } else {
-            if (jTFBuscar_Actualizar.getText().startsWith("INSTR-")) {
+            if (jTFBuscar_Actualizar.getText().trim().startsWith("INSTR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM instrumentos WHERE Codigo = '""" + jTFBuscar_Actualizar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM instrumentos WHERE Codigo = '""" + jTFBuscar_Actualizar.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
@@ -354,7 +354,7 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
                         if (count > 0) {
 
                             this.SQL = """
-                           UPDATE instrumentos SET Condicion = '""" + jTextAreaCondicion.getText() + "' WHERE Codigo = '" + jTFBuscar_Actualizar.getText() + "';";
+                           UPDATE instrumentos SET Condicion = '""" + jTextAreaCondicion.getText().trim() + "' WHERE Codigo = '" + jTFBuscar_Actualizar.getText().trim() + "';";
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Producto actualizado");
                             limpiarCampos();
@@ -366,16 +366,16 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (jTFBuscar_Actualizar.getText().startsWith("LIBR-")) {
+            } else if (jTFBuscar_Actualizar.getText().trim().startsWith("LIBR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM libros WHERE Codigo = '""" + jTFBuscar_Actualizar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM libros WHERE Codigo = '""" + jTFBuscar_Actualizar.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
                         int count = resultado.getInt("count");
                         if (count > 0) {
                             this.SQL = """
-                           UPDATE libros SET Condicion = '""" + jTextAreaCondicion.getText() + "' WHERE Codigo = '" + jTFBuscar_Actualizar.getText() + "';";
+                           UPDATE libros SET Condicion = '""" + jTextAreaCondicion.getText().trim() + "' WHERE Codigo = '" + jTFBuscar_Actualizar.getText().trim() + "';";
                             con.update(SQL);
                             JOptionPane.showMessageDialog(null, "Producto actualizado");
                             limpiarCampos();
@@ -416,7 +416,7 @@ public class JFAdmin_Actualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMinimizar1ActionPerformed
 
     private void jTextAreaCondicionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextAreaCondicionFocusLost
-        if (jTextAreaCondicion.getText().length() > 200) {
+        if (jTextAreaCondicion.getText().trim().length() > 200) {
             JOptionPane.showMessageDialog(null, "Condición con exceso de caracteres");
             jTextAreaCondicion.setText("");
         }

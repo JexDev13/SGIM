@@ -251,20 +251,20 @@ public class JFAdmin_InsertarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-        String cedula = this.jTFCedula.getText();
-        String nombres = this.jTFNombres.getText();
-        String apellidos = this.jTFApellidos.getText();
+        String cedula = this.jTFCedula.getText().trim();
+        String nombres = this.jTFNombres.getText().trim();
+        String apellidos = this.jTFApellidos.getText().trim();
         String genero;
         if (jComboBoxSexo.getSelectedIndex()==0) {
             genero = "M";
         } else {
             genero = "F";
         }
-        String fechaNacimiento = this.jTFFDNacimiento.getText();
-        String nombresRepresentante = this.jTFNombresRepre.getText();
-        String apellidosRepresentante = this.jTFApellidosRepre.getText();
-        String correoRepresentante = this.jTFCorreoRepre.getText();
-        String telefonoRepresentante = this.jTFTelefonoRepre.getText();
+        String fechaNacimiento = this.jTFFDNacimiento.getText().trim();
+        String nombresRepresentante = this.jTFNombresRepre.getText().trim();
+        String apellidosRepresentante = this.jTFApellidosRepre.getText().trim();
+        String correoRepresentante = this.jTFCorreoRepre.getText().trim();
+        String telefonoRepresentante = this.jTFTelefonoRepre.getText().trim();
 
         if (cedula.isEmpty() || nombres.isEmpty() || apellidos.isEmpty() || genero.isEmpty() || fechaNacimiento.isEmpty() || nombresRepresentante.isEmpty()
                 || apellidosRepresentante.isEmpty() || correoRepresentante.isEmpty() || telefonoRepresentante.isEmpty()) {

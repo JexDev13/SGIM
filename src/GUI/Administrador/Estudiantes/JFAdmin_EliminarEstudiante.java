@@ -1,14 +1,5 @@
 package GUI.Administrador.Estudiantes;
 
-import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFApellidosRepre_ActualizarEst;
-import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFBuscar_ActualizarEst;
-import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFCodigo_ActualizarEst;
-import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFCorreo_ActualizarEst;
-import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFFechaNacimiento_ActualizarEst;
-import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFFechaNacimiento_ActualizarSexo;
-import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFNombresRepre_ActualizarEst;
-import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFNombres_ActualizarEst;
-import static GUI.Administrador.Estudiantes.JFAdmin_ActualizarEstudiante.jTFTelefono_ActualizarEst;
 import Negocio.Conexion;
 import Negocio.Diseño;
 import Negocio.Validaciones;
@@ -368,7 +359,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFBuscar_EliminarEstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_EliminarEstKeyReleased
-        String parametroBusqueda = this.jTFBuscar_EliminarEst.getText();
+        String parametroBusqueda = this.jTFBuscar_EliminarEst.getText().trim();
         if (parametroBusqueda.length() == 10) {
             this.SQL = "SELECT e.Cedula_Estudiante, CONCAT(p.Nombres,' ',p.Apellidos) as Nombre, e.FechaNacimiento, e.Sexo, e.NombresRepresentante, e.ApellidosRepresentante, p.Correo, e.TelefonoRepresentante FROM Estudiantes e JOIN Personas p ON p.Cedula = e.Cedula_Estudiante WHERE e.Cedula_Estudiante LIKE '%" + parametroBusqueda + "%';";
             con.despliegueFields(SQL, "Estudiantes", 
@@ -417,12 +408,12 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-        if (jTFBuscar_EliminarEst.getText().isEmpty()) {
+        if (jTFBuscar_EliminarEst.getText().trim().isEmpty()) {
             titulo = "ADVERTENCIA";
             mensaje = "Todos los campos deben estar llenos";
             emitirMensaje(mensaje, titulo);
         } else {
-            String parametroBusqueda = this.jTFBuscar_EliminarEst.getText();
+            String parametroBusqueda = this.jTFBuscar_EliminarEst.getText().trim();
             if (!val.validadorDeCedula(parametroBusqueda)) {
                 titulo = "ERROR DE FORMATO";
                 mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
@@ -467,7 +458,7 @@ public class JFAdmin_EliminarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancela1ActionPerformed
 
     private void jPanelDatoEstudianteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanelDatoEstudianteKeyReleased
-        String parametroBusqueda = this.jTFBuscar_EliminarEst.getText();
+        String parametroBusqueda = this.jTFBuscar_EliminarEst.getText().trim();
         if (parametroBusqueda.length() == 10) {
             this.SQL = "SELECT e.Cedula_Estudiante, CONCAT(p.Nombres,' ',p.Apellidos) as Nombre, e.FechaNacimiento, e.Sexo, e.NombresRepresentante, e.ApellidosRepresentante, p.Correo, e.TelefonoRepresentante FROM Estudiantes e JOIN Personas p ON p.Cedula = e.Cedula_Estudiante WHERE e.Cedula_Estudiante LIKE '%" + parametroBusqueda + "%';";
             con.despliegueFields(SQL, "Estudiantes",

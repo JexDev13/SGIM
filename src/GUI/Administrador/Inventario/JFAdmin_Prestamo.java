@@ -438,32 +438,32 @@ public class JFAdmin_Prestamo extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-        if (jTFCodigo_buscar.getText().isEmpty() || jTFNoCedula_Buscar.getText().isEmpty()) {
+        if (jTFCodigo_buscar.getText().trim().isEmpty() || jTFNoCedula_Buscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
         } else {
             // verificar si existe codigo
             // verificar si existe cedula
             // si existen registrar el prestamo
-            if (jTFCodigo_buscar.getText().startsWith("INSTR-")) {
+            if (jTFCodigo_buscar.getText().trim().startsWith("INSTR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM instrumentos WHERE Codigo = '""" + jTFCodigo_buscar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM instrumentos WHERE Codigo = '""" + jTFCodigo_buscar.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
                         int count = resultado.getInt("count");
                         if (count > 0) {
                             this.SQL = """
-                           SELECT COUNT(*) AS count FROM estudiantes WHERE Cedula_Estudiante = '""" + jTFNoCedula_Buscar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM estudiantes WHERE Cedula_Estudiante = '""" + jTFNoCedula_Buscar.getText().trim() + "';";
                             try {
                                 ResultSet resultado1 = con.query(SQL);
                                 if (resultado1.next()) {
                                     int count1 = resultado1.getInt("count");
                                     if (count1 > 0) {
                                         this.SQL = """
-                           UPDATE instrumentos SET EstadoAlquiler = 'Alquilado' WHERE Codigo = '""" + jTFCodigo_buscar.getText() + "';";
+                           UPDATE instrumentos SET EstadoAlquiler = 'Alquilado' WHERE Codigo = '""" + jTFCodigo_buscar.getText().trim() + "';";
                                         con.update(SQL);
                                         this.SQL = """
-                           Insert into prestamos_Instrumentos (Cedula_estudiante,Codigo_instrumento,Fecha) values ('""" + jTFNoCedula_Buscar.getText() + "', '" + jTFCodigo_buscar.getText() + "', '" + obtenerFecha() + "');";
+                           Insert into prestamos_Instrumentos (Cedula_estudiante,Codigo_instrumento,Fecha) values ('""" + jTFNoCedula_Buscar.getText().trim() + "', '" + jTFCodigo_buscar.getText().trim() + "', '" + obtenerFecha() + "');";
                                         con.update(SQL);
                                         JOptionPane.showMessageDialog(null, "Préstamo registrado");
                                         jTFCodigo_buscar.setText("");
@@ -484,26 +484,26 @@ public class JFAdmin_Prestamo extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(JFAdmin_Insertar.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (jTFCodigo_buscar.getText().startsWith("LIBR-")) {
+            } else if (jTFCodigo_buscar.getText().trim().startsWith("LIBR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM libros WHERE Codigo = '""" + jTFCodigo_buscar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM libros WHERE Codigo = '""" + jTFCodigo_buscar.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
                         int count = resultado.getInt("count");
                         if (count > 0) {
                             this.SQL = """
-                           SELECT COUNT(*) AS count FROM estudiantes WHERE Cedula_Estudiante = '""" + jTFNoCedula_Buscar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM estudiantes WHERE Cedula_Estudiante = '""" + jTFNoCedula_Buscar.getText().trim() + "';";
                             try {
                                 ResultSet resultado1 = con.query(SQL);
                                 if (resultado1.next()) {
                                     int count1 = resultado1.getInt("count");
                                     if (count1 > 0) {
                                         this.SQL = """
-                           UPDATE libros SET EstadoAlquiler = 'Alquilado' WHERE Codigo = '""" + jTFCodigo_buscar.getText() + "';";
+                           UPDATE libros SET EstadoAlquiler = 'Alquilado' WHERE Codigo = '""" + jTFCodigo_buscar.getText().trim() + "';";
                                         con.update(SQL);
                                         this.SQL = """
-                           Insert into prestamos_Libros (Cedula_estudiante,Codigo_libro,Fecha) values ('""" + jTFNoCedula_Buscar.getText() + "', '" + jTFCodigo_buscar.getText() + "', '" + obtenerFecha() + "');";
+                           Insert into prestamos_Libros (Cedula_estudiante,Codigo_libro,Fecha) values ('""" + jTFNoCedula_Buscar.getText().trim() + "', '" + jTFCodigo_buscar.getText().trim() + "', '" + obtenerFecha() + "');";
                                         con.update(SQL);
                                         JOptionPane.showMessageDialog(null, "Préstamo registrado");
                                         jTFCodigo_buscar.setText("");
@@ -562,7 +562,7 @@ public class JFAdmin_Prestamo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFCondicionKeyTyped
 
     private void jTFNoCedula_BuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNoCedula_BuscarKeyReleased
-        String parametroBusqueda = this.jTFNoCedula_Buscar.getText();
+        String parametroBusqueda = this.jTFNoCedula_Buscar.getText().trim();
         if (parametroBusqueda.length() == 10) {
             this.SQL = "SELECT Cedula as Cedula_Estudiante, CONCAT(Nombres,' ',Apellidos) as Nombre FROM Personas WHERE Rol = 'Estudiante' AND Cedula LIKE '%" + parametroBusqueda + "%';";
             con.despliegueFields(SQL, "Estudiantes", 
@@ -580,7 +580,7 @@ public class JFAdmin_Prestamo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFNoCedula_BuscarKeyReleased
 
     private void jTFCodigo_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCodigo_buscarKeyReleased
-        String parametroBusqueda = this.jTFCodigo_buscar.getText();
+        String parametroBusqueda = this.jTFCodigo_buscar.getText().trim();
         if (parametroBusqueda.length() >= 1) {
             this.SQL = """
                    select Codigo, Nombre, Categoria, Fabricante as creador, EstadoAlquiler, Condicion from instrumentos WHERE Codigo like '%""" + parametroBusqueda + "%'\n"

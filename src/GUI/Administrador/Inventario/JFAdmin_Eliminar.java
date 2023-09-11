@@ -353,10 +353,10 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFBuscar_EliminarKeyTyped
 
     private void jTFBuscar_EliminarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_EliminarKeyReleased
-        if (jTFBuscar_Eliminar.getText().toUpperCase().startsWith("INSTR-")) {
+        if (jTFBuscar_Eliminar.getText().trim().toUpperCase().startsWith("INSTR-")) {
             this.SQL = """
                    SELECT Codigo,Nombre,Fabricante as Creador,Categoria,EstadoAlquiler,Condicion FROM instrumentos WHERE """
-                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
+                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText().trim() + "%';";
             con.despliegueFields(SQL, "Renta", 
                     jTFCodigo_Eliminar, 
                     jTFNombre_Eliminar,
@@ -366,10 +366,10 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                     jTFCondicion_Eliminar, 
                     null, 
                     null, "Eliminar");
-        } else if (jTFBuscar_Eliminar.getText().toUpperCase().startsWith("LIBR-")) {
+        } else if (jTFBuscar_Eliminar.getText().trim().toUpperCase().startsWith("LIBR-")) {
             this.SQL = """
                     SELECT Codigo,Nombre,Categoria,Autor as Creador,EstadoAlquiler,Condicion FROM libros WHERE """
-                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
+                    + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText().trim() + "%';";
             con.despliegueFields(SQL, "Renta", 
                     jTFCodigo_Eliminar, 
                     jTFNombre_Eliminar,
@@ -392,19 +392,19 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
 
-        if (jTFBuscar_Eliminar.getText().isEmpty()) {
+        if (jTFBuscar_Eliminar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Colocar código");
         } else {
-            if (jTFBuscar_Eliminar.getText().toUpperCase().startsWith("INSTR-")) {
+            if (jTFBuscar_Eliminar.getText().trim().toUpperCase().startsWith("INSTR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM instrumentos WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM instrumentos WHERE Codigo = '""" + jTFBuscar_Eliminar.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
                         int count = resultado.getInt("count");
                         if (count > 0) {
                             this.SQL = """
-                           SELECT COUNT(*) AS count FROM prestamos_instrumentos WHERE Codigo_instrumento = '""" + jTFBuscar_Eliminar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM prestamos_instrumentos WHERE Codigo_instrumento = '""" + jTFBuscar_Eliminar.getText().trim() + "';";
                             try {
                                 ResultSet resultado3 = con.query(SQL);
                                 if (resultado3.next()) {
@@ -412,7 +412,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                                     if (count3 == 0) {
                                         this.SQL = """
                    SELECT Codigo,Nombre,Fabricante,Categoria,EstadoAlquiler,Condicion FROM instrumentos WHERE """
-                                                + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
+                                                + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText().trim() + "%';";
                                         ResultSet resultado1 = con.query(SQL);
                                         if (resultado1.next()) {
                                             jTFCodigo_Eliminar.setText(resultado1.getString("Codigo"));
@@ -425,7 +425,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                                         int resultado2 = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el producto?");
                                         if (resultado2 == JOptionPane.YES_OPTION) {
                                             this.SQL = """
-                           DELETE FROM instrumentos WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
+                           DELETE FROM instrumentos WHERE Codigo = '""" + jTFBuscar_Eliminar.getText().trim() + "';";
                                             con.update(SQL);
                                             JOptionPane.showMessageDialog(null, "Producto eliminado");
                                             this.dispose();
@@ -450,16 +450,16 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                     Logger.getLogger(JFAdmin_Insertar.class
                             .getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (jTFBuscar_Eliminar.getText().toUpperCase().startsWith("LIBR-")) {
+            } else if (jTFBuscar_Eliminar.getText().trim().toUpperCase().startsWith("LIBR-")) {
                 this.SQL = """
-                           SELECT COUNT(*) AS count FROM libros WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM libros WHERE Codigo = '""" + jTFBuscar_Eliminar.getText().trim() + "';";
                 try {
                     ResultSet resultado = con.query(SQL);
                     if (resultado.next()) {
                         int count = resultado.getInt("count");
                         if (count > 0) {
                             this.SQL = """
-                           SELECT COUNT(*) AS count FROM prestamos_libros WHERE Codigo_libro = '""" + jTFBuscar_Eliminar.getText() + "';";
+                           SELECT COUNT(*) AS count FROM prestamos_libros WHERE Codigo_libro = '""" + jTFBuscar_Eliminar.getText().trim() + "';";
                             try {
                                 ResultSet resultado3 = con.query(SQL);
                                 if (resultado3.next()) {
@@ -467,7 +467,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                                     if (count3 == 0) {
                                         this.SQL = """
                    SELECT Codigo,Nombre,Categoria,Autor,EstadoAlquiler,Condicion FROM libros WHERE """
-                                                + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText() + "%';";
+                                                + " " + "Codigo" + " LIKE '%" + jTFBuscar_Eliminar.getText().trim() + "%';";
                                         ResultSet resultado1 = con.query(SQL);
                                         if (resultado1.next()) {
                                             jTFCodigo_Eliminar.setText(resultado1.getString("Codigo"));
@@ -480,7 +480,7 @@ public class JFAdmin_Eliminar extends javax.swing.JFrame {
                                             int resultado2 = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el producto?");
                                             if (resultado2 == JOptionPane.YES_OPTION) {
                                                 this.SQL = """
-                           DELETE FROM libros WHERE Codigo = '""" + jTFBuscar_Eliminar.getText() + "';";
+                           DELETE FROM libros WHERE Codigo = '""" + jTFBuscar_Eliminar.getText().trim() + "';";
                                                 con.update(SQL);
                                                 JOptionPane.showMessageDialog(null, "Producto eliminado");
                                                 this.dispose();

@@ -388,7 +388,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFBuscar_ActualizarEstKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFBuscar_ActualizarEstKeyReleased
-        String parametroBusqueda = jTFBuscar_ActualizarEst.getText();
+        String parametroBusqueda = jTFBuscar_ActualizarEst.getText().trim();
         if (parametroBusqueda.length() == 10) {
             this.SQL = "SELECT e.Cedula_Estudiante, CONCAT(p.Nombres,' ',p.Apellidos) as Nombre, e.FechaNacimiento, e.Sexo, e.NombresRepresentante, e.ApellidosRepresentante, p.Correo, e.TelefonoRepresentante FROM Estudiantes e JOIN Personas p ON p.Cedula = e.Cedula_Estudiante WHERE e.Cedula_Estudiante LIKE '%" + parametroBusqueda + "%';";
             con.despliegueFields(SQL, "Estudiantes",
@@ -466,7 +466,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_JBIngreso1MouseExited
 
     private void JBIngreso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngreso1ActionPerformed
-        String parametroBusqueda = this.jTFBuscar_ActualizarEst.getText();
+        String parametroBusqueda = this.jTFBuscar_ActualizarEst.getText().trim();
         if (parametroBusqueda.isEmpty()) {
             titulo = "ADVERTENCIA";
             mensaje = "Todos los campos deben estar llenos";
@@ -477,7 +477,7 @@ public class JFAdmin_ActualizarEstudiante extends javax.swing.JFrame {
                 mensaje = "La cédula ingresada no es válida en el territorio Ecuatoriano";
                 emitirMensaje(mensaje, titulo);
             } else {
-                if (val.emailValidator(jTFCorreo_ActualizarEst.getText())) {
+                if (val.emailValidator(jTFCorreo_ActualizarEst.getText().trim())) {
                     this.SQL = "Select count(*) from Personas where Cedula = '" + parametroBusqueda + "'";
                     if (con.busquedaCod("Personas", SQL, "count(*)") < 1) {
                         getToolkit().beep();

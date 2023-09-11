@@ -174,6 +174,16 @@ CREATE TABLE IF NOT EXISTS prestamos_Libros (
     FOREIGN KEY (Codigo_libro) REFERENCES Libros(Codigo)
 ) ENGINE = InnoDB;
 
+-- Creacion de la tabla auditoria
+CREATE TABLE IF NOT EXISTS Auditoria (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    FechaHora TIMESTAMP,
+    Usuario VARCHAR(255),
+    TablaAfectada VARCHAR(255),
+    AccionRealizada VARCHAR(255),
+    DatosAntesDeAccion TEXT,
+    DatosDespuesDeAccion TEXT
+) ENGINE = InnoDB;
 
 -- TRIGGERS DE LA BASE DE DATOS
 DELIMITER //
@@ -439,6 +449,43 @@ BEGIN
         UPDATE Users SET bloqueo = 0 WHERE Cedula = OLD.Cedula_Estudiante;
 END;
 //
+
+-- Trigger para la tabla Estudiantes
+CREATE TRIGGER tr_Audit_Estudiantes_ins
+AFTER INSERT ON Estudiantes
+FOR EACH ROW
+BEGIN
+    DECLARE accion VARCHAR(255);
+    SET accion = 'Inserción';
+    INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
+    VALUES (NOW(), USER(), 'Estudiantes', accion, NULL, NULL);
+END;
+//
+
+-- Trigger para la tabla Estudiantes
+CREATE TRIGGER tr_Audit_Estudiantes_act
+AFTER UPDATE ON Estudiantes
+FOR EACH ROW
+BEGIN
+    DECLARE accion VARCHAR(255);
+	SET accion = 'Actualización';
+    INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
+    VALUES (NOW(), USER(), 'Estudiantes', accion, NULL, NULL);
+END;
+//
+
+-- Trigger para la tabla Estudiantes
+CREATE TRIGGER tr_Audit_Estudiantes_elim
+AFTER DELETE ON Estudiantes
+FOR EACH ROW
+BEGIN
+    DECLARE accion VARCHAR(255);
+    SET accion = 'Eliminación';
+    INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
+    VALUES (NOW(), USER(), 'Estudiantes', accion, NULL, NULL);
+END;
+//
+
 DELIMITER ;
 
 -- INSERTS Y DATOS DEFAULT NO BORRAR NI MODIFICAR
