@@ -307,6 +307,22 @@ public class Conexion {
                     tabla.addRow(rentas);
                 }
                 jTabla.setModel(tabla);
+            } else if (selectTabla.equals("Auditoria")) {
+                Object[] auditoria = new Object[7];
+                DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{"ID", "Fecha modificación", "Usuario", "TablaAfectada", "AccionRealizada", "DatosAntesDeAccion", "DatosDespuesDeAccion"});
+                while (rs.next()) {
+                    auditoria[0] = rs.getString("ID");
+                    auditoria[1] = rs.getString("FechaHora");
+                    auditoria[2] = rs.getString("Usuario");
+                    auditoria[3] = rs.getString("TablaAfectada");
+                    auditoria[4] = rs.getString("AccionRealizada");
+                    auditoria[5] = rs.getString("DatosAntesDeAccion");
+                    auditoria[6] = rs.getString("DatosDespuesDeAccion");
+                    tabla.addRow(auditoria);
+                }
+                jTabla.setModel(tabla);
             }
         } catch (SQLException e) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);

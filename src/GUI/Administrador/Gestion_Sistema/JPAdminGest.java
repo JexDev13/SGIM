@@ -495,7 +495,8 @@ public class JPAdminGest extends javax.swing.JPanel {
     }//GEN-LAST:event_jBAuditoriaMouseExited
 
     private void jBAuditoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAuditoriaActionPerformed
-        // TODO add your handling code here:
+        JFAdmin_Auditoria aud = new JFAdmin_Auditoria();
+        aud.setVisible(true);
     }//GEN-LAST:event_jBAuditoriaActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed

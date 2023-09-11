@@ -449,43 +449,97 @@ BEGIN
         UPDATE Users SET bloqueo = 0 WHERE Cedula = OLD.Cedula_Estudiante;
 END;
 //
+DELIMITER ;
 
+DELIMITER //
 -- Trigger para la tabla Estudiantes
 CREATE TRIGGER tr_Audit_Estudiantes_ins
 AFTER INSERT ON Estudiantes
 FOR EACH ROW
 BEGIN
     DECLARE accion VARCHAR(255);
+    DECLARE nombre VARCHAR(255);
+    DECLARE apellido VARCHAR(255);
+    DECLARE Correo VARCHAR(255);
+	SET accion = 'Inserción';
+    
+    -- Obtener los valores de nombre, apellido y correo de la tabla de personas
+    SELECT Nombres, Apellidos, p.Correo INTO nombre, apellido, Correo FROM Personas p WHERE Cedula = NEW.Cedula_estudiante;
+
+    INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
+    VALUES (NOW(), USER(), 'Estudiantes', accion, NULL, CONCAT('Nombre estudiante: ', nombre));
+    
+    INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
+    VALUES (NOW(), USER(), 'Estudiantes', accion, NULL, CONCAT('Apellido: ', apellido));
+    
+    INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
+    VALUES (NOW(), USER(), 'Estudiantes', accion, NULL, CONCAT('Correo: ', correo));
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+-- Trigger para insertar en pagos
+CREATE TRIGGER tr_Audit_Pagos_ins
+AFTER INSERT ON Pagos
+FOR EACH ROW
+BEGIN
+    DECLARE accion VARCHAR(255);
     SET accion = 'Inserción';
+
     INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
-    VALUES (NOW(), USER(), 'Estudiantes', accion, NULL, NULL);
+    VALUES (NOW(), USER(), 'Pagos', accion, NULL, CONCAT('ID de Pago Insertado: ', NEW.Codigo_pago));
 END;
 //
+DELIMITER ;
 
--- Trigger para la tabla Estudiantes
-CREATE TRIGGER tr_Audit_Estudiantes_act
-AFTER UPDATE ON Estudiantes
+DELIMITER //
+CREATE TRIGGER tr_Audit_Estudiantes_Pagados_ins
+AFTER INSERT ON Estudiantes_Pagados
 FOR EACH ROW
 BEGIN
     DECLARE accion VARCHAR(255);
-	SET accion = 'Actualización';
+    SET accion = 'Inserción';
+
     INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
-    VALUES (NOW(), USER(), 'Estudiantes', accion, NULL, NULL);
+    VALUES (NOW(), USER(), 'Estudiantes_Pagados', accion, NULL, CONCAT('ID de Estudiante Pagado Insertado: ', NEW.Cedula_estudiante));
+    
+    INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
+    VALUES (NOW(), USER(), 'Estudiantes_Pagados', accion, NULL, CONCAT('ID Pension: ', NEW.Codigo_pension));
 END;
 //
+DELIMITER ;
 
--- Trigger para la tabla Estudiantes
-CREATE TRIGGER tr_Audit_Estudiantes_elim
-AFTER DELETE ON Estudiantes
+DELIMITER //
+CREATE TRIGGER tr_Audit_Clases_ins
+AFTER INSERT ON Clases
 FOR EACH ROW
 BEGIN
     DECLARE accion VARCHAR(255);
-    SET accion = 'Eliminación';
+    SET accion = 'Inserción';
+
     INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
-    VALUES (NOW(), USER(), 'Estudiantes', accion, NULL, NULL);
+    VALUES (NOW(), USER(), 'Clases', accion, NULL, CONCAT('Materia Insertada: ', NEW.Materia));
 END;
 //
+DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER tr_Audit_Horarios_ins
+AFTER INSERT ON Horarios
+FOR EACH ROW
+BEGIN
+    DECLARE accion VARCHAR(255);
+    SET accion = 'Inserción';
+
+    INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
+    VALUES (NOW(), USER(), 'Horarios', accion, NULL, CONCAT('Codigo clase: ', NEW.Codigo_Clase));
+    
+    INSERT INTO Auditoria (FechaHora, Usuario, TablaAfectada, AccionRealizada, DatosAntesDeAccion, DatosDespuesDeAccion)
+    VALUES (NOW(), USER(), 'Horarios', accion, NULL, CONCAT(NEW.DiaSemana,' ', NEW.Hora));
+    
+END;
+//
 DELIMITER ;
 
 -- INSERTS Y DATOS DEFAULT NO BORRAR NI MODIFICAR

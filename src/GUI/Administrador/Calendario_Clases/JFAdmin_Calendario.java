@@ -206,7 +206,7 @@ public class JFAdmin_Calendario extends javax.swing.JFrame {
             }
         });
         jPFondo.add(jCBFiltroUsers);
-        jCBFiltroUsers.setBounds(690, 80, 129, 22);
+        jCBFiltroUsers.setBounds(690, 80, 130, 22);
 
         jLFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/filtrar 24.png"))); // NOI18N
         jPFondo.add(jLFiltro);
